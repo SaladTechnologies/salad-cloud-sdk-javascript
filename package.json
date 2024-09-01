@@ -1,0 +1,43 @@
+{
+  "name": "@saladtechnologies-oss/salad-cloud-sdk",
+  "version": "0.9.0-alpha.1",
+  "description": "The SaladCloud REST API. Please refer to the [SaladCloud API Documentation](https://docs.salad.com/api-reference) for more details.",
+  "source": "./src/index.ts",
+  "main": "./dist/commonjs/index.js",
+  "module": "./dist/esm/index.js",
+  "browser": "./dist/index.umd.js",
+  "unpkg": "./dist/index.umd.js",
+  "types": "./dist/commonjs/index.d.ts",
+  "scripts": {
+    "test": "tsc --noEmit",
+    "build": "tsup-node src/index.ts --format cjs,esm --dts --clean",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "typescript",
+    "sdk",
+    "api",
+    "client"
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "author": "SaladCloud Support",
+  "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-javascript",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "5.3.3",
+    "tsup": "^6.7.0"
+  },
+  "dependencies": {
+    "zod": "3.22.0"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  }
+}
