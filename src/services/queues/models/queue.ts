@@ -25,15 +25,15 @@ export const queue = z.lazy(() => {
 });
 
 /**
- * Represents a queue
- * @typedef  {Queue} queue - Represents a queue - Represents a queue
- * @property {string}
- * @property {string}
- * @property {string}
- * @property {string} - The description
+ * Represents a queue.
+ * @typedef  {Queue} queue - Represents a queue. - Represents a queue.
+ * @property {string} - The queue identifier. This is automatically generated and assigned when the queue is created.
+ * @property {string} - The queue name. This must be unique within the project.
+ * @property {string} - The display name. This may be used as a more human-readable name.
+ * @property {string} - The description. This may be used as a space for notes or other information about the queue.
  * @property {ContainerGroup[]}
- * @property {string}
- * @property {string}
+ * @property {string} - The date and time the queue was created.
+ * @property {string} - The date and time the queue was last updated.
  */
 export type Queue = z.infer<typeof queue>;
 

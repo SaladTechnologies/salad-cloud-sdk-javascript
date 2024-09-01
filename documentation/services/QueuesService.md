@@ -2,31 +2,31 @@
 
 A list of all methods in the `QueuesService` service. Click on the method name to view detailed information about that method.
 
-| Methods                           | Description                    |
-| :-------------------------------- | :----------------------------- |
-| [listQueues](#listqueues)         | Gets the list of queues        |
-| [createQueue](#createqueue)       | Creates a new queue            |
-| [getQueue](#getqueue)             | Gets a queue                   |
-| [updateQueue](#updatequeue)       | Updates a queue                |
-| [deleteQueue](#deletequeue)       | Deletes a queue                |
-| [listQueueJobs](#listqueuejobs)   | Retrieves a list of queue jobs |
-| [createQueueJob](#createqueuejob) | Creates a new job              |
-| [getQueueJob](#getqueuejob)       | Retrieves a job in a queue     |
-| [deleteQueueJob](#deletequeuejob) | Deletes a queue job            |
+| Methods                           | Description                                     |
+| :-------------------------------- | :---------------------------------------------- |
+| [listQueues](#listqueues)         | Gets the list of queues in the given project.   |
+| [createQueue](#createqueue)       | Creates a new queue in the given project.       |
+| [getQueue](#getqueue)             | Gets an existing queue in the given project.    |
+| [updateQueue](#updatequeue)       | Updates an existing queue in the given project. |
+| [deleteQueue](#deletequeue)       | Deletes an existing queue in the given project. |
+| [listQueueJobs](#listqueuejobs)   | Retrieves a list of queue jobs                  |
+| [createQueueJob](#createqueuejob) | Creates a new job                               |
+| [getQueueJob](#getqueuejob)       | Retrieves a job in a queue                      |
+| [deleteQueueJob](#deletequeuejob) | Deletes a queue job                             |
 
 ## listQueues
 
-Gets the list of queues
+Gets the list of queues in the given project.
 
 - HTTP Method: `GET`
 - Endpoint: `/organizations/{organization_name}/projects/{project_name}/queues`
 
 **Parameters**
 
-| Name             | Type   | Required | Description                  |
-| :--------------- | :----- | :------- | :--------------------------- |
-| organizationName | string | ✅       | The unique organization name |
-| projectName      | string | ✅       | The unique project name      |
+| Name             | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| projectName      | string | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
 
 **Return Type**
 
@@ -43,8 +43,8 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.listQueues(
-    'lwt38wqx9ycbbwq7cz7enua',
-    'i5ohrcyvt0ap8jxyjtw5spbfh7ukelysoi13iija9co',
+    'rtxaydgbmb5wprcvb9628akhug9lnd3c0',
+    'p4bdb9jsi-f1xex70mdgjf5n-5ua-e28xyu9ujbls0vsz6xilo12xl52y9c177',
   );
 
   console.log(data);
@@ -53,18 +53,18 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
 
 ## createQueue
 
-Creates a new queue
+Creates a new queue in the given project.
 
 - HTTP Method: `POST`
 - Endpoint: `/organizations/{organization_name}/projects/{project_name}/queues`
 
 **Parameters**
 
-| Name             | Type                                    | Required | Description                  |
-| :--------------- | :-------------------------------------- | :------- | :--------------------------- |
-| body             | [CreateQueue](../models/CreateQueue.md) | ✅       | The request body.            |
-| organizationName | string                                  | ✅       | The unique organization name |
-| projectName      | string                                  | ✅       | The unique project name      |
+| Name             | Type                                    | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :-------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| body             | [CreateQueue](../models/CreateQueue.md) | ✅       | The request body.                                                                                                                                                                                                                                   |
+| organizationName | string                                  | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| projectName      | string                                  | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
 
 **Return Type**
 
@@ -81,14 +81,14 @@ import { CreateQueue, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-s
   });
 
   const createQueue: CreateQueue = {
-    name: 'ykm2ls08p3lv',
-    displayName: 'Av8HrM6.',
-    description: 'nulla enim',
+    name: 'wcaz2jbu5pfmpygxffsf4bh4e6',
+    displayName: 'Ef',
+    description: 'aute Ut nostrud veniam sint',
   };
 
   const { data } = await saladCloudSdk.queues.createQueue(
-    'lwt38wqx9ycbbwq7cz7enua',
-    'i5ohrcyvt0ap8jxyjtw5spbfh7ukelysoi13iija9co',
+    'rtxaydgbmb5wprcvb9628akhug9lnd3c0',
+    'p4bdb9jsi-f1xex70mdgjf5n-5ua-e28xyu9ujbls0vsz6xilo12xl52y9c177',
     input,
   );
 
@@ -98,18 +98,18 @@ import { CreateQueue, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-s
 
 ## getQueue
 
-Gets a queue
+Gets an existing queue in the given project.
 
 - HTTP Method: `GET`
 - Endpoint: `/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}`
 
 **Parameters**
 
-| Name             | Type   | Required | Description                  |
-| :--------------- | :----- | :------- | :--------------------------- |
-| organizationName | string | ✅       | The unique organization name |
-| projectName      | string | ✅       | The unique project name      |
-| queueName        | string | ✅       | The unique queue name        |
+| Name             | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| projectName      | string | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
+| queueName        | string | ✅       | The queue name.                                                                                                                                                                                                                                     |
 
 **Return Type**
 
@@ -126,9 +126,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.getQueue(
-    'voe5nrfsnef63doc193sgdihl8bgcxw201b7qbn',
-    'xlauk07eld4q4sm9jdgi4bgl1flz0elvw26099ougowft9j-kjp6bahz155',
-    'gsomvfqk5h4gbc8o3p4id29bdadte3m51it2hfzxfmyjtvnd0b',
+    'g1bq27ohe5dpzbgsk8gvpuhecson4k2eclxss3',
+    'wtxd1j0ixuhfk-hdff3n3-hbtsigyh53bt0g4gjh8mcz4',
+    'bnkfiyt3k5ke3wy-5gl1809r',
   );
 
   console.log(data);
@@ -137,19 +137,19 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
 
 ## updateQueue
 
-Updates a queue
+Updates an existing queue in the given project.
 
 - HTTP Method: `PATCH`
 - Endpoint: `/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}`
 
 **Parameters**
 
-| Name             | Type                                    | Required | Description                  |
-| :--------------- | :-------------------------------------- | :------- | :--------------------------- |
-| body             | [UpdateQueue](../models/UpdateQueue.md) | ✅       | The request body.            |
-| organizationName | string                                  | ✅       | The unique organization name |
-| projectName      | string                                  | ✅       | The unique project name      |
-| queueName        | string                                  | ✅       | The unique queue name        |
+| Name             | Type                                    | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :-------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| body             | [UpdateQueue](../models/UpdateQueue.md) | ✅       | The request body.                                                                                                                                                                                                                                   |
+| organizationName | string                                  | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| projectName      | string                                  | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
+| queueName        | string                                  | ✅       | The queue name.                                                                                                                                                                                                                                     |
 
 **Return Type**
 
@@ -166,14 +166,14 @@ import { SaladCloudSdk, UpdateQueue } from '@saladtechnologies-oss/salad-cloud-s
   });
 
   const updateQueue: UpdateQueue = {
-    displayName: 'X3iu1Xk',
-    description: 'ullamco consequat voluptate',
+    displayName: 'TLURNvvFGXm',
+    description: 'aliqua et sit anim esse',
   };
 
   const { data } = await saladCloudSdk.queues.updateQueue(
-    'voe5nrfsnef63doc193sgdihl8bgcxw201b7qbn',
-    'xlauk07eld4q4sm9jdgi4bgl1flz0elvw26099ougowft9j-kjp6bahz155',
-    'gsomvfqk5h4gbc8o3p4id29bdadte3m51it2hfzxfmyjtvnd0b',
+    'g1bq27ohe5dpzbgsk8gvpuhecson4k2eclxss3',
+    'wtxd1j0ixuhfk-hdff3n3-hbtsigyh53bt0g4gjh8mcz4',
+    'bnkfiyt3k5ke3wy-5gl1809r',
     input,
   );
 
@@ -183,18 +183,18 @@ import { SaladCloudSdk, UpdateQueue } from '@saladtechnologies-oss/salad-cloud-s
 
 ## deleteQueue
 
-Deletes a queue
+Deletes an existing queue in the given project.
 
 - HTTP Method: `DELETE`
 - Endpoint: `/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}`
 
 **Parameters**
 
-| Name             | Type   | Required | Description                  |
-| :--------------- | :----- | :------- | :--------------------------- |
-| organizationName | string | ✅       | The unique organization name |
-| projectName      | string | ✅       | The unique project name      |
-| queueName        | string | ✅       | The unique queue name        |
+| Name             | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| projectName      | string | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
+| queueName        | string | ✅       | The queue name.                                                                                                                                                                                                                                     |
 
 **Example Usage Code Snippet**
 
@@ -207,9 +207,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.deleteQueue(
-    'voe5nrfsnef63doc193sgdihl8bgcxw201b7qbn',
-    'xlauk07eld4q4sm9jdgi4bgl1flz0elvw26099ougowft9j-kjp6bahz155',
-    'gsomvfqk5h4gbc8o3p4id29bdadte3m51it2hfzxfmyjtvnd0b',
+    'g1bq27ohe5dpzbgsk8gvpuhecson4k2eclxss3',
+    'wtxd1j0ixuhfk-hdff3n3-hbtsigyh53bt0g4gjh8mcz4',
+    'bnkfiyt3k5ke3wy-5gl1809r',
   );
 
   console.log(data);
@@ -225,13 +225,13 @@ Retrieves a list of queue jobs
 
 **Parameters**
 
-| Name             | Type   | Required | Description                  |
-| :--------------- | :----- | :------- | :--------------------------- |
-| organizationName | string | ✅       | The unique organization name |
-| projectName      | string | ✅       | The unique project name      |
-| queueName        | string | ✅       | The unique queue name        |
-| page             | number | ❌       | The page number              |
-| pageSize         | number | ❌       | The number of items per page |
+| Name             | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| projectName      | string | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
+| queueName        | string | ✅       | The queue name.                                                                                                                                                                                                                                     |
+| page             | number | ❌       | The page number                                                                                                                                                                                                                                     |
+| pageSize         | number | ❌       | The number of items per page                                                                                                                                                                                                                        |
 
 **Return Type**
 
@@ -248,12 +248,12 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.listQueueJobs(
-    'qiqiazzthr12lsqkk1iq35-ix3pzbff9-f8x8ls569n71',
-    'ht3-tiei7j9ye5yzdixjzbx5ywjbd',
-    'xp465rhqkyqstwpk8kd3jy5kakai4lollggq7i7xz97',
+    'jb7eyumc25lm4prwopvwr-1961g-m85nbqda3ufs',
+    'sn780t45z2tw4xt1b86w0clx6vkq-3',
+    'sx811v32aty9s-ghx1hm2nw1mhgooidhvnhwadaqzuh19krhv62or5c',
     {
-      page: 1955049824,
-      pageSize: 95,
+      page: 2110014563,
+      pageSize: 23,
     },
   );
 
@@ -270,12 +270,12 @@ Creates a new job
 
 **Parameters**
 
-| Name             | Type                                          | Required | Description                  |
-| :--------------- | :-------------------------------------------- | :------- | :--------------------------- |
-| body             | [CreateQueueJob](../models/CreateQueueJob.md) | ✅       | The request body.            |
-| organizationName | string                                        | ✅       | The unique organization name |
-| projectName      | string                                        | ✅       | The unique project name      |
-| queueName        | string                                        | ✅       | The unique queue name        |
+| Name             | Type                                          | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :-------------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| body             | [CreateQueueJob](../models/CreateQueueJob.md) | ✅       | The request body.                                                                                                                                                                                                                                   |
+| organizationName | string                                        | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| projectName      | string                                        | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
+| queueName        | string                                        | ✅       | The queue name.                                                                                                                                                                                                                                     |
 
 **Return Type**
 
@@ -298,9 +298,9 @@ import { CreateQueueJob, SaladCloudSdk } from '@saladtechnologies-oss/salad-clou
   };
 
   const { data } = await saladCloudSdk.queues.createQueueJob(
-    'qiqiazzthr12lsqkk1iq35-ix3pzbff9-f8x8ls569n71',
-    'ht3-tiei7j9ye5yzdixjzbx5ywjbd',
-    'xp465rhqkyqstwpk8kd3jy5kakai4lollggq7i7xz97',
+    'jb7eyumc25lm4prwopvwr-1961g-m85nbqda3ufs',
+    'sn780t45z2tw4xt1b86w0clx6vkq-3',
+    'sx811v32aty9s-ghx1hm2nw1mhgooidhvnhwadaqzuh19krhv62or5c',
     input,
   );
 
@@ -317,12 +317,12 @@ Retrieves a job in a queue
 
 **Parameters**
 
-| Name             | Type   | Required | Description                  |
-| :--------------- | :----- | :------- | :--------------------------- |
-| organizationName | string | ✅       | The unique organization name |
-| projectName      | string | ✅       | The unique project name      |
-| queueName        | string | ✅       | The unique queue name        |
-| queueJobId       | string | ✅       | The unique job id            |
+| Name             | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| projectName      | string | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
+| queueName        | string | ✅       | The queue name.                                                                                                                                                                                                                                     |
+| queueJobId       | string | ✅       | The job identifier. This is automatically generated and assigned when the job is created.                                                                                                                                                           |
 
 **Return Type**
 
@@ -339,9 +339,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.getQueueJob(
-    'erx15rey11qozndq25fyep9cx1pky-znnuxifqcep9-zc',
-    'x9-4z-1rr438ze1lo349hdscooit-lme54jb98rdf4itla-wc6aace',
-    'e-tvw-8ybw4mj2a',
+    'j-8sae7t0u7o0emyztq64o8ut710qtepjztx34mk6lruecseiyq06ab3ok5xr',
+    'eokxas9m7y892q4m5rifzmevenpg1vot8xgbal184sloim-c7555huym18dia9d',
+    'zbvvpn2qgtohp',
     'queue_job_id',
   );
 
@@ -358,12 +358,12 @@ Deletes a queue job
 
 **Parameters**
 
-| Name             | Type   | Required | Description                  |
-| :--------------- | :----- | :------- | :--------------------------- |
-| organizationName | string | ✅       | The unique organization name |
-| projectName      | string | ✅       | The unique project name      |
-| queueName        | string | ✅       | The unique queue name        |
-| queueJobId       | string | ✅       | The unique job id            |
+| Name             | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| projectName      | string | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
+| queueName        | string | ✅       | The queue name.                                                                                                                                                                                                                                     |
+| queueJobId       | string | ✅       | The job identifier. This is automatically generated and assigned when the job is created.                                                                                                                                                           |
 
 **Example Usage Code Snippet**
 
@@ -376,9 +376,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.deleteQueueJob(
-    'erx15rey11qozndq25fyep9cx1pky-znnuxifqcep9-zc',
-    'x9-4z-1rr438ze1lo349hdscooit-lme54jb98rdf4itla-wc6aace',
-    'e-tvw-8ybw4mj2a',
+    'j-8sae7t0u7o0emyztq64o8ut710qtepjztx34mk6lruecseiyq06ab3ok5xr',
+    'eokxas9m7y892q4m5rifzmevenpg1vot8xgbal184sloim-c7555huym18dia9d',
+    'zbvvpn2qgtohp',
     'queue_job_id',
   );
 

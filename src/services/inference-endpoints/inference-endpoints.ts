@@ -13,7 +13,7 @@ import { InferenceEndpointJob, inferenceEndpointJobResponse } from './models/inf
 export class InferenceEndpointsService extends BaseService {
   /**
    * Gets the list of all inference endpoints
-   * @param {string} organizationName - The unique organization name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {number} [page] - The page number
    * @param {number} [pageSize] - The number of items per page
    * @returns {Promise<HttpResponse<InferenceEndpointsList>>} OK
@@ -53,7 +53,7 @@ export class InferenceEndpointsService extends BaseService {
 
   /**
    * Gets an inference endpoint
-   * @param {string} organizationName - The unique organization name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} inferenceEndpointName - The unique inference endpoint name
    * @returns {Promise<HttpResponse<InferenceEndpoint>>} OK
    */
@@ -88,7 +88,7 @@ export class InferenceEndpointsService extends BaseService {
 
   /**
    * Retrieves a list of an inference endpoint jobs
-   * @param {string} organizationName - The unique organization name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} inferenceEndpointName - The unique inference endpoint name
    * @param {number} [page] - The page number
    * @param {number} [pageSize] - The number of items per page
@@ -134,7 +134,7 @@ export class InferenceEndpointsService extends BaseService {
 
   /**
    * Creates a new job
-   * @param {string} organizationName - The unique organization name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} inferenceEndpointName - The unique inference endpoint name
    * @returns {Promise<HttpResponse<InferenceEndpointJob>>} Created
    */
@@ -172,7 +172,7 @@ export class InferenceEndpointsService extends BaseService {
 
   /**
    * Retrieves a job in an inference endpoint
-   * @param {string} organizationName - The unique organization name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} inferenceEndpointName - The unique inference endpoint name
    * @param {string} inferenceEndpointJobId - The unique job id
    * @returns {Promise<HttpResponse<InferenceEndpointJob>>} Ok
@@ -215,7 +215,7 @@ export class InferenceEndpointsService extends BaseService {
 
   /**
    * Deletes an inference endpoint job
-   * @param {string} organizationName - The unique organization name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} inferenceEndpointName - The unique inference endpoint name
    * @param {string} inferenceEndpointJobId - The unique job id
    * @returns {Promise<HttpResponse<any>>} Accepted

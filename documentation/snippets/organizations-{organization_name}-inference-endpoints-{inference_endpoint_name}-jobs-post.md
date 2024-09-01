@@ -13,8 +13,8 @@ import { CreateInferenceEndpointJob, SaladCloudSdk } from '@saladtechnologies-os
   };
 
   const { data } = await saladCloudSdk.inferenceEndpoints.createInferenceEndpointJob(
-    'et0wus4xea-xt7p0xv',
-    'minim Ut s',
+    'trzfoq1p77wk9jgwxjp56dzbnwtbgowklqt1wsbe00',
+    'ut officia ut',
     input,
   );
 

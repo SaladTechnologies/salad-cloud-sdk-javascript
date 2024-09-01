@@ -8,7 +8,7 @@ import { GpuClassesList, gpuClassesListResponse } from './models/gpu-classes-lis
 export class OrganizationDataService extends BaseService {
   /**
    * List the GPU Classes
-   * @param {string} organizationName - The unique organization name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @returns {Promise<HttpResponse<GpuClassesList>>} OK
    */
   async listGpuClasses(organizationName: string, requestConfig?: RequestConfig): Promise<HttpResponse<GpuClassesList>> {

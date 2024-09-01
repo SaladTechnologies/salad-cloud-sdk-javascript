@@ -18,18 +18,18 @@ import {
   });
 
   const containerResourceRequirements: ContainerResourceRequirements = {
-    cpu: 6,
-    memory: 8938,
+    cpu: 10,
+    memory: 17858,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 49533820101,
+    storageAmount: 32391110488,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
 
   const loggingAxiom2: LoggingAxiom2 = {
-    host: 'amet et',
-    apiToken: 'nostrud in reprehenderit consequat',
-    dataset: 'Ut eu',
+    host: 'in culpa aute',
+    apiToken: 'mollit culpa',
+    dataset: 'qui nulla laborum ex',
   };
 
   const datadogTags2: DatadogTags2 = {
@@ -38,24 +38,24 @@ import {
   };
 
   const loggingDatadog2: LoggingDatadog2 = {
-    host: 'ut occaecat ex',
-    apiKey: 'sed fugiat magna sit',
+    host: 'id fugiat cillum',
+    apiKey: 'nostrud',
     tags: [datadogTags2],
   };
 
   const loggingNewRelic2: LoggingNewRelic2 = {
-    host: 'elit laboris enim',
-    ingestionKey: 'enim nulla',
+    host: 'en',
+    ingestionKey: 'aliqua ad laboris anim',
   };
 
   const loggingSplunk2: LoggingSplunk2 = {
-    host: 'fugiat pariatur cupidatat amet',
-    token: 'in',
+    host: 'enim cupidatat eiusmod',
+    token: 'do',
   };
 
   const loggingTcp2: LoggingTcp2 = {
-    host: 'in cupidatat proident magna exercitation',
-    port: 13910,
+    host: 'aliquip labore dolor id',
+    port: 45778,
   };
 
   const httpFormat2 = HttpFormat2.JSON;
@@ -68,8 +68,8 @@ import {
   const httpCompression2 = HttpCompression2.NONE;
 
   const loggingHttp2: LoggingHttp2 = {
-    host: 'do',
-    port: 36577,
+    host: 'pariatur',
+    port: 16204,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -119,7 +119,7 @@ import {
   };
 
   const createContainer: CreateContainer = {
-    image: 'magna laboris exercitation sunt',
+    image: 'velit qui cillum veniam ullamco',
     resources: containerResourceRequirements,
     command: ['command'],
     priority: containerGroupPriority,
@@ -136,12 +136,12 @@ import {
 
   const createContainerGroupNetworking: CreateContainerGroupNetworking = {
     protocol: containerNetworkingProtocol,
-    port: 26042,
+    port: 19760,
     auth: true,
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 58492,
+    port: 23269,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -153,14 +153,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 10866,
+    port: 61900,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 43992,
+    port: 58759,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -172,7 +172,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 9,
+    initialDelaySeconds: 5,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -184,7 +184,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 10,
+    initialDelaySeconds: 6,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -196,7 +196,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 1,
+    initialDelaySeconds: 4,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
@@ -204,18 +204,18 @@ import {
   };
 
   const containerGroupQueueConnection: ContainerGroupQueueConnection = {
-    path: 'velit do tempor consequat',
-    port: 12759,
-    queueName: 'bwcr1macbu9hd9pgyexpjpio5ssrhv-fzk9udwt102odv6a5s5fynms2',
+    path: 'ullamco magna est nulla aliqua',
+    port: 49952,
+    queueName: 'nnz26lyemw7nednorlqjlsihb42092pn8d',
   };
 
   const createContainerGroup: CreateContainerGroup = {
-    name: 'vgm3',
-    displayName: 'qQx',
+    name: 'oh2mpxyfojt-6cco',
+    displayName: 'HoT',
     container: createContainer,
     autostartPolicy: true,
     restartPolicy: containerRestartPolicy,
-    replicas: 21,
+    replicas: 225,
     countryCodes: [countryCode],
     networking: createContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -225,8 +225,8 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.createContainerGroup(
-    'ep7fgeqvy6vfd66h1ewe-69h',
-    'dpdhw0h4i3hwpdzw9',
+    'v50imwzgi4em4q035',
+    'm6yw3-xm60cb7tiev8rketqiiwjepibzf2ust1cvjx8oua8mepeueo5-1',
     input,
   );
 

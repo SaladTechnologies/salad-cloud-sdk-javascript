@@ -13,7 +13,7 @@ export const queueList = z.lazy(() => {
 /**
  * Represents a list of queues
  * @typedef  {QueueList} queueList - Represents a list of queues - Represents a list of queues
- * @property {Queue[]}
+ * @property {Queue[]} - The list of queues.
  */
 export type QueueList = z.infer<typeof queueList>;
 

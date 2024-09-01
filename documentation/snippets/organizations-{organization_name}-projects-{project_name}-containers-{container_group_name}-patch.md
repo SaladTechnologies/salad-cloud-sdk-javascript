@@ -16,18 +16,18 @@ import {
   });
 
   const resources: Resources = {
-    cpu: 3,
-    memory: 8954,
+    cpu: 11,
+    memory: 1557,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 38490522084,
+    storageAmount: 40250176413,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
 
   const loggingAxiom3: LoggingAxiom3 = {
-    host: 'ipsum et',
-    apiToken: 'magna do pariatur dolor',
-    dataset: 'eiusmod mollit',
+    host: 'nisi et veniam',
+    apiToken: 'Lorem esse dolor',
+    dataset: 'et commodo Duis',
   };
 
   const datadogTags3: DatadogTags3 = {
@@ -36,24 +36,24 @@ import {
   };
 
   const loggingDatadog3: LoggingDatadog3 = {
-    host: 'voluptate nisi sint consectetur',
-    apiKey: 'ea proident exercitation do',
+    host: 'veniam deserunt sunt dolore',
+    apiKey: 'ullamco occaecat nostrud irure',
     tags: [datadogTags3],
   };
 
   const loggingNewRelic3: LoggingNewRelic3 = {
-    host: 'Lorem laborum nostrud enim ipsum',
-    ingestionKey: 'Ut nulla est cupidatat',
+    host: 'dolor adipisicing eu dolore incididunt',
+    ingestionKey: 'aliqua',
   };
 
   const loggingSplunk3: LoggingSplunk3 = {
-    host: 'in laboris',
-    token: 'aliqua incididunt Lorem ad sunt',
+    host: 'enim incididunt',
+    token: 'Lorem Duis ipsum et',
   };
 
   const loggingTcp3: LoggingTcp3 = {
-    host: 'voluptat',
-    port: 55775,
+    host: 'qui in cupidatat deserunt cillum',
+    port: 39897,
   };
 
   const httpFormat3 = HttpFormat3.JSON;
@@ -66,8 +66,8 @@ import {
   const httpCompression3 = HttpCompression3.NONE;
 
   const loggingHttp3: LoggingHttp3 = {
-    host: 'culpa sunt',
-    port: 21705,
+    host: 'nostrud ea dolore',
+    port: 52587,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -117,7 +117,7 @@ import {
   };
 
   const updateContainer: UpdateContainer = {
-    image: 'cupidatat officia',
+    image: 'culpa nulla eu non',
     resources: resources,
     command: ['command'],
     priority: containerGroupPriority,
@@ -129,11 +129,11 @@ import {
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 41663,
+    port: 60033,
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 58492,
+    port: 23269,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -145,14 +145,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 10866,
+    port: 61900,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 43992,
+    port: 58759,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -164,7 +164,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 9,
+    initialDelaySeconds: 5,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -176,7 +176,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 10,
+    initialDelaySeconds: 6,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -188,7 +188,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 1,
+    initialDelaySeconds: 4,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
@@ -196,9 +196,9 @@ import {
   };
 
   const updateContainerGroup: UpdateContainerGroup = {
-    displayName: 'tbkBzZA6',
+    displayName: 'UtDi9VD ZS',
     container: updateContainer,
-    replicas: 37,
+    replicas: 183,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -207,9 +207,9 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroup(
-    'zt-dvmb-gmo5a',
-    'enqsq6na2w8d2wlvk-85d3jxhjhj',
-    'fcixv6oyiqlk',
+    'ob3ca5hduqlb1uzytbhhukf1u0-ahl0b9oqfjj0q',
+    'x7dvdopv2czgde1zrufxgiv5tp-kncd4gfzda9ik-lx71',
+    'cif9b1yvozs9trd4v0bll7qwslfehyhnfadnjp2w52gwrm0urjjj5b9hbe2fr6f',
     input,
   );
 

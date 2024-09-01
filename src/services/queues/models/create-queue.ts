@@ -22,11 +22,11 @@ export const createQueue = z.lazy(() => {
 });
 
 /**
- * Represents a request to create a queue
- * @typedef  {CreateQueue} createQueue - Represents a request to create a queue - Represents a request to create a queue
- * @property {string}
- * @property {string}
- * @property {string} - The description
+ * Represents a request to create a new queue.
+ * @typedef  {CreateQueue} createQueue - Represents a request to create a new queue. - Represents a request to create a new queue.
+ * @property {string} - The queue name. This must be unique within the project.
+ * @property {string} - The display name. This may be used as a more human-readable name.
+ * @property {string} - The description. This may be used as a space for notes or other information about the queue.
  */
 export type CreateQueue = z.infer<typeof createQueue>;
 
