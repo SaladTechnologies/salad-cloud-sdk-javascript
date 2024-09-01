@@ -17,10 +17,10 @@ export const updateQueue = z.lazy(() => {
 });
 
 /**
- * Represents a request to update a queue
- * @typedef  {UpdateQueue} updateQueue - Represents a request to update a queue - Represents a request to update a queue
- * @property {string}
- * @property {string} - The description
+ * Represents a request to update an existing queue.
+ * @typedef  {UpdateQueue} updateQueue - Represents a request to update an existing queue. - Represents a request to update an existing queue.
+ * @property {string} - The display name. This may be used as a more human-readable name.
+ * @property {string} - The description. This may be used as a space for notes or other information about the queue.
  */
 export type UpdateQueue = z.infer<typeof updateQueue>;
 

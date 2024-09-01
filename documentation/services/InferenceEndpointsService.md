@@ -20,11 +20,11 @@ Gets the list of all inference endpoints
 
 **Parameters**
 
-| Name             | Type   | Required | Description                  |
-| :--------------- | :----- | :------- | :--------------------------- |
-| organizationName | string | ✅       | The unique organization name |
-| page             | number | ❌       | The page number              |
-| pageSize         | number | ❌       | The number of items per page |
+| Name             | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| page             | number | ❌       | The page number                                                                                                                                                                                                                                     |
+| pageSize         | number | ❌       | The number of items per page                                                                                                                                                                                                                        |
 
 **Return Type**
 
@@ -40,10 +40,13 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.inferenceEndpoints.listInferenceEndpoints('sqctlusaj22ygymnjifxur', {
-    page: 585200996,
-    pageSize: 35,
-  });
+  const { data } = await saladCloudSdk.inferenceEndpoints.listInferenceEndpoints(
+    'wg1umdxtc9fte8osib-e-5ux2vsmrhjjt13u7q3pryxxnm',
+    {
+      page: 756148233,
+      pageSize: 66,
+    },
+  );
 
   console.log(data);
 })();
@@ -58,10 +61,10 @@ Gets an inference endpoint
 
 **Parameters**
 
-| Name                  | Type   | Required | Description                        |
-| :-------------------- | :----- | :------- | :--------------------------------- |
-| organizationName      | string | ✅       | The unique organization name       |
-| inferenceEndpointName | string | ✅       | The unique inference endpoint name |
+| Name                  | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :-------------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName      | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| inferenceEndpointName | string | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
 
 **Return Type**
 
@@ -77,7 +80,10 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpoint('rvbmdh-8zxih', 'id nulla');
+  const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpoint(
+    'uzp1dyfm2yp4-lxa27tl0fwms3fu3myo74a99jr6ouv4w8',
+    'aute Ut reprehenderit occaecat sed',
+  );
 
   console.log(data);
 })();
@@ -92,12 +98,12 @@ Retrieves a list of an inference endpoint jobs
 
 **Parameters**
 
-| Name                  | Type   | Required | Description                        |
-| :-------------------- | :----- | :------- | :--------------------------------- |
-| organizationName      | string | ✅       | The unique organization name       |
-| inferenceEndpointName | string | ✅       | The unique inference endpoint name |
-| page                  | number | ❌       | The page number                    |
-| pageSize              | number | ❌       | The number of items per page       |
+| Name                  | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :-------------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName      | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| inferenceEndpointName | string | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
+| page                  | number | ❌       | The page number                                                                                                                                                                                                                                     |
+| pageSize              | number | ❌       | The number of items per page                                                                                                                                                                                                                        |
 
 **Return Type**
 
@@ -113,10 +119,14 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpointJobs('et0wus4xea-xt7p0xv', 'minim Ut s', {
-    page: 408174252,
-    pageSize: 59,
-  });
+  const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpointJobs(
+    'trzfoq1p77wk9jgwxjp56dzbnwtbgowklqt1wsbe00',
+    'ut officia ut',
+    {
+      page: 1653138765,
+      pageSize: 76,
+    },
+  );
 
   console.log(data);
 })();
@@ -131,11 +141,11 @@ Creates a new job
 
 **Parameters**
 
-| Name                  | Type                                                                  | Required | Description                        |
-| :-------------------- | :-------------------------------------------------------------------- | :------- | :--------------------------------- |
-| body                  | [CreateInferenceEndpointJob](../models/CreateInferenceEndpointJob.md) | ✅       | The request body.                  |
-| organizationName      | string                                                                | ✅       | The unique organization name       |
-| inferenceEndpointName | string                                                                | ✅       | The unique inference endpoint name |
+| Name                  | Type                                                                  | Required | Description                                                                                                                                                                                                                                         |
+| :-------------------- | :-------------------------------------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| body                  | [CreateInferenceEndpointJob](../models/CreateInferenceEndpointJob.md) | ✅       | The request body.                                                                                                                                                                                                                                   |
+| organizationName      | string                                                                | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| inferenceEndpointName | string                                                                | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
 
 **Return Type**
 
@@ -158,8 +168,8 @@ import { CreateInferenceEndpointJob, SaladCloudSdk } from '@saladtechnologies-os
   };
 
   const { data } = await saladCloudSdk.inferenceEndpoints.createInferenceEndpointJob(
-    'et0wus4xea-xt7p0xv',
-    'minim Ut s',
+    'trzfoq1p77wk9jgwxjp56dzbnwtbgowklqt1wsbe00',
+    'ut officia ut',
     input,
   );
 
@@ -176,11 +186,11 @@ Retrieves a job in an inference endpoint
 
 **Parameters**
 
-| Name                   | Type   | Required | Description                        |
-| :--------------------- | :----- | :------- | :--------------------------------- |
-| organizationName       | string | ✅       | The unique organization name       |
-| inferenceEndpointName  | string | ✅       | The unique inference endpoint name |
-| inferenceEndpointJobId | string | ✅       | The unique job id                  |
+| Name                   | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :--------------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName       | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| inferenceEndpointName  | string | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
+| inferenceEndpointJobId | string | ✅       | The unique job id                                                                                                                                                                                                                                   |
 
 **Return Type**
 
@@ -197,8 +207,8 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpointJob(
-    'wm7sq978nq8j748qskk0hr2eg4sl7t97a39br872',
-    'ullamco',
+    'b7tj9',
+    'sed eu labore',
     'inference_endpoint_job_id',
   );
 
@@ -215,11 +225,11 @@ Deletes an inference endpoint job
 
 **Parameters**
 
-| Name                   | Type   | Required | Description                        |
-| :--------------------- | :----- | :------- | :--------------------------------- |
-| organizationName       | string | ✅       | The unique organization name       |
-| inferenceEndpointName  | string | ✅       | The unique inference endpoint name |
-| inferenceEndpointJobId | string | ✅       | The unique job id                  |
+| Name                   | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :--------------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName       | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| inferenceEndpointName  | string | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
+| inferenceEndpointJobId | string | ✅       | The unique job id                                                                                                                                                                                                                                   |
 
 **Example Usage Code Snippet**
 
@@ -232,8 +242,8 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.deleteInferenceEndpointJob(
-    'wm7sq978nq8j748qskk0hr2eg4sl7t97a39br872',
-    'ullamco',
+    'b7tj9',
+    'sed eu labore',
     'inference_endpoint_job_id',
   );
 

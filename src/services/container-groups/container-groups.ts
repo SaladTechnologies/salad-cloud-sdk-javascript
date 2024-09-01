@@ -13,8 +13,8 @@ import { ContainerGroupInstance, containerGroupInstanceResponse } from './models
 export class ContainerGroupsService extends BaseService {
   /**
    * Gets the list of container groups
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @returns {Promise<HttpResponse<ContainerGroupList>>} OK
    */
   async listContainerGroups(
@@ -48,8 +48,8 @@ export class ContainerGroupsService extends BaseService {
 
   /**
    * Creates a new container group
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @returns {Promise<HttpResponse<ContainerGroup>>} Created
    */
   async createContainerGroup(
@@ -86,8 +86,8 @@ export class ContainerGroupsService extends BaseService {
 
   /**
    * Gets a container group
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @returns {Promise<HttpResponse<ContainerGroup>>} OK
    */
@@ -127,8 +127,8 @@ export class ContainerGroupsService extends BaseService {
 
   /**
    * Updates a container group
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @returns {Promise<HttpResponse<ContainerGroup>>} OK
    */
@@ -171,8 +171,8 @@ export class ContainerGroupsService extends BaseService {
 
   /**
    * Deletes a container group
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
@@ -212,8 +212,8 @@ export class ContainerGroupsService extends BaseService {
 
   /**
    * Starts a container group
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
@@ -253,8 +253,8 @@ export class ContainerGroupsService extends BaseService {
 
   /**
    * Stops a container group
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
@@ -294,8 +294,8 @@ export class ContainerGroupsService extends BaseService {
 
   /**
    * Retrieves a list of container group instances
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @returns {Promise<HttpResponse<ContainerGroupInstances>>} OK
    */
@@ -335,8 +335,8 @@ export class ContainerGroupsService extends BaseService {
 
   /**
    * Retrieves the details of a single instance within a container group by instance ID
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique instance identifier
    * @returns {Promise<HttpResponse<ContainerGroupInstance>>} OK
@@ -384,8 +384,8 @@ export class ContainerGroupsService extends BaseService {
 
   /**
    * Remove a node from a workload and reallocate the workload to a different node
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique instance identifier
    * @returns {Promise<HttpResponse<any>>} Accepted
@@ -433,8 +433,8 @@ export class ContainerGroupsService extends BaseService {
 
   /**
    * Stops a container, destroys it, creates a new one without requiring the image to be downloaded again on a different node
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique instance identifier
    * @returns {Promise<HttpResponse<any>>} Accepted
@@ -482,8 +482,8 @@ export class ContainerGroupsService extends BaseService {
 
   /**
    * Restarts a workload on a node without reallocating it
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique instance identifier
    * @returns {Promise<HttpResponse<any>>} Accepted

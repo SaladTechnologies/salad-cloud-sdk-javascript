@@ -6,10 +6,14 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpointJobs('et0wus4xea-xt7p0xv', 'minim Ut s', {
-    page: 408174252,
-    pageSize: 59,
-  });
+  const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpointJobs(
+    'trzfoq1p77wk9jgwxjp56dzbnwtbgowklqt1wsbe00',
+    'ut officia ut',
+    {
+      page: 1653138765,
+      pageSize: 76,
+    },
+  );
 
   console.log(data);
 })();

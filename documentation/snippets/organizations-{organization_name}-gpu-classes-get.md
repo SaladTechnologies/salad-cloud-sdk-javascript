@@ -6,7 +6,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.organizationData.listGpuClasses('fux');
+  const { data } = await saladCloudSdk.organizationData.listGpuClasses('ksb7ikadj659qttkrqdm5b9xdre4met9iop');
 
   console.log(data);
 })();

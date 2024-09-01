@@ -14,9 +14,9 @@ import { QueueJob, queueJobResponse } from './models/queue-job';
 
 export class QueuesService extends BaseService {
   /**
-   * Gets the list of queues
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * Gets the list of queues in the given project.
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @returns {Promise<HttpResponse<QueueList>>} OK
    */
   async listQueues(
@@ -49,9 +49,9 @@ export class QueuesService extends BaseService {
   }
 
   /**
-   * Creates a new queue
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * Creates a new queue in the given project.
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @returns {Promise<HttpResponse<Queue>>} Created
    */
   async createQueue(
@@ -87,10 +87,10 @@ export class QueuesService extends BaseService {
   }
 
   /**
-   * Gets a queue
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
-   * @param {string} queueName - The unique queue name
+   * Gets an existing queue in the given project.
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
+   * @param {string} queueName - The queue name.
    * @returns {Promise<HttpResponse<Queue>>} OK
    */
   async getQueue(
@@ -128,10 +128,10 @@ export class QueuesService extends BaseService {
   }
 
   /**
-   * Updates a queue
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
-   * @param {string} queueName - The unique queue name
+   * Updates an existing queue in the given project.
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
+   * @param {string} queueName - The queue name.
    * @returns {Promise<HttpResponse<Queue>>} OK
    */
   async updateQueue(
@@ -172,10 +172,10 @@ export class QueuesService extends BaseService {
   }
 
   /**
-   * Deletes a queue
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
-   * @param {string} queueName - The unique queue name
+   * Deletes an existing queue in the given project.
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
+   * @param {string} queueName - The queue name.
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
   async deleteQueue(
@@ -214,9 +214,9 @@ export class QueuesService extends BaseService {
 
   /**
    * Retrieves a list of queue jobs
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
-   * @param {string} queueName - The unique queue name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
+   * @param {string} queueName - The queue name.
    * @param {number} [page] - The page number
    * @param {number} [pageSize] - The number of items per page
    * @returns {Promise<HttpResponse<QueueJobList>>} OK
@@ -266,9 +266,9 @@ export class QueuesService extends BaseService {
 
   /**
    * Creates a new job
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
-   * @param {string} queueName - The unique queue name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
+   * @param {string} queueName - The queue name.
    * @returns {Promise<HttpResponse<QueueJob>>} Created
    */
   async createQueueJob(
@@ -310,10 +310,10 @@ export class QueuesService extends BaseService {
 
   /**
    * Retrieves a job in a queue
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
-   * @param {string} queueName - The unique queue name
-   * @param {string} queueJobId - The unique job id
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
+   * @param {string} queueName - The queue name.
+   * @param {string} queueJobId - The job identifier. This is automatically generated and assigned when the job is created.
    * @returns {Promise<HttpResponse<QueueJob>>} OK
    */
   async getQueueJob(
@@ -357,10 +357,10 @@ export class QueuesService extends BaseService {
 
   /**
    * Deletes a queue job
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
-   * @param {string} queueName - The unique queue name
-   * @param {string} queueJobId - The unique job id
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
+   * @param {string} queueName - The queue name.
+   * @param {string} queueJobId - The job identifier. This is automatically generated and assigned when the job is created.
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
   async deleteQueueJob(

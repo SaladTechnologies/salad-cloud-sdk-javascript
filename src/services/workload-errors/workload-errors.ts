@@ -8,8 +8,8 @@ import { WorkloadErrorList, workloadErrorListResponse } from './models/workload-
 export class WorkloadErrorsService extends BaseService {
   /**
    * Gets the workload errors
-   * @param {string} organizationName - The unique organization name
-   * @param {string} projectName - The unique project name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
+   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @returns {Promise<HttpResponse<WorkloadErrorList>>} OK
    */

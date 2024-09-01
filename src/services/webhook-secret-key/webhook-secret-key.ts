@@ -8,7 +8,7 @@ import { WebhookSecretKey, webhookSecretKeyResponse } from './models/webhook-sec
 export class WebhookSecretKeyService extends BaseService {
   /**
    * Gets the webhook secret key
-   * @param {string} organizationName - The unique organization name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @returns {Promise<HttpResponse<WebhookSecretKey>>} OK
    */
   async getWebhookSecretKey(
@@ -37,7 +37,7 @@ export class WebhookSecretKeyService extends BaseService {
 
   /**
    * Updates the webhook secret key
-   * @param {string} organizationName - The unique organization name
+   * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @returns {Promise<HttpResponse<WebhookSecretKey>>} OK
    */
   async updateWebhookSecretKey(

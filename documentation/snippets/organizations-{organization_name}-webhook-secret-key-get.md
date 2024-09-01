@@ -7,7 +7,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.webhookSecretKey.getWebhookSecretKey(
-    'hn9h7px3wro2wjja0yeu6kcgk0nggtveqmh45ilbsw4b2dcch55e1sj',
+    'dyxdaqq1t3iwwpawdlk-78rt9bh26smkuf3v0nd2ropp',
   );
 
   console.log(data);

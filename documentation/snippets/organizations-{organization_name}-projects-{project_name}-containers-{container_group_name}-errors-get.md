@@ -7,9 +7,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.workloadErrors.getWorkloadErrors(
-    'cg3m2ys7p7s0l7bztd09ndj7juif71slwjakka',
-    'rcn12djtrq4osvz',
-    'ha1vqw6i748x874akg4f74ap-5lo17i',
+    'kr8pje-v4-ccp8q-329szw31h4fee237cnffybnugpd7nbngr',
+    'vjne2vq5j0d2m4f21ex5ozb1-4j-you0d7uftlpfgcaqa-2oc58y844mz',
+    'jpqhlkkgd',
   );
 
   console.log(data);
