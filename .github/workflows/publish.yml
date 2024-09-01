@@ -1,4 +1,4 @@
-name: Publish npm Package
+name: Publish Package
 
 on:
   release:
@@ -6,8 +6,8 @@ on:
       - published
 
 jobs:
-  build:
-    name: Build
+  test:
+    name: Test Package
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -15,15 +15,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version-file: .nvmrc
           cache: npm
+          cache-dependency-path: package-lock.json
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@saladtechnologies-oss'
+          always-auth: 'true'
       - name: Install Dependencies
         run: npm ci
       - name: Test
         run: npm run test
   publish:
-    name: Publish
-    needs: build
+    name: Publish Package
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,14 +35,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version-file: .nvmrc
           cache: npm
           cache-dependency-path: package-lock.json
-          registry-url: https://npm.pkg.github.com
+          registry-url: 'https://registry.npmjs.org'
           scope: '@saladtechnologies-oss'
+          always-auth: 'true'
       - name: Install Dependencies
         run: npm ci
       - name: Publish
-        run: npm publish
+        run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
