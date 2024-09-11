@@ -17,17 +17,17 @@ import {
 
   const resources: Resources = {
     cpu: 11,
-    memory: 1557,
+    memory: 21424,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 40250176413,
+    storageAmount: 12333132242,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
 
   const loggingAxiom3: LoggingAxiom3 = {
-    host: 'nisi et veniam',
-    apiToken: 'Lorem esse dolor',
-    dataset: 'et commodo Duis',
+    host: 'commodo ea exercitation pariatur consequat',
+    apiToken: 'ipsum',
+    dataset: 'id Excepteur',
   };
 
   const datadogTags3: DatadogTags3 = {
@@ -36,24 +36,24 @@ import {
   };
 
   const loggingDatadog3: LoggingDatadog3 = {
-    host: 'veniam deserunt sunt dolore',
-    apiKey: 'ullamco occaecat nostrud irure',
+    host: 'exercitation aliquip',
+    apiKey: 'veniam',
     tags: [datadogTags3],
   };
 
   const loggingNewRelic3: LoggingNewRelic3 = {
-    host: 'dolor adipisicing eu dolore incididunt',
-    ingestionKey: 'aliqua',
+    host: 'amet velit sed cillum',
+    ingestionKey: 'et',
   };
 
   const loggingSplunk3: LoggingSplunk3 = {
-    host: 'enim incididunt',
-    token: 'Lorem Duis ipsum et',
+    host: 'proident',
+    token: 'est',
   };
 
   const loggingTcp3: LoggingTcp3 = {
-    host: 'qui in cupidatat deserunt cillum',
-    port: 39897,
+    host: 'ut velit ea cillum',
+    port: 13557,
   };
 
   const httpFormat3 = HttpFormat3.JSON;
@@ -66,8 +66,8 @@ import {
   const httpCompression3 = HttpCompression3.NONE;
 
   const loggingHttp3: LoggingHttp3 = {
-    host: 'nostrud ea dolore',
-    port: 52587,
+    host: 'nisi fugiat cupidatat',
+    port: 60288,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -117,7 +117,7 @@ import {
   };
 
   const updateContainer: UpdateContainer = {
-    image: 'culpa nulla eu non',
+    image: 'ex cillum dolor',
     resources: resources,
     command: ['command'],
     priority: containerGroupPriority,
@@ -129,7 +129,7 @@ import {
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 60033,
+    port: 64823,
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
@@ -196,9 +196,9 @@ import {
   };
 
   const updateContainerGroup: UpdateContainerGroup = {
-    displayName: 'UtDi9VD ZS',
+    displayName: '-xzxtaW.t2I',
     container: updateContainer,
-    replicas: 183,
+    replicas: 110,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -207,9 +207,9 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroup(
-    'ob3ca5hduqlb1uzytbhhukf1u0-ahl0b9oqfjj0q',
-    'x7dvdopv2czgde1zrufxgiv5tp-kncd4gfzda9ik-lx71',
-    'cif9b1yvozs9trd4v0bll7qwslfehyhnfadnjp2w52gwrm0urjjj5b9hbe2fr6f',
+    'gq7z7dvdopv2czgde1zrufxgiv5tp-kncd4gfzda9ik-lw',
+    'xd-if9b1yvozs9trd4v0bll7qwslfehyhnfadnjp2w52gwrmz',
+    'ojjj5b9hbe2fr6f5t7j1htjaws1zx3r',
     input,
   );
 

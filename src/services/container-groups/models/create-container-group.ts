@@ -25,6 +25,7 @@ import {
   containerGroupQueueConnectionRequest,
   containerGroupQueueConnectionResponse,
 } from '../../common/container-group-queue-connection';
+import { queueAutoscaler, queueAutoscalerRequest, queueAutoscalerResponse } from '../../common/queue-autoscaler';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -53,6 +54,7 @@ export const createContainerGroup = z.lazy(() => {
     readinessProbe: containerGroupReadinessProbe.optional().nullable(),
     startupProbe: containerGroupStartupProbe.optional().nullable(),
     queueConnection: containerGroupQueueConnection.optional().nullable(),
+    queueAutoscaler: queueAutoscaler.optional(),
   });
 });
 
@@ -71,6 +73,7 @@ export const createContainerGroup = z.lazy(() => {
  * @property {ContainerGroupReadinessProbe} - Represents the container group readiness probe
  * @property {ContainerGroupStartupProbe} - Represents the container group startup probe
  * @property {ContainerGroupQueueConnection} - Represents container group queue connection
+ * @property {QueueAutoscaler} - Represents the autoscaling rules for a queue
  */
 export type CreateContainerGroup = z.infer<typeof createContainerGroup>;
 
@@ -103,6 +106,7 @@ export const createContainerGroupResponse = z.lazy(() => {
       readiness_probe: containerGroupReadinessProbeResponse.optional().nullable(),
       startup_probe: containerGroupStartupProbeResponse.optional().nullable(),
       queue_connection: containerGroupQueueConnectionResponse.optional().nullable(),
+      queue_autoscaler: queueAutoscalerResponse.optional(),
     })
     .transform((data) => ({
       name: data['name'],
@@ -117,6 +121,7 @@ export const createContainerGroupResponse = z.lazy(() => {
       readinessProbe: data['readiness_probe'],
       startupProbe: data['startup_probe'],
       queueConnection: data['queue_connection'],
+      queueAutoscaler: data['queue_autoscaler'],
     }));
 });
 
@@ -139,6 +144,7 @@ export const createContainerGroupRequest = z.lazy(() => {
       readinessProbe: containerGroupReadinessProbeRequest.nullish(),
       startupProbe: containerGroupStartupProbeRequest.nullish(),
       queueConnection: containerGroupQueueConnectionRequest.nullish(),
+      queueAutoscaler: queueAutoscalerRequest.nullish(),
     })
     .transform((data) => ({
       name: data['name'],
@@ -153,5 +159,6 @@ export const createContainerGroupRequest = z.lazy(() => {
       readiness_probe: data['readinessProbe'],
       startup_probe: data['startupProbe'],
       queue_connection: data['queueConnection'],
+      queue_autoscaler: data['queueAutoscaler'],
     }));
 });

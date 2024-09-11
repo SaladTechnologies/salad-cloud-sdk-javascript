@@ -26,6 +26,7 @@ import {
   containerGroupQueueConnectionRequest,
   containerGroupQueueConnectionResponse,
 } from './container-group-queue-connection';
+import { queueAutoscaler, queueAutoscalerRequest, queueAutoscalerResponse } from './queue-autoscaler';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -58,6 +59,7 @@ export const containerGroup = z.lazy(() => {
     updateTime: z.string(),
     pendingChange: z.boolean(),
     version: z.number().gte(1),
+    queueAutoscaler: queueAutoscaler.optional(),
   });
 });
 
@@ -82,6 +84,7 @@ export const containerGroup = z.lazy(() => {
  * @property {string}
  * @property {boolean}
  * @property {number}
+ * @property {QueueAutoscaler} - Represents the autoscaling rules for a queue
  */
 export type ContainerGroup = z.infer<typeof containerGroup>;
 
@@ -118,6 +121,7 @@ export const containerGroupResponse = z.lazy(() => {
       update_time: z.string(),
       pending_change: z.boolean(),
       version: z.number().gte(1),
+      queue_autoscaler: queueAutoscalerResponse.optional(),
     })
     .transform((data) => ({
       id: data['id'],
@@ -138,6 +142,7 @@ export const containerGroupResponse = z.lazy(() => {
       updateTime: data['update_time'],
       pendingChange: data['pending_change'],
       version: data['version'],
+      queueAutoscaler: data['queue_autoscaler'],
     }));
 });
 
@@ -166,6 +171,7 @@ export const containerGroupRequest = z.lazy(() => {
       updateTime: z.string().nullish(),
       pendingChange: z.boolean().nullish(),
       version: z.number().nullish(),
+      queueAutoscaler: queueAutoscalerRequest.nullish(),
     })
     .transform((data) => ({
       id: data['id'],
@@ -186,5 +192,6 @@ export const containerGroupRequest = z.lazy(() => {
       update_time: data['updateTime'],
       pending_change: data['pendingChange'],
       version: data['version'],
+      queue_autoscaler: data['queueAutoscaler'],
     }));
 });

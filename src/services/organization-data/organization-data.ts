@@ -13,8 +13,8 @@ export class OrganizationDataService extends BaseService {
    */
   async listGpuClasses(organizationName: string, requestConfig?: RequestConfig): Promise<HttpResponse<GpuClassesList>> {
     const request = new RequestBuilder<GpuClassesList>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/gpu-classes')
       .setRequestSchema(z.any())

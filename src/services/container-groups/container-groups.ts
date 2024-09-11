@@ -23,8 +23,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroupList>> {
     const request = new RequestBuilder<ContainerGroupList>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers')
       .setRequestSchema(z.any())
@@ -59,8 +59,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroup>> {
     const request = new RequestBuilder<ContainerGroup>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers')
       .setRequestSchema(createContainerGroupRequest)
@@ -98,8 +98,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroup>> {
     const request = new RequestBuilder<ContainerGroup>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}')
       .setRequestSchema(z.any())
@@ -140,8 +140,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroup>> {
     const request = new RequestBuilder<ContainerGroup>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('PATCH')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}')
       .setRequestSchema(updateContainerGroupRequest)
@@ -183,8 +183,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}')
       .setRequestSchema(z.any())
@@ -224,8 +224,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/start')
       .setRequestSchema(z.any())
@@ -265,8 +265,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/stop')
       .setRequestSchema(z.any())
@@ -293,7 +293,7 @@ export class ContainerGroupsService extends BaseService {
   }
 
   /**
-   * Retrieves a list of container group instances
+   * Gets the list of container group instances
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
@@ -306,8 +306,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroupInstances>> {
     const request = new RequestBuilder<ContainerGroupInstances>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances')
       .setRequestSchema(z.any())
@@ -334,7 +334,7 @@ export class ContainerGroupsService extends BaseService {
   }
 
   /**
-   * Retrieves the details of a single instance within a container group by instance ID
+   * Gets a container group instance
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
@@ -349,8 +349,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroupInstance>> {
     const request = new RequestBuilder<ContainerGroupInstance>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath(
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}',
@@ -383,7 +383,7 @@ export class ContainerGroupsService extends BaseService {
   }
 
   /**
-   * Remove a node from a workload and reallocate the workload to a different node
+   * Reallocates a container group instance to run on a different Salad Node
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
@@ -398,8 +398,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath(
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}/reallocate',
@@ -432,7 +432,7 @@ export class ContainerGroupsService extends BaseService {
   }
 
   /**
-   * Stops a container, destroys it, creates a new one without requiring the image to be downloaded again on a different node
+   * Stops a container, destroys it, and starts a new one without requiring the image to be downloaded again on a new Salad Node
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
@@ -447,8 +447,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath(
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}/recreate',
@@ -481,7 +481,7 @@ export class ContainerGroupsService extends BaseService {
   }
 
   /**
-   * Restarts a workload on a node without reallocating it
+   * Stops a container and restarts it on the same Salad Node
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
@@ -496,8 +496,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath(
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}/restart',
