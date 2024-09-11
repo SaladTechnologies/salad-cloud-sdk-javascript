@@ -1,6 +1,6 @@
 {
-  "liblabVersion": "2.1.30",
-  "date": "2024-09-01T16:26:45.727Z",
+  "liblabVersion": "2.2.0",
+  "date": "2024-09-11T03:56:14.139Z",
   "config": {
     "apiId": 1094,
     "sdkName": "salad-cloud-sdk",
@@ -291,7 +291,7 @@
     "compilerOptions": {
       "target": "es6",
       "module": "Node16",
-      "lib": ["es2017", "dom"]
+      "lib": ["es2018", "dom"]
     },
     "usesFormData": false,
     "environmentVariables": [],

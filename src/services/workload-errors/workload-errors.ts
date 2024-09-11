@@ -20,8 +20,8 @@ export class WorkloadErrorsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<WorkloadErrorList>> {
     const request = new RequestBuilder<WorkloadErrorList>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/errors')
       .setRequestSchema(z.any())

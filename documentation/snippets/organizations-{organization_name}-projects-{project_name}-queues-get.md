@@ -6,10 +6,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.queues.listQueues(
-    'rtxaydgbmb5wprcvb9628akhug9lnd3c0',
-    'p4bdb9jsi-f1xex70mdgjf5n-5ua-e28xyu9ujbls0vsz6xilo12xl52y9c177',
-  );
+  const { data } = await saladCloudSdk.queues.listQueues('v2321xyb8mgby4oaz0nnednrzwspo5e', 'uqcz1p0g5ye7j57a');
 
   console.log(data);
 })();

@@ -15,9 +15,9 @@ Gets the organization quotas
 
 **Parameters**
 
-| Name             | Type   | Required | Description                                                                                                                                                                                                                                         |
-| :--------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| organizationName | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| Name             | Type     | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName | `string` | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
 
 **Return Type**
 
@@ -33,7 +33,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.quotas.getQuotas('o110sou');
+  const { data } = await saladCloudSdk.quotas.getQuotas('whf3imgjjp6z8');
 
   console.log(data);
 })();

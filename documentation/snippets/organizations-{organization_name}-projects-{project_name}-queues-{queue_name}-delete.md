@@ -7,9 +7,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.deleteQueue(
-    'g1bq27ohe5dpzbgsk8gvpuhecson4k2eclxss3',
-    'wtxd1j0ixuhfk-hdff3n3-hbtsigyh53bt0g4gjh8mcz4',
-    'bnkfiyt3k5ke3wy-5gl1809r',
+    'ljj6uqmy01xsg7k5n8fhpr0uia1-28ec6ahk-1s6u-51xn',
+    'jzq0i9u27d9qsg6qsygfg',
+    'd7iy1tktkoepudefqkf47dv60kqzd3q1v',
   );
 
   console.log(data);

@@ -24,8 +24,8 @@ export class InferenceEndpointsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointsList>> {
     const request = new RequestBuilder<InferenceEndpointsList>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/inference-endpoints')
       .setRequestSchema(z.any())
@@ -63,8 +63,8 @@ export class InferenceEndpointsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpoint>> {
     const request = new RequestBuilder<InferenceEndpoint>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}')
       .setRequestSchema(z.any())
@@ -101,8 +101,8 @@ export class InferenceEndpointsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJobList>> {
     const request = new RequestBuilder<InferenceEndpointJobList>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs')
       .setRequestSchema(z.any())
@@ -145,8 +145,8 @@ export class InferenceEndpointsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJob>> {
     const request = new RequestBuilder<InferenceEndpointJob>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs')
       .setRequestSchema(createInferenceEndpointJobRequest)
@@ -184,8 +184,8 @@ export class InferenceEndpointsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJob>> {
     const request = new RequestBuilder<InferenceEndpointJob>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath(
         '/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs/{inference_endpoint_job_id}',
@@ -227,8 +227,8 @@ export class InferenceEndpointsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('DELETE')
       .setPath(
         '/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs/{inference_endpoint_job_id}',

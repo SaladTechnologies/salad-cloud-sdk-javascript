@@ -15,9 +15,9 @@ List the GPU Classes
 
 **Parameters**
 
-| Name             | Type   | Required | Description                                                                                                                                                                                                                                         |
-| :--------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| organizationName | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| Name             | Type     | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName | `string` | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
 
 **Return Type**
 
@@ -33,7 +33,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.organizationData.listGpuClasses('ksb7ikadj659qttkrqdm5b9xdre4met9iop');
+  const { data } = await saladCloudSdk.organizationData.listGpuClasses(
+    'fxfk5b5evdjkgcjj9-97upvvnm6un-9x5riyyqnyl5q39cufb35o2nfpd3n8gv',
+  );
 
   console.log(data);
 })();

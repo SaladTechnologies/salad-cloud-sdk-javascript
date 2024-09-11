@@ -23,8 +23,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroupList>> {
     const request = new RequestBuilder<ContainerGroupList>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers')
       .setRequestSchema(z.any())
@@ -59,8 +59,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroup>> {
     const request = new RequestBuilder<ContainerGroup>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers')
       .setRequestSchema(createContainerGroupRequest)
@@ -98,8 +98,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroup>> {
     const request = new RequestBuilder<ContainerGroup>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}')
       .setRequestSchema(z.any())
@@ -140,8 +140,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroup>> {
     const request = new RequestBuilder<ContainerGroup>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('PATCH')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}')
       .setRequestSchema(updateContainerGroupRequest)
@@ -183,8 +183,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}')
       .setRequestSchema(z.any())
@@ -224,8 +224,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/start')
       .setRequestSchema(z.any())
@@ -265,8 +265,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/stop')
       .setRequestSchema(z.any())
@@ -306,8 +306,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroupInstances>> {
     const request = new RequestBuilder<ContainerGroupInstances>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances')
       .setRequestSchema(z.any())
@@ -349,8 +349,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroupInstance>> {
     const request = new RequestBuilder<ContainerGroupInstance>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath(
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}',
@@ -398,8 +398,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath(
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}/reallocate',
@@ -447,8 +447,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath(
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}/recreate',
@@ -496,8 +496,8 @@ export class ContainerGroupsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath(
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}/restart',

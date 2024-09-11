@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "declarationMap": true,
-    "lib": ["es2017", "dom"],
+    "lib": ["es2018", "dom"],
     "sourceMap": true
   },
   "include": ["src/"]

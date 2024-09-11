@@ -25,8 +25,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueList>> {
     const request = new RequestBuilder<QueueList>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues')
       .setRequestSchema(z.any())
@@ -61,8 +61,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder<Queue>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues')
       .setRequestSchema(createQueueRequest)
@@ -100,8 +100,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder<Queue>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
       .setRequestSchema(z.any())
@@ -142,8 +142,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder<Queue>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('PATCH')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
       .setRequestSchema(updateQueueRequest)
@@ -185,8 +185,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
       .setRequestSchema(z.any())
@@ -229,8 +229,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJobList>> {
     const request = new RequestBuilder<QueueJobList>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs')
       .setRequestSchema(z.any())
@@ -279,8 +279,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJob>> {
     const request = new RequestBuilder<QueueJob>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs')
       .setRequestSchema(createQueueJobRequest)
@@ -324,8 +324,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJob>> {
     const request = new RequestBuilder<QueueJob>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs/{queue_job_id}')
       .setRequestSchema(z.any())
@@ -371,8 +371,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs/{queue_job_id}')
       .setRequestSchema(z.any())
