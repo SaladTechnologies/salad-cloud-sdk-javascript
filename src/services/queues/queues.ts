@@ -25,8 +25,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueList>> {
     const request = new RequestBuilder<QueueList>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues')
       .setRequestSchema(z.any())
@@ -61,8 +61,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder<Queue>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues')
       .setRequestSchema(createQueueRequest)
@@ -100,8 +100,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder<Queue>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
       .setRequestSchema(z.any())
@@ -142,8 +142,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder<Queue>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('PATCH')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
       .setRequestSchema(updateQueueRequest)
@@ -185,8 +185,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
       .setRequestSchema(z.any())
@@ -213,7 +213,7 @@ export class QueuesService extends BaseService {
   }
 
   /**
-   * Retrieves a list of queue jobs
+   * Gets the list of jobs in a queue
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
@@ -229,8 +229,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJobList>> {
     const request = new RequestBuilder<QueueJobList>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs')
       .setRequestSchema(z.any())
@@ -279,8 +279,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJob>> {
     const request = new RequestBuilder<QueueJob>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs')
       .setRequestSchema(createQueueJobRequest)
@@ -309,7 +309,7 @@ export class QueuesService extends BaseService {
   }
 
   /**
-   * Retrieves a job in a queue
+   * Gets a job in a queue
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
@@ -324,8 +324,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJob>> {
     const request = new RequestBuilder<QueueJob>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs/{queue_job_id}')
       .setRequestSchema(z.any())
@@ -356,7 +356,7 @@ export class QueuesService extends BaseService {
   }
 
   /**
-   * Deletes a queue job
+   * Cancels a job in a queue
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
@@ -371,8 +371,8 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
     const request = new RequestBuilder<undefined>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs/{queue_job_id}')
       .setRequestSchema(z.any())

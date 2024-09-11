@@ -8,6 +8,7 @@ export type { ContainerGroupLivenessProbe } from './container-group-liveness-pro
 export type { ContainerGroupReadinessProbe } from './container-group-readiness-probe';
 export type { ContainerGroupStartupProbe } from './container-group-startup-probe';
 export type { ContainerGroupQueueConnection } from './container-group-queue-connection';
+export type { QueueAutoscaler } from './queue-autoscaler';
 export type { ContainerResourceRequirements } from './container-resource-requirements';
 export { ContainerGroupPriority } from './container-group-priority';
 export type { ContainerLogging } from './container-logging';

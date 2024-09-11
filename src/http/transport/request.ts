@@ -6,7 +6,7 @@ import { HeaderSerializer } from '../serialization/header-serializer';
 import { HttpRequest } from '../hooks/hook';
 import { SerializationStyle } from '../serialization/base-serializer';
 
-export interface CreateRequestParameters<T> {
+export interface CreateRequestParameters<FullResponse, Page = unknown[]> {
   baseUrl: string;
   method: HttpMethod;
   body?: any;
@@ -15,12 +15,13 @@ export interface CreateRequestParameters<T> {
   pathParams: Map<string, RequestParameter>;
   path: string;
   config: SdkConfig;
-  responseSchema: ZodType<T, any, any>;
+  responseSchema: ZodType<FullResponse, any, any>;
   requestSchema: ZodType;
   requestContentType: ContentType;
   responseContentType: ContentType;
   validation: ValidationOptions;
   retry: RetryOptions;
+  pagination?: RequestPagination<Page>;
 }
 
 export interface RequestParameter {
@@ -29,9 +30,17 @@ export interface RequestParameter {
   explode: boolean;
   encode: boolean;
   style: SerializationStyle;
+  isLimit: boolean;
+  isOffset: boolean;
 }
 
-export class Request<T> {
+export interface RequestPagination<Page> {
+  pageSize: number;
+  pagePath: string[];
+  pageSchema?: ZodType<Page, any, any>;
+}
+
+export class Request<T = unknown, PageSchema = unknown[]> {
   public baseUrl: string = '';
 
   public headers: Map<string, RequestParameter> = new Map();
@@ -60,9 +69,11 @@ export class Request<T> {
 
   public retry: RetryOptions = {} as any;
 
+  public pagination?: RequestPagination<PageSchema>;
+
   private readonly pathPattern: string;
 
-  constructor(params: CreateRequestParameters<T>) {
+  constructor(params: CreateRequestParameters<T, PageSchema>) {
     this.baseUrl = params.baseUrl;
     this.method = params.method;
     this.pathPattern = params.path;
@@ -78,6 +89,7 @@ export class Request<T> {
     this.responseContentType = params.responseContentType;
     this.retry = params.retry;
     this.validation = params.validation;
+    this.pagination = params.pagination;
   }
 
   addHeaderParam(key: string, param: RequestParameter): void {
@@ -203,7 +215,43 @@ export class Request<T> {
     return new HeaderSerializer().serialize(this.headers);
   }
 
+  public nextPage() {
+    if (!this.pagination) {
+      return;
+    }
+
+    const offsetParam = this.getOffsetParam();
+    if (!offsetParam) {
+      return;
+    }
+
+    offsetParam.value = Number(offsetParam.value) + this.pagination.pageSize;
+  }
+
   private constructPath(): string {
     return new PathSerializer().serialize(this.pathPattern, this.pathParams);
+  }
+
+  private getOffsetParam(): RequestParameter | undefined {
+    const offsetParam = this.getAllParams().find((param) => param.isOffset);
+    return offsetParam;
+  }
+
+  private getAllParams(): RequestParameter[] {
+    const allParams: RequestParameter[] = [];
+
+    this.headers.forEach((val, key) => {
+      allParams.push(val);
+    });
+
+    this.queryParams.forEach((val, key) => {
+      allParams.push(val);
+    });
+
+    this.pathParams.forEach((val, key) => {
+      allParams.push(val);
+    });
+
+    return allParams;
   }
 }

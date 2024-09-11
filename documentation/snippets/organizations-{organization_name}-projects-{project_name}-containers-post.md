@@ -9,6 +9,7 @@ import {
   CreateContainer,
   CreateContainerGroup,
   CreateContainerGroupNetworking,
+  QueueAutoscaler,
   SaladCloudSdk,
 } from '@saladtechnologies-oss/salad-cloud-sdk';
 
@@ -27,9 +28,9 @@ import {
   const containerGroupPriority = ContainerGroupPriority.HIGH;
 
   const loggingAxiom2: LoggingAxiom2 = {
-    host: 'in culpa aute',
-    apiToken: 'mollit culpa',
-    dataset: 'qui nulla laborum ex',
+    host: 'Ut con',
+    apiToken: 'nostrud irure dolore',
+    dataset: 'mollit irure et Duis dolore',
   };
 
   const datadogTags2: DatadogTags2 = {
@@ -38,24 +39,24 @@ import {
   };
 
   const loggingDatadog2: LoggingDatadog2 = {
-    host: 'id fugiat cillum',
-    apiKey: 'nostrud',
+    host: 'pariatur',
+    apiKey: 'non ut',
     tags: [datadogTags2],
   };
 
   const loggingNewRelic2: LoggingNewRelic2 = {
-    host: 'en',
-    ingestionKey: 'aliqua ad laboris anim',
+    host: 'cupidatat cillum est sit minim',
+    ingestionKey: 'dolore laboris fugiat Duis',
   };
 
   const loggingSplunk2: LoggingSplunk2 = {
-    host: 'enim cupidatat eiusmod',
-    token: 'do',
+    host: 'aliquip velit culpa',
+    token: 'ex',
   };
 
   const loggingTcp2: LoggingTcp2 = {
-    host: 'aliquip labore dolor id',
-    port: 45778,
+    host: 'aliqua',
+    port: 17249,
   };
 
   const httpFormat2 = HttpFormat2.JSON;
@@ -68,8 +69,8 @@ import {
   const httpCompression2 = HttpCompression2.NONE;
 
   const loggingHttp2: LoggingHttp2 = {
-    host: 'pariatur',
-    port: 16204,
+    host: 'magna',
+    port: 62049,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -119,7 +120,7 @@ import {
   };
 
   const createContainer: CreateContainer = {
-    image: 'velit qui cillum veniam ullamco',
+    image: 'voluptate officia adipisicing',
     resources: containerResourceRequirements,
     command: ['command'],
     priority: containerGroupPriority,
@@ -136,7 +137,7 @@ import {
 
   const createContainerGroupNetworking: CreateContainerGroupNetworking = {
     protocol: containerNetworkingProtocol,
-    port: 19760,
+    port: 9813,
     auth: true,
   };
 
@@ -209,19 +210,29 @@ import {
     queueName: 'nnz26lyemw7nednorlqjlsihb42092pn8d',
   };
 
+  const queueAutoscaler: QueueAutoscaler = {
+    minReplicas: 57,
+    maxReplicas: 24,
+    desiredQueueLength: 20,
+    pollingPeriod: 1406,
+    maxUpscalePerMinute: 35,
+    maxDownscalePerMinute: 42,
+  };
+
   const createContainerGroup: CreateContainerGroup = {
-    name: 'oh2mpxyfojt-6cco',
-    displayName: 'HoT',
+    name: 'qfojt-6ccoil4t55-ccoyybgw92dermtsdfn3t2xmag',
+    displayName: 'O0hSlJUW',
     container: createContainer,
     autostartPolicy: true,
     restartPolicy: containerRestartPolicy,
-    replicas: 225,
+    replicas: 114,
     countryCodes: [countryCode],
     networking: createContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
     readinessProbe: containerGroupReadinessProbe,
     startupProbe: containerGroupStartupProbe,
     queueConnection: containerGroupQueueConnection,
+    queueAutoscaler: queueAutoscaler,
   };
 
   const { data } = await saladCloudSdk.containerGroups.createContainerGroup(

@@ -1,11 +1,11 @@
-# SaladCloudSdk TypeScript SDK 0.9.0-alpha.1
+# SaladCloudSdk TypeScript SDK 0.9.0-alpha.2
 
 Welcome to the SaladCloudSdk SDK documentation. This guide will help you get started with integrating and using the SaladCloudSdk SDK in your project.
 
 ## Versions
 
-- API version: `0.9.0-alpha.1`
-- SDK version: `0.9.0-alpha.1`
+- API version: `0.9.0-alpha.2`
+- SDK version: `0.9.0-alpha.2`
 
 ## About the API
 
@@ -144,6 +144,7 @@ The SDK includes several models that represent the data structures used in API r
 | [ContainerGroupReadinessProbe](documentation/models/ContainerGroupReadinessProbe.md)           | Represents the container group readiness probe                           |
 | [ContainerGroupStartupProbe](documentation/models/ContainerGroupStartupProbe.md)               | Represents the container group startup probe                             |
 | [ContainerGroupQueueConnection](documentation/models/ContainerGroupQueueConnection.md)         | Represents container group queue connection                              |
+| [QueueAutoscaler](documentation/models/QueueAutoscaler.md)                                     | Represents the autoscaling rules for a queue                             |
 | [ContainerResourceRequirements](documentation/models/ContainerResourceRequirements.md)         | Represents a container resource requirements                             |
 | [ContainerGroupPriority](documentation/models/ContainerGroupPriority.md)                       |                                                                          |
 | [ContainerGroupStatus](documentation/models/ContainerGroupStatus.md)                           |                                                                          |

@@ -16,8 +16,8 @@ export class WebhookSecretKeyService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<WebhookSecretKey>> {
     const request = new RequestBuilder<WebhookSecretKey>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/webhook-secret-key')
       .setRequestSchema(z.any())
@@ -45,8 +45,8 @@ export class WebhookSecretKeyService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<WebhookSecretKey>> {
     const request = new RequestBuilder<WebhookSecretKey>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/webhook-secret-key')
       .setRequestSchema(z.any())

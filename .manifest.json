@@ -1,10 +1,10 @@
 {
-  "liblabVersion": "2.1.30",
-  "date": "2024-09-01T16:26:45.727Z",
+  "liblabVersion": "2.2.0",
+  "date": "2024-09-11T04:10:26.246Z",
   "config": {
-    "apiId": 1094,
+    "apiId": 1143,
     "sdkName": "salad-cloud-sdk",
-    "sdkVersion": "0.9.0-alpha.1",
+    "sdkVersion": "0.9.0-alpha.2",
     "liblabVersion": "2",
     "deliveryMethods": ["zip"],
     "languages": ["typescript"],
@@ -24,17 +24,17 @@
         ],
         "githubRepoName": "salad-cloud-sdk-dotnet",
         "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-dotnet",
-        "ignoreFiles": [".gitignore", "LICENSE"],
+        "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.1",
+        "sdkVersion": "0.9.0-alpha.2",
         "targetBranch": "main"
       },
       "go": {
         "goModuleName": "github.com/saladtechnologies/salad-cloud-sdk-go",
         "githubRepoName": "salad-cloud-sdk-go",
-        "ignoreFiles": [".gitignore", "LICENSE"],
+        "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.1",
+        "sdkVersion": "0.9.0-alpha.2",
         "targetBranch": "main"
       },
       "java": {
@@ -56,9 +56,9 @@
         ],
         "githubRepoName": "salad-cloud-sdk-java",
         "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-java",
-        "ignoreFiles": [".gitignore", "LICENSE"],
+        "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.1",
+        "sdkVersion": "0.9.0-alpha.2",
         "targetBranch": "main"
       },
       "python": {
@@ -99,9 +99,9 @@
           }
         ],
         "githubRepoName": "salad-cloud-sdk-python",
-        "ignoreFiles": [".gitignore", "LICENSE"],
+        "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.1",
+        "sdkVersion": "0.9.0-alpha.2",
         "targetBranch": "main"
       },
       "terraform": {
@@ -112,9 +112,9 @@
         "providerSchemaConfig": {
           "authTokenKey": "api_key"
         },
-        "providerVersion": "0.9.0-alpha.1",
+        "providerVersion": "0.9.0-alpha.2",
         "githubRepoName": "terraform-provider-salad-cloud",
-        "ignoreFiles": [".gitignore", "LICENSE"],
+        "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
         "targetBranch": "main"
       },
@@ -136,9 +136,9 @@
         ],
         "githubRepoName": "salad-cloud-sdk-javascript",
         "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-javascript",
-        "ignoreFiles": [".gitignore", "LICENSE"],
+        "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.1",
+        "sdkVersion": "0.9.0-alpha.2",
         "targetBranch": "main"
       }
     },
@@ -232,7 +232,7 @@
       }
     ],
     "apiName": "SaladCloud API",
-    "apiVersion": "0.9.0-alpha.1",
+    "apiVersion": "0.9.0-alpha.2",
     "authentication": {
       "apiKey": {
         "header": "Salad-Api-Key"
@@ -284,14 +284,14 @@
     ],
     "githubRepoName": "salad-cloud-sdk-javascript",
     "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-javascript",
-    "ignoreFiles": [".gitignore", "LICENSE"],
+    "ignoreFiles": [".gitignore", "./LICENSE"],
     "targetBranch": "main",
     "typescriptVersion": "5.3.3",
     "zodVersion": "3.22.0",
     "compilerOptions": {
       "target": "es6",
       "module": "Node16",
-      "lib": ["es2017", "dom"]
+      "lib": ["es2018", "dom"]
     },
     "usesFormData": false,
     "environmentVariables": [],
@@ -350,6 +350,7 @@
     "src/services/common/container-group-readiness-probe.ts",
     "src/services/common/container-group-startup-probe.ts",
     "src/services/common/container-group-queue-connection.ts",
+    "src/services/common/queue-autoscaler.ts",
     "src/services/common/container-resource-requirements.ts",
     "src/services/common/container-group-priority.ts",
     "src/services/common/container-logging.ts",
@@ -459,7 +460,6 @@
     "src/http/environment.ts",
     "src/http/handlers/response-validation-handler.ts",
     "src/http/handlers/auth-handler.ts",
-    "./LICENSE",
     "documentation/snippets/organizations-{organization_name}-projects-{project_name}-containers-get.md",
     "documentation/snippets/organizations-{organization_name}-projects-{project_name}-containers-post.md",
     "documentation/snippets/organizations-{organization_name}-projects-{project_name}-containers-{container_group_name}-get.md",
@@ -521,6 +521,7 @@
     "documentation/models/ContainerGroupReadinessProbe.md",
     "documentation/models/ContainerGroupStartupProbe.md",
     "documentation/models/ContainerGroupQueueConnection.md",
+    "documentation/models/QueueAutoscaler.md",
     "documentation/models/ContainerResourceRequirements.md",
     "documentation/models/ContainerGroupPriority.md",
     "documentation/models/ContainerGroupStatus.md",

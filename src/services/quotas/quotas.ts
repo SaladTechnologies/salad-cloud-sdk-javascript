@@ -13,8 +13,8 @@ export class QuotasService extends BaseService {
    */
   async getQuotas(organizationName: string, requestConfig?: RequestConfig): Promise<HttpResponse<Quotas>> {
     const request = new RequestBuilder<Quotas>()
-      .setConfig(this.config)
       .setBaseUrl(this.config)
+      .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/quotas')
       .setRequestSchema(z.any())
