@@ -7,3 +7,4 @@ export type {
   HttpMethod,
   HttpResponse,
 } from './types.ts';
+export type { HttpError } from './error.ts';

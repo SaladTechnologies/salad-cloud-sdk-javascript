@@ -20,11 +20,11 @@ Gets the list of inference endpoints
 
 **Parameters**
 
-| Name             | Type     | Required | Description                                                                                                                                                                                                                                         |
-| :--------------- | :------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| organizationName | `string` | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
-| page             | `number` | ❌       | The page number                                                                                                                                                                                                                                     |
-| pageSize         | `number` | ❌       | The number of items per page                                                                                                                                                                                                                        |
+| Name             | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| page             | number | ❌       | The page number                                                                                                                                                                                                                                     |
+| pageSize         | number | ❌       | The number of items per page                                                                                                                                                                                                                        |
 
 **Return Type**
 
@@ -61,10 +61,10 @@ Gets an inference endpoint
 
 **Parameters**
 
-| Name                  | Type     | Required | Description                                                                                                                                                                                                                                         |
-| :-------------------- | :------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| organizationName      | `string` | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
-| inferenceEndpointName | `string` | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
+| Name                  | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :-------------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName      | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| inferenceEndpointName | string | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
 
 **Return Type**
 
@@ -98,12 +98,12 @@ Retrieves a list of an inference endpoint jobs
 
 **Parameters**
 
-| Name                  | Type     | Required | Description                                                                                                                                                                                                                                         |
-| :-------------------- | :------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| organizationName      | `string` | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
-| inferenceEndpointName | `string` | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
-| page                  | `number` | ❌       | The page number                                                                                                                                                                                                                                     |
-| pageSize              | `number` | ❌       | The number of items per page                                                                                                                                                                                                                        |
+| Name                  | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :-------------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName      | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| inferenceEndpointName | string | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
+| page                  | number | ❌       | The page number                                                                                                                                                                                                                                     |
+| pageSize              | number | ❌       | The number of items per page                                                                                                                                                                                                                        |
 
 **Return Type**
 
@@ -141,11 +141,11 @@ Creates a new job
 
 **Parameters**
 
-| Name                  | Type                                                                    | Required | Description                                                                                                                                                                                                                                         |
-| :-------------------- | :---------------------------------------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| body                  | `[CreateInferenceEndpointJob](../models/CreateInferenceEndpointJob.md)` | ✅       | The request body.                                                                                                                                                                                                                                   |
-| organizationName      | `string`                                                                | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
-| inferenceEndpointName | `string`                                                                | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
+| Name                  | Type                                                                  | Required | Description                                                                                                                                                                                                                                         |
+| :-------------------- | :-------------------------------------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| body                  | [CreateInferenceEndpointJob](../models/CreateInferenceEndpointJob.md) | ✅       | The request body.                                                                                                                                                                                                                                   |
+| organizationName      | string                                                                | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| inferenceEndpointName | string                                                                | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
 
 **Return Type**
 
@@ -186,11 +186,11 @@ Retrieves a job in an inference endpoint
 
 **Parameters**
 
-| Name                   | Type     | Required | Description                                                                                                                                                                                                                                         |
-| :--------------------- | :------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| organizationName       | `string` | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
-| inferenceEndpointName  | `string` | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
-| inferenceEndpointJobId | `string` | ✅       | The unique job id                                                                                                                                                                                                                                   |
+| Name                   | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :--------------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName       | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| inferenceEndpointName  | string | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
+| inferenceEndpointJobId | string | ✅       | The unique job id                                                                                                                                                                                                                                   |
 
 **Return Type**
 
@@ -225,11 +225,11 @@ Deletes an inference endpoint job
 
 **Parameters**
 
-| Name                   | Type     | Required | Description                                                                                                                                                                                                                                         |
-| :--------------------- | :------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| organizationName       | `string` | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
-| inferenceEndpointName  | `string` | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
-| inferenceEndpointJobId | `string` | ✅       | The unique job id                                                                                                                                                                                                                                   |
+| Name                   | Type   | Required | Description                                                                                                                                                                                                                                         |
+| :--------------------- | :----- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| organizationName       | string | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| inferenceEndpointName  | string | ✅       | The unique inference endpoint name                                                                                                                                                                                                                  |
+| inferenceEndpointJobId | string | ✅       | The unique job id                                                                                                                                                                                                                                   |
 
 **Example Usage Code Snippet**
 

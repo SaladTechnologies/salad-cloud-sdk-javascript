@@ -212,7 +212,7 @@ import {
 
   const queueAutoscaler: QueueAutoscaler = {
     minReplicas: 57,
-    maxReplicas: 24,
+    maxReplicas: 58,
     desiredQueueLength: 20,
     pollingPeriod: 1406,
     maxUpscalePerMinute: 35,

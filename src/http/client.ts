@@ -33,7 +33,7 @@ export class HttpClient {
     const response = await this.call<FullResponse>(request as any);
 
     if (!response.data) {
-      throw new Error('now response data to paginate through');
+      throw new Error('no response data to paginate through');
     }
 
     return {

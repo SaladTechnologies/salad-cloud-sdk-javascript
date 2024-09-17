@@ -54,7 +54,7 @@ export const createContainerGroup = z.lazy(() => {
     readinessProbe: containerGroupReadinessProbe.optional().nullable(),
     startupProbe: containerGroupStartupProbe.optional().nullable(),
     queueConnection: containerGroupQueueConnection.optional().nullable(),
-    queueAutoscaler: queueAutoscaler.optional(),
+    queueAutoscaler: queueAutoscaler.optional().nullable(),
   });
 });
 
@@ -106,7 +106,7 @@ export const createContainerGroupResponse = z.lazy(() => {
       readiness_probe: containerGroupReadinessProbeResponse.optional().nullable(),
       startup_probe: containerGroupStartupProbeResponse.optional().nullable(),
       queue_connection: containerGroupQueueConnectionResponse.optional().nullable(),
-      queue_autoscaler: queueAutoscalerResponse.optional(),
+      queue_autoscaler: queueAutoscalerResponse.optional().nullable(),
     })
     .transform((data) => ({
       name: data['name'],
