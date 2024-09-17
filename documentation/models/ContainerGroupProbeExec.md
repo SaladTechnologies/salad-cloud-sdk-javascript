@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name    | Type       | Required | Description |
-| :------ | :--------- | :------- | :---------- |
-| command | `string[]` | ✅       |             |
+| Name    | Type     | Required | Description |
+| :------ | :------- | :------- | :---------- |
+| command | string[] | ✅       |             |

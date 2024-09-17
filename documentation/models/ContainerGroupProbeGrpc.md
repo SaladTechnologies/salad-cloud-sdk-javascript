@@ -2,7 +2,7 @@
 
 **Properties**
 
-| Name    | Type     | Required | Description |
-| :------ | :------- | :------- | :---------- |
-| service | `string` | ✅       |             |
-| port    | `number` | ✅       |             |
+| Name    | Type   | Required | Description |
+| :------ | :----- | :------- | :---------- |
+| service | string | ✅       |             |
+| port    | number | ✅       |             |

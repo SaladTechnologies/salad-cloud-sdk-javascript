@@ -59,7 +59,7 @@ export const containerGroup = z.lazy(() => {
     updateTime: z.string(),
     pendingChange: z.boolean(),
     version: z.number().gte(1),
-    queueAutoscaler: queueAutoscaler.optional(),
+    queueAutoscaler: queueAutoscaler.optional().nullable(),
   });
 });
 
@@ -121,7 +121,7 @@ export const containerGroupResponse = z.lazy(() => {
       update_time: z.string(),
       pending_change: z.boolean(),
       version: z.number().gte(1),
-      queue_autoscaler: queueAutoscalerResponse.optional(),
+      queue_autoscaler: queueAutoscalerResponse.optional().nullable(),
     })
     .transform((data) => ({
       id: data['id'],
