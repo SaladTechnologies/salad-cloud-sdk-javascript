@@ -1,11 +1,11 @@
-# SaladCloudSdk TypeScript SDK 0.9.0-alpha.3
+# SaladCloudSdk TypeScript SDK 0.9.0-alpha.4
 
 Welcome to the SaladCloudSdk SDK documentation. This guide will help you get started with integrating and using the SaladCloudSdk SDK in your project.
 
 ## Versions
 
 - API version: `0.9.0-alpha.3`
-- SDK version: `0.9.0-alpha.3`
+- SDK version: `0.9.0-alpha.4`
 
 ## About the API
 
