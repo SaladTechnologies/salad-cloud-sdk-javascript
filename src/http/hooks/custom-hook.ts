@@ -1,6 +1,7 @@
 import { HttpMetadata } from '../types';
 import { Hook } from './hook';
-import { HttpRequest, HttpResponse, HttpError } from './hook';
+import { HttpRequest, HttpResponse } from './hook';
+import { HttpError } from '../error';
 
 export class CustomHook implements Hook {
   public async beforeRequest(request: HttpRequest, params: Map<string, string>): Promise<HttpRequest> {
@@ -20,13 +21,6 @@ export class CustomHook implements Hook {
     response: HttpResponse<any>,
     params: Map<string, string>,
   ): Promise<HttpError> {
-    return new CustomHttpError('a custom error message', response.metadata);
+    return new HttpError(response.metadata);
   }
-}
-
-class CustomHttpError implements HttpError {
-  constructor(
-    public error: string,
-    public metadata: HttpMetadata,
-  ) {}
 }

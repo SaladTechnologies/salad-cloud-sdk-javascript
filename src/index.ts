@@ -75,14 +75,14 @@ export class SaladCloudSdk {
     this.webhookSecretKey.baseUrl = environment;
   }
 
-  set timeout(timeout: number) {
-    this.containerGroups.timeout = timeout;
-    this.workloadErrors.timeout = timeout;
-    this.queues.timeout = timeout;
-    this.quotas.timeout = timeout;
-    this.inferenceEndpoints.timeout = timeout;
-    this.organizationData.timeout = timeout;
-    this.webhookSecretKey.timeout = timeout;
+  set timeoutMs(timeoutMs: number) {
+    this.containerGroups.timeoutMs = timeoutMs;
+    this.workloadErrors.timeoutMs = timeoutMs;
+    this.queues.timeoutMs = timeoutMs;
+    this.quotas.timeoutMs = timeoutMs;
+    this.inferenceEndpoints.timeoutMs = timeoutMs;
+    this.organizationData.timeoutMs = timeoutMs;
+    this.webhookSecretKey.timeoutMs = timeoutMs;
   }
 
   set apiKey(apiKey: string) {
