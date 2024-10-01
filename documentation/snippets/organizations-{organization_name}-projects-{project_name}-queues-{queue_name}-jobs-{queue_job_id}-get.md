@@ -7,9 +7,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.getQueueJob(
-    'j-8sae7t0u7o0emyztq64o8ut710qtepjztx34mk6lruecseiyq06ab3ok5xr',
-    'eokxas9m7y892q4m5rifzmevenpg1vot8xgbal184sloim-c7555huym18dia9d',
-    'zbvvpn2qgtohp',
+    'qfyxrcpjzz',
+    'u68mnowwsycakrj2ndjibysiw6',
+    'qw8v11op7e4dq1ckmwu5v289qp5d1ln00phm2',
     'queue_job_id',
   );
 

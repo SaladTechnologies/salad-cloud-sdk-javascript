@@ -21,6 +21,6 @@ export class CustomHook implements Hook {
     response: HttpResponse<any>,
     params: Map<string, string>,
   ): Promise<HttpError> {
-    return new HttpError(response.metadata);
+    return new HttpError(response.metadata, response.raw);
   }
 }

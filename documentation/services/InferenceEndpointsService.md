@@ -41,10 +41,10 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.listInferenceEndpoints(
-    'wg1umdxtc9fte8osib-e-5ux2vsmrhjjt13u7q3pryxxnm',
+    'i5u5k7xmi1ci3kyzzon0m2iedxbj3f1dok1g0m6v2k19i504j7b03k36na',
     {
-      page: 756148233,
-      pageSize: 66,
+      page: 667517848,
+      pageSize: 57,
     },
   );
 
@@ -81,8 +81,8 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpoint(
-    'uzp1dyfm2yp4-lxa27tl0fwms3fu3myo74a99jr6ouv4w8',
-    'aute Ut reprehenderit occaecat sed',
+    'n105g5q9gikagcvo7dpwux-krg92vnpjufzlqmuslyrcl8dptvbpd',
+    'fugi',
   );
 
   console.log(data);
@@ -120,11 +120,11 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpointJobs(
-    'trzfoq1p77wk9jgwxjp56dzbnwtbgowklqt1wsbe00',
-    'ut officia ut',
+    'zsmxeaksea26my28jd3tcl',
+    'laboris ullamco cillum',
     {
-      page: 1653138765,
-      pageSize: 76,
+      page: 862733444,
+      pageSize: 21,
     },
   );
 
@@ -168,8 +168,8 @@ import { CreateInferenceEndpointJob, SaladCloudSdk } from '@saladtechnologies-os
   };
 
   const { data } = await saladCloudSdk.inferenceEndpoints.createInferenceEndpointJob(
-    'trzfoq1p77wk9jgwxjp56dzbnwtbgowklqt1wsbe00',
-    'ut officia ut',
+    'zsmxeaksea26my28jd3tcl',
+    'laboris ullamco cillum',
     input,
   );
 
@@ -207,8 +207,8 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpointJob(
-    'b7tj9',
-    'sed eu labore',
+    'nh-xfk5b5evdjkgcjj9-97upvvnm6un-9x5riyyqnyl5q38',
+    'elit te',
     'inference_endpoint_job_id',
   );
 
@@ -242,8 +242,8 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.deleteInferenceEndpointJob(
-    'b7tj9',
-    'sed eu labore',
+    'nh-xfk5b5evdjkgcjj9-97upvvnm6un-9x5riyyqnyl5q38',
+    'elit te',
     'inference_endpoint_job_id',
   );
 

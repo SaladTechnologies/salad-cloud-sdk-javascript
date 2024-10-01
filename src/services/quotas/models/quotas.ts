@@ -4,7 +4,6 @@ import {
   containerGroupsQuotasRequest,
   containerGroupsQuotasResponse,
 } from './container-groups-quotas';
-import { recipesQuotas, recipesQuotasRequest, recipesQuotasResponse } from './recipes-quotas';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -13,7 +12,6 @@ export const quotas = z.lazy(() => {
   return z.object({
     containerGroupsQuotas: containerGroupsQuotas,
     createTime: z.string().optional(),
-    recipesQuotas: recipesQuotas,
     updateTime: z.string().optional(),
   });
 });
@@ -23,7 +21,6 @@ export const quotas = z.lazy(() => {
  * @typedef  {Quotas} quotas - Represents the organization quotas - Represents the organization quotas
  * @property {ContainerGroupsQuotas}
  * @property {string} - The time the resource was created
- * @property {RecipesQuotas}
  * @property {string} - The time the resource was last updated
  */
 export type Quotas = z.infer<typeof quotas>;
@@ -37,13 +34,11 @@ export const quotasResponse = z.lazy(() => {
     .object({
       container_groups_quotas: containerGroupsQuotasResponse,
       create_time: z.string().optional(),
-      recipes_quotas: recipesQuotasResponse,
       update_time: z.string().optional(),
     })
     .transform((data) => ({
       containerGroupsQuotas: data['container_groups_quotas'],
       createTime: data['create_time'],
-      recipesQuotas: data['recipes_quotas'],
       updateTime: data['update_time'],
     }));
 });
@@ -57,13 +52,11 @@ export const quotasRequest = z.lazy(() => {
     .object({
       containerGroupsQuotas: containerGroupsQuotasRequest.nullish(),
       createTime: z.string().nullish(),
-      recipesQuotas: recipesQuotasRequest.nullish(),
       updateTime: z.string().nullish(),
     })
     .transform((data) => ({
       container_groups_quotas: data['containerGroupsQuotas'],
       create_time: data['createTime'],
-      recipes_quotas: data['recipesQuotas'],
       update_time: data['updateTime'],
     }));
 });

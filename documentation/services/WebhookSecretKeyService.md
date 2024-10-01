@@ -35,7 +35,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.webhookSecretKey.getWebhookSecretKey(
-    'dyxdaqq1t3iwwpawdlk-78rt9bh26smkuf3v0nd2ropp',
+    'sqxjgqhc7gu8nezs4j9l1xu8ic3cjd45207kimcabvi76n8',
   );
 
   console.log(data);
@@ -70,7 +70,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.webhookSecretKey.updateWebhookSecretKey(
-    'dyxdaqq1t3iwwpawdlk-78rt9bh26smkuf3v0nd2ropp',
+    'sqxjgqhc7gu8nezs4j9l1xu8ic3cjd45207kimcabvi76n8',
   );
 
   console.log(data);

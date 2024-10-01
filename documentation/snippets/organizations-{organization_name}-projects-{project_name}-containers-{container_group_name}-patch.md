@@ -16,18 +16,18 @@ import {
   });
 
   const resources: Resources = {
-    cpu: 11,
-    memory: 21424,
+    cpu: 8,
+    memory: 5273,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 12333132242,
+    storageAmount: 37062578686,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
 
   const loggingAxiom3: LoggingAxiom3 = {
-    host: 'commodo ea exercitation pariatur consequat',
-    apiToken: 'ipsum',
-    dataset: 'id Excepteur',
+    host: 'culpa tempor commodo nisi in',
+    apiToken: 'id',
+    dataset: 'sed',
   };
 
   const datadogTags3: DatadogTags3 = {
@@ -36,24 +36,24 @@ import {
   };
 
   const loggingDatadog3: LoggingDatadog3 = {
-    host: 'exercitation aliquip',
-    apiKey: 'veniam',
+    host: 'mollit Duis eu in',
+    apiKey: 'non Lorem',
     tags: [datadogTags3],
   };
 
   const loggingNewRelic3: LoggingNewRelic3 = {
-    host: 'amet velit sed cillum',
-    ingestionKey: 'et',
+    host: 'et do culpa',
+    ingestionKey: 'laborum incididunt cupidatat',
   };
 
   const loggingSplunk3: LoggingSplunk3 = {
-    host: 'proident',
-    token: 'est',
+    host: 'veniam laborum sunt commodo ut',
+    token: 'ea',
   };
 
   const loggingTcp3: LoggingTcp3 = {
-    host: 'ut velit ea cillum',
-    port: 13557,
+    host: 'esse cillum incididunt',
+    port: 41713,
   };
 
   const httpFormat3 = HttpFormat3.JSON;
@@ -66,8 +66,8 @@ import {
   const httpCompression3 = HttpCompression3.NONE;
 
   const loggingHttp3: LoggingHttp3 = {
-    host: 'nisi fugiat cupidatat',
-    port: 60288,
+    host: 'adipisicing nulla in',
+    port: 31817,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -117,7 +117,7 @@ import {
   };
 
   const updateContainer: UpdateContainer = {
-    image: 'ex cillum dolor',
+    image: 'aliquip magna Lorem nostrud ex',
     resources: resources,
     command: ['command'],
     priority: containerGroupPriority,
@@ -129,11 +129,11 @@ import {
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 64823,
+    port: 43599,
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 23269,
+    port: 54514,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -145,14 +145,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 61900,
+    port: 23676,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 58759,
+    port: 29979,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -164,7 +164,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 5,
+    initialDelaySeconds: 9,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -176,7 +176,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 6,
+    initialDelaySeconds: 123,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -188,7 +188,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 4,
+    initialDelaySeconds: 6,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
@@ -196,9 +196,9 @@ import {
   };
 
   const updateContainerGroup: UpdateContainerGroup = {
-    displayName: '-xzxtaW.t2I',
+    displayName: '8tFedWzDhyM',
     container: updateContainer,
-    replicas: 110,
+    replicas: 32,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -207,9 +207,9 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroup(
-    'gq7z7dvdopv2czgde1zrufxgiv5tp-kncd4gfzda9ik-lw',
-    'xd-if9b1yvozs9trd4v0bll7qwslfehyhnfadnjp2w52gwrmz',
-    'ojjj5b9hbe2fr6f5t7j1htjaws1zx3r',
+    'ph8bjget2tyh4q9ni9h81tilnlnf4',
+    'fr38a8vv5h4lnt5rb91fzs3spaw4grzs1ulr8elj96ymws1tye1i8h22kawxrq',
+    'xstvu-n3wkzvsf8j09617fgmalxezwfpc5tx4o5964ih0i5w146fxc3k0i',
     input,
   );
 

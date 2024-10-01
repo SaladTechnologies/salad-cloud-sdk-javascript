@@ -1,6 +1,6 @@
 {
   "name": "salad-cloud-sdk",
-  "version": "0.9.0-alpha.4",
+  "version": "0.9.0-alpha.5",
   "private": true,
   "dependencies": {
     "@saladtechnologies-oss/salad-cloud-sdk": "file:../",
