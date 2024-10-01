@@ -42,10 +42,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.queues.listQueues(
-    'rtxaydgbmb5wprcvb9628akhug9lnd3c0',
-    'p4bdb9jsi-f1xex70mdgjf5n-5ua-e28xyu9ujbls0vsz6xilo12xl52y9c177',
-  );
+  const { data } = await saladCloudSdk.queues.listQueues('v2321xyb8mgby4oaz0nnednrzwspo5e', 'uqcz1p0g5ye7j57a');
 
   console.log(data);
 })();
@@ -81,16 +78,12 @@ import { CreateQueue, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-s
   });
 
   const createQueue: CreateQueue = {
-    name: 'wcaz2jbu5pfmpygxffsf4bh4e6',
-    displayName: 'Ef',
-    description: 'aute Ut nostrud veniam sint',
+    name: 'qezkr2369ic05v6gnnllg6fhb-84kitkca0jy309-oh27ro0i5p95v4le',
+    displayName: 'IR',
+    description: 'consequat nulla magna minim ad',
   };
 
-  const { data } = await saladCloudSdk.queues.createQueue(
-    'rtxaydgbmb5wprcvb9628akhug9lnd3c0',
-    'p4bdb9jsi-f1xex70mdgjf5n-5ua-e28xyu9ujbls0vsz6xilo12xl52y9c177',
-    input,
-  );
+  const { data } = await saladCloudSdk.queues.createQueue('v2321xyb8mgby4oaz0nnednrzwspo5e', 'uqcz1p0g5ye7j57a', input);
 
   console.log(data);
 })();
@@ -126,9 +119,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.getQueue(
-    'g1bq27ohe5dpzbgsk8gvpuhecson4k2eclxss3',
-    'wtxd1j0ixuhfk-hdff3n3-hbtsigyh53bt0g4gjh8mcz4',
-    'bnkfiyt3k5ke3wy-5gl1809r',
+    'ljj6uqmy01xsg7k5n8fhpr0uia1-28ec6ahk-1s6u-51xn',
+    'jzq0i9u27d9qsg6qsygfg',
+    'd7iy1tktkoepudefqkf47dv60kqzd3q1v',
   );
 
   console.log(data);
@@ -166,14 +159,14 @@ import { SaladCloudSdk, UpdateQueue } from '@saladtechnologies-oss/salad-cloud-s
   });
 
   const updateQueue: UpdateQueue = {
-    displayName: 'TLURNvvFGXm',
-    description: 'aliqua et sit anim esse',
+    displayName: 'wfoWE',
+    description: 'aliqua in sit',
   };
 
   const { data } = await saladCloudSdk.queues.updateQueue(
-    'g1bq27ohe5dpzbgsk8gvpuhecson4k2eclxss3',
-    'wtxd1j0ixuhfk-hdff3n3-hbtsigyh53bt0g4gjh8mcz4',
-    'bnkfiyt3k5ke3wy-5gl1809r',
+    'ljj6uqmy01xsg7k5n8fhpr0uia1-28ec6ahk-1s6u-51xn',
+    'jzq0i9u27d9qsg6qsygfg',
+    'd7iy1tktkoepudefqkf47dv60kqzd3q1v',
     input,
   );
 
@@ -207,9 +200,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.deleteQueue(
-    'g1bq27ohe5dpzbgsk8gvpuhecson4k2eclxss3',
-    'wtxd1j0ixuhfk-hdff3n3-hbtsigyh53bt0g4gjh8mcz4',
-    'bnkfiyt3k5ke3wy-5gl1809r',
+    'ljj6uqmy01xsg7k5n8fhpr0uia1-28ec6ahk-1s6u-51xn',
+    'jzq0i9u27d9qsg6qsygfg',
+    'd7iy1tktkoepudefqkf47dv60kqzd3q1v',
   );
 
   console.log(data);
@@ -248,12 +241,12 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.listQueueJobs(
-    'jb7eyumc25lm4prwopvwr-1961g-m85nbqda3ufs',
-    'sn780t45z2tw4xt1b86w0clx6vkq-3',
-    'sx811v32aty9s-ghx1hm2nw1mhgooidhvnhwadaqzuh19krhv62or5c',
+    'caw0rzpy61pt90mpd37q4adxw-cgodal6rzqd6z1mw1si55p9gl6eb4zgl',
+    'd6wezcp8h3lm398az1xa5dcxhbrhwkxlx3lw0pdkr3o5',
+    'jknzh2tjfasx0nsa3dsbwz4m6an9wbi5',
     {
-      page: 2110014563,
-      pageSize: 23,
+      page: 1762690379,
+      pageSize: 100,
     },
   );
 
@@ -298,9 +291,9 @@ import { CreateQueueJob, SaladCloudSdk } from '@saladtechnologies-oss/salad-clou
   };
 
   const { data } = await saladCloudSdk.queues.createQueueJob(
-    'jb7eyumc25lm4prwopvwr-1961g-m85nbqda3ufs',
-    'sn780t45z2tw4xt1b86w0clx6vkq-3',
-    'sx811v32aty9s-ghx1hm2nw1mhgooidhvnhwadaqzuh19krhv62or5c',
+    'caw0rzpy61pt90mpd37q4adxw-cgodal6rzqd6z1mw1si55p9gl6eb4zgl',
+    'd6wezcp8h3lm398az1xa5dcxhbrhwkxlx3lw0pdkr3o5',
+    'jknzh2tjfasx0nsa3dsbwz4m6an9wbi5',
     input,
   );
 
@@ -339,9 +332,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.getQueueJob(
-    'j-8sae7t0u7o0emyztq64o8ut710qtepjztx34mk6lruecseiyq06ab3ok5xr',
-    'eokxas9m7y892q4m5rifzmevenpg1vot8xgbal184sloim-c7555huym18dia9d',
-    'zbvvpn2qgtohp',
+    'qfyxrcpjzz',
+    'u68mnowwsycakrj2ndjibysiw6',
+    'qw8v11op7e4dq1ckmwu5v289qp5d1ln00phm2',
     'queue_job_id',
   );
 
@@ -376,9 +369,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.deleteQueueJob(
-    'j-8sae7t0u7o0emyztq64o8ut710qtepjztx34mk6lruecseiyq06ab3ok5xr',
-    'eokxas9m7y892q4m5rifzmevenpg1vot8xgbal184sloim-c7555huym18dia9d',
-    'zbvvpn2qgtohp',
+    'qfyxrcpjzz',
+    'u68mnowwsycakrj2ndjibysiw6',
+    'qw8v11op7e4dq1ckmwu5v289qp5d1ln00phm2',
     'queue_job_id',
   );
 
