@@ -22,6 +22,7 @@ export type { RegistryAuthenticationGcpGcr1 } from './registry-authentication-gc
 export type { RegistryAuthenticationAwsEcr1 } from './registry-authentication-aws-ecr-1';
 export type { RegistryAuthenticationDockerHub1 } from './registry-authentication-docker-hub-1';
 export type { RegistryAuthenticationGcpGar1 } from './registry-authentication-gcp-gar-1';
+export { CreateContainerGroupNetworkingLoadBalancer } from './create-container-group-networking-load-balancer';
 export type { UpdateContainer } from './update-container';
 export type { UpdateContainerGroupNetworking } from './update-container-group-networking';
 export type { Resources } from './resources';

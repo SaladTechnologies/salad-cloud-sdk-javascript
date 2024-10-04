@@ -25,6 +25,7 @@ export { HttpCompression1 } from './http-compression-1';
 export { ContainerGroupStatus } from './container-group-status';
 export type { ContainerGroupInstanceStatusCount } from './container-group-instance-status-count';
 export { ContainerNetworkingProtocol } from './container-networking-protocol';
+export { ContainerGroupNetworkingLoadBalancer } from './container-group-networking-load-balancer';
 export type { ContainerGroupProbeTcp } from './container-group-probe-tcp';
 export type { ContainerGroupProbeHttp } from './container-group-probe-http';
 export type { ContainerGroupProbeGrpc } from './container-group-probe-grpc';

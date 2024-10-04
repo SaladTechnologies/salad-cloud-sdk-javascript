@@ -1,11 +1,11 @@
-# SaladCloudSdk TypeScript SDK 0.9.0-alpha.5
+# SaladCloudSdk TypeScript SDK 0.9.0-alpha.6
 
 Welcome to the SaladCloudSdk SDK documentation. This guide will help you get started with integrating and using the SaladCloudSdk SDK in your project.
 
 ## Versions
 
-- API version: `0.9.0-alpha.4`
-- SDK version: `0.9.0-alpha.5`
+- API version: `0.9.0-alpha.5`
+- SDK version: `0.9.0-alpha.6`
 
 ## About the API
 
@@ -79,7 +79,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.quotas.getQuotas('whf3imgjjp6z8');
+  const { data } = await saladCloudSdk.quotas.getQuotas('oecson4k2eclxr');
 
   console.log(data);
 })();

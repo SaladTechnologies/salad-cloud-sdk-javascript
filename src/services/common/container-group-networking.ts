@@ -9,6 +9,10 @@ export const containerGroupNetworking = z.lazy(() => {
     port: z.number().gte(1).lte(65535),
     auth: z.boolean(),
     dns: z.string(),
+    loadBalancer: z.string().optional(),
+    singleConnectionLimit: z.boolean().optional(),
+    clientRequestTimeout: z.number().gte(1).lte(100000).optional(),
+    serverResponseTimeout: z.number().gte(1).lte(100000).optional(),
   });
 });
 
@@ -19,6 +23,10 @@ export const containerGroupNetworking = z.lazy(() => {
  * @property {number}
  * @property {boolean}
  * @property {string}
+ * @property {ContainerGroupNetworkingLoadBalancer}
+ * @property {boolean}
+ * @property {number}
+ * @property {number}
  */
 export type ContainerGroupNetworking = z.infer<typeof containerGroupNetworking>;
 
@@ -33,12 +41,20 @@ export const containerGroupNetworkingResponse = z.lazy(() => {
       port: z.number().gte(1).lte(65535),
       auth: z.boolean(),
       dns: z.string(),
+      load_balancer: z.string().optional(),
+      single_connection_limit: z.boolean().optional(),
+      client_request_timeout: z.number().gte(1).lte(100000).optional(),
+      server_response_timeout: z.number().gte(1).lte(100000).optional(),
     })
     .transform((data) => ({
       protocol: data['protocol'],
       port: data['port'],
       auth: data['auth'],
       dns: data['dns'],
+      loadBalancer: data['load_balancer'],
+      singleConnectionLimit: data['single_connection_limit'],
+      clientRequestTimeout: data['client_request_timeout'],
+      serverResponseTimeout: data['server_response_timeout'],
     }));
 });
 
@@ -53,11 +69,19 @@ export const containerGroupNetworkingRequest = z.lazy(() => {
       port: z.number().nullish(),
       auth: z.boolean().nullish(),
       dns: z.string().nullish(),
+      loadBalancer: z.string().nullish(),
+      singleConnectionLimit: z.boolean().nullish(),
+      clientRequestTimeout: z.number().nullish(),
+      serverResponseTimeout: z.number().nullish(),
     })
     .transform((data) => ({
       protocol: data['protocol'],
       port: data['port'],
       auth: data['auth'],
       dns: data['dns'],
+      load_balancer: data['loadBalancer'],
+      single_connection_limit: data['singleConnectionLimit'],
+      client_request_timeout: data['clientRequestTimeout'],
+      server_response_timeout: data['serverResponseTimeout'],
     }));
 });

@@ -20,6 +20,7 @@ import {
   containerGroupStartupProbeRequest,
   containerGroupStartupProbeResponse,
 } from '../../common/container-group-startup-probe';
+import { queueAutoscaler, queueAutoscalerRequest, queueAutoscalerResponse } from '../../common/queue-autoscaler';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -40,6 +41,7 @@ export const updateContainerGroup = z.lazy(() => {
     livenessProbe: containerGroupLivenessProbe.optional().nullable(),
     readinessProbe: containerGroupReadinessProbe.optional().nullable(),
     startupProbe: containerGroupStartupProbe.optional().nullable(),
+    queueAutoscaler: queueAutoscaler.optional().nullable(),
   });
 });
 
@@ -54,6 +56,7 @@ export const updateContainerGroup = z.lazy(() => {
  * @property {ContainerGroupLivenessProbe} - Represents the container group liveness probe
  * @property {ContainerGroupReadinessProbe} - Represents the container group readiness probe
  * @property {ContainerGroupStartupProbe} - Represents the container group startup probe
+ * @property {QueueAutoscaler} - Represents the autoscaling rules for a queue
  */
 export type UpdateContainerGroup = z.infer<typeof updateContainerGroup>;
 
@@ -78,6 +81,7 @@ export const updateContainerGroupResponse = z.lazy(() => {
       liveness_probe: containerGroupLivenessProbeResponse.optional().nullable(),
       readiness_probe: containerGroupReadinessProbeResponse.optional().nullable(),
       startup_probe: containerGroupStartupProbeResponse.optional().nullable(),
+      queue_autoscaler: queueAutoscalerResponse.optional().nullable(),
     })
     .transform((data) => ({
       displayName: data['display_name'],
@@ -88,6 +92,7 @@ export const updateContainerGroupResponse = z.lazy(() => {
       livenessProbe: data['liveness_probe'],
       readinessProbe: data['readiness_probe'],
       startupProbe: data['startup_probe'],
+      queueAutoscaler: data['queue_autoscaler'],
     }));
 });
 
@@ -106,6 +111,7 @@ export const updateContainerGroupRequest = z.lazy(() => {
       livenessProbe: containerGroupLivenessProbeRequest.nullish(),
       readinessProbe: containerGroupReadinessProbeRequest.nullish(),
       startupProbe: containerGroupStartupProbeRequest.nullish(),
+      queueAutoscaler: queueAutoscalerRequest.nullish(),
     })
     .transform((data) => ({
       display_name: data['displayName'],
@@ -116,5 +122,6 @@ export const updateContainerGroupRequest = z.lazy(() => {
       liveness_probe: data['livenessProbe'],
       readiness_probe: data['readinessProbe'],
       startup_probe: data['startupProbe'],
+      queue_autoscaler: data['queueAutoscaler'],
     }));
 });
