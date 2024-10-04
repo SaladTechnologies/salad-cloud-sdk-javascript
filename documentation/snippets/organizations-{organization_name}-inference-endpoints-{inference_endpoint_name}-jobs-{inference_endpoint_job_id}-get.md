@@ -7,8 +7,8 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpointJob(
-    'nh-xfk5b5evdjkgcjj9-97upvvnm6un-9x5riyyqnyl5q38',
-    'elit te',
+    'kdhvnhwadaqzuh18',
+    'eiusmod dolore do',
     'inference_endpoint_job_id',
   );
 

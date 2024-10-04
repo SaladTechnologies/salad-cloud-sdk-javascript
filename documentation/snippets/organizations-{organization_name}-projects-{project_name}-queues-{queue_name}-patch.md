@@ -7,14 +7,14 @@ import { SaladCloudSdk, UpdateQueue } from '@saladtechnologies-oss/salad-cloud-s
   });
 
   const updateQueue: UpdateQueue = {
-    displayName: 'wfoWE',
-    description: 'aliqua in sit',
+    displayName: 'O5Yf2',
+    description: 'cupidatat',
   };
 
   const { data } = await saladCloudSdk.queues.updateQueue(
-    'ljj6uqmy01xsg7k5n8fhpr0uia1-28ec6ahk-1s6u-51xn',
-    'jzq0i9u27d9qsg6qsygfg',
-    'd7iy1tktkoepudefqkf47dv60kqzd3q1v',
+    'bb5wprcvb9628akhug9lnd2',
+    'bw-4bdb9jsi-f1xex70mdgjf5n-5ua-e28xyu9ujbls0vsy',
+    'wilo12xl52y9c178cmdya6ykpby-hunb0b6s7s2l',
     input,
   );
 

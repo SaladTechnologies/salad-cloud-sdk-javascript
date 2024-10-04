@@ -8,3 +8,4 @@ export type {
   HttpResponse,
 } from './types.ts';
 export type { HttpError } from './error.ts';
+export type { Environment } from './environment.ts';

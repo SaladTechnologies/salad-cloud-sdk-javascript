@@ -6,12 +6,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.queues.deleteQueueJob(
-    'qfyxrcpjzz',
-    'u68mnowwsycakrj2ndjibysiw6',
-    'qw8v11op7e4dq1ckmwu5v289qp5d1ln00phm2',
-    'queue_job_id',
-  );
+  const { data } = await saladCloudSdk.queues.deleteQueueJob('zm-jv', 'tq26', 'je5dpzbgsk8gvp', 'queue_job_id');
 
   console.log(data);
 })();

@@ -7,12 +7,16 @@ import { CreateQueue, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-s
   });
 
   const createQueue: CreateQueue = {
-    name: 'qezkr2369ic05v6gnnllg6fhb-84kitkca0jy309-oh27ro0i5p95v4le',
-    displayName: 'IR',
-    description: 'consequat nulla magna minim ad',
+    name: 'ho4d79h7bg0vpngqc8hz5pxjwi',
+    displayName: 'IWPKHVWPTc',
+    description: 'aliqua id nostrud',
   };
 
-  const { data } = await saladCloudSdk.queues.createQueue('v2321xyb8mgby4oaz0nnednrzwspo5e', 'uqcz1p0g5ye7j57a', input);
+  const { data } = await saladCloudSdk.queues.createQueue(
+    'xtp82b9jzwqov1insghigvfq0donadhrrdqx-2redu46g7e',
+    'xk27gbnpmwk5xor49bk4ujk7',
+    input,
+  );
 
   console.log(data);
 })();

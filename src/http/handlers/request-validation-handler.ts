@@ -50,6 +50,14 @@ export class RequestValidationHandler implements RequestHandler {
       return params.toString();
     }
 
+    if (typeof body === 'object' && !Array.isArray(body)) {
+      const params = new URLSearchParams();
+      for (const [key, value] of Object.entries(body)) {
+        params.append(key, value.toString());
+      }
+      return params.toString();
+    }
+
     return '';
   }
 

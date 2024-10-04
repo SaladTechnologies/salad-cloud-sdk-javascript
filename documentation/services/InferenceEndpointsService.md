@@ -41,10 +41,10 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.listInferenceEndpoints(
-    'i5u5k7xmi1ci3kyzzon0m2iedxbj3f1dok1g0m6v2k19i504j7b03k36na',
+    'wtxd1j0ixuhfk-hdff3n3-hbtsigyh53bt0g4gjh8mcz4',
     {
-      page: 667517848,
-      pageSize: 57,
+      page: 121822981,
+      pageSize: 37,
     },
   );
 
@@ -80,10 +80,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpoint(
-    'n105g5q9gikagcvo7dpwux-krg92vnpjufzlqmuslyrcl8dptvbpd',
-    'fugi',
-  );
+  const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpoint('u5ke3wy-5gl1809s8so', 'et tempor sint');
 
   console.log(data);
 })();
@@ -120,11 +117,11 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpointJobs(
-    'zsmxeaksea26my28jd3tcl',
-    'laboris ullamco cillum',
+    'yg0u13rmnwb7eyumc25lm4prwopvwr-1961f',
+    'consectetur occaecat',
     {
-      page: 862733444,
-      pageSize: 21,
+      page: 355955712,
+      pageSize: 39,
     },
   );
 
@@ -168,8 +165,8 @@ import { CreateInferenceEndpointJob, SaladCloudSdk } from '@saladtechnologies-os
   };
 
   const { data } = await saladCloudSdk.inferenceEndpoints.createInferenceEndpointJob(
-    'zsmxeaksea26my28jd3tcl',
-    'laboris ullamco cillum',
+    'yg0u13rmnwb7eyumc25lm4prwopvwr-1961f',
+    'consectetur occaecat',
     input,
   );
 
@@ -207,8 +204,8 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpointJob(
-    'nh-xfk5b5evdjkgcjj9-97upvvnm6un-9x5riyyqnyl5q38',
-    'elit te',
+    'kdhvnhwadaqzuh18',
+    'eiusmod dolore do',
     'inference_endpoint_job_id',
   );
 
@@ -242,8 +239,8 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.deleteInferenceEndpointJob(
-    'nh-xfk5b5evdjkgcjj9-97upvvnm6un-9x5riyyqnyl5q38',
-    'elit te',
+    'kdhvnhwadaqzuh18',
+    'eiusmod dolore do',
     'inference_endpoint_job_id',
   );
 

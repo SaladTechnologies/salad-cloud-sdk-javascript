@@ -4,6 +4,7 @@ import {
   ContainerGroupReadinessProbe,
   ContainerGroupStartupProbe,
   CountryCode,
+  QueueAutoscaler,
   SaladCloudSdk,
   UpdateContainer,
   UpdateContainerGroup,
@@ -16,18 +17,18 @@ import {
   });
 
   const resources: Resources = {
-    cpu: 8,
-    memory: 5273,
+    cpu: 3,
+    memory: 14678,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 37062578686,
+    storageAmount: 47984533464,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
 
   const loggingAxiom3: LoggingAxiom3 = {
-    host: 'culpa tempor commodo nisi in',
-    apiToken: 'id',
-    dataset: 'sed',
+    host: 'aute veniam exercitation eiusmod et',
+    apiToken: 'mollit',
+    dataset: 'nisi in Lorem',
   };
 
   const datadogTags3: DatadogTags3 = {
@@ -36,24 +37,24 @@ import {
   };
 
   const loggingDatadog3: LoggingDatadog3 = {
-    host: 'mollit Duis eu in',
-    apiKey: 'non Lorem',
+    host: 'velit officia consequat',
+    apiKey: 'sit in veniam',
     tags: [datadogTags3],
   };
 
   const loggingNewRelic3: LoggingNewRelic3 = {
-    host: 'et do culpa',
-    ingestionKey: 'laborum incididunt cupidatat',
+    host: 'consequat sed',
+    ingestionKey: 'tempor exercitation',
   };
 
   const loggingSplunk3: LoggingSplunk3 = {
-    host: 'veniam laborum sunt commodo ut',
-    token: 'ea',
+    host: 'qui enim Ut nostrud deserunt',
+    token: 'cillum sint ullamco veniam occaecat',
   };
 
   const loggingTcp3: LoggingTcp3 = {
-    host: 'esse cillum incididunt',
-    port: 41713,
+    host: 'Ut amet',
+    port: 30110,
   };
 
   const httpFormat3 = HttpFormat3.JSON;
@@ -66,8 +67,8 @@ import {
   const httpCompression3 = HttpCompression3.NONE;
 
   const loggingHttp3: LoggingHttp3 = {
-    host: 'adipisicing nulla in',
-    port: 31817,
+    host: 'eiusmod labore proident sit ut',
+    port: 17490,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -117,7 +118,7 @@ import {
   };
 
   const updateContainer: UpdateContainer = {
-    image: 'aliquip magna Lorem nostrud ex',
+    image: 'labore',
     resources: resources,
     command: ['command'],
     priority: containerGroupPriority,
@@ -129,11 +130,11 @@ import {
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 43599,
+    port: 35022,
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 54514,
+    port: 61900,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -145,14 +146,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 23676,
+    port: 58759,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 29979,
+    port: 32748,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -164,7 +165,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 9,
+    initialDelaySeconds: 6,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -176,7 +177,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 123,
+    initialDelaySeconds: 4,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -188,28 +189,38 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 6,
+    initialDelaySeconds: 10,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
     failureThreshold: 1200,
   };
 
+  const queueAutoscaler: QueueAutoscaler = {
+    minReplicas: 96,
+    maxReplicas: 190,
+    desiredQueueLength: 42,
+    pollingPeriod: 684,
+    maxUpscalePerMinute: 95,
+    maxDownscalePerMinute: 10,
+  };
+
   const updateContainerGroup: UpdateContainerGroup = {
-    displayName: '8tFedWzDhyM',
+    displayName: '01n75',
     container: updateContainer,
-    replicas: 32,
+    replicas: 232,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
     readinessProbe: containerGroupReadinessProbe,
     startupProbe: containerGroupStartupProbe,
+    queueAutoscaler: queueAutoscaler,
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroup(
-    'ph8bjget2tyh4q9ni9h81tilnlnf4',
-    'fr38a8vv5h4lnt5rb91fzs3spaw4grzs1ulr8elj96ymws1tye1i8h22kawxrq',
-    'xstvu-n3wkzvsf8j09617fgmalxezwfpc5tx4o5964ih0i5w146fxc3k0i',
+    'oji7lyvxb3ca5hc',
+    'olb1uzytbhhukf1u0-ahl0b9oqfjj',
+    's7z7dvdopv2czgde1zrufxgiv5tp-j',
     input,
   );
 

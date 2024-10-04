@@ -4,9 +4,22 @@ Represents container group networking parameters
 
 **Properties**
 
-| Name     | Type                        | Required | Description |
-| :------- | :-------------------------- | :------- | :---------- |
-| protocol | ContainerNetworkingProtocol | ✅       |             |
-| port     | number                      | ✅       |             |
-| auth     | boolean                     | ✅       |             |
-| dns      | string                      | ✅       |             |
+| Name                  | Type                                 | Required | Description |
+| :-------------------- | :----------------------------------- | :------- | :---------- |
+| protocol              | ContainerNetworkingProtocol          | ✅       |             |
+| port                  | number                               | ✅       |             |
+| auth                  | boolean                              | ✅       |             |
+| dns                   | string                               | ✅       |             |
+| loadBalancer          | ContainerGroupNetworkingLoadBalancer | ❌       |             |
+| singleConnectionLimit | boolean                              | ❌       |             |
+| clientRequestTimeout  | number                               | ❌       |             |
+| serverResponseTimeout | number                               | ❌       |             |
+
+# ContainerGroupNetworkingLoadBalancer
+
+**Properties**
+
+| Name                     | Type   | Required | Description                   |
+| :----------------------- | :----- | :------- | :---------------------------- |
+| ROUNDROBIN               | string | ✅       | "round_robin"                 |
+| LEASTNUMBEROFCONNECTIONS | string | ✅       | "least_number_of_connections" |

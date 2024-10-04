@@ -1,10 +1,10 @@
 {
-  "liblabVersion": "2.5.0",
-  "date": "2024-10-01T05:14:01.395Z",
+  "liblabVersion": "2.5.1",
+  "date": "2024-10-04T04:24:23.969Z",
   "config": {
-    "apiId": 1228,
+    "apiId": 1252,
     "sdkName": "salad-cloud-sdk",
-    "sdkVersion": "0.9.0-alpha.5",
+    "sdkVersion": "0.9.0-alpha.6",
     "liblabVersion": "2",
     "deliveryMethods": ["zip"],
     "languages": ["typescript"],
@@ -26,7 +26,7 @@
         "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-dotnet",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.4",
+        "sdkVersion": "0.9.0-alpha.5",
         "targetBranch": "main"
       },
       "go": {
@@ -34,7 +34,7 @@
         "githubRepoName": "salad-cloud-sdk-go",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.4",
+        "sdkVersion": "0.9.0-alpha.5",
         "targetBranch": "main"
       },
       "java": {
@@ -58,7 +58,7 @@
         "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-java",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.5",
+        "sdkVersion": "0.9.0-alpha.6",
         "targetBranch": "main"
       },
       "python": {
@@ -101,7 +101,7 @@
         "githubRepoName": "salad-cloud-sdk-python",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.4",
+        "sdkVersion": "0.9.0-alpha.5",
         "targetBranch": "main"
       },
       "terraform": {
@@ -138,7 +138,7 @@
         "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-javascript",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.5",
+        "sdkVersion": "0.9.0-alpha.6",
         "targetBranch": "main",
         "generateEnumAs": "enum"
       }
@@ -233,7 +233,7 @@
       }
     ],
     "apiName": "SaladCloud API",
-    "apiVersion": "0.9.0-alpha.4",
+    "apiVersion": "0.9.0-alpha.5",
     "authentication": {
       "apiKey": {
         "header": "Salad-Api-Key"
@@ -369,6 +369,7 @@
     "src/services/common/container-group-status.ts",
     "src/services/common/container-group-instance-status-count.ts",
     "src/services/common/container-networking-protocol.ts",
+    "src/services/common/container-group-networking-load-balancer.ts",
     "src/services/common/container-group-probe-tcp.ts",
     "src/services/common/container-group-probe-http.ts",
     "src/services/common/container-group-probe-grpc.ts",
@@ -394,6 +395,7 @@
     "src/services/container-groups/models/registry-authentication-aws-ecr-1.ts",
     "src/services/container-groups/models/registry-authentication-docker-hub-1.ts",
     "src/services/container-groups/models/registry-authentication-gcp-gar-1.ts",
+    "src/services/container-groups/models/create-container-group-networking-load-balancer.ts",
     "src/services/container-groups/models/update-container.ts",
     "src/services/container-groups/models/update-container-group-networking.ts",
     "src/services/container-groups/models/resources.ts",
@@ -517,7 +519,6 @@
     "documentation/models/ContainerRestartPolicy.md",
     "documentation/models/ContainerGroupState.md",
     "documentation/models/CountryCode.md",
-    "documentation/models/ContainerGroupNetworking.md",
     "documentation/models/ContainerGroupLivenessProbe.md",
     "documentation/models/ContainerGroupReadinessProbe.md",
     "documentation/models/ContainerGroupStartupProbe.md",
@@ -534,7 +535,6 @@
     "documentation/models/ContainerGroupProbeExec.md",
     "documentation/models/ContainerProbeHttpScheme.md",
     "documentation/models/ContainerGroupProbeHttpHeaders2.md",
-    "documentation/models/CreateContainerGroupNetworking.md",
     "documentation/models/UpdateContainerGroupNetworking.md",
     "documentation/models/WorkloadError.md",
     "documentation/models/ContainerGroupsQuotas.md",
@@ -553,6 +553,8 @@
     "documentation/models/ContainerGroupInstance.md",
     "documentation/models/QueueJob.md",
     "documentation/models/InferenceEndpointJob.md",
+    "documentation/models/ContainerGroupNetworking.md",
+    "documentation/models/CreateContainerGroupNetworking.md",
     "documentation/models/QueueJobEvent.md",
     "documentation/models/InferenceEndpointJobEvent.md",
     "documentation/services/WorkloadErrorsService.md",

@@ -7,9 +7,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.stopContainerGroup(
-    'akn0y-5uryou3umpp3jva-wgcda23a08440n-ew1-q',
-    'im',
-    'd9iq2qrkhhpqc1ii57w5xgt26suu70u1qechp',
+    'jpqhlkkgd',
+    'a9h5upyur493wxwbxrj4xt9wfx07sgyz1fs97sfhtue78-54vd',
+    'jp2qrcnt-8a3',
   );
 
   console.log(data);
