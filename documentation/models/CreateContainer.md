@@ -102,10 +102,10 @@ Represents a container
 
 **Properties**
 
-| Name      | Type   | Required | Description  |
-| :-------- | :----- | :------- | :----------- |
-| JSON      | string | ✅       | "json"       |
-| JSONLINES | string | ✅       | "json_lines" |
+| Name       | Type   | Required | Description  |
+| :--------- | :----- | :------- | :----------- |
+| JSON       | string | ✅       | "json"       |
+| JSON_LINES | string | ✅       | "json_lines" |
 
 # HttpCompression2
 

@@ -7,7 +7,7 @@ export const createInferenceEndpointJob = z.lazy(() => {
   return z.object({
     input: z.any(),
     metadata: z.any().optional().nullable(),
-    webhook: z.string().optional().nullable(),
+    webhook: z.string().max(2000).optional().nullable(),
   });
 });
 
@@ -29,7 +29,7 @@ export const createInferenceEndpointJobResponse = z.lazy(() => {
     .object({
       input: z.any(),
       metadata: z.any().optional().nullable(),
-      webhook: z.string().optional().nullable(),
+      webhook: z.string().max(2000).optional().nullable(),
     })
     .transform((data) => ({
       input: data['input'],

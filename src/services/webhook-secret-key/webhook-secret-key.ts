@@ -15,15 +15,18 @@ export class WebhookSecretKeyService extends BaseService {
     organizationName: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<WebhookSecretKey>> {
-    const request = new RequestBuilder<WebhookSecretKey>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/webhook-secret-key')
       .setRequestSchema(z.any())
-      .setResponseSchema(webhookSecretKeyResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: webhookSecretKeyResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -44,15 +47,18 @@ export class WebhookSecretKeyService extends BaseService {
     organizationName: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<WebhookSecretKey>> {
-    const request = new RequestBuilder<WebhookSecretKey>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/webhook-secret-key')
       .setRequestSchema(z.any())
-      .setResponseSchema(webhookSecretKeyResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: webhookSecretKeyResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)

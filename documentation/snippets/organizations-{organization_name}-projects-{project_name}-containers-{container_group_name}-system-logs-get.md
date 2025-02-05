@@ -6,10 +6,10 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.workloadErrors.getWorkloadErrors(
-    'x4hd7xmy53wgq8mpuy5k2wfbbzlhws5edt3sje',
-    'hug6abtk-ewjq1594j27m6u1whmqikj9f18pd',
-    'lq52i317o2r8pje-v4-ccp8q-329szw31h4fee236',
+  const { data } = await saladCloudSdk.systemLogs.getSystemLogs(
+    'fmcz5cnnkfiyt3k5ke3wy-5gl1809s8sotrp88klv3q4l4ni7uszkt0ht2',
+    'jpum7p7dqeb0o9xu',
+    'nlzoet3pfl3xit2pe40saanre16q8ug0u13rmnwb7eyumc1',
   );
 
   console.log(data);

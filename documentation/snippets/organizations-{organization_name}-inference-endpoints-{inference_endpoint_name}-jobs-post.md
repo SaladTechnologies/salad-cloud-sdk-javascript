@@ -13,9 +13,9 @@ import { CreateInferenceEndpointJob, SaladCloudSdk } from '@saladtechnologies-os
   };
 
   const { data } = await saladCloudSdk.inferenceEndpoints.createInferenceEndpointJob(
-    'yg0u13rmnwb7eyumc25lm4prwopvwr-1961f',
-    'consectetur occaecat',
-    input,
+    'pk05fdmxk23ipxt6vd6e',
+    'inference_endpoint_name',
+    createInferenceEndpointJob,
   );
 
   console.log(data);

@@ -6,7 +6,13 @@ import { HeaderSerializer } from '../serialization/header-serializer';
 import { HttpRequest } from '../hooks/hook';
 import { SerializationStyle } from '../serialization/base-serializer';
 
-export interface CreateRequestParameters<FullResponse, Page = unknown[]> {
+export interface ResponseDefinition {
+  schema: ZodType;
+  contentType: ContentType;
+  status: number;
+}
+
+export interface CreateRequestParameters<Page = unknown[]> {
   baseUrl: string;
   method: HttpMethod;
   body?: any;
@@ -15,10 +21,9 @@ export interface CreateRequestParameters<FullResponse, Page = unknown[]> {
   pathParams: Map<string, RequestParameter>;
   path: string;
   config: SdkConfig;
-  responseSchema: ZodType<FullResponse, any, any>;
+  responses: ResponseDefinition[];
   requestSchema: ZodType;
   requestContentType: ContentType;
-  responseContentType: ContentType;
   validation: ValidationOptions;
   retry: RetryOptions;
   pagination?: RequestPagination<Page>;
@@ -40,7 +45,7 @@ export interface RequestPagination<Page> {
   pageSchema?: ZodType<Page, any, any>;
 }
 
-export class Request<T = unknown, PageSchema = unknown[]> {
+export class Request<PageSchema = unknown[]> {
   public baseUrl: string = '';
 
   public headers: Map<string, RequestParameter> = new Map();
@@ -57,13 +62,11 @@ export class Request<T = unknown, PageSchema = unknown[]> {
 
   public config: SdkConfig;
 
-  public responseSchema: ZodType<T, any, any>;
+  public responses: ResponseDefinition[];
 
   public requestSchema: ZodType;
 
   public requestContentType: ContentType;
-
-  public responseContentType: ContentType;
 
   public validation: ValidationOptions = {} as any;
 
@@ -73,7 +76,7 @@ export class Request<T = unknown, PageSchema = unknown[]> {
 
   private readonly pathPattern: string;
 
-  constructor(params: CreateRequestParameters<T, PageSchema>) {
+  constructor(params: CreateRequestParameters<PageSchema>) {
     this.baseUrl = params.baseUrl;
     this.method = params.method;
     this.pathPattern = params.path;
@@ -83,10 +86,9 @@ export class Request<T = unknown, PageSchema = unknown[]> {
     this.pathParams = params.pathParams;
     this.headers = params.headers;
     this.queryParams = params.queryParams;
-    this.responseSchema = params.responseSchema;
+    this.responses = params.responses;
     this.requestSchema = params.requestSchema;
     this.requestContentType = params.requestContentType;
-    this.responseContentType = params.responseContentType;
     this.retry = params.retry;
     this.validation = params.validation;
     this.pagination = params.pagination;
@@ -170,11 +172,13 @@ export class Request<T = unknown, PageSchema = unknown[]> {
   public constructFullUrl(): string {
     const queryString = new QuerySerializer().serialize(this.queryParams);
     const path = this.constructPath();
-    return `${this.baseUrl}${path}${queryString}`;
+    let baseUrl = this.baseUrl;
+
+    return `${baseUrl}${path}${queryString}`;
   }
 
-  public copy(overrides?: Partial<CreateRequestParameters<T>>) {
-    const createRequestParams: CreateRequestParameters<T> = {
+  public copy(overrides?: Partial<CreateRequestParameters>) {
+    const createRequestParams: CreateRequestParameters = {
       baseUrl: overrides?.baseUrl ?? this.baseUrl,
       method: overrides?.method ?? this.method,
       path: overrides?.path ?? this.path,
@@ -183,14 +187,13 @@ export class Request<T = unknown, PageSchema = unknown[]> {
       pathParams: overrides?.pathParams ?? this.pathParams,
       queryParams: overrides?.queryParams ?? this.queryParams,
       headers: overrides?.headers ?? this.headers,
-      responseSchema: overrides?.responseSchema ?? this.responseSchema,
+      responses: overrides?.responses ?? this.responses,
       requestSchema: overrides?.requestSchema ?? this.requestSchema,
       requestContentType: overrides?.requestContentType ?? this.requestContentType,
-      responseContentType: overrides?.responseContentType ?? this.responseContentType,
       retry: overrides?.retry ?? this.retry,
       validation: overrides?.validation ?? this.validation,
     };
-    return new Request<T>({
+    return new Request({
       ...createRequestParams,
       ...overrides,
     });
@@ -204,7 +207,7 @@ export class Request<T = unknown, PageSchema = unknown[]> {
     return new HeaderSerializer().serialize(this.headers);
   }
 
-  public nextPage() {
+  public nextPage(): void {
     if (!this.pagination) {
       return;
     }
@@ -229,15 +232,15 @@ export class Request<T = unknown, PageSchema = unknown[]> {
   private getAllParams(): RequestParameter[] {
     const allParams: RequestParameter[] = [];
 
-    this.headers.forEach((val, key) => {
+    this.headers.forEach((val, _) => {
       allParams.push(val);
     });
 
-    this.queryParams.forEach((val, key) => {
+    this.queryParams.forEach((val, _) => {
       allParams.push(val);
     });
 
-    this.pathParams.forEach((val, key) => {
+    this.pathParams.forEach((val, _) => {
       allParams.push(val);
     });
 

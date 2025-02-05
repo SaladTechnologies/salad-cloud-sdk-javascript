@@ -6,7 +6,7 @@ import { z } from 'zod';
 export const resources = z.lazy(() => {
   return z.object({
     cpu: z.number().gte(1).lte(16).optional().nullable(),
-    memory: z.number().gte(1024).lte(30720).optional().nullable(),
+    memory: z.number().gte(1024).lte(61440).optional().nullable(),
     gpuClasses: z.array(z.string()).optional().nullable(),
     storageAmount: z.number().gte(1073741824).lte(53687091200).optional().nullable(),
   });
@@ -30,7 +30,7 @@ export const resourcesResponse = z.lazy(() => {
   return z
     .object({
       cpu: z.number().gte(1).lte(16).optional().nullable(),
-      memory: z.number().gte(1024).lte(30720).optional().nullable(),
+      memory: z.number().gte(1024).lte(61440).optional().nullable(),
       gpu_classes: z.array(z.string()).optional().nullable(),
       storage_amount: z.number().gte(1073741824).lte(53687091200).optional().nullable(),
     })

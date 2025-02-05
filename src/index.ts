@@ -2,6 +2,7 @@ import { Environment } from './http/environment';
 import { SdkConfig } from './http/types';
 import { ContainerGroupsService } from './services/container-groups';
 import { WorkloadErrorsService } from './services/workload-errors';
+import { SystemLogsService } from './services/system-logs';
 import { QueuesService } from './services/queues';
 import { QuotasService } from './services/quotas';
 import { InferenceEndpointsService } from './services/inference-endpoints';
@@ -10,6 +11,7 @@ import { WebhookSecretKeyService } from './services/webhook-secret-key';
 
 export * from './services/container-groups';
 export * from './services/workload-errors';
+export * from './services/system-logs';
 export * from './services/queues';
 export * from './services/quotas';
 export * from './services/inference-endpoints';
@@ -23,6 +25,8 @@ export class SaladCloudSdk {
   public readonly containerGroups: ContainerGroupsService;
 
   public readonly workloadErrors: WorkloadErrorsService;
+
+  public readonly systemLogs: SystemLogsService;
 
   public readonly queues: QueuesService;
 
@@ -44,6 +48,8 @@ export class SaladCloudSdk {
 
     this.workloadErrors = new WorkloadErrorsService(this.config);
 
+    this.systemLogs = new SystemLogsService(this.config);
+
     this.queues = new QueuesService(this.config);
 
     this.quotas = new QuotasService(this.config);
@@ -58,6 +64,7 @@ export class SaladCloudSdk {
   set baseUrl(baseUrl: string) {
     this.containerGroups.baseUrl = baseUrl;
     this.workloadErrors.baseUrl = baseUrl;
+    this.systemLogs.baseUrl = baseUrl;
     this.queues.baseUrl = baseUrl;
     this.quotas.baseUrl = baseUrl;
     this.inferenceEndpoints.baseUrl = baseUrl;
@@ -68,6 +75,7 @@ export class SaladCloudSdk {
   set environment(environment: Environment) {
     this.containerGroups.baseUrl = environment;
     this.workloadErrors.baseUrl = environment;
+    this.systemLogs.baseUrl = environment;
     this.queues.baseUrl = environment;
     this.quotas.baseUrl = environment;
     this.inferenceEndpoints.baseUrl = environment;
@@ -78,6 +86,7 @@ export class SaladCloudSdk {
   set timeoutMs(timeoutMs: number) {
     this.containerGroups.timeoutMs = timeoutMs;
     this.workloadErrors.timeoutMs = timeoutMs;
+    this.systemLogs.timeoutMs = timeoutMs;
     this.queues.timeoutMs = timeoutMs;
     this.quotas.timeoutMs = timeoutMs;
     this.inferenceEndpoints.timeoutMs = timeoutMs;
@@ -88,6 +97,7 @@ export class SaladCloudSdk {
   set apiKey(apiKey: string) {
     this.containerGroups.apiKey = apiKey;
     this.workloadErrors.apiKey = apiKey;
+    this.systemLogs.apiKey = apiKey;
     this.queues.apiKey = apiKey;
     this.quotas.apiKey = apiKey;
     this.inferenceEndpoints.apiKey = apiKey;
@@ -98,6 +108,7 @@ export class SaladCloudSdk {
   set apiKeyHeader(apiKeyHeader: string) {
     this.containerGroups.apiKeyHeader = apiKeyHeader;
     this.workloadErrors.apiKeyHeader = apiKeyHeader;
+    this.systemLogs.apiKeyHeader = apiKeyHeader;
     this.queues.apiKeyHeader = apiKeyHeader;
     this.quotas.apiKeyHeader = apiKeyHeader;
     this.inferenceEndpoints.apiKeyHeader = apiKeyHeader;

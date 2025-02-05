@@ -13,10 +13,10 @@ import { CreateQueueJob, SaladCloudSdk } from '@saladtechnologies-oss/salad-clou
   };
 
   const { data } = await saladCloudSdk.queues.createQueueJob(
-    'wcaz2jbu5pfmpygxffsf4bh4e6',
-    'dzh9lv6afpamv8cx0x6',
-    's9f4ikmr0j6c3n18n4djttkqmgzb46dd5wogzrfe2pq12s2',
-    input,
+    'yl-v1qf-186n2145dgb2tg1emlkmk',
+    'ufo7nbyl9hodgr47mbi5x5lh',
+    'g-5jd',
+    createQueueJob,
   );
 
   console.log(data);

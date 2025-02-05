@@ -22,15 +22,18 @@ export class ContainerGroupsService extends BaseService {
     projectName: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroupList>> {
-    const request = new RequestBuilder<ContainerGroupList>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers')
       .setRequestSchema(z.any())
-      .setResponseSchema(containerGroupListResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: containerGroupListResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -58,15 +61,18 @@ export class ContainerGroupsService extends BaseService {
     body: CreateContainerGroup,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroup>> {
-    const request = new RequestBuilder<ContainerGroup>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers')
       .setRequestSchema(createContainerGroupRequest)
-      .setResponseSchema(containerGroupResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: containerGroupResponse,
+        contentType: ContentType.Json,
+        status: 201,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -97,15 +103,18 @@ export class ContainerGroupsService extends BaseService {
     containerGroupName: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroup>> {
-    const request = new RequestBuilder<ContainerGroup>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}')
       .setRequestSchema(z.any())
-      .setResponseSchema(containerGroupResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: containerGroupResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -139,15 +148,18 @@ export class ContainerGroupsService extends BaseService {
     body: UpdateContainerGroup,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroup>> {
-    const request = new RequestBuilder<ContainerGroup>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('PATCH')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}')
       .setRequestSchema(updateContainerGroupRequest)
-      .setResponseSchema(containerGroupResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: containerGroupResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -181,16 +193,19 @@ export class ContainerGroupsService extends BaseService {
     projectName: string,
     containerGroupName: string,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 202,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -207,7 +222,7 @@ export class ContainerGroupsService extends BaseService {
         value: containerGroupName,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -222,16 +237,19 @@ export class ContainerGroupsService extends BaseService {
     projectName: string,
     containerGroupName: string,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/start')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 202,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -248,7 +266,7 @@ export class ContainerGroupsService extends BaseService {
         value: containerGroupName,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -263,16 +281,19 @@ export class ContainerGroupsService extends BaseService {
     projectName: string,
     containerGroupName: string,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/stop')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 202,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -289,7 +310,7 @@ export class ContainerGroupsService extends BaseService {
         value: containerGroupName,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -305,15 +326,18 @@ export class ContainerGroupsService extends BaseService {
     containerGroupName: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroupInstances>> {
-    const request = new RequestBuilder<ContainerGroupInstances>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances')
       .setRequestSchema(z.any())
-      .setResponseSchema(containerGroupInstancesResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: containerGroupInstancesResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -348,7 +372,7 @@ export class ContainerGroupsService extends BaseService {
     containerGroupInstanceId: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroupInstance>> {
-    const request = new RequestBuilder<ContainerGroupInstance>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
@@ -356,9 +380,12 @@ export class ContainerGroupsService extends BaseService {
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}',
       )
       .setRequestSchema(z.any())
-      .setResponseSchema(containerGroupInstanceResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: containerGroupInstanceResponse,
+        contentType: ContentType.Json,
+        status: 202,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -396,8 +423,8 @@ export class ContainerGroupsService extends BaseService {
     containerGroupName: string,
     containerGroupInstanceId: string,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
@@ -405,9 +432,12 @@ export class ContainerGroupsService extends BaseService {
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}/reallocate',
       )
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 202,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -428,7 +458,7 @@ export class ContainerGroupsService extends BaseService {
         value: containerGroupInstanceId,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -445,8 +475,8 @@ export class ContainerGroupsService extends BaseService {
     containerGroupName: string,
     containerGroupInstanceId: string,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
@@ -454,9 +484,12 @@ export class ContainerGroupsService extends BaseService {
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}/recreate',
       )
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 202,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -477,7 +510,7 @@ export class ContainerGroupsService extends BaseService {
         value: containerGroupInstanceId,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -494,8 +527,8 @@ export class ContainerGroupsService extends BaseService {
     containerGroupName: string,
     containerGroupInstanceId: string,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
@@ -503,9 +536,12 @@ export class ContainerGroupsService extends BaseService {
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}/restart',
       )
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 202,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -526,6 +562,6 @@ export class ContainerGroupsService extends BaseService {
         value: containerGroupInstanceId,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 }

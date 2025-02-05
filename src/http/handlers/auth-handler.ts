@@ -5,17 +5,27 @@ import { SerializationStyle } from '../serialization/base-serializer';
 export class AuthHandler implements RequestHandler {
   next?: RequestHandler;
 
-  async handle<T>(request: Request<T>): Promise<HttpResponse<T>> {
+  public async handle<T>(request: Request): Promise<HttpResponse<T>> {
     const requestWithAuth = this.addApiKeyHeader(request);
 
     if (!this.next) {
       throw new Error(`No next handler set in ${AuthHandler.name}`);
     }
 
-    return this.next?.handle(requestWithAuth);
+    return this.next.handle<T>(requestWithAuth);
   }
 
-  private addApiKeyHeader<T>(request: Request<T>): Request<T> {
+  public async *stream<T>(request: Request): AsyncGenerator<HttpResponse<T>> {
+    const requestWithAuth = this.addApiKeyHeader(request);
+
+    if (!this.next) {
+      throw new Error(`No next handler set in ${AuthHandler.name}`);
+    }
+
+    yield* this.next.stream<T>(requestWithAuth);
+  }
+
+  private addApiKeyHeader(request: Request): Request {
     const apiKey = request.config?.apiKey;
     const apiKeyHeader = request.config?.apiKeyHeader ?? 'Salad-Api-Key';
     if (!apiKey) {
