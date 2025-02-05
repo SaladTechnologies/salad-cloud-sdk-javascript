@@ -1,15 +1,17 @@
-import { HttpMethod, HttpResponse } from '../types';
 import { HttpError } from '../error';
+import { HttpMetadata, HttpMethod, HttpResponse } from '../types';
+import { LineDecoder } from '../utils/line-decoder';
 import { Request } from './request';
 
 interface HttpAdapter {
   send(): Promise<HttpResponse>;
+  stream(): AsyncGenerator<HttpResponse>;
 }
 
 export class RequestFetchAdapter<T> implements HttpAdapter {
   private requestInit: RequestInit = {};
 
-  constructor(private request: Request<T>) {
+  constructor(private request: Request) {
     this.setMethod(request.method);
     this.setHeaders(request.getHeaders());
     this.setBody(request.body);
@@ -19,7 +21,7 @@ export class RequestFetchAdapter<T> implements HttpAdapter {
   public async send(): Promise<HttpResponse<T>> {
     const response = await fetch(this.request.constructFullUrl(), this.requestInit);
 
-    const metadata = {
+    const metadata: HttpMetadata = {
       status: response.status,
       statusText: response.statusText || '',
       headers: this.getHeaders(response),
@@ -31,7 +33,52 @@ export class RequestFetchAdapter<T> implements HttpAdapter {
     };
   }
 
-  private setMethod(method: HttpMethod) {
+  public async *stream(): AsyncGenerator<HttpResponse<T>> {
+    const response = await fetch(this.request.constructFullUrl(), this.requestInit);
+
+    const metadata: HttpMetadata = {
+      status: response.status,
+      statusText: response.statusText || '',
+      headers: this.getHeaders(response),
+    };
+
+    if (response.status >= 400) {
+      throw new HttpError(metadata, await response.clone().arrayBuffer());
+    }
+
+    if (!response.body) {
+      return yield {
+        metadata,
+        raw: await response.clone().arrayBuffer(),
+      };
+    }
+
+    const reader = response.body.getReader();
+    const lineDecoder = new LineDecoder();
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) {
+        break;
+      }
+
+      for (const line of lineDecoder.splitLines(value)) {
+        yield {
+          metadata,
+          raw: line,
+        };
+      }
+    }
+
+    for (const line of lineDecoder.flush()) {
+      yield {
+        metadata,
+        raw: line,
+      };
+    }
+  }
+
+  private setMethod(method: HttpMethod): void {
     if (!method) {
       return;
     }
@@ -41,7 +88,7 @@ export class RequestFetchAdapter<T> implements HttpAdapter {
     };
   }
 
-  private setBody(body: ReadableStream<Uint8Array> | null) {
+  private setBody(body: ReadableStream<Uint8Array> | null): void {
     if (!body) {
       return;
     }
@@ -51,7 +98,7 @@ export class RequestFetchAdapter<T> implements HttpAdapter {
     };
   }
 
-  private setHeaders(headers: HeadersInit | undefined) {
+  private setHeaders(headers: HeadersInit | undefined): void {
     if (!headers) {
       return;
     }
@@ -62,7 +109,7 @@ export class RequestFetchAdapter<T> implements HttpAdapter {
     };
   }
 
-  private setTimeout(timeoutMs: number | undefined) {
+  private setTimeout(timeoutMs: number | undefined): void {
     if (!timeoutMs) {
       return;
     }

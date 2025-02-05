@@ -12,15 +12,18 @@ export class QuotasService extends BaseService {
    * @returns {Promise<HttpResponse<Quotas>>} OK
    */
   async getQuotas(organizationName: string, requestConfig?: RequestConfig): Promise<HttpResponse<Quotas>> {
-    const request = new RequestBuilder<Quotas>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/quotas')
       .setRequestSchema(z.any())
-      .setResponseSchema(quotasResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: quotasResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)

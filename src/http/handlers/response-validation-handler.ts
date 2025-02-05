@@ -1,71 +1,166 @@
-import { Request } from '../transport/request';
+import { Request, ResponseDefinition } from '../transport/request';
 import { ZodUndefined } from 'zod';
 import { ContentType, HttpResponse, RequestHandler } from '../types';
-import { HttpError } from '../error';
+import { ResponseMatcher } from '../utils/response-matcher';
 
 export class ResponseValidationHandler implements RequestHandler {
   next?: RequestHandler;
 
-  async handle<T>(request: Request<T>): Promise<HttpResponse<T>> {
-    const response = await this.next!.handle(request);
+  async handle<T>(request: Request): Promise<HttpResponse<T>> {
+    const response = await this.next!.handle<T>(request);
 
-    if (!this.hasContent(request, response)) {
-      return response;
-    }
+    return this.decodeBody<T>(request, response);
+  }
 
-    if (request.responseContentType === ContentType.Json) {
-      const decodedBody = new TextDecoder().decode(response.raw);
-      const json = JSON.parse(decodedBody);
-      return {
-        ...response,
-        data: this.validate<T>(request, json),
-      };
-    } else if (
-      request.responseContentType === ContentType.Binary ||
-      request.responseContentType === ContentType.Image
-    ) {
-      return {
-        ...response,
-        data: this.validate<T>(request, response.raw),
-      };
-    } else if (request.responseContentType === ContentType.Text || request.responseContentType === ContentType.Xml) {
-      const text = new TextDecoder().decode(response.raw);
-      return {
-        ...response,
-        data: this.validate<T>(request, text),
-      };
-    } else if (request.responseContentType === ContentType.FormUrlEncoded) {
-      const urlEncoded = this.fromUrlEncoded(new TextDecoder().decode(response.raw));
-      return {
-        ...response,
-        data: this.validate<T>(request, urlEncoded),
-      };
-    } else if (request.responseContentType === ContentType.MultipartFormData) {
-      const formData = this.fromFormData(response.raw);
-      return {
-        ...response,
-        data: this.validate<T>(request, formData),
-      };
-    } else {
-      const decodedBody = new TextDecoder().decode(response.raw);
-      const json = JSON.parse(decodedBody);
-      return {
-        ...response,
-        data: this.validate<T>(request, json),
-      };
+  async *stream<T>(request: Request): AsyncGenerator<HttpResponse<T>> {
+    const stream = this.next!.stream<T>(request);
+
+    for await (const response of stream) {
+      const responseChunks = this.splitByDataChunks<T>(response);
+      for (const chunk of responseChunks) {
+        yield this.decodeBody<T>(request, chunk);
+      }
     }
   }
 
-  private validate<T>(request: Request<T>, data: any): T {
+  private splitByDataChunks<T>(response: HttpResponse<T>): HttpResponse<T>[] {
+    if (!response.metadata.headers['content-type'].includes('text/event-stream')) {
+      return [response];
+    }
+
+    const text = new TextDecoder().decode(response.raw);
+    const encoder = new TextEncoder();
+    return text
+      .split('\n')
+      .filter((line) => line.startsWith('data: '))
+      .map((part) => ({
+        ...response,
+        raw: encoder.encode(part),
+      }));
+  }
+
+  private decodeBody<T>(request: Request, response: HttpResponse<T>): HttpResponse<T> {
+    const responseMatcher = new ResponseMatcher(request.responses);
+    const responseDefinition = responseMatcher.getResponseDefinition(response);
+
+    if (!responseDefinition || !this.hasContent(responseDefinition, response)) {
+      return response;
+    }
+
+    const contentType = responseDefinition.contentType;
+    const contentTypeHandlers: {
+      [key: string]: (req: Request, resDef: ResponseDefinition, res: HttpResponse<T>) => HttpResponse<T>;
+    } = {
+      [ContentType.Binary]: this.decodeFile,
+      [ContentType.Image]: this.decodeFile,
+      [ContentType.MultipartFormData]: this.decodeMultipartFormData,
+      [ContentType.Text]: this.decodeText,
+      [ContentType.Xml]: this.decodeText,
+      [ContentType.FormUrlEncoded]: this.decodeFormUrlEncoded,
+      [ContentType.EventStream]: this.decodeEventStream,
+    };
+
+    if (contentTypeHandlers[contentType]) {
+      return contentTypeHandlers[contentType].call(this, request, responseDefinition, response);
+    }
+
+    if (response.metadata.headers['content-type']?.includes('text/event-stream')) {
+      return this.decodeEventStream(request, responseDefinition, response);
+    }
+
+    return this.decodeJson(request, responseDefinition, response);
+  }
+
+  private decodeFile<T>(
+    request: Request,
+    responseDefinition: ResponseDefinition,
+    response: HttpResponse<T>,
+  ): HttpResponse<T> {
+    return {
+      ...response,
+      data: this.validate<T>(request, responseDefinition, response.raw),
+    };
+  }
+
+  private decodeMultipartFormData<T>(
+    request: Request,
+    responseDefinition: ResponseDefinition,
+    response: HttpResponse<T>,
+  ): HttpResponse<T> {
+    const formData = this.fromFormData(response.raw);
+    return {
+      ...response,
+      data: this.validate<T>(request, responseDefinition, formData),
+    };
+  }
+
+  private decodeText<T>(
+    request: Request,
+    responseDefinition: ResponseDefinition,
+    response: HttpResponse<T>,
+  ): HttpResponse<T> {
+    const decodedBody = new TextDecoder().decode(response.raw);
+    return {
+      ...response,
+      data: this.validate<T>(request, responseDefinition, decodedBody),
+    };
+  }
+
+  private decodeFormUrlEncoded<T>(
+    request: Request,
+    responseDefinition: ResponseDefinition,
+    response: HttpResponse<T>,
+  ): HttpResponse<T> {
+    const decodedBody = new TextDecoder().decode(response.raw);
+    const urlEncoded = this.fromUrlEncoded(decodedBody);
+    return {
+      ...response,
+      data: this.validate<T>(request, responseDefinition, urlEncoded),
+    };
+  }
+
+  private decodeEventStream<T>(
+    request: Request,
+    responseDefinition: ResponseDefinition,
+    response: HttpResponse<T>,
+  ): HttpResponse<T> {
+    let decodedBody = new TextDecoder().decode(response.raw);
+    if (decodedBody.startsWith('data: ')) {
+      decodedBody = decodedBody.substring(6);
+    }
+    // Note: this assumes that the content of data is a valid JSON string
+    const json = JSON.parse(decodedBody);
+    return {
+      ...response,
+      data: this.validate<T>(request, responseDefinition, json),
+    };
+  }
+
+  private decodeJson<T>(
+    request: Request,
+    responseDefinition: ResponseDefinition,
+    response: HttpResponse<T>,
+  ): HttpResponse<T> {
+    const decodedBody = new TextDecoder().decode(response.raw);
+    const json = JSON.parse(decodedBody);
+    return {
+      ...response,
+      data: this.validate<T>(request, responseDefinition, json),
+    };
+  }
+
+  private validate<T>(request: Request, response: ResponseDefinition, data: any): T {
     if (request.validation?.responseValidation) {
-      return request.responseSchema.parse(data);
+      return response.schema.parse(data);
     }
     return data;
   }
 
-  private hasContent<T>(request: Request<T>, response: HttpResponse<T>): boolean {
+  private hasContent<T>(responseDefinition: ResponseDefinition, response: HttpResponse<T>): boolean {
     return (
-      !!request.responseSchema && !(request.responseSchema instanceof ZodUndefined) && response.metadata.status !== 204
+      !!responseDefinition.schema &&
+      !(responseDefinition.schema instanceof ZodUndefined) &&
+      response.metadata.status !== 204
     );
   }
 

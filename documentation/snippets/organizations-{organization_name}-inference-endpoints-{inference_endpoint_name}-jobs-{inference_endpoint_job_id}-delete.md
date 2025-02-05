@@ -7,8 +7,8 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.deleteInferenceEndpointJob(
-    'kdhvnhwadaqzuh18',
-    'eiusmod dolore do',
+    'igqfe6b1d0c-0auqqph3bt-7bft4c1m95idut36tc-x7mo2nsh7uoln',
+    'inference_endpoint_name',
     'inference_endpoint_job_id',
   );
 

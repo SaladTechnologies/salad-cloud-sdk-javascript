@@ -17,12 +17,12 @@ export const queueAutoscaler = z.lazy(() => {
 /**
  * Represents the autoscaling rules for a queue
  * @typedef  {QueueAutoscaler} queueAutoscaler - Represents the autoscaling rules for a queue - Represents the autoscaling rules for a queue
+ * @property {number} - The minimum number of instances the container can scale down to
+ * @property {number} - The maximum number of instances the container can scale up to
  * @property {number}
- * @property {number}
- * @property {number}
- * @property {number}
- * @property {number}
- * @property {number}
+ * @property {number} - The period (in seconds) in which the queue checks the formula
+ * @property {number} - The maximum number of instances that can be added per minute
+ * @property {number} - The maximum number of instances that can be removed per minute
  */
 export type QueueAutoscaler = z.infer<typeof queueAutoscaler>;
 

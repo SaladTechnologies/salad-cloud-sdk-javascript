@@ -2,6 +2,6 @@ import { z } from 'zod';
 
 export enum ContainerRestartPolicy {
   ALWAYS = 'always',
-  ONFAILURE = 'on_failure',
+  ON_FAILURE = 'on_failure',
   NEVER = 'never',
 }

@@ -23,15 +23,18 @@ export class InferenceEndpointsService extends BaseService {
     params?: ListInferenceEndpointsParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointsList>> {
-    const request = new RequestBuilder<InferenceEndpointsList>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/inference-endpoints')
       .setRequestSchema(z.any())
-      .setResponseSchema(inferenceEndpointsListResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: inferenceEndpointsListResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -62,15 +65,18 @@ export class InferenceEndpointsService extends BaseService {
     inferenceEndpointName: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpoint>> {
-    const request = new RequestBuilder<InferenceEndpoint>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}')
       .setRequestSchema(z.any())
-      .setResponseSchema(inferenceEndpointResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: inferenceEndpointResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -100,15 +106,18 @@ export class InferenceEndpointsService extends BaseService {
     params?: GetInferenceEndpointJobsParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJobList>> {
-    const request = new RequestBuilder<InferenceEndpointJobList>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs')
       .setRequestSchema(z.any())
-      .setResponseSchema(inferenceEndpointJobListResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: inferenceEndpointJobListResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -144,15 +153,18 @@ export class InferenceEndpointsService extends BaseService {
     body: CreateInferenceEndpointJob,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJob>> {
-    const request = new RequestBuilder<InferenceEndpointJob>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs')
       .setRequestSchema(createInferenceEndpointJobRequest)
-      .setResponseSchema(inferenceEndpointJobResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: inferenceEndpointJobResponse,
+        contentType: ContentType.Json,
+        status: 201,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -183,7 +195,7 @@ export class InferenceEndpointsService extends BaseService {
     inferenceEndpointJobId: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJob>> {
-    const request = new RequestBuilder<InferenceEndpointJob>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
@@ -191,9 +203,12 @@ export class InferenceEndpointsService extends BaseService {
         '/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs/{inference_endpoint_job_id}',
       )
       .setRequestSchema(z.any())
-      .setResponseSchema(inferenceEndpointJobResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: inferenceEndpointJobResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -225,8 +240,8 @@ export class InferenceEndpointsService extends BaseService {
     inferenceEndpointName: string,
     inferenceEndpointJobId: string,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('DELETE')
@@ -234,9 +249,12 @@ export class InferenceEndpointsService extends BaseService {
         '/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs/{inference_endpoint_job_id}',
       )
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 202,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -253,6 +271,6 @@ export class InferenceEndpointsService extends BaseService {
         value: inferenceEndpointJobId,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 }

@@ -12,15 +12,18 @@ export class OrganizationDataService extends BaseService {
    * @returns {Promise<HttpResponse<GpuClassesList>>} OK
    */
   async listGpuClasses(organizationName: string, requestConfig?: RequestConfig): Promise<HttpResponse<GpuClassesList>> {
-    const request = new RequestBuilder<GpuClassesList>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/gpu-classes')
       .setRequestSchema(z.any())
-      .setResponseSchema(gpuClassesListResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: gpuClassesListResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)

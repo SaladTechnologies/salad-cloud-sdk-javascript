@@ -24,15 +24,18 @@ export class QueuesService extends BaseService {
     projectName: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueList>> {
-    const request = new RequestBuilder<QueueList>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues')
       .setRequestSchema(z.any())
-      .setResponseSchema(queueListResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: queueListResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -60,15 +63,18 @@ export class QueuesService extends BaseService {
     body: CreateQueue,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
-    const request = new RequestBuilder<Queue>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues')
       .setRequestSchema(createQueueRequest)
-      .setResponseSchema(queueResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: queueResponse,
+        contentType: ContentType.Json,
+        status: 201,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -99,15 +105,18 @@ export class QueuesService extends BaseService {
     queueName: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
-    const request = new RequestBuilder<Queue>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
       .setRequestSchema(z.any())
-      .setResponseSchema(queueResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: queueResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -141,15 +150,18 @@ export class QueuesService extends BaseService {
     body: UpdateQueue,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
-    const request = new RequestBuilder<Queue>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('PATCH')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
       .setRequestSchema(updateQueueRequest)
-      .setResponseSchema(queueResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: queueResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -183,16 +195,19 @@ export class QueuesService extends BaseService {
     projectName: string,
     queueName: string,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 202,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -209,7 +224,7 @@ export class QueuesService extends BaseService {
         value: queueName,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 
   /**
@@ -228,15 +243,18 @@ export class QueuesService extends BaseService {
     params?: ListQueueJobsParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJobList>> {
-    const request = new RequestBuilder<QueueJobList>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs')
       .setRequestSchema(z.any())
-      .setResponseSchema(queueJobListResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: queueJobListResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -278,15 +296,18 @@ export class QueuesService extends BaseService {
     body: CreateQueueJob,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJob>> {
-    const request = new RequestBuilder<QueueJob>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs')
       .setRequestSchema(createQueueJobRequest)
-      .setResponseSchema(queueJobResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: queueJobResponse,
+        contentType: ContentType.Json,
+        status: 201,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -323,15 +344,18 @@ export class QueuesService extends BaseService {
     queueJobId: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJob>> {
-    const request = new RequestBuilder<QueueJob>()
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs/{queue_job_id}')
       .setRequestSchema(z.any())
-      .setResponseSchema(queueJobResponse)
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: queueJobResponse,
+        contentType: ContentType.Json,
+        status: 200,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -369,16 +393,19 @@ export class QueuesService extends BaseService {
     queueName: string,
     queueJobId: string,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<undefined>> {
-    const request = new RequestBuilder<undefined>()
+  ): Promise<HttpResponse<void>> {
+    const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs/{queue_job_id}')
       .setRequestSchema(z.any())
-      .setResponseSchema(z.undefined())
       .setRequestContentType(ContentType.Json)
-      .setResponseContentType(ContentType.Json)
+      .addResponse({
+        schema: z.undefined(),
+        contentType: ContentType.NoContent,
+        status: 202,
+      })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
       .setResponseValidation(this.config, requestConfig)
@@ -399,6 +426,6 @@ export class QueuesService extends BaseService {
         value: queueJobId,
       })
       .build();
-    return this.client.call<undefined>(request);
+    return this.client.call<void>(request);
   }
 }

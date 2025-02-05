@@ -17,18 +17,18 @@ import {
   });
 
   const resources: Resources = {
-    cpu: 3,
-    memory: 14678,
+    cpu: 12,
+    memory: 16671,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 47984533464,
+    storageAmount: 47892181137,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
 
   const loggingAxiom3: LoggingAxiom3 = {
-    host: 'aute veniam exercitation eiusmod et',
-    apiToken: 'mollit',
-    dataset: 'nisi in Lorem',
+    host: 'host',
+    apiToken: 'api_token',
+    dataset: 'dataset',
   };
 
   const datadogTags3: DatadogTags3 = {
@@ -37,24 +37,24 @@ import {
   };
 
   const loggingDatadog3: LoggingDatadog3 = {
-    host: 'velit officia consequat',
-    apiKey: 'sit in veniam',
+    host: 'host',
+    apiKey: 'api_key',
     tags: [datadogTags3],
   };
 
   const loggingNewRelic3: LoggingNewRelic3 = {
-    host: 'consequat sed',
-    ingestionKey: 'tempor exercitation',
+    host: 'host',
+    ingestionKey: 'ingestion_key',
   };
 
   const loggingSplunk3: LoggingSplunk3 = {
-    host: 'qui enim Ut nostrud deserunt',
-    token: 'cillum sint ullamco veniam occaecat',
+    host: 'host',
+    token: 'token',
   };
 
   const loggingTcp3: LoggingTcp3 = {
-    host: 'Ut amet',
-    port: 30110,
+    host: 'host',
+    port: 4071,
   };
 
   const httpFormat3 = HttpFormat3.JSON;
@@ -67,8 +67,8 @@ import {
   const httpCompression3 = HttpCompression3.NONE;
 
   const loggingHttp3: LoggingHttp3 = {
-    host: 'eiusmod labore proident sit ut',
-    port: 17490,
+    host: 'host',
+    port: 52384,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -118,7 +118,7 @@ import {
   };
 
   const updateContainer: UpdateContainer = {
-    image: 'labore',
+    image: 'image',
     resources: resources,
     command: ['command'],
     priority: containerGroupPriority,
@@ -130,11 +130,11 @@ import {
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 35022,
+    port: 49186,
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 61900,
+    port: 993,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -146,14 +146,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 58759,
+    port: 64175,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 32748,
+    port: 8441,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -165,7 +165,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 6,
+    initialDelaySeconds: 8,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -177,7 +177,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 4,
+    initialDelaySeconds: 10,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -189,7 +189,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 10,
+    initialDelaySeconds: 7,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
@@ -197,18 +197,18 @@ import {
   };
 
   const queueAutoscaler: QueueAutoscaler = {
-    minReplicas: 96,
-    maxReplicas: 190,
-    desiredQueueLength: 42,
-    pollingPeriod: 684,
-    maxUpscalePerMinute: 95,
-    maxDownscalePerMinute: 10,
+    minReplicas: 41,
+    maxReplicas: 135,
+    desiredQueueLength: 51,
+    pollingPeriod: 188,
+    maxUpscalePerMinute: 30,
+    maxDownscalePerMinute: 42,
   };
 
   const updateContainerGroup: UpdateContainerGroup = {
-    displayName: '01n75',
+    displayName: 'hx6nAEIR',
     container: updateContainer,
-    replicas: 232,
+    replicas: 90,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -218,10 +218,10 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroup(
-    'oji7lyvxb3ca5hc',
-    'olb1uzytbhhukf1u0-ahl0b9oqfjj',
-    's7z7dvdopv2czgde1zrufxgiv5tp-j',
-    input,
+    'mk0yct7b8bo1g8tvl9',
+    'ax4qyju9jcnr3fw8e9al8o-4oreg5ocaz2jbu5pfmpygxffsf4bh4e6',
+    'dzh9lv6afpamv8cx0x6',
+    updateContainerGroup,
   );
 
   console.log(data);

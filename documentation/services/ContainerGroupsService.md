@@ -45,10 +45,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.containerGroups.listContainerGroups(
-    'v50imwzgi4em4q035',
-    'm6yw3-xm60cb7tiev8rketqiiwjepibzf2ust1cvjx8oua8mepeueo5-1',
-  );
+  const { data } = await saladCloudSdk.containerGroups.listContainerGroups('o9lnd3c1w-4b', 'c9jr');
 
   console.log(data);
 })();
@@ -97,17 +94,17 @@ import {
 
   const containerResourceRequirements: ContainerResourceRequirements = {
     cpu: 10,
-    memory: 35273,
+    memory: 9057,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 32391110488,
+    storageAmount: 34911830561,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
 
   const loggingAxiom2: LoggingAxiom2 = {
-    host: 'irure ut eiusmod velit incididunt',
-    apiToken: 'deserunt aute cillum dolor occaecat',
-    dataset: 'exercitation sit',
+    host: 'host',
+    apiToken: 'api_token',
+    dataset: 'dataset',
   };
 
   const datadogTags2: DatadogTags2 = {
@@ -116,24 +113,24 @@ import {
   };
 
   const loggingDatadog2: LoggingDatadog2 = {
-    host: 'sunt consequat irure fugiat',
-    apiKey: 'magna',
+    host: 'host',
+    apiKey: 'api_key',
     tags: [datadogTags2],
   };
 
   const loggingNewRelic2: LoggingNewRelic2 = {
-    host: 'quis aute in id proident',
-    ingestionKey: 'aliqua enim pariatur',
+    host: 'host',
+    ingestionKey: 'ingestion_key',
   };
 
   const loggingSplunk2: LoggingSplunk2 = {
-    host: 'ad',
-    token: 'irure velit labore nostrud elit',
+    host: 'host',
+    token: 'token',
   };
 
   const loggingTcp2: LoggingTcp2 = {
-    host: 'fugiat do',
-    port: 1272,
+    host: 'host',
+    port: 32723,
   };
 
   const httpFormat2 = HttpFormat2.JSON;
@@ -146,8 +143,8 @@ import {
   const httpCompression2 = HttpCompression2.NONE;
 
   const loggingHttp2: LoggingHttp2 = {
-    host: 'cillum',
-    port: 21241,
+    host: 'host',
+    port: 51830,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -197,7 +194,7 @@ import {
   };
 
   const createContainer: CreateContainer = {
-    image: 'reprehenderit',
+    image: 'image',
     resources: containerResourceRequirements,
     command: ['command'],
     priority: containerGroupPriority,
@@ -212,11 +209,11 @@ import {
 
   const containerNetworkingProtocol = ContainerNetworkingProtocol.HTTP;
 
-  const createContainerGroupNetworkingLoadBalancer = CreateContainerGroupNetworkingLoadBalancer.ROUNDROBIN;
+  const createContainerGroupNetworkingLoadBalancer = CreateContainerGroupNetworkingLoadBalancer.ROUND_ROBIN;
 
   const createContainerGroupNetworking: CreateContainerGroupNetworking = {
     protocol: containerNetworkingProtocol,
-    port: 43901,
+    port: 4465,
     auth: true,
     loadBalancer: createContainerGroupNetworkingLoadBalancer,
     singleConnectionLimit: true,
@@ -225,7 +222,7 @@ import {
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 61900,
+    port: 993,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -237,14 +234,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 58759,
+    port: 64175,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 32748,
+    port: 8441,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -256,7 +253,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 6,
+    initialDelaySeconds: 8,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -268,7 +265,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 4,
+    initialDelaySeconds: 10,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -280,7 +277,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 10,
+    initialDelaySeconds: 7,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
@@ -288,27 +285,27 @@ import {
   };
 
   const containerGroupQueueConnection: ContainerGroupQueueConnection = {
-    path: 'pariatur Ut aliqua irure',
-    port: 34903,
-    queueName: 'nz26lyemw7nednorlqjlsihb3',
+    path: 'path',
+    port: 43154,
+    queueName: 'oujbls0vsz6xilo12xl52y9c178cmdya6ykpby-hunb0b6s7s2mppfvzd5f4e',
   };
 
   const queueAutoscaler: QueueAutoscaler = {
-    minReplicas: 96,
-    maxReplicas: 190,
-    desiredQueueLength: 42,
-    pollingPeriod: 684,
-    maxUpscalePerMinute: 95,
-    maxDownscalePerMinute: 10,
+    minReplicas: 41,
+    maxReplicas: 135,
+    desiredQueueLength: 51,
+    pollingPeriod: 188,
+    maxUpscalePerMinute: 30,
+    maxDownscalePerMinute: 42,
   };
 
   const createContainerGroup: CreateContainerGroup = {
-    name: 'xvih',
-    displayName: 'INce5LCTy',
+    name: 'name',
+    displayName: 'hfR',
     container: createContainer,
     autostartPolicy: true,
     restartPolicy: containerRestartPolicy,
-    replicas: 12,
+    replicas: 169,
     countryCodes: [countryCode],
     networking: createContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -319,9 +316,9 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.createContainerGroup(
-    'v50imwzgi4em4q035',
-    'm6yw3-xm60cb7tiev8rketqiiwjepibzf2ust1cvjx8oua8mepeueo5-1',
-    input,
+    'o9lnd3c1w-4b',
+    'c9jr',
+    createContainerGroup,
   );
 
   console.log(data);
@@ -358,9 +355,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.getContainerGroup(
-    'oji7lyvxb3ca5hc',
-    'olb1uzytbhhukf1u0-ahl0b9oqfjj',
-    's7z7dvdopv2czgde1zrufxgiv5tp-j',
+    'mk0yct7b8bo1g8tvl9',
+    'ax4qyju9jcnr3fw8e9al8o-4oreg5ocaz2jbu5pfmpygxffsf4bh4e6',
+    'dzh9lv6afpamv8cx0x6',
   );
 
   console.log(data);
@@ -408,18 +405,18 @@ import {
   });
 
   const resources: Resources = {
-    cpu: 3,
-    memory: 14678,
+    cpu: 12,
+    memory: 16671,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 47984533464,
+    storageAmount: 47892181137,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
 
   const loggingAxiom3: LoggingAxiom3 = {
-    host: 'aute veniam exercitation eiusmod et',
-    apiToken: 'mollit',
-    dataset: 'nisi in Lorem',
+    host: 'host',
+    apiToken: 'api_token',
+    dataset: 'dataset',
   };
 
   const datadogTags3: DatadogTags3 = {
@@ -428,24 +425,24 @@ import {
   };
 
   const loggingDatadog3: LoggingDatadog3 = {
-    host: 'velit officia consequat',
-    apiKey: 'sit in veniam',
+    host: 'host',
+    apiKey: 'api_key',
     tags: [datadogTags3],
   };
 
   const loggingNewRelic3: LoggingNewRelic3 = {
-    host: 'consequat sed',
-    ingestionKey: 'tempor exercitation',
+    host: 'host',
+    ingestionKey: 'ingestion_key',
   };
 
   const loggingSplunk3: LoggingSplunk3 = {
-    host: 'qui enim Ut nostrud deserunt',
-    token: 'cillum sint ullamco veniam occaecat',
+    host: 'host',
+    token: 'token',
   };
 
   const loggingTcp3: LoggingTcp3 = {
-    host: 'Ut amet',
-    port: 30110,
+    host: 'host',
+    port: 4071,
   };
 
   const httpFormat3 = HttpFormat3.JSON;
@@ -458,8 +455,8 @@ import {
   const httpCompression3 = HttpCompression3.NONE;
 
   const loggingHttp3: LoggingHttp3 = {
-    host: 'eiusmod labore proident sit ut',
-    port: 17490,
+    host: 'host',
+    port: 52384,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -509,7 +506,7 @@ import {
   };
 
   const updateContainer: UpdateContainer = {
-    image: 'labore',
+    image: 'image',
     resources: resources,
     command: ['command'],
     priority: containerGroupPriority,
@@ -521,11 +518,11 @@ import {
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 35022,
+    port: 49186,
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 61900,
+    port: 993,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -537,14 +534,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 58759,
+    port: 64175,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 32748,
+    port: 8441,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -556,7 +553,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 6,
+    initialDelaySeconds: 8,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -568,7 +565,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 4,
+    initialDelaySeconds: 10,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -580,7 +577,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 10,
+    initialDelaySeconds: 7,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
@@ -588,18 +585,18 @@ import {
   };
 
   const queueAutoscaler: QueueAutoscaler = {
-    minReplicas: 96,
-    maxReplicas: 190,
-    desiredQueueLength: 42,
-    pollingPeriod: 684,
-    maxUpscalePerMinute: 95,
-    maxDownscalePerMinute: 10,
+    minReplicas: 41,
+    maxReplicas: 135,
+    desiredQueueLength: 51,
+    pollingPeriod: 188,
+    maxUpscalePerMinute: 30,
+    maxDownscalePerMinute: 42,
   };
 
   const updateContainerGroup: UpdateContainerGroup = {
-    displayName: '01n75',
+    displayName: 'hx6nAEIR',
     container: updateContainer,
-    replicas: 232,
+    replicas: 90,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -609,10 +606,10 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroup(
-    'oji7lyvxb3ca5hc',
-    'olb1uzytbhhukf1u0-ahl0b9oqfjj',
-    's7z7dvdopv2czgde1zrufxgiv5tp-j',
-    input,
+    'mk0yct7b8bo1g8tvl9',
+    'ax4qyju9jcnr3fw8e9al8o-4oreg5ocaz2jbu5pfmpygxffsf4bh4e6',
+    'dzh9lv6afpamv8cx0x6',
+    updateContainerGroup,
   );
 
   console.log(data);
@@ -645,9 +642,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.deleteContainerGroup(
-    'oji7lyvxb3ca5hc',
-    'olb1uzytbhhukf1u0-ahl0b9oqfjj',
-    's7z7dvdopv2czgde1zrufxgiv5tp-j',
+    'mk0yct7b8bo1g8tvl9',
+    'ax4qyju9jcnr3fw8e9al8o-4oreg5ocaz2jbu5pfmpygxffsf4bh4e6',
+    'dzh9lv6afpamv8cx0x6',
   );
 
   console.log(data);
@@ -680,9 +677,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.startContainerGroup(
-    'jfybnugpd6',
-    'jngr',
-    'vjne2vq5j0d2m4f21ex5ozb1-4j-you0d7uftlpfgcaqa-2oc58y844mz',
+    'vrwopvwr-1961g-m85nbqda3ufsy',
+    'm780t45z2tw4xt1b86w0clx6u',
+    'h-405x811v32aty9s-ghx1hm2nw1m',
   );
 
   console.log(data);
@@ -715,9 +712,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.stopContainerGroup(
-    'jpqhlkkgd',
-    'a9h5upyur493wxwbxrj4xt9wfx07sgyz1fs97sfhtue78-54vd',
-    'jp2qrcnt-8a3',
+    'fooidhvnhwad',
+    'azuh19krhv62or5c-im9-8sae7tz',
+    'oo0emyztq64o8ut710qtepjztx34mk6lruecseiyq06ab3ok5xsg-okxar',
   );
 
   console.log(data);
@@ -754,9 +751,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.listContainerGroupInstances(
-    'kjhy3jn2rdf012fi7ouno3mk-ax4d0ajj5ajjquzeg-z3kvqxtnoxnlzhi',
-    'ft-8nawc40o0gqev-m',
-    'jpy8af-s7rq68p2lenu',
+    'y7y892q4m5rifzmevenpg1u',
+    'k8xgbal184sloim-c7555huym18dia9d-gb',
+    'opn2qgtohqud110sou2jqi50g1umdxtc9fte8n',
   );
 
   console.log(data);
@@ -794,9 +791,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.getContainerGroupInstance(
-    'a09xnu6-fkv3',
-    'ca4ydy-pi16e4ddle58fi8u9w2qgnsgj7cn',
-    'b4p90a72aagy0fz',
+    'z-5ux2vsm',
+    'mjjt13u7q3pryx',
+    'qnnyigut20zp1dyfm2yp4-lw',
     'container_group_instance_id',
   );
 
@@ -831,9 +828,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.reallocateContainerGroupInstance(
-    'sws1rwna83a3asu0izd6ugn07m5xpcp89lefemdke05z4s9d',
-    'ed2caksvlhpzmfccbh2v7dcapp3enb9gd2f4k49vviu53s5',
-    'xkwwnw',
+    'a7tl0fwms3fu3myo74a99jr6ouv4w914sp420zyiuo43jexn',
+    'czq6rnxf04dqmccakh',
+    'k9g3a72svbjzx0y-i4o1cvulgdrylaujk1yrzfoq1',
     'container_group_instance_id',
   );
 
@@ -868,9 +865,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.recreateContainerGroupInstance(
-    'm-gfjsmt',
-    'qljdg4',
-    'nzzyoj4pl2kuh4c67m3ae7qwlwipkdye-ad90-cq0up7kyr6',
+    'l7wk9jgwxjp56dzbnwtbgowklqt1wsbe00osnj3370c21vihvroq1cuqjb',
+    'g-0jo001xz6w2uhgmhtgvpqzhztmaqawqn92-rig0bznv-21cb7s',
+    'ghp2ecbvldrihtmaa78lqy5q1wdpi7ayf187etvt65ezckogou9lhenou1q2jx',
     'container_group_instance_id',
   );
 
@@ -905,9 +902,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.restartContainerGroupInstance(
-    'pb',
-    'dvb96iwcvlvvm1n',
-    'ngljb',
+    'ogx1pei8lousb7ikadj659qttkrqdm5b9xdq',
+    'cmet9ioqxf-a3suyfz4tkhle7s9-vpaj7uvpjx9jbtvwzjwvj900',
+    'bqh9-1g8glb2305o-txbnrdvt2jc9nvk5fkdf18q9zdv3',
     'container_group_instance_id',
   );
 

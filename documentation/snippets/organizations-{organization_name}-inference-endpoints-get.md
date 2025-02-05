@@ -7,10 +7,10 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.listInferenceEndpoints(
-    'wtxd1j0ixuhfk-hdff3n3-hbtsigyh53bt0g4gjh8mcz4',
+    'r98kinnaq6opnq-td84vb3q9zv3k2ki3jzct2pf06rygg23yz',
     {
-      page: 121822981,
-      pageSize: 37,
+      page: 1536623748,
+      pageSize: 41,
     },
   );
 
