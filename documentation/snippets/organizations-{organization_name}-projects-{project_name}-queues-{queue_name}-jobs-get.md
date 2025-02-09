@@ -6,15 +6,10 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.queues.listQueueJobs(
-    'yl-v1qf-186n2145dgb2tg1emlkmk',
-    'ufo7nbyl9hodgr47mbi5x5lh',
-    'g-5jd',
-    {
-      page: 1000778021,
-      pageSize: 88,
-    },
-  );
+  const { data } = await saladCloudSdk.queues.listQueueJobs('acme-corp', 'dev-env', 'fifo-queue', {
+    page: 29045298,
+    pageSize: 12,
+  });
 
   console.log(data);
 })();

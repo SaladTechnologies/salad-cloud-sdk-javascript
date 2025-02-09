@@ -12,12 +12,7 @@ import { CreateQueueJob, SaladCloudSdk } from '@saladtechnologies-oss/salad-clou
     webhook: 'webhook',
   };
 
-  const { data } = await saladCloudSdk.queues.createQueueJob(
-    'yl-v1qf-186n2145dgb2tg1emlkmk',
-    'ufo7nbyl9hodgr47mbi5x5lh',
-    'g-5jd',
-    createQueueJob,
-  );
+  const { data } = await saladCloudSdk.queues.createQueueJob('acme-corp', 'dev-env', 'fifo-queue', createQueueJob);
 
   console.log(data);
 })();

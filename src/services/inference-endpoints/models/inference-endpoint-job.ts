@@ -17,7 +17,11 @@ export const inferenceEndpointJob = z.lazy(() => {
     webhook: z.string().optional().nullable(),
     status: z.string(),
     events: z.array(inferenceEndpointJobEvent).max(1000),
-    organizationName: z.string(),
+    organizationName: z
+      .string()
+      .min(2)
+      .max(63)
+      .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
     output: z.any().optional(),
     createTime: z.string(),
     updateTime: z.string(),
@@ -27,17 +31,17 @@ export const inferenceEndpointJob = z.lazy(() => {
 /**
  * Represents a inference endpoint job
  * @typedef  {InferenceEndpointJob} inferenceEndpointJob - Represents a inference endpoint job - Represents a inference endpoint job
- * @property {string}
+ * @property {string} - The unique identifier.
  * @property {any} - The job input. May be any valid JSON.
- * @property {string} - The inference endpoint name
- * @property {any}
- * @property {string}
- * @property {InferenceEndpointJobStatus}
- * @property {InferenceEndpointJobEvent[]}
- * @property {string} - The organization name
+ * @property {string} - The inference endpoint name.
+ * @property {any} - The job metadata. May be any valid JSON.
+ * @property {string} - The webhook URL called when the job completes.
+ * @property {InferenceEndpointJobStatus} - The current status.
+ * @property {InferenceEndpointJobEvent[]} - The list of events.
+ * @property {string} - The organization name.
  * @property {any} - The job output. May be any valid JSON.
- * @property {string}
- * @property {string}
+ * @property {string} - The time the job was created.
+ * @property {string} - The time the job was last updated.
  */
 export type InferenceEndpointJob = z.infer<typeof inferenceEndpointJob>;
 
@@ -55,7 +59,11 @@ export const inferenceEndpointJobResponse = z.lazy(() => {
       webhook: z.string().optional().nullable(),
       status: z.string(),
       events: z.array(inferenceEndpointJobEventResponse).max(1000),
-      organization_name: z.string(),
+      organization_name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
       output: z.any().optional(),
       create_time: z.string(),
       update_time: z.string(),

@@ -8,15 +8,11 @@ import { CreateQueue, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-s
 
   const createQueue: CreateQueue = {
     name: 'name',
-    displayName: 'M a1HEy',
+    displayName: 'M0fH',
     description: 'description',
   };
 
-  const { data } = await saladCloudSdk.queues.createQueue(
-    'ymfonstzqzsopxf2dyjvm8sjxa281t2p7ne1m',
-    'sxk12v91ajseb3fzyxdaq',
-    createQueue,
-  );
+  const { data } = await saladCloudSdk.queues.createQueue('acme-corp', 'dev-env', createQueue);
 
   console.log(data);
 })();

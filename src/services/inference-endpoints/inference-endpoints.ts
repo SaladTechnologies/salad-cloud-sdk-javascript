@@ -4,7 +4,7 @@ import { ContentType, HttpResponse, RequestConfig } from '../../http/types';
 import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
 import { InferenceEndpointsList, inferenceEndpointsListResponse } from './models/inference-endpoints-list';
-import { GetInferenceEndpointJobsParams, ListInferenceEndpointsParams } from './request-params';
+import { ListInferenceEndpointJobsParams, ListInferenceEndpointsParams } from './request-params';
 import { InferenceEndpoint, inferenceEndpointResponse } from './models/inference-endpoint';
 import { InferenceEndpointJobList, inferenceEndpointJobListResponse } from './models/inference-endpoint-job-list';
 import { CreateInferenceEndpointJob, createInferenceEndpointJobRequest } from './models/create-inference-endpoint-job';
@@ -100,10 +100,10 @@ export class InferenceEndpointsService extends BaseService {
    * @param {number} [pageSize] - The number of items per page
    * @returns {Promise<HttpResponse<InferenceEndpointJobList>>} OK
    */
-  async getInferenceEndpointJobs(
+  async listInferenceEndpointJobs(
     organizationName: string,
     inferenceEndpointName: string,
-    params?: GetInferenceEndpointJobsParams,
+    params?: ListInferenceEndpointJobsParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJobList>> {
     const request = new RequestBuilder()

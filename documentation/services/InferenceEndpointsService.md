@@ -6,7 +6,7 @@ A list of all methods in the `InferenceEndpointsService` service. Click on the m
 | :-------------------------------------------------------- | :--------------------------------------------- |
 | [listInferenceEndpoints](#listinferenceendpoints)         | Gets the list of inference endpoints           |
 | [getInferenceEndpoint](#getinferenceendpoint)             | Gets an inference endpoint                     |
-| [getInferenceEndpointJobs](#getinferenceendpointjobs)     | Retrieves a list of an inference endpoint jobs |
+| [listInferenceEndpointJobs](#listinferenceendpointjobs)   | Retrieves a list of an inference endpoint jobs |
 | [createInferenceEndpointJob](#createinferenceendpointjob) | Creates a new job                              |
 | [getInferenceEndpointJob](#getinferenceendpointjob)       | Retrieves a job in an inference endpoint       |
 | [deleteInferenceEndpointJob](#deleteinferenceendpointjob) | Deletes an inference endpoint job              |
@@ -40,13 +40,10 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.inferenceEndpoints.listInferenceEndpoints(
-    'r98kinnaq6opnq-td84vb3q9zv3k2ki3jzct2pf06rygg23yz',
-    {
-      page: 1536623748,
-      pageSize: 41,
-    },
-  );
+  const { data } = await saladCloudSdk.inferenceEndpoints.listInferenceEndpoints('acme-corp', {
+    page: 1176908875,
+    pageSize: 21,
+  });
 
   console.log(data);
 })();
@@ -80,16 +77,13 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpoint(
-    'cx2mv031v8afyh5y7ht26t-sfc4u7-dhjnxb2hbrz-ipttu1m2vc',
-    'inference_endpoint_name',
-  );
+  const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpoint('acme-corp', 'inference_endpoint_name');
 
   console.log(data);
 })();
 ```
 
-## getInferenceEndpointJobs
+## listInferenceEndpointJobs
 
 Retrieves a list of an inference endpoint jobs
 
@@ -119,12 +113,12 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpointJobs(
-    'pk05fdmxk23ipxt6vd6e',
+  const { data } = await saladCloudSdk.inferenceEndpoints.listInferenceEndpointJobs(
+    'acme-corp',
     'inference_endpoint_name',
     {
-      page: 1228703779,
-      pageSize: 80,
+      page: 2020264707,
+      pageSize: 89,
     },
   );
 
@@ -168,7 +162,7 @@ import { CreateInferenceEndpointJob, SaladCloudSdk } from '@saladtechnologies-os
   };
 
   const { data } = await saladCloudSdk.inferenceEndpoints.createInferenceEndpointJob(
-    'pk05fdmxk23ipxt6vd6e',
+    'acme-corp',
     'inference_endpoint_name',
     createInferenceEndpointJob,
   );
@@ -207,7 +201,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.getInferenceEndpointJob(
-    'igqfe6b1d0c-0auqqph3bt-7bft4c1m95idut36tc-x7mo2nsh7uoln',
+    'acme-corp',
     'inference_endpoint_name',
     'inference_endpoint_job_id',
   );
@@ -242,7 +236,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.inferenceEndpoints.deleteInferenceEndpointJob(
-    'igqfe6b1d0c-0auqqph3bt-7bft4c1m95idut36tc-x7mo2nsh7uoln',
+    'acme-corp',
     'inference_endpoint_name',
     'inference_endpoint_job_id',
   );
