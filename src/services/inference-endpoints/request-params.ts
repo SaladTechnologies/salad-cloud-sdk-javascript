@@ -3,7 +3,7 @@ export interface ListInferenceEndpointsParams {
   pageSize?: number;
 }
 
-export interface GetInferenceEndpointJobsParams {
+export interface ListInferenceEndpointJobsParams {
   page?: number;
   pageSize?: number;
 }

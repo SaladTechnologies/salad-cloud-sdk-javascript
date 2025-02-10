@@ -42,10 +42,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.queues.listQueues(
-    'ymfonstzqzsopxf2dyjvm8sjxa281t2p7ne1m',
-    'sxk12v91ajseb3fzyxdaq',
-  );
+  const { data } = await saladCloudSdk.queues.listQueues('acme-corp', 'dev-env');
 
   console.log(data);
 })();
@@ -82,15 +79,11 @@ import { CreateQueue, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-s
 
   const createQueue: CreateQueue = {
     name: 'name',
-    displayName: 'M a1HEy',
+    displayName: 'M0fH',
     description: 'description',
   };
 
-  const { data } = await saladCloudSdk.queues.createQueue(
-    'ymfonstzqzsopxf2dyjvm8sjxa281t2p7ne1m',
-    'sxk12v91ajseb3fzyxdaq',
-    createQueue,
-  );
+  const { data } = await saladCloudSdk.queues.createQueue('acme-corp', 'dev-env', createQueue);
 
   console.log(data);
 })();
@@ -125,11 +118,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.queues.getQueue(
-    'xrt9bh26smkuf3v0nd2roppi64zikv73wys88ns82g85qcczec2y8bnwc4gs',
-    'y6aeebojnkc8rl8-7pysy62j25cdn',
-    'ujh0v34w5-21z63jxnxh38ckz48-k1ecu',
-  );
+  const { data } = await saladCloudSdk.queues.getQueue('acme-corp', 'dev-env', 'fifo-queue');
 
   console.log(data);
 })();
@@ -166,16 +155,11 @@ import { SaladCloudSdk, UpdateQueue } from '@saladtechnologies-oss/salad-cloud-s
   });
 
   const updateQueue: UpdateQueue = {
-    displayName: 'eYpeFzhf',
+    displayName: 'W IA8',
     description: 'description',
   };
 
-  const { data } = await saladCloudSdk.queues.updateQueue(
-    'xrt9bh26smkuf3v0nd2roppi64zikv73wys88ns82g85qcczec2y8bnwc4gs',
-    'y6aeebojnkc8rl8-7pysy62j25cdn',
-    'ujh0v34w5-21z63jxnxh38ckz48-k1ecu',
-    updateQueue,
-  );
+  const { data } = await saladCloudSdk.queues.updateQueue('acme-corp', 'dev-env', 'fifo-queue', updateQueue);
 
   console.log(data);
 })();
@@ -206,11 +190,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.queues.deleteQueue(
-    'xrt9bh26smkuf3v0nd2roppi64zikv73wys88ns82g85qcczec2y8bnwc4gs',
-    'y6aeebojnkc8rl8-7pysy62j25cdn',
-    'ujh0v34w5-21z63jxnxh38ckz48-k1ecu',
-  );
+  const { data } = await saladCloudSdk.queues.deleteQueue('acme-corp', 'dev-env', 'fifo-queue');
 
   console.log(data);
 })();
@@ -247,15 +227,10 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.queues.listQueueJobs(
-    'yl-v1qf-186n2145dgb2tg1emlkmk',
-    'ufo7nbyl9hodgr47mbi5x5lh',
-    'g-5jd',
-    {
-      page: 1000778021,
-      pageSize: 88,
-    },
-  );
+  const { data } = await saladCloudSdk.queues.listQueueJobs('acme-corp', 'dev-env', 'fifo-queue', {
+    page: 29045298,
+    pageSize: 12,
+  });
 
   console.log(data);
 })();
@@ -297,12 +272,7 @@ import { CreateQueueJob, SaladCloudSdk } from '@saladtechnologies-oss/salad-clou
     webhook: 'webhook',
   };
 
-  const { data } = await saladCloudSdk.queues.createQueueJob(
-    'yl-v1qf-186n2145dgb2tg1emlkmk',
-    'ufo7nbyl9hodgr47mbi5x5lh',
-    'g-5jd',
-    createQueueJob,
-  );
+  const { data } = await saladCloudSdk.queues.createQueueJob('acme-corp', 'dev-env', 'fifo-queue', createQueueJob);
 
   console.log(data);
 })();
@@ -339,10 +309,10 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.getQueueJob(
-    'hrf4burmjglxm0qfqui7u2clb2gfk12ij-g2i1z7we77-hpgwjdxcrr6-3c9',
-    'dv3zyz-95e2zp7wjr',
-    'zkrdg5h3eeasigc',
-    'queue_job_id',
+    'acme-corp',
+    'dev-env',
+    'fifo-queue',
+    '7dcd6922-50e9-4d56-89b5-91cde26f0211',
   );
 
   console.log(data);
@@ -376,10 +346,10 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.queues.deleteQueueJob(
-    'hrf4burmjglxm0qfqui7u2clb2gfk12ij-g2i1z7we77-hpgwjdxcrr6-3c9',
-    'dv3zyz-95e2zp7wjr',
-    'zkrdg5h3eeasigc',
-    'queue_job_id',
+    'acme-corp',
+    'dev-env',
+    'fifo-queue',
+    '7dcd6922-50e9-4d56-89b5-91cde26f0211',
   );
 
   console.log(data);

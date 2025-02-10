@@ -45,7 +45,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.containerGroups.listContainerGroups('o9lnd3c1w-4b', 'c9jr');
+  const { data } = await saladCloudSdk.containerGroups.listContainerGroups('acme-corp', 'dev-env');
 
   console.log(data);
 })();
@@ -93,10 +93,10 @@ import {
   });
 
   const containerResourceRequirements: ContainerResourceRequirements = {
-    cpu: 10,
-    memory: 9057,
+    cpu: 13,
+    memory: 8139,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 34911830561,
+    storageAmount: 43769579402,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
@@ -130,7 +130,7 @@ import {
 
   const loggingTcp2: LoggingTcp2 = {
     host: 'host',
-    port: 32723,
+    port: 24951,
   };
 
   const httpFormat2 = HttpFormat2.JSON;
@@ -144,7 +144,7 @@ import {
 
   const loggingHttp2: LoggingHttp2 = {
     host: 'host',
-    port: 51830,
+    port: 36565,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -213,7 +213,7 @@ import {
 
   const createContainerGroupNetworking: CreateContainerGroupNetworking = {
     protocol: containerNetworkingProtocol,
-    port: 4465,
+    port: 22764,
     auth: true,
     loadBalancer: createContainerGroupNetworkingLoadBalancer,
     singleConnectionLimit: true,
@@ -222,7 +222,7 @@ import {
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 993,
+    port: 22350,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -234,14 +234,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 64175,
+    port: 56884,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 8441,
+    port: 47172,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -253,7 +253,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 8,
+    initialDelaySeconds: 123,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -265,7 +265,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 10,
+    initialDelaySeconds: 123,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -277,7 +277,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 7,
+    initialDelaySeconds: 9,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
@@ -286,26 +286,26 @@ import {
 
   const containerGroupQueueConnection: ContainerGroupQueueConnection = {
     path: 'path',
-    port: 43154,
-    queueName: 'oujbls0vsz6xilo12xl52y9c178cmdya6ykpby-hunb0b6s7s2mppfvzd5f4e',
+    port: 34605,
+    queueName: 'gv8rketqh',
   };
 
   const queueAutoscaler: QueueAutoscaler = {
-    minReplicas: 41,
-    maxReplicas: 135,
-    desiredQueueLength: 51,
-    pollingPeriod: 188,
-    maxUpscalePerMinute: 30,
-    maxDownscalePerMinute: 42,
+    minReplicas: 26,
+    maxReplicas: 28,
+    desiredQueueLength: 42,
+    pollingPeriod: 442,
+    maxUpscalePerMinute: 3,
+    maxDownscalePerMinute: 69,
   };
 
   const createContainerGroup: CreateContainerGroup = {
     name: 'name',
-    displayName: 'hfR',
+    displayName: 'VSVi1YCcw',
     container: createContainer,
     autostartPolicy: true,
     restartPolicy: containerRestartPolicy,
-    replicas: 169,
+    replicas: 231,
     countryCodes: [countryCode],
     networking: createContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -316,8 +316,8 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.createContainerGroup(
-    'o9lnd3c1w-4b',
-    'c9jr',
+    'acme-corp',
+    'dev-env',
     createContainerGroup,
   );
 
@@ -355,9 +355,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.getContainerGroup(
-    'mk0yct7b8bo1g8tvl9',
-    'ax4qyju9jcnr3fw8e9al8o-4oreg5ocaz2jbu5pfmpygxffsf4bh4e6',
-    'dzh9lv6afpamv8cx0x6',
+    'acme-corp',
+    'dev-env',
+    'deo5-1hcilmn8m1ouq40vp547cf-9sn3yad',
   );
 
   console.log(data);
@@ -405,10 +405,10 @@ import {
   });
 
   const resources: Resources = {
-    cpu: 12,
-    memory: 16671,
+    cpu: 11,
+    memory: 57017,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 47892181137,
+    storageAmount: 34792510764,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
@@ -442,7 +442,7 @@ import {
 
   const loggingTcp3: LoggingTcp3 = {
     host: 'host',
-    port: 4071,
+    port: 48471,
   };
 
   const httpFormat3 = HttpFormat3.JSON;
@@ -456,7 +456,7 @@ import {
 
   const loggingHttp3: LoggingHttp3 = {
     host: 'host',
-    port: 52384,
+    port: 488,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -518,11 +518,11 @@ import {
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 49186,
+    port: 29069,
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 993,
+    port: 22350,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -534,14 +534,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 64175,
+    port: 56884,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 8441,
+    port: 47172,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -553,7 +553,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 8,
+    initialDelaySeconds: 123,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -565,7 +565,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 10,
+    initialDelaySeconds: 123,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -577,7 +577,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 7,
+    initialDelaySeconds: 9,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
@@ -585,18 +585,18 @@ import {
   };
 
   const queueAutoscaler: QueueAutoscaler = {
-    minReplicas: 41,
-    maxReplicas: 135,
-    desiredQueueLength: 51,
-    pollingPeriod: 188,
-    maxUpscalePerMinute: 30,
-    maxDownscalePerMinute: 42,
+    minReplicas: 26,
+    maxReplicas: 28,
+    desiredQueueLength: 42,
+    pollingPeriod: 442,
+    maxUpscalePerMinute: 3,
+    maxDownscalePerMinute: 69,
   };
 
   const updateContainerGroup: UpdateContainerGroup = {
-    displayName: 'hx6nAEIR',
+    displayName: 'AvVDo,',
     container: updateContainer,
-    replicas: 90,
+    replicas: 160,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -606,9 +606,9 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroup(
-    'mk0yct7b8bo1g8tvl9',
-    'ax4qyju9jcnr3fw8e9al8o-4oreg5ocaz2jbu5pfmpygxffsf4bh4e6',
-    'dzh9lv6afpamv8cx0x6',
+    'acme-corp',
+    'dev-env',
+    'deo5-1hcilmn8m1ouq40vp547cf-9sn3yad',
     updateContainerGroup,
   );
 
@@ -642,9 +642,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.deleteContainerGroup(
-    'mk0yct7b8bo1g8tvl9',
-    'ax4qyju9jcnr3fw8e9al8o-4oreg5ocaz2jbu5pfmpygxffsf4bh4e6',
-    'dzh9lv6afpamv8cx0x6',
+    'acme-corp',
+    'dev-env',
+    'deo5-1hcilmn8m1ouq40vp547cf-9sn3yad',
   );
 
   console.log(data);
@@ -676,11 +676,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.containerGroups.startContainerGroup(
-    'vrwopvwr-1961g-m85nbqda3ufsy',
-    'm780t45z2tw4xt1b86w0clx6u',
-    'h-405x811v32aty9s-ghx1hm2nw1m',
-  );
+  const { data } = await saladCloudSdk.containerGroups.startContainerGroup('acme-corp', 'dev-env', 'ldlzsuvite9');
 
   console.log(data);
 })();
@@ -712,9 +708,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.stopContainerGroup(
-    'fooidhvnhwad',
-    'azuh19krhv62or5c-im9-8sae7tz',
-    'oo0emyztq64o8ut710qtepjztx34mk6lruecseiyq06ab3ok5xsg-okxar',
+    'acme-corp',
+    'dev-env',
+    'x5pfkx3zz5np0cn9u94xdcf5g5w9-1',
   );
 
   console.log(data);
@@ -751,9 +747,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.listContainerGroupInstances(
-    'y7y892q4m5rifzmevenpg1u',
-    'k8xgbal184sloim-c7555huym18dia9d-gb',
-    'opn2qgtohqud110sou2jqi50g1umdxtc9fte8n',
+    'acme-corp',
+    'dev-env',
+    'o-41alirjhsw60',
   );
 
   console.log(data);
@@ -791,9 +787,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.getContainerGroupInstance(
-    'z-5ux2vsm',
-    'mjjt13u7q3pryx',
-    'qnnyigut20zp1dyfm2yp4-lw',
+    'acme-corp',
+    'dev-env',
+    'djh4s8hz0soygun3m687oust14ot1pk0icevxf5izkd-rds',
     'container_group_instance_id',
   );
 
@@ -828,9 +824,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.reallocateContainerGroupInstance(
-    'a7tl0fwms3fu3myo74a99jr6ouv4w914sp420zyiuo43jexn',
-    'czq6rnxf04dqmccakh',
-    'k9g3a72svbjzx0y-i4o1cvulgdrylaujk1yrzfoq1',
+    'acme-corp',
+    'dev-env',
+    'rlr6585lj2n',
     'container_group_instance_id',
   );
 
@@ -865,9 +861,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.recreateContainerGroupInstance(
-    'l7wk9jgwxjp56dzbnwtbgowklqt1wsbe00osnj3370c21vihvroq1cuqjb',
-    'g-0jo001xz6w2uhgmhtgvpqzhztmaqawqn92-rig0bznv-21cb7s',
-    'ghp2ecbvldrihtmaa78lqy5q1wdpi7ayf187etvt65ezckogou9lhenou1q2jx',
+    'acme-corp',
+    'dev-env',
+    'n8-fjfpg-8o880hinx8ob81zddo5rum25m5fl-ocry41fabtao7',
     'container_group_instance_id',
   );
 
@@ -902,9 +898,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.restartContainerGroupInstance(
-    'ogx1pei8lousb7ikadj659qttkrqdm5b9xdq',
-    'cmet9ioqxf-a3suyfz4tkhle7s9-vpaj7uvpjx9jbtvwzjwvj900',
-    'bqh9-1g8glb2305o-txbnrdvt2jc9nvk5fkdf18q9zdv3',
+    'acme-corp',
+    'dev-env',
+    'p1adeb-w3gjttgd7m2r1wt99qo455',
     'container_group_instance_id',
   );
 

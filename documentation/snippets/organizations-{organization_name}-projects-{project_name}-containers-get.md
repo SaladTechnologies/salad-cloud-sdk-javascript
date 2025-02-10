@@ -6,7 +6,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.containerGroups.listContainerGroups('o9lnd3c1w-4b', 'c9jr');
+  const { data } = await saladCloudSdk.containerGroups.listContainerGroups('acme-corp', 'dev-env');
 
   console.log(data);
 })();

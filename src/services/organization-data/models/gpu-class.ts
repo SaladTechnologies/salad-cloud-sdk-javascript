@@ -7,7 +7,11 @@ import { gpuClassPrice, gpuClassPriceRequest, gpuClassPriceResponse } from './gp
 export const gpuClass = z.lazy(() => {
   return z.object({
     id: z.string(),
-    name: z.string().min(2).max(63),
+    name: z
+      .string()
+      .min(2)
+      .max(63)
+      .regex(/^[ -~]{2,63}$/),
     prices: z.array(gpuClassPrice).min(1).max(100),
     isHighDemand: z.boolean().optional(),
   });
@@ -31,7 +35,11 @@ export const gpuClassResponse = z.lazy(() => {
   return z
     .object({
       id: z.string(),
-      name: z.string().min(2).max(63),
+      name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[ -~]{2,63}$/),
       prices: z.array(gpuClassPriceResponse).min(1).max(100),
       is_high_demand: z.boolean().optional(),
     })

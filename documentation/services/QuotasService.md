@@ -33,7 +33,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.quotas.getQuotas('fu2s7l');
+  const { data } = await saladCloudSdk.quotas.getQuotas('acme-corp');
 
   console.log(data);
 })();
