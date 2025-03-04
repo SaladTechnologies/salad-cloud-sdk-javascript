@@ -1,2 +1,2 @@
-export { WebhookSecretKeyService } from './webhook-secret-key';
+export { WebhookSecretKeyService } from './webhook-secret-key-service';
 export * from './models';

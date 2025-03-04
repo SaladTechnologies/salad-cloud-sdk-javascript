@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-export enum QueueJobEventAction {
-  CREATED = 'created',
-  STARTED = 'started',
+export enum Status {
+  PENDING = 'pending',
+  RUNNING = 'running',
   SUCCEEDED = 'succeeded',
   CANCELLED = 'cancelled',
   FAILED = 'failed',

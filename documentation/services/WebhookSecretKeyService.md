@@ -34,7 +34,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.webhookSecretKey.getWebhookSecretKey('eqlckzjaa8wys5nkv5h5z8lk18');
+  const { data } = await saladCloudSdk.webhookSecretKey.getWebhookSecretKey('acme-corp');
 
   console.log(data);
 })();
@@ -67,7 +67,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.webhookSecretKey.updateWebhookSecretKey('eqlckzjaa8wys5nkv5h5z8lk18');
+  const { data } = await saladCloudSdk.webhookSecretKey.updateWebhookSecretKey('acme-corp');
 
   console.log(data);
 })();

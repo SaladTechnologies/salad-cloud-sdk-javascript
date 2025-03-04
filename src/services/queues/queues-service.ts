@@ -4,12 +4,12 @@ import { ContentType, HttpResponse, RequestConfig } from '../../http/types';
 import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
 import { QueueList, queueListResponse } from './models/queue-list';
-import { CreateQueue, createQueueRequest } from './models/create-queue';
+import { CreateQueue1, createQueue1Request } from './models/create-queue-1';
 import { Queue, queueResponse } from './models/queue';
-import { UpdateQueue, updateQueueRequest } from './models/update-queue';
+import { UpdateQueue1, updateQueue1Request } from './models/update-queue-1';
 import { QueueJobList, queueJobListResponse } from './models/queue-job-list';
 import { ListQueueJobsParams } from './request-params';
-import { CreateQueueJob, createQueueJobRequest } from './models/create-queue-job';
+import { CreateQueueJob1, createQueueJob1Request } from './models/create-queue-job-1';
 import { QueueJob, queueJobResponse } from './models/queue-job';
 
 export class QueuesService extends BaseService {
@@ -17,6 +17,7 @@ export class QueuesService extends BaseService {
    * Gets the list of queues in the given project.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<QueueList>>} OK
    */
   async listQueues(
@@ -30,6 +31,7 @@ export class QueuesService extends BaseService {
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: queueListResponse,
@@ -55,12 +57,13 @@ export class QueuesService extends BaseService {
    * Creates a new queue in the given project.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<Queue>>} Created
    */
   async createQueue(
     organizationName: string,
     projectName: string,
-    body: CreateQueue,
+    body: CreateQueue1,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder()
@@ -68,7 +71,8 @@ export class QueuesService extends BaseService {
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues')
-      .setRequestSchema(createQueueRequest)
+      .setRequestSchema(createQueue1Request)
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: queueResponse,
@@ -97,6 +101,7 @@ export class QueuesService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<Queue>>} OK
    */
   async getQueue(
@@ -111,6 +116,7 @@ export class QueuesService extends BaseService {
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: queueResponse,
@@ -141,13 +147,14 @@ export class QueuesService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<Queue>>} OK
    */
   async updateQueue(
     organizationName: string,
     projectName: string,
     queueName: string,
-    body: UpdateQueue,
+    body: UpdateQueue1,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder()
@@ -155,7 +162,8 @@ export class QueuesService extends BaseService {
       .setConfig(this.config)
       .setMethod('PATCH')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
-      .setRequestSchema(updateQueueRequest)
+      .setRequestSchema(updateQueue1Request)
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: queueResponse,
@@ -188,6 +196,7 @@ export class QueuesService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
   async deleteQueue(
@@ -202,6 +211,7 @@ export class QueuesService extends BaseService {
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: z.undefined(),
@@ -232,8 +242,9 @@ export class QueuesService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
-   * @param {number} [page] - The page number
-   * @param {number} [pageSize] - The number of items per page
+   * @param {number} [params.page] - The page number.
+   * @param {number} [params.pageSize] - The maximum number of items per page.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<QueueJobList>>} OK
    */
   async listQueueJobs(
@@ -249,6 +260,7 @@ export class QueuesService extends BaseService {
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: queueJobListResponse,
@@ -287,13 +299,14 @@ export class QueuesService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<QueueJob>>} Created
    */
   async createQueueJob(
     organizationName: string,
     projectName: string,
     queueName: string,
-    body: CreateQueueJob,
+    body: CreateQueueJob1,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJob>> {
     const request = new RequestBuilder()
@@ -301,7 +314,8 @@ export class QueuesService extends BaseService {
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs')
-      .setRequestSchema(createQueueJobRequest)
+      .setRequestSchema(createQueueJob1Request)
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: queueJobResponse,
@@ -335,6 +349,7 @@ export class QueuesService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
    * @param {string} queueJobId - The job identifier. This is automatically generated and assigned when the job is created.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<QueueJob>>} OK
    */
   async getQueueJob(
@@ -350,6 +365,7 @@ export class QueuesService extends BaseService {
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs/{queue_job_id}')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: queueJobResponse,
@@ -385,6 +401,7 @@ export class QueuesService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
    * @param {string} queueJobId - The job identifier. This is automatically generated and assigned when the job is created.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
   async deleteQueueJob(
@@ -400,6 +417,7 @@ export class QueuesService extends BaseService {
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs/{queue_job_id}')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: z.undefined(),

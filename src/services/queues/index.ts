@@ -1,2 +1,2 @@
-export { QueuesService } from './queues';
+export { QueuesService } from './queues-service';
 export * from './models';

@@ -3,35 +3,40 @@ import { BaseService } from '../base-service';
 import { ContentType, HttpResponse, RequestConfig } from '../../http/types';
 import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
-import { InferenceEndpointsList, inferenceEndpointsListResponse } from './models/inference-endpoints-list';
-import { GetInferenceEndpointJobsParams, ListInferenceEndpointsParams } from './request-params';
+import { InferenceEndpointList, inferenceEndpointListResponse } from './models/inference-endpoint-list';
+import { ListInferenceEndpointJobsParams, ListInferenceEndpointsParams } from './request-params';
 import { InferenceEndpoint, inferenceEndpointResponse } from './models/inference-endpoint';
 import { InferenceEndpointJobList, inferenceEndpointJobListResponse } from './models/inference-endpoint-job-list';
-import { CreateInferenceEndpointJob, createInferenceEndpointJobRequest } from './models/create-inference-endpoint-job';
+import {
+  CreateInferenceEndpointJob1,
+  createInferenceEndpointJob1Request,
+} from './models/create-inference-endpoint-job-1';
 import { InferenceEndpointJob, inferenceEndpointJobResponse } from './models/inference-endpoint-job';
 
 export class InferenceEndpointsService extends BaseService {
   /**
-   * Gets the list of inference endpoints
+   * Lists inference endpoints.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
-   * @param {number} [page] - The page number
-   * @param {number} [pageSize] - The number of items per page
-   * @returns {Promise<HttpResponse<InferenceEndpointsList>>} OK
+   * @param {number} [params.page] - The page number.
+   * @param {number} [params.pageSize] - The maximum number of items per page.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<InferenceEndpointList>>} OK
    */
   async listInferenceEndpoints(
     organizationName: string,
     params?: ListInferenceEndpointsParams,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<InferenceEndpointsList>> {
+  ): Promise<HttpResponse<InferenceEndpointList>> {
     const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/inference-endpoints')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
-        schema: inferenceEndpointsListResponse,
+        schema: inferenceEndpointListResponse,
         contentType: ContentType.Json,
         status: 200,
       })
@@ -51,13 +56,14 @@ export class InferenceEndpointsService extends BaseService {
         value: params?.pageSize,
       })
       .build();
-    return this.client.call<InferenceEndpointsList>(request);
+    return this.client.call<InferenceEndpointList>(request);
   }
 
   /**
-   * Gets an inference endpoint
+   * Gets an inference endpoint.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
-   * @param {string} inferenceEndpointName - The unique inference endpoint name
+   * @param {string} inferenceEndpointName - The inference endpoint name.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<InferenceEndpoint>>} OK
    */
   async getInferenceEndpoint(
@@ -71,6 +77,7 @@ export class InferenceEndpointsService extends BaseService {
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: inferenceEndpointResponse,
@@ -93,17 +100,18 @@ export class InferenceEndpointsService extends BaseService {
   }
 
   /**
-   * Retrieves a list of an inference endpoint jobs
+   * Lists inference endpoint jobs.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
-   * @param {string} inferenceEndpointName - The unique inference endpoint name
-   * @param {number} [page] - The page number
-   * @param {number} [pageSize] - The number of items per page
+   * @param {string} inferenceEndpointName - The inference endpoint name.
+   * @param {number} [params.page] - The page number.
+   * @param {number} [params.pageSize] - The maximum number of items per page.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<InferenceEndpointJobList>>} OK
    */
-  async getInferenceEndpointJobs(
+  async listInferenceEndpointJobs(
     organizationName: string,
     inferenceEndpointName: string,
-    params?: GetInferenceEndpointJobsParams,
+    params?: ListInferenceEndpointJobsParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJobList>> {
     const request = new RequestBuilder()
@@ -112,6 +120,7 @@ export class InferenceEndpointsService extends BaseService {
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: inferenceEndpointJobListResponse,
@@ -142,15 +151,16 @@ export class InferenceEndpointsService extends BaseService {
   }
 
   /**
-   * Creates a new job
+   * Creates a new inference endpoint job.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
-   * @param {string} inferenceEndpointName - The unique inference endpoint name
+   * @param {string} inferenceEndpointName - The inference endpoint name.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<InferenceEndpointJob>>} Created
    */
   async createInferenceEndpointJob(
     organizationName: string,
     inferenceEndpointName: string,
-    body: CreateInferenceEndpointJob,
+    body: CreateInferenceEndpointJob1,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJob>> {
     const request = new RequestBuilder()
@@ -158,7 +168,8 @@ export class InferenceEndpointsService extends BaseService {
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs')
-      .setRequestSchema(createInferenceEndpointJobRequest)
+      .setRequestSchema(createInferenceEndpointJob1Request)
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: inferenceEndpointJobResponse,
@@ -183,11 +194,12 @@ export class InferenceEndpointsService extends BaseService {
   }
 
   /**
-   * Retrieves a job in an inference endpoint
+   * Gets an inference endpoint job.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
-   * @param {string} inferenceEndpointName - The unique inference endpoint name
-   * @param {string} inferenceEndpointJobId - The unique job id
-   * @returns {Promise<HttpResponse<InferenceEndpointJob>>} Ok
+   * @param {string} inferenceEndpointName - The inference endpoint name.
+   * @param {string} inferenceEndpointJobId - The inference endpoint job identifier.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<InferenceEndpointJob>>} OK
    */
   async getInferenceEndpointJob(
     organizationName: string,
@@ -203,6 +215,7 @@ export class InferenceEndpointsService extends BaseService {
         '/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs/{inference_endpoint_job_id}',
       )
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: inferenceEndpointJobResponse,
@@ -229,13 +242,14 @@ export class InferenceEndpointsService extends BaseService {
   }
 
   /**
-   * Deletes an inference endpoint job
+   * Cancels an inference endpoint job.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
-   * @param {string} inferenceEndpointName - The unique inference endpoint name
-   * @param {string} inferenceEndpointJobId - The unique job id
+   * @param {string} inferenceEndpointName - The inference endpoint name.
+   * @param {string} inferenceEndpointJobId - The inference endpoint job identifier.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
-  async deleteInferenceEndpointJob(
+  async cancelInferenceEndpointJob(
     organizationName: string,
     inferenceEndpointName: string,
     inferenceEndpointJobId: string,
@@ -249,6 +263,7 @@ export class InferenceEndpointsService extends BaseService {
         '/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs/{inference_endpoint_job_id}',
       )
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: z.undefined(),

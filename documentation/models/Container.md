@@ -14,6 +14,7 @@ Represents a container
 | hash                 | string                        | ❌       |                                              |
 | environmentVariables | any                           | ❌       |                                              |
 | logging              | ContainerLogging              | ❌       |                                              |
+| imageCaching         | boolean                       | ❌       |                                              |
 
 # ContainerLogging
 

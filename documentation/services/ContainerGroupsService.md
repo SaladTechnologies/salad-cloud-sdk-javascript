@@ -45,7 +45,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.containerGroups.listContainerGroups('o9lnd3c1w-4b', 'c9jr');
+  const { data } = await saladCloudSdk.containerGroups.listContainerGroups('acme-corp', 'dev-env');
 
   console.log(data);
 })();
@@ -60,11 +60,11 @@ Creates a new container group
 
 **Parameters**
 
-| Name             | Type                                                      | Required | Description                                                                                                                                                                                                                                         |
-| :--------------- | :-------------------------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| body             | [CreateContainerGroup](../models/CreateContainerGroup.md) | ✅       | The request body.                                                                                                                                                                                                                                   |
-| organizationName | string                                                    | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
-| projectName      | string                                                    | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
+| Name             | Type                                                        | Required | Description                                                                                                                                                                                                                                         |
+| :--------------- | :---------------------------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| body             | [CreateContainerGroup1](../models/CreateContainerGroup1.md) | ✅       | The request body.                                                                                                                                                                                                                                   |
+| organizationName | string                                                      | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| projectName      | string                                                      | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
 
 **Return Type**
 
@@ -81,7 +81,7 @@ import {
   ContainerRestartPolicy,
   CountryCode,
   CreateContainer,
-  CreateContainerGroup,
+  CreateContainerGroup1,
   CreateContainerGroupNetworking,
   QueueAutoscaler,
   SaladCloudSdk,
@@ -94,9 +94,9 @@ import {
 
   const containerResourceRequirements: ContainerResourceRequirements = {
     cpu: 10,
-    memory: 9057,
+    memory: 29502,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 34911830561,
+    storageAmount: 51853945393,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
@@ -130,7 +130,7 @@ import {
 
   const loggingTcp2: LoggingTcp2 = {
     host: 'host',
-    port: 32723,
+    port: 54872,
   };
 
   const httpFormat2 = HttpFormat2.JSON;
@@ -144,7 +144,7 @@ import {
 
   const loggingHttp2: LoggingHttp2 = {
     host: 'host',
-    port: 51830,
+    port: 25132,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -201,6 +201,7 @@ import {
     environmentVariables: [],
     logging: createContainerLogging,
     registryAuthentication: createContainerRegistryAuthentication,
+    imageCaching: true,
   };
 
   const containerRestartPolicy = ContainerRestartPolicy.ALWAYS;
@@ -213,7 +214,7 @@ import {
 
   const createContainerGroupNetworking: CreateContainerGroupNetworking = {
     protocol: containerNetworkingProtocol,
-    port: 4465,
+    port: 59112,
     auth: true,
     loadBalancer: createContainerGroupNetworkingLoadBalancer,
     singleConnectionLimit: true,
@@ -222,7 +223,7 @@ import {
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 993,
+    port: 46052,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -234,14 +235,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 64175,
+    port: 8979,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 8441,
+    port: 38888,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -253,7 +254,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 8,
+    initialDelaySeconds: 6,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -265,7 +266,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 10,
+    initialDelaySeconds: 8,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -277,7 +278,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 7,
+    initialDelaySeconds: 1,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
@@ -286,26 +287,26 @@ import {
 
   const containerGroupQueueConnection: ContainerGroupQueueConnection = {
     path: 'path',
-    port: 43154,
-    queueName: 'oujbls0vsz6xilo12xl52y9c178cmdya6ykpby-hunb0b6s7s2mppfvzd5f4e',
+    port: 3912,
+    queueName: 'dyhhnzdc345revreliict4850bfesqznhccmp434osb2nms0izyhne-3b96ot',
   };
 
   const queueAutoscaler: QueueAutoscaler = {
-    minReplicas: 41,
-    maxReplicas: 135,
-    desiredQueueLength: 51,
-    pollingPeriod: 188,
-    maxUpscalePerMinute: 30,
-    maxDownscalePerMinute: 42,
+    minReplicas: 4,
+    maxReplicas: 188,
+    desiredQueueLength: 55,
+    pollingPeriod: 1254,
+    maxUpscalePerMinute: 49,
+    maxDownscalePerMinute: 43,
   };
 
-  const createContainerGroup: CreateContainerGroup = {
+  const createContainerGroup1: CreateContainerGroup1 = {
     name: 'name',
-    displayName: 'hfR',
+    displayName: 'pm.JXYB1Gf',
     container: createContainer,
     autostartPolicy: true,
     restartPolicy: containerRestartPolicy,
-    replicas: 169,
+    replicas: 23,
     countryCodes: [countryCode],
     networking: createContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -316,9 +317,9 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.createContainerGroup(
-    'o9lnd3c1w-4b',
-    'c9jr',
-    createContainerGroup,
+    'acme-corp',
+    'dev-env',
+    createContainerGroup1,
   );
 
   console.log(data);
@@ -355,9 +356,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.getContainerGroup(
-    'mk0yct7b8bo1g8tvl9',
-    'ax4qyju9jcnr3fw8e9al8o-4oreg5ocaz2jbu5pfmpygxffsf4bh4e6',
-    'dzh9lv6afpamv8cx0x6',
+    'acme-corp',
+    'dev-env',
+    'ajab1nydcnlz73jmjvon',
   );
 
   console.log(data);
@@ -373,12 +374,12 @@ Updates a container group
 
 **Parameters**
 
-| Name               | Type                                                      | Required | Description                                                                                                                                                                                                                                         |
-| :----------------- | :-------------------------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| body               | [UpdateContainerGroup](../models/UpdateContainerGroup.md) | ✅       | The request body.                                                                                                                                                                                                                                   |
-| organizationName   | string                                                    | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
-| projectName        | string                                                    | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
-| containerGroupName | string                                                    | ✅       | The unique container group name                                                                                                                                                                                                                     |
+| Name               | Type                                                        | Required | Description                                                                                                                                                                                                                                         |
+| :----------------- | :---------------------------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| body               | [UpdateContainerGroup1](../models/UpdateContainerGroup1.md) | ✅       | The request body.                                                                                                                                                                                                                                   |
+| organizationName   | string                                                      | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| projectName        | string                                                      | ✅       | Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.                                                                                                                  |
+| containerGroupName | string                                                      | ✅       | The unique container group name                                                                                                                                                                                                                     |
 
 **Return Type**
 
@@ -395,7 +396,7 @@ import {
   QueueAutoscaler,
   SaladCloudSdk,
   UpdateContainer,
-  UpdateContainerGroup,
+  UpdateContainerGroup1,
   UpdateContainerGroupNetworking,
 } from '@saladtechnologies-oss/salad-cloud-sdk';
 
@@ -405,10 +406,10 @@ import {
   });
 
   const resources: Resources = {
-    cpu: 12,
-    memory: 16671,
+    cpu: 15,
+    memory: 18239,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 47892181137,
+    storageAmount: 7225564458,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
@@ -442,7 +443,7 @@ import {
 
   const loggingTcp3: LoggingTcp3 = {
     host: 'host',
-    port: 4071,
+    port: 33781,
   };
 
   const httpFormat3 = HttpFormat3.JSON;
@@ -456,7 +457,7 @@ import {
 
   const loggingHttp3: LoggingHttp3 = {
     host: 'host',
-    port: 52384,
+    port: 51761,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -513,16 +514,17 @@ import {
     environmentVariables: [],
     logging: updateContainerLogging,
     registryAuthentication: updateContainerRegistryAuthentication,
+    imageCaching: true,
   };
 
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 49186,
+    port: 52138,
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 993,
+    port: 46052,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -534,14 +536,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 64175,
+    port: 8979,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 8441,
+    port: 38888,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -553,7 +555,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 8,
+    initialDelaySeconds: 6,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -565,7 +567,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 10,
+    initialDelaySeconds: 8,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -577,7 +579,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 7,
+    initialDelaySeconds: 1,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
@@ -585,18 +587,18 @@ import {
   };
 
   const queueAutoscaler: QueueAutoscaler = {
-    minReplicas: 41,
-    maxReplicas: 135,
-    desiredQueueLength: 51,
-    pollingPeriod: 188,
-    maxUpscalePerMinute: 30,
-    maxDownscalePerMinute: 42,
+    minReplicas: 4,
+    maxReplicas: 188,
+    desiredQueueLength: 55,
+    pollingPeriod: 1254,
+    maxUpscalePerMinute: 49,
+    maxDownscalePerMinute: 43,
   };
 
-  const updateContainerGroup: UpdateContainerGroup = {
-    displayName: 'hx6nAEIR',
+  const updateContainerGroup1: UpdateContainerGroup1 = {
+    displayName: 'EN-BH,M',
     container: updateContainer,
-    replicas: 90,
+    replicas: 395,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -606,10 +608,10 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroup(
-    'mk0yct7b8bo1g8tvl9',
-    'ax4qyju9jcnr3fw8e9al8o-4oreg5ocaz2jbu5pfmpygxffsf4bh4e6',
-    'dzh9lv6afpamv8cx0x6',
-    updateContainerGroup,
+    'acme-corp',
+    'dev-env',
+    'ajab1nydcnlz73jmjvon',
+    updateContainerGroup1,
   );
 
   console.log(data);
@@ -642,9 +644,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.deleteContainerGroup(
-    'mk0yct7b8bo1g8tvl9',
-    'ax4qyju9jcnr3fw8e9al8o-4oreg5ocaz2jbu5pfmpygxffsf4bh4e6',
-    'dzh9lv6afpamv8cx0x6',
+    'acme-corp',
+    'dev-env',
+    'ajab1nydcnlz73jmjvon',
   );
 
   console.log(data);
@@ -677,9 +679,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.startContainerGroup(
-    'vrwopvwr-1961g-m85nbqda3ufsy',
-    'm780t45z2tw4xt1b86w0clx6u',
-    'h-405x811v32aty9s-ghx1hm2nw1m',
+    'acme-corp',
+    'dev-env',
+    'zq611igeuz4vzlgldd4a',
   );
 
   console.log(data);
@@ -712,9 +714,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.stopContainerGroup(
-    'fooidhvnhwad',
-    'azuh19krhv62or5c-im9-8sae7tz',
-    'oo0emyztq64o8ut710qtepjztx34mk6lruecseiyq06ab3ok5xsg-okxar',
+    'acme-corp',
+    'dev-env',
+    'ua6dqdktbd1fxt2p5a6kl1j8t7v4h',
   );
 
   console.log(data);
@@ -751,9 +753,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.listContainerGroupInstances(
-    'y7y892q4m5rifzmevenpg1u',
-    'k8xgbal184sloim-c7555huym18dia9d-gb',
-    'opn2qgtohqud110sou2jqi50g1umdxtc9fte8n',
+    'acme-corp',
+    'dev-env',
+    'cxmy53wgq8mpuy5k2wfbbzlhws5edt3sjekvug6abtk-ewjq1594j27m5',
   );
 
   console.log(data);
@@ -791,9 +793,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.getContainerGroupInstance(
-    'z-5ux2vsm',
-    'mjjt13u7q3pryx',
-    'qnnyigut20zp1dyfm2yp4-lw',
+    'acme-corp',
+    'dev-env',
+    'fqikj9f18pdqxq52i317o1',
     'container_group_instance_id',
   );
 
@@ -828,9 +830,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.reallocateContainerGroupInstance(
-    'a7tl0fwms3fu3myo74a99jr6ouv4w914sp420zyiuo43jexn',
-    'czq6rnxf04dqmccakh',
-    'k9g3a72svbjzx0y-i4o1cvulgdrylaujk1yrzfoq1',
+    'acme-corp',
+    'dev-env',
+    'mpje-v4-ccp8q-329szw31h4fee237cnffybnugpd7nbngs47jne2vq5j0d1',
     'container_group_instance_id',
   );
 
@@ -865,9 +867,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.recreateContainerGroupInstance(
-    'l7wk9jgwxjp56dzbnwtbgowklqt1wsbe00osnj3370c21vihvroq1cuqjb',
-    'g-0jo001xz6w2uhgmhtgvpqzhztmaqawqn92-rig0bznv-21cb7s',
-    'ghp2ecbvldrihtmaa78lqy5q1wdpi7ayf187etvt65ezckogou9lhenou1q2jx',
+    'acme-corp',
+    'dev-env',
+    'if21ex5ozb1-4j-you0d7uftlpfgcaqa-2oc58y844m0nepqhlkk',
     'container_group_instance_id',
   );
 
@@ -902,9 +904,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.restartContainerGroupInstance(
-    'ogx1pei8lousb7ikadj659qttkrqdm5b9xdq',
-    'cmet9ioqxf-a3suyfz4tkhle7s9-vpaj7uvpjx9jbtvwzjwvj900',
-    'bqh9-1g8glb2305o-txbnrdvt2jc9nvk5fkdf18q9zdv3',
+    'acme-corp',
+    'dev-env',
+    'ea39h5t',
     'container_group_instance_id',
   );
 

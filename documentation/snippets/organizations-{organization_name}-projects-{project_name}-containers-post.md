@@ -7,7 +7,7 @@ import {
   ContainerRestartPolicy,
   CountryCode,
   CreateContainer,
-  CreateContainerGroup,
+  CreateContainerGroup1,
   CreateContainerGroupNetworking,
   QueueAutoscaler,
   SaladCloudSdk,
@@ -20,9 +20,9 @@ import {
 
   const containerResourceRequirements: ContainerResourceRequirements = {
     cpu: 10,
-    memory: 9057,
+    memory: 29502,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 34911830561,
+    storageAmount: 51853945393,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
@@ -56,7 +56,7 @@ import {
 
   const loggingTcp2: LoggingTcp2 = {
     host: 'host',
-    port: 32723,
+    port: 54872,
   };
 
   const httpFormat2 = HttpFormat2.JSON;
@@ -70,7 +70,7 @@ import {
 
   const loggingHttp2: LoggingHttp2 = {
     host: 'host',
-    port: 51830,
+    port: 25132,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -127,6 +127,7 @@ import {
     environmentVariables: [],
     logging: createContainerLogging,
     registryAuthentication: createContainerRegistryAuthentication,
+    imageCaching: true,
   };
 
   const containerRestartPolicy = ContainerRestartPolicy.ALWAYS;
@@ -139,7 +140,7 @@ import {
 
   const createContainerGroupNetworking: CreateContainerGroupNetworking = {
     protocol: containerNetworkingProtocol,
-    port: 4465,
+    port: 59112,
     auth: true,
     loadBalancer: createContainerGroupNetworkingLoadBalancer,
     singleConnectionLimit: true,
@@ -148,7 +149,7 @@ import {
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 993,
+    port: 46052,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -160,14 +161,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 64175,
+    port: 8979,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 8441,
+    port: 38888,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -179,7 +180,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 8,
+    initialDelaySeconds: 6,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -191,7 +192,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 10,
+    initialDelaySeconds: 8,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -203,7 +204,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 7,
+    initialDelaySeconds: 1,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
@@ -212,26 +213,26 @@ import {
 
   const containerGroupQueueConnection: ContainerGroupQueueConnection = {
     path: 'path',
-    port: 43154,
-    queueName: 'oujbls0vsz6xilo12xl52y9c178cmdya6ykpby-hunb0b6s7s2mppfvzd5f4e',
+    port: 3912,
+    queueName: 'dyhhnzdc345revreliict4850bfesqznhccmp434osb2nms0izyhne-3b96ot',
   };
 
   const queueAutoscaler: QueueAutoscaler = {
-    minReplicas: 41,
-    maxReplicas: 135,
-    desiredQueueLength: 51,
-    pollingPeriod: 188,
-    maxUpscalePerMinute: 30,
-    maxDownscalePerMinute: 42,
+    minReplicas: 4,
+    maxReplicas: 188,
+    desiredQueueLength: 55,
+    pollingPeriod: 1254,
+    maxUpscalePerMinute: 49,
+    maxDownscalePerMinute: 43,
   };
 
-  const createContainerGroup: CreateContainerGroup = {
+  const createContainerGroup1: CreateContainerGroup1 = {
     name: 'name',
-    displayName: 'hfR',
+    displayName: 'pm.JXYB1Gf',
     container: createContainer,
     autostartPolicy: true,
     restartPolicy: containerRestartPolicy,
-    replicas: 169,
+    replicas: 23,
     countryCodes: [countryCode],
     networking: createContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -242,9 +243,9 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.createContainerGroup(
-    'o9lnd3c1w-4b',
-    'c9jr',
-    createContainerGroup,
+    'acme-corp',
+    'dev-env',
+    createContainerGroup1,
   );
 
   console.log(data);

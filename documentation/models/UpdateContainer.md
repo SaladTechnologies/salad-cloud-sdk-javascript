@@ -13,6 +13,7 @@ Represents an update container object
 | environmentVariables   | any                                   | ❌       |                                                                                                  |
 | logging                | UpdateContainerLogging                | ❌       |                                                                                                  |
 | registryAuthentication | UpdateContainerRegistryAuthentication | ❌       |                                                                                                  |
+| imageCaching           | boolean                               | ❌       |                                                                                                  |
 
 # Resources
 

@@ -13,7 +13,7 @@ export const queueJobEvent = z.lazy(() => {
 /**
  * Represents an event for queue job
  * @typedef  {QueueJobEvent} queueJobEvent - Represents an event for queue job - Represents an event for queue job
- * @property {QueueJobEventAction}
+ * @property {Action}
  * @property {string}
  */
 export type QueueJobEvent = z.infer<typeof queueJobEvent>;
