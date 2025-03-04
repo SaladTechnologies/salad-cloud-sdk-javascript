@@ -13,6 +13,7 @@ Represents a container
 | environmentVariables   | any                                   | ❌       |                                                                                                  |
 | logging                | CreateContainerLogging                | ❌       |                                                                                                  |
 | registryAuthentication | CreateContainerRegistryAuthentication | ❌       |                                                                                                  |
+| imageCaching           | boolean                               | ❌       |                                                                                                  |
 
 # CreateContainerLogging
 

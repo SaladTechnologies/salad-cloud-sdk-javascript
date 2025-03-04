@@ -7,7 +7,7 @@ import {
   QueueAutoscaler,
   SaladCloudSdk,
   UpdateContainer,
-  UpdateContainerGroup,
+  UpdateContainerGroup1,
   UpdateContainerGroupNetworking,
 } from '@saladtechnologies-oss/salad-cloud-sdk';
 
@@ -17,10 +17,10 @@ import {
   });
 
   const resources: Resources = {
-    cpu: 12,
-    memory: 16671,
+    cpu: 15,
+    memory: 18239,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 47892181137,
+    storageAmount: 7225564458,
   };
 
   const containerGroupPriority = ContainerGroupPriority.HIGH;
@@ -54,7 +54,7 @@ import {
 
   const loggingTcp3: LoggingTcp3 = {
     host: 'host',
-    port: 4071,
+    port: 33781,
   };
 
   const httpFormat3 = HttpFormat3.JSON;
@@ -68,7 +68,7 @@ import {
 
   const loggingHttp3: LoggingHttp3 = {
     host: 'host',
-    port: 52384,
+    port: 51761,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -125,16 +125,17 @@ import {
     environmentVariables: [],
     logging: updateContainerLogging,
     registryAuthentication: updateContainerRegistryAuthentication,
+    imageCaching: true,
   };
 
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 49186,
+    port: 52138,
   };
 
   const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 993,
+    port: 46052,
   };
 
   const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
@@ -146,14 +147,14 @@ import {
 
   const containerGroupProbeHttp: ContainerGroupProbeHttp = {
     path: 'path',
-    port: 64175,
+    port: 8979,
     scheme: containerProbeHttpScheme,
     headers: [containerGroupProbeHttpHeaders2],
   };
 
   const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
     service: 'service',
-    port: 8441,
+    port: 38888,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -165,7 +166,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 8,
+    initialDelaySeconds: 6,
     periodSeconds: 10,
     timeoutSeconds: 30,
     successThreshold: 1,
@@ -177,7 +178,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 10,
+    initialDelaySeconds: 8,
     periodSeconds: 1,
     timeoutSeconds: 1,
     successThreshold: 1,
@@ -189,7 +190,7 @@ import {
     http: containerGroupProbeHttp,
     grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 7,
+    initialDelaySeconds: 1,
     periodSeconds: 3,
     timeoutSeconds: 10,
     successThreshold: 2,
@@ -197,18 +198,18 @@ import {
   };
 
   const queueAutoscaler: QueueAutoscaler = {
-    minReplicas: 41,
-    maxReplicas: 135,
-    desiredQueueLength: 51,
-    pollingPeriod: 188,
-    maxUpscalePerMinute: 30,
-    maxDownscalePerMinute: 42,
+    minReplicas: 4,
+    maxReplicas: 188,
+    desiredQueueLength: 55,
+    pollingPeriod: 1254,
+    maxUpscalePerMinute: 49,
+    maxDownscalePerMinute: 43,
   };
 
-  const updateContainerGroup: UpdateContainerGroup = {
-    displayName: 'hx6nAEIR',
+  const updateContainerGroup1: UpdateContainerGroup1 = {
+    displayName: 'EN-BH,M',
     container: updateContainer,
-    replicas: 90,
+    replicas: 395,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -218,10 +219,10 @@ import {
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroup(
-    'mk0yct7b8bo1g8tvl9',
-    'ax4qyju9jcnr3fw8e9al8o-4oreg5ocaz2jbu5pfmpygxffsf4bh4e6',
-    'dzh9lv6afpamv8cx0x6',
-    updateContainerGroup,
+    'acme-corp',
+    'dev-env',
+    'ajab1nydcnlz73jmjvon',
+    updateContainerGroup1,
   );
 
   console.log(data);

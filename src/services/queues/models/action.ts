@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-export enum InferenceEndpointJobStatus {
-  PENDING = 'pending',
-  RUNNING = 'running',
+export enum Action {
+  CREATED = 'created',
+  STARTED = 'started',
   SUCCEEDED = 'succeeded',
   CANCELLED = 'cancelled',
   FAILED = 'failed',

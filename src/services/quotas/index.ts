@@ -1,2 +1,2 @@
-export { QuotasService } from './quotas';
+export { QuotasService } from './quotas-service';
 export * from './models';

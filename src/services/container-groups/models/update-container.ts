@@ -23,6 +23,7 @@ export const updateContainer = z.lazy(() => {
     environmentVariables: z.any().optional(),
     logging: updateContainerLogging.optional().nullable(),
     registryAuthentication: updateContainerRegistryAuthentication.optional().nullable(),
+    imageCaching: z.boolean().optional(),
   });
 });
 
@@ -36,6 +37,7 @@ export const updateContainer = z.lazy(() => {
  * @property {any}
  * @property {UpdateContainerLogging}
  * @property {UpdateContainerRegistryAuthentication}
+ * @property {boolean}
  */
 export type UpdateContainer = z.infer<typeof updateContainer>;
 
@@ -53,6 +55,7 @@ export const updateContainerResponse = z.lazy(() => {
       environment_variables: z.any().optional(),
       logging: updateContainerLoggingResponse.optional().nullable(),
       registry_authentication: updateContainerRegistryAuthenticationResponse.optional().nullable(),
+      image_caching: z.boolean().optional(),
     })
     .transform((data) => ({
       image: data['image'],
@@ -62,6 +65,7 @@ export const updateContainerResponse = z.lazy(() => {
       environmentVariables: data['environment_variables'],
       logging: data['logging'],
       registryAuthentication: data['registry_authentication'],
+      imageCaching: data['image_caching'],
     }));
 });
 
@@ -79,6 +83,7 @@ export const updateContainerRequest = z.lazy(() => {
       environmentVariables: z.any().nullish(),
       logging: updateContainerLoggingRequest.nullish(),
       registryAuthentication: updateContainerRegistryAuthenticationRequest.nullish(),
+      imageCaching: z.boolean().nullish(),
     })
     .transform((data) => ({
       image: data['image'],
@@ -88,5 +93,6 @@ export const updateContainerRequest = z.lazy(() => {
       environment_variables: data['environmentVariables'],
       logging: data['logging'],
       registry_authentication: data['registryAuthentication'],
+      image_caching: data['imageCaching'],
     }));
 });

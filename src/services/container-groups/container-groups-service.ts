@@ -4,9 +4,9 @@ import { ContentType, HttpResponse, RequestConfig } from '../../http/types';
 import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
 import { ContainerGroupList, containerGroupListResponse } from './models/container-group-list';
-import { CreateContainerGroup, createContainerGroupRequest } from './models/create-container-group';
+import { CreateContainerGroup1, createContainerGroup1Request } from './models/create-container-group-1';
 import { ContainerGroup, containerGroupResponse } from '../common/container-group';
-import { UpdateContainerGroup, updateContainerGroupRequest } from './models/update-container-group';
+import { UpdateContainerGroup1, updateContainerGroup1Request } from './models/update-container-group-1';
 import { ContainerGroupInstances, containerGroupInstancesResponse } from './models/container-group-instances';
 import { ContainerGroupInstance, containerGroupInstanceResponse } from './models/container-group-instance';
 
@@ -15,6 +15,7 @@ export class ContainerGroupsService extends BaseService {
    * Gets the list of container groups
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<ContainerGroupList>>} OK
    */
   async listContainerGroups(
@@ -28,6 +29,7 @@ export class ContainerGroupsService extends BaseService {
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: containerGroupListResponse,
@@ -53,12 +55,13 @@ export class ContainerGroupsService extends BaseService {
    * Creates a new container group
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<ContainerGroup>>} Created
    */
   async createContainerGroup(
     organizationName: string,
     projectName: string,
-    body: CreateContainerGroup,
+    body: CreateContainerGroup1,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroup>> {
     const request = new RequestBuilder()
@@ -66,7 +69,8 @@ export class ContainerGroupsService extends BaseService {
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers')
-      .setRequestSchema(createContainerGroupRequest)
+      .setRequestSchema(createContainerGroup1Request)
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: containerGroupResponse,
@@ -95,6 +99,7 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<ContainerGroup>>} OK
    */
   async getContainerGroup(
@@ -109,6 +114,7 @@ export class ContainerGroupsService extends BaseService {
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: containerGroupResponse,
@@ -139,13 +145,14 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<ContainerGroup>>} OK
    */
   async updateContainerGroup(
     organizationName: string,
     projectName: string,
     containerGroupName: string,
-    body: UpdateContainerGroup,
+    body: UpdateContainerGroup1,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContainerGroup>> {
     const request = new RequestBuilder()
@@ -153,7 +160,8 @@ export class ContainerGroupsService extends BaseService {
       .setConfig(this.config)
       .setMethod('PATCH')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}')
-      .setRequestSchema(updateContainerGroupRequest)
+      .setRequestSchema(updateContainerGroup1Request)
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: containerGroupResponse,
@@ -186,6 +194,7 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
   async deleteContainerGroup(
@@ -200,6 +209,7 @@ export class ContainerGroupsService extends BaseService {
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: z.undefined(),
@@ -230,6 +240,7 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
   async startContainerGroup(
@@ -244,6 +255,7 @@ export class ContainerGroupsService extends BaseService {
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/start')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: z.undefined(),
@@ -274,6 +286,7 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
   async stopContainerGroup(
@@ -288,6 +301,7 @@ export class ContainerGroupsService extends BaseService {
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/stop')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: z.undefined(),
@@ -318,6 +332,7 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<ContainerGroupInstances>>} OK
    */
   async listContainerGroupInstances(
@@ -332,6 +347,7 @@ export class ContainerGroupsService extends BaseService {
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances')
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: containerGroupInstancesResponse,
@@ -363,6 +379,7 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique instance identifier
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<ContainerGroupInstance>>} OK
    */
   async getContainerGroupInstance(
@@ -380,6 +397,7 @@ export class ContainerGroupsService extends BaseService {
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}',
       )
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: containerGroupInstanceResponse,
@@ -415,6 +433,7 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique instance identifier
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
   async reallocateContainerGroupInstance(
@@ -432,6 +451,7 @@ export class ContainerGroupsService extends BaseService {
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}/reallocate',
       )
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: z.undefined(),
@@ -467,6 +487,7 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique instance identifier
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
   async recreateContainerGroupInstance(
@@ -484,6 +505,7 @@ export class ContainerGroupsService extends BaseService {
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}/recreate',
       )
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: z.undefined(),
@@ -519,6 +541,7 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique instance identifier
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
   async restartContainerGroupInstance(
@@ -536,6 +559,7 @@ export class ContainerGroupsService extends BaseService {
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/instances/{container_group_instance_id}/restart',
       )
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: z.undefined(),

@@ -1,2 +1,2 @@
-export { WorkloadErrorsService } from './workload-errors';
+export { WorkloadErrorsService } from './workload-errors-service';
 export * from './models';

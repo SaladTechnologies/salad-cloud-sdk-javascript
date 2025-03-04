@@ -7,9 +7,9 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   });
 
   const { data } = await saladCloudSdk.containerGroups.reallocateContainerGroupInstance(
-    'a7tl0fwms3fu3myo74a99jr6ouv4w914sp420zyiuo43jexn',
-    'czq6rnxf04dqmccakh',
-    'k9g3a72svbjzx0y-i4o1cvulgdrylaujk1yrzfoq1',
+    'acme-corp',
+    'dev-env',
+    'mpje-v4-ccp8q-329szw31h4fee237cnffybnugpd7nbngs47jne2vq5j0d1',
     'container_group_instance_id',
   );
 

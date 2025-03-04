@@ -7,7 +7,6 @@ import { CustomHook } from './hooks/custom-hook';
 import { TerminatingHandler } from './handlers/terminating-handler';
 import { RetryHandler } from './handlers/retry-handler';
 import { Request } from './transport/request';
-import { AuthHandler } from './handlers/auth-handler';
 
 export class HttpClient {
   private readonly requestHandlerChain = new RequestHandlerChain();
@@ -18,7 +17,6 @@ export class HttpClient {
   ) {
     this.requestHandlerChain.addHandler(new ResponseValidationHandler());
     this.requestHandlerChain.addHandler(new RequestValidationHandler());
-    this.requestHandlerChain.addHandler(new AuthHandler());
     this.requestHandlerChain.addHandler(new RetryHandler());
     this.requestHandlerChain.addHandler(new HookHandler(hook));
     this.requestHandlerChain.addHandler(new TerminatingHandler());

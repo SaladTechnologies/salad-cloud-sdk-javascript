@@ -1,6 +1,6 @@
 export type { ContainerGroupList } from './container-group-list';
-export type { CreateContainerGroup } from './create-container-group';
-export type { UpdateContainerGroup } from './update-container-group';
+export type { CreateContainerGroup1 } from './create-container-group-1';
+export type { UpdateContainerGroup1 } from './update-container-group-1';
 export type { ContainerGroupInstances } from './container-group-instances';
 export type { ContainerGroupInstance } from './container-group-instance';
 export type { CreateContainer } from './create-container';

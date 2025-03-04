@@ -11,13 +11,22 @@ import {
 export const inferenceEndpointJob = z.lazy(() => {
   return z.object({
     id: z.string(),
+    inferenceEndpointName: z
+      .string()
+      .min(2)
+      .max(63)
+      .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+    organizationName: z
+      .string()
+      .min(2)
+      .max(63)
+      .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
     input: z.any(),
-    inferenceEndpointName: z.string(),
-    metadata: z.any().optional().nullable(),
-    webhook: z.string().optional().nullable(),
+    metadata: z.any().optional(),
+    webhook: z.string().optional(),
+    webhookUrl: z.string().optional(),
     status: z.string(),
     events: z.array(inferenceEndpointJobEvent).max(1000),
-    organizationName: z.string(),
     output: z.any().optional(),
     createTime: z.string(),
     updateTime: z.string(),
@@ -27,17 +36,18 @@ export const inferenceEndpointJob = z.lazy(() => {
 /**
  * Represents a inference endpoint job
  * @typedef  {InferenceEndpointJob} inferenceEndpointJob - Represents a inference endpoint job - Represents a inference endpoint job
- * @property {string}
+ * @property {string} - The inference endpoint job identifier.
+ * @property {string} - The inference endpoint name.
+ * @property {string} - The organization name.
  * @property {any} - The job input. May be any valid JSON.
- * @property {string} - The inference endpoint name
- * @property {any}
- * @property {string}
- * @property {InferenceEndpointJobStatus}
- * @property {InferenceEndpointJobEvent[]}
- * @property {string} - The organization name
+ * @property {any} - The job metadata. May be any valid JSON.
+ * @property {string} - The webhook URL called when the job completes.
+ * @property {string} - The webhook URL called when the job completes.
+ * @property {Status} - The current status.
+ * @property {InferenceEndpointJobEvent[]} - The list of events.
  * @property {any} - The job output. May be any valid JSON.
- * @property {string}
- * @property {string}
+ * @property {string} - The time the job was created.
+ * @property {string} - The time the job was last updated.
  */
 export type InferenceEndpointJob = z.infer<typeof inferenceEndpointJob>;
 
@@ -49,26 +59,36 @@ export const inferenceEndpointJobResponse = z.lazy(() => {
   return z
     .object({
       id: z.string(),
+      inference_endpoint_name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+      organization_name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
       input: z.any(),
-      inference_endpoint_name: z.string(),
-      metadata: z.any().optional().nullable(),
-      webhook: z.string().optional().nullable(),
+      metadata: z.any().optional(),
+      webhook: z.string().optional(),
+      webhook_url: z.string().optional(),
       status: z.string(),
       events: z.array(inferenceEndpointJobEventResponse).max(1000),
-      organization_name: z.string(),
       output: z.any().optional(),
       create_time: z.string(),
       update_time: z.string(),
     })
     .transform((data) => ({
       id: data['id'],
-      input: data['input'],
       inferenceEndpointName: data['inference_endpoint_name'],
+      organizationName: data['organization_name'],
+      input: data['input'],
       metadata: data['metadata'],
       webhook: data['webhook'],
+      webhookUrl: data['webhook_url'],
       status: data['status'],
       events: data['events'],
-      organizationName: data['organization_name'],
       output: data['output'],
       createTime: data['create_time'],
       updateTime: data['update_time'],
@@ -83,26 +103,28 @@ export const inferenceEndpointJobRequest = z.lazy(() => {
   return z
     .object({
       id: z.string().nullish(),
-      input: z.any().nullish(),
       inferenceEndpointName: z.string().nullish(),
+      organizationName: z.string().nullish(),
+      input: z.any().nullish(),
       metadata: z.any().nullish(),
       webhook: z.string().nullish(),
+      webhookUrl: z.string().nullish(),
       status: z.string().nullish(),
       events: z.array(inferenceEndpointJobEventRequest).nullish(),
-      organizationName: z.string().nullish(),
       output: z.any().nullish(),
       createTime: z.string().nullish(),
       updateTime: z.string().nullish(),
     })
     .transform((data) => ({
       id: data['id'],
-      input: data['input'],
       inference_endpoint_name: data['inferenceEndpointName'],
+      organization_name: data['organizationName'],
+      input: data['input'],
       metadata: data['metadata'],
       webhook: data['webhook'],
+      webhook_url: data['webhookUrl'],
       status: data['status'],
       events: data['events'],
-      organization_name: data['organizationName'],
       output: data['output'],
       create_time: data['createTime'],
       update_time: data['updateTime'],

@@ -6,10 +6,10 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.inferenceEndpoints.deleteInferenceEndpointJob(
-    'igqfe6b1d0c-0auqqph3bt-7bft4c1m95idut36tc-x7mo2nsh7uoln',
-    'inference_endpoint_name',
-    'inference_endpoint_job_id',
+  const { data } = await saladCloudSdk.inferenceEndpoints.cancelInferenceEndpointJob(
+    'acme-corp',
+    'transcribe',
+    '2fc459a1-1c09-4a34-ade7-54d03fc51d6a',
   );
 
   console.log(data);

@@ -1,2 +1,2 @@
-export { SystemLogsService } from './system-logs';
+export { SystemLogsService } from './system-logs-service';
 export * from './models';

@@ -11,6 +11,7 @@ export class SystemLogsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
+   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<SystemLogList>>} OK
    */
   async getSystemLogs(
@@ -27,6 +28,7 @@ export class SystemLogsService extends BaseService {
         '/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/system-logs',
       )
       .setRequestSchema(z.any())
+      .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
         schema: systemLogListResponse,

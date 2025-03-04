@@ -1,6 +1,6 @@
-# CreateInferenceEndpointJob
+# CreateQueueJob1
 
-Represents a request to create a inference endpoint job
+Represents a request to create a queue job
 
 **Properties**
 

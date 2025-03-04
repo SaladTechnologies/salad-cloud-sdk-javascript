@@ -1,22 +1,18 @@
 ```typescript
-import { CreateQueue, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
+import { CreateQueue1, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
 
 (async () => {
   const saladCloudSdk = new SaladCloudSdk({
     apiKey: 'YOUR_API_KEY',
   });
 
-  const createQueue: CreateQueue = {
+  const createQueue1: CreateQueue1 = {
     name: 'name',
-    displayName: 'M a1HEy',
+    displayName: 'aca.cRCnc',
     description: 'description',
   };
 
-  const { data } = await saladCloudSdk.queues.createQueue(
-    'ymfonstzqzsopxf2dyjvm8sjxa281t2p7ne1m',
-    'sxk12v91ajseb3fzyxdaq',
-    createQueue,
-  );
+  const { data } = await saladCloudSdk.queues.createQueue('acme-corp', 'dev-env', createQueue1);
 
   console.log(data);
 })();

@@ -19,6 +19,7 @@ export const container = z.lazy(() => {
     hash: z.string().optional(),
     environmentVariables: z.any().optional(),
     logging: containerLogging.optional().nullable(),
+    imageCaching: z.boolean().optional(),
   });
 });
 
@@ -33,6 +34,7 @@ export const container = z.lazy(() => {
  * @property {string}
  * @property {any}
  * @property {ContainerLogging}
+ * @property {boolean}
  */
 export type Container = z.infer<typeof container>;
 
@@ -51,6 +53,7 @@ export const containerResponse = z.lazy(() => {
       hash: z.string().optional(),
       environment_variables: z.any().optional(),
       logging: containerLoggingResponse.optional().nullable(),
+      image_caching: z.boolean().optional(),
     })
     .transform((data) => ({
       image: data['image'],
@@ -61,6 +64,7 @@ export const containerResponse = z.lazy(() => {
       hash: data['hash'],
       environmentVariables: data['environment_variables'],
       logging: data['logging'],
+      imageCaching: data['image_caching'],
     }));
 });
 
@@ -79,6 +83,7 @@ export const containerRequest = z.lazy(() => {
       hash: z.string().nullish(),
       environmentVariables: z.any().nullish(),
       logging: containerLoggingRequest.nullish(),
+      imageCaching: z.boolean().nullish(),
     })
     .transform((data) => ({
       image: data['image'],
@@ -89,5 +94,6 @@ export const containerRequest = z.lazy(() => {
       hash: data['hash'],
       environment_variables: data['environmentVariables'],
       logging: data['logging'],
+      image_caching: data['imageCaching'],
     }));
 });
