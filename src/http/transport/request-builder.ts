@@ -114,23 +114,6 @@ export class RequestBuilder<Page extends unknown[] = unknown[]> {
     return this;
   }
 
-  addBasicAuth(username?: string, password?: string): RequestBuilder<Page> {
-    if (username === undefined || password === undefined) {
-      return this;
-    }
-
-    this.params.headers.set('Authorization', {
-      key: 'Authorization',
-      value: `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`,
-      explode: false,
-      style: SerializationStyle.SIMPLE,
-      encode: true,
-      isLimit: false,
-      isOffset: false,
-    });
-    return this;
-  }
-
   addApiKeyAuth(apiKey?: string, keyName?: string): RequestBuilder<Page> {
     if (apiKey === undefined) {
       return this;
