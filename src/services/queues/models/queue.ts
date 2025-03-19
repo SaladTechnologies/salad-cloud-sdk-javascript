@@ -17,7 +17,7 @@ export const queue = z.lazy(() => {
       .min(2)
       .max(63)
       .regex(/^[ ,-.0-9A-Za-z]+$/),
-    description: z.string().max(500).optional().nullable(),
+    description: z.string().max(500).regex(/^.*$/).optional(),
     containerGroups: z.array(containerGroup).max(100),
     createTime: z.string(),
     updateTime: z.string(),
@@ -31,7 +31,7 @@ export const queue = z.lazy(() => {
  * @property {string} - The queue name. This must be unique within the project.
  * @property {string} - The display name. This may be used as a more human-readable name.
  * @property {string} - The description. This may be used as a space for notes or other information about the queue.
- * @property {ContainerGroup[]}
+ * @property {ContainerGroup[]} - The container groups that are part of this queue. Each container group represents a scalable set of identical containers running as a distributed service.
  * @property {string} - The date and time the queue was created.
  * @property {string} - The date and time the queue was last updated.
  */
@@ -55,7 +55,7 @@ export const queueResponse = z.lazy(() => {
         .min(2)
         .max(63)
         .regex(/^[ ,-.0-9A-Za-z]+$/),
-      description: z.string().max(500).optional().nullable(),
+      description: z.string().max(500).regex(/^.*$/).optional(),
       container_groups: z.array(containerGroupResponse).max(100),
       create_time: z.string(),
       update_time: z.string(),
@@ -78,13 +78,13 @@ export const queueResponse = z.lazy(() => {
 export const queueRequest = z.lazy(() => {
   return z
     .object({
-      id: z.string().nullish(),
-      name: z.string().nullish(),
-      displayName: z.string().nullish(),
-      description: z.string().nullish(),
-      containerGroups: z.array(containerGroupRequest).nullish(),
-      createTime: z.string().nullish(),
-      updateTime: z.string().nullish(),
+      id: z.string(),
+      name: z.string(),
+      displayName: z.string(),
+      description: z.string().optional(),
+      containerGroups: z.array(containerGroupRequest),
+      createTime: z.string(),
+      updateTime: z.string(),
     })
     .transform((data) => ({
       id: data['id'],

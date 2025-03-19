@@ -5,7 +5,7 @@ import { z } from 'zod';
  */
 export const webhookSecretKey = z.lazy(() => {
   return z.object({
-    secretKey: z.string(),
+    secretKey: z.string().min(8).max(64).regex(/^.*$/),
   });
 });
 
@@ -23,7 +23,7 @@ export type WebhookSecretKey = z.infer<typeof webhookSecretKey>;
 export const webhookSecretKeyResponse = z.lazy(() => {
   return z
     .object({
-      secret_key: z.string(),
+      secret_key: z.string().min(8).max(64).regex(/^.*$/),
     })
     .transform((data) => ({
       secretKey: data['secret_key'],
@@ -35,7 +35,7 @@ export const webhookSecretKeyResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const webhookSecretKeyRequest = z.lazy(() => {
-  return z.object({ secretKey: z.string().nullish() }).transform((data) => ({
+  return z.object({ secretKey: z.string() }).transform((data) => ({
     secret_key: data['secretKey'],
   }));
 });

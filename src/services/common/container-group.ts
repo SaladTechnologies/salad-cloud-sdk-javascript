@@ -2,15 +2,25 @@ import { z } from 'zod';
 import { container, containerRequest, containerResponse } from './container';
 import { containerGroupState, containerGroupStateRequest, containerGroupStateResponse } from './container-group-state';
 import {
-  containerGroupNetworking,
-  containerGroupNetworkingRequest,
-  containerGroupNetworkingResponse,
-} from './container-group-networking';
-import {
   containerGroupLivenessProbe,
   containerGroupLivenessProbeRequest,
   containerGroupLivenessProbeResponse,
 } from './container-group-liveness-probe';
+import {
+  containerGroupNetworkingConfiguration,
+  containerGroupNetworkingConfigurationRequest,
+  containerGroupNetworkingConfigurationResponse,
+} from './container-group-networking-configuration';
+import {
+  queueBasedAutoscalerConfiguration,
+  queueBasedAutoscalerConfigurationRequest,
+  queueBasedAutoscalerConfigurationResponse,
+} from './queue-based-autoscaler-configuration';
+import {
+  containerGroupQueueConnection,
+  containerGroupQueueConnectionRequest,
+  containerGroupQueueConnectionResponse,
+} from './container-group-queue-connection';
 import {
   containerGroupReadinessProbe,
   containerGroupReadinessProbeRequest,
@@ -21,70 +31,78 @@ import {
   containerGroupStartupProbeRequest,
   containerGroupStartupProbeResponse,
 } from './container-group-startup-probe';
-import {
-  containerGroupQueueConnection,
-  containerGroupQueueConnectionRequest,
-  containerGroupQueueConnectionResponse,
-} from './container-group-queue-connection';
-import { queueAutoscaler, queueAutoscalerRequest, queueAutoscalerResponse } from './queue-autoscaler';
 
 /**
  * The shape of the model inside the application code - what the users use
  */
 export const containerGroup = z.lazy(() => {
   return z.object({
-    id: z.string(),
-    name: z
-      .string()
-      .min(2)
-      .max(63)
-      .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+    autostartPolicy: z.boolean(),
+    container: container,
+    countryCodes: z.array(z.string()).min(1).max(500),
+    createTime: z.string(),
+    currentState: containerGroupState,
     displayName: z
       .string()
       .min(2)
       .max(63)
       .regex(/^[ ,-.0-9A-Za-z]+$/),
-    container: container,
-    autostartPolicy: z.boolean(),
-    restartPolicy: z.string(),
-    replicas: z.number().gte(0).lte(100),
-    currentState: containerGroupState,
-    countryCodes: z.array(z.string()).min(1).max(500).optional(),
-    networking: containerGroupNetworking.optional().nullable(),
+    id: z.string(),
     livenessProbe: containerGroupLivenessProbe.optional().nullable(),
-    readinessProbe: containerGroupReadinessProbe.optional().nullable(),
-    startupProbe: containerGroupStartupProbe.optional().nullable(),
-    queueConnection: containerGroupQueueConnection.optional().nullable(),
-    createTime: z.string(),
-    updateTime: z.string(),
+    name: z
+      .string()
+      .min(2)
+      .max(63)
+      .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+    networking: containerGroupNetworkingConfiguration.optional(),
+    organizationName: z
+      .string()
+      .min(2)
+      .max(63)
+      .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
     pendingChange: z.boolean(),
-    version: z.number().gte(1),
-    queueAutoscaler: queueAutoscaler.optional().nullable(),
+    priority: z.string().nullable(),
+    projectName: z
+      .string()
+      .min(2)
+      .max(63)
+      .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+    queueAutoscaler: queueBasedAutoscalerConfiguration.optional(),
+    queueConnection: containerGroupQueueConnection.optional(),
+    readinessProbe: containerGroupReadinessProbe.optional().nullable(),
+    replicas: z.number().gte(0).lte(500),
+    restartPolicy: z.string(),
+    startupProbe: containerGroupStartupProbe.optional().nullable(),
+    updateTime: z.string(),
+    version: z.number().gte(1).lte(2147483647),
   });
 });
 
 /**
- * Represents a container group
- * @typedef  {ContainerGroup} containerGroup - Represents a container group - Represents a container group
- * @property {string}
- * @property {string}
- * @property {string}
- * @property {Container} - Represents a container
- * @property {boolean}
- * @property {ContainerRestartPolicy}
- * @property {number}
- * @property {ContainerGroupState} - Represents a container group state
- * @property {CountryCode[]} - List of countries nodes must be located in. Remove this field to permit nodes from any country.
- * @property {ContainerGroupNetworking} - Represents container group networking parameters
- * @property {ContainerGroupLivenessProbe} - Represents the container group liveness probe
- * @property {ContainerGroupReadinessProbe} - Represents the container group readiness probe
- * @property {ContainerGroupStartupProbe} - Represents the container group startup probe
- * @property {ContainerGroupQueueConnection} - Represents container group queue connection
- * @property {string}
- * @property {string}
- * @property {boolean}
- * @property {number}
- * @property {QueueAutoscaler} - Represents the autoscaling rules for a queue
+ * A container group definition that represents a scalable set of identical containers running as a distributed service
+ * @typedef  {ContainerGroup} containerGroup - A container group definition that represents a scalable set of identical containers running as a distributed service - A container group definition that represents a scalable set of identical containers running as a distributed service
+ * @property {boolean} - Defines whether containers in this group should automatically start when deployed (true) or require manual starting (false)
+ * @property {Container} - Represents a container with its configuration and resource requirements.
+ * @property {CountryCode[]} - List of country codes where container instances are permitted to run. When not specified or empty, containers may run in any available region.
+ * @property {string} - ISO 8601 timestamp when this container group was initially created
+ * @property {ContainerGroupState} - Represents the operational state of a container group during its lifecycle, including timing information, status, and instance distribution metrics. This state captures the current execution status, start and finish times, and provides visibility into the operational health across instances.
+ * @property {string} - The display-friendly name of the resource.
+ * @property {string} - The container group identifier.
+ * @property {ContainerGroupLivenessProbe} - Defines a liveness probe for container groups that determines when to restart a container if it becomes unhealthy
+ * @property {string} - The container group name.
+ * @property {ContainerGroupNetworkingConfiguration} - Network configuration for container groups that defines connectivity, routing, and access control settings
+ * @property {string} - The organization name.
+ * @property {boolean} - Indicates whether a configuration change has been requested but not yet applied to all containers in the group
+ * @property {ContainerGroupPriority} - Specifies the priority level for container group execution, which determines resource allocation and scheduling precedence.
+ * @property {string} - The project name.
+ * @property {QueueBasedAutoscalerConfiguration} - Defines configuration for automatically scaling container instances based on queue length. The autoscaler monitors a queue and adjusts the number of running replicas to maintain the desired queue length.
+ * @property {ContainerGroupQueueConnection} - Configuration for connecting a container group to a message queue system, enabling asynchronous communication between services.
+ * @property {ContainerGroupReadinessProbe} - Defines how to check if a container is ready to serve traffic. The readiness probe determines whether the container's application is ready to accept traffic. If the readiness probe fails, the container is considered not ready and traffic will not be sent to it.
+ * @property {number} - The container group replicas.
+ * @property {ContainerRestartPolicy} - Specifies the policy for restarting containers when they exit or fail.
+ * @property {ContainerGroupStartupProbe} - Defines a probe that checks if a container application has started successfully. Startup probes help prevent applications from being prematurely marked as unhealthy during initialization. The probe can use HTTP requests, TCP connections, gRPC calls, or shell commands to determine startup status.
+ * @property {string} - ISO 8601 timestamp when this container group was last updated
+ * @property {number} - Incremental version number that increases with each configuration change to the container group
  */
 export type ContainerGroup = z.infer<typeof containerGroup>;
 
@@ -95,54 +113,68 @@ export type ContainerGroup = z.infer<typeof containerGroup>;
 export const containerGroupResponse = z.lazy(() => {
   return z
     .object({
-      id: z.string(),
-      name: z
-        .string()
-        .min(2)
-        .max(63)
-        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+      autostart_policy: z.boolean(),
+      container: containerResponse,
+      country_codes: z.array(z.string()).min(1).max(500),
+      create_time: z.string(),
+      current_state: containerGroupStateResponse,
       display_name: z
         .string()
         .min(2)
         .max(63)
         .regex(/^[ ,-.0-9A-Za-z]+$/),
-      container: containerResponse,
-      autostart_policy: z.boolean(),
-      restart_policy: z.string(),
-      replicas: z.number().gte(0).lte(100),
-      current_state: containerGroupStateResponse,
-      country_codes: z.array(z.string()).min(1).max(500).optional(),
-      networking: containerGroupNetworkingResponse.optional().nullable(),
+      id: z.string(),
       liveness_probe: containerGroupLivenessProbeResponse.optional().nullable(),
-      readiness_probe: containerGroupReadinessProbeResponse.optional().nullable(),
-      startup_probe: containerGroupStartupProbeResponse.optional().nullable(),
-      queue_connection: containerGroupQueueConnectionResponse.optional().nullable(),
-      create_time: z.string(),
-      update_time: z.string(),
+      name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+      networking: containerGroupNetworkingConfigurationResponse.optional(),
+      organization_name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
       pending_change: z.boolean(),
-      version: z.number().gte(1),
-      queue_autoscaler: queueAutoscalerResponse.optional().nullable(),
+      priority: z.string().nullable(),
+      project_name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+      queue_autoscaler: queueBasedAutoscalerConfigurationResponse.optional(),
+      queue_connection: containerGroupQueueConnectionResponse.optional(),
+      readiness_probe: containerGroupReadinessProbeResponse.optional().nullable(),
+      replicas: z.number().gte(0).lte(500),
+      restart_policy: z.string(),
+      startup_probe: containerGroupStartupProbeResponse.optional().nullable(),
+      update_time: z.string(),
+      version: z.number().gte(1).lte(2147483647),
     })
     .transform((data) => ({
-      id: data['id'],
-      name: data['name'],
-      displayName: data['display_name'],
-      container: data['container'],
       autostartPolicy: data['autostart_policy'],
-      restartPolicy: data['restart_policy'],
-      replicas: data['replicas'],
-      currentState: data['current_state'],
+      container: data['container'],
       countryCodes: data['country_codes'],
-      networking: data['networking'],
-      livenessProbe: data['liveness_probe'],
-      readinessProbe: data['readiness_probe'],
-      startupProbe: data['startup_probe'],
-      queueConnection: data['queue_connection'],
       createTime: data['create_time'],
-      updateTime: data['update_time'],
+      currentState: data['current_state'],
+      displayName: data['display_name'],
+      id: data['id'],
+      livenessProbe: data['liveness_probe'],
+      name: data['name'],
+      networking: data['networking'],
+      organizationName: data['organization_name'],
       pendingChange: data['pending_change'],
-      version: data['version'],
+      priority: data['priority'],
+      projectName: data['project_name'],
       queueAutoscaler: data['queue_autoscaler'],
+      queueConnection: data['queue_connection'],
+      readinessProbe: data['readiness_probe'],
+      replicas: data['replicas'],
+      restartPolicy: data['restart_policy'],
+      startupProbe: data['startup_probe'],
+      updateTime: data['update_time'],
+      version: data['version'],
     }));
 });
 
@@ -153,45 +185,51 @@ export const containerGroupResponse = z.lazy(() => {
 export const containerGroupRequest = z.lazy(() => {
   return z
     .object({
-      id: z.string().nullish(),
-      name: z.string().nullish(),
-      displayName: z.string().nullish(),
-      container: containerRequest.nullish(),
-      autostartPolicy: z.boolean().nullish(),
-      restartPolicy: z.string().nullish(),
-      replicas: z.number().nullish(),
-      currentState: containerGroupStateRequest.nullish(),
-      countryCodes: z.array(z.string()).nullish(),
-      networking: containerGroupNetworkingRequest.nullish(),
-      livenessProbe: containerGroupLivenessProbeRequest.nullish(),
-      readinessProbe: containerGroupReadinessProbeRequest.nullish(),
-      startupProbe: containerGroupStartupProbeRequest.nullish(),
-      queueConnection: containerGroupQueueConnectionRequest.nullish(),
-      createTime: z.string().nullish(),
-      updateTime: z.string().nullish(),
-      pendingChange: z.boolean().nullish(),
-      version: z.number().nullish(),
-      queueAutoscaler: queueAutoscalerRequest.nullish(),
+      autostartPolicy: z.boolean(),
+      container: containerRequest,
+      countryCodes: z.array(z.string()),
+      createTime: z.string(),
+      currentState: containerGroupStateRequest,
+      displayName: z.string(),
+      id: z.string(),
+      livenessProbe: containerGroupLivenessProbeRequest.nullable().optional(),
+      name: z.string(),
+      networking: containerGroupNetworkingConfigurationRequest.optional(),
+      organizationName: z.string(),
+      pendingChange: z.boolean(),
+      priority: z.string().nullable(),
+      projectName: z.string(),
+      queueAutoscaler: queueBasedAutoscalerConfigurationRequest.optional(),
+      queueConnection: containerGroupQueueConnectionRequest.optional(),
+      readinessProbe: containerGroupReadinessProbeRequest.nullable().optional(),
+      replicas: z.number(),
+      restartPolicy: z.string(),
+      startupProbe: containerGroupStartupProbeRequest.nullable().optional(),
+      updateTime: z.string(),
+      version: z.number(),
     })
     .transform((data) => ({
-      id: data['id'],
-      name: data['name'],
-      display_name: data['displayName'],
-      container: data['container'],
       autostart_policy: data['autostartPolicy'],
-      restart_policy: data['restartPolicy'],
-      replicas: data['replicas'],
-      current_state: data['currentState'],
+      container: data['container'],
       country_codes: data['countryCodes'],
-      networking: data['networking'],
-      liveness_probe: data['livenessProbe'],
-      readiness_probe: data['readinessProbe'],
-      startup_probe: data['startupProbe'],
-      queue_connection: data['queueConnection'],
       create_time: data['createTime'],
-      update_time: data['updateTime'],
+      current_state: data['currentState'],
+      display_name: data['displayName'],
+      id: data['id'],
+      liveness_probe: data['livenessProbe'],
+      name: data['name'],
+      networking: data['networking'],
+      organization_name: data['organizationName'],
       pending_change: data['pendingChange'],
-      version: data['version'],
+      priority: data['priority'],
+      project_name: data['projectName'],
       queue_autoscaler: data['queueAutoscaler'],
+      queue_connection: data['queueConnection'],
+      readiness_probe: data['readinessProbe'],
+      replicas: data['replicas'],
+      restart_policy: data['restartPolicy'],
+      startup_probe: data['startupProbe'],
+      update_time: data['updateTime'],
+      version: data['version'],
     }));
 });

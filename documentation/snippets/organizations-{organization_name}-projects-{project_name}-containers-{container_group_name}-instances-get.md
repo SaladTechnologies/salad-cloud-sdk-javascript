@@ -9,7 +9,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
   const { data } = await saladCloudSdk.containerGroups.listContainerGroupInstances(
     'acme-corp',
     'dev-env',
-    'cxmy53wgq8mpuy5k2wfbbzlhws5edt3sjekvug6abtk-ewjq1594j27m5',
+    'mandlebrot',
   );
 
   console.log(data);

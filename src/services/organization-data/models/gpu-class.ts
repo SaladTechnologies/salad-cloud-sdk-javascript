@@ -58,10 +58,10 @@ export const gpuClassResponse = z.lazy(() => {
 export const gpuClassRequest = z.lazy(() => {
   return z
     .object({
-      id: z.string().nullish(),
-      name: z.string().nullish(),
-      prices: z.array(gpuClassPriceRequest).nullish(),
-      isHighDemand: z.boolean().nullish(),
+      id: z.string(),
+      name: z.string(),
+      prices: z.array(gpuClassPriceRequest),
+      isHighDemand: z.boolean().optional(),
     })
     .transform((data) => ({
       id: data['id'],

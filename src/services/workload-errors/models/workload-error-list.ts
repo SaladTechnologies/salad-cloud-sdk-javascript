@@ -13,7 +13,7 @@ export const workloadErrorList = z.lazy(() => {
 /**
  * Represents a list of workload errors
  * @typedef  {WorkloadErrorList} workloadErrorList - Represents a list of workload errors - Represents a list of workload errors
- * @property {WorkloadError[]}
+ * @property {WorkloadError[]} - A list of workload errors
  */
 export type WorkloadErrorList = z.infer<typeof workloadErrorList>;
 
@@ -36,7 +36,7 @@ export const workloadErrorListResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const workloadErrorListRequest = z.lazy(() => {
-  return z.object({ items: z.array(workloadErrorRequest).nullish() }).transform((data) => ({
+  return z.object({ items: z.array(workloadErrorRequest) }).transform((data) => ({
     items: data['items'],
   }));
 });

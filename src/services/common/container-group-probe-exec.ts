@@ -5,14 +5,14 @@ import { z } from 'zod';
  */
 export const containerGroupProbeExec = z.lazy(() => {
   return z.object({
-    command: z.array(z.string()),
+    command: z.array(z.string()).min(1).max(100),
   });
 });
 
 /**
- *
- * @typedef  {ContainerGroupProbeExec} containerGroupProbeExec
- * @property {string[]}
+ * Defines the exec action for a probe in a container group. This is used to execute a command inside a container for health checks.
+ * @typedef  {ContainerGroupProbeExec} containerGroupProbeExec - Defines the exec action for a probe in a container group. This is used to execute a command inside a container for health checks. - Defines the exec action for a probe in a container group. This is used to execute a command inside a container for health checks.
+ * @property {string[]} - The command to execute inside the container. Exit status of 0 is considered successful, any other exit status is considered failure.
  */
 export type ContainerGroupProbeExec = z.infer<typeof containerGroupProbeExec>;
 
@@ -23,7 +23,7 @@ export type ContainerGroupProbeExec = z.infer<typeof containerGroupProbeExec>;
 export const containerGroupProbeExecResponse = z.lazy(() => {
   return z
     .object({
-      command: z.array(z.string()),
+      command: z.array(z.string()).min(1).max(100),
     })
     .transform((data) => ({
       command: data['command'],
@@ -35,7 +35,7 @@ export const containerGroupProbeExecResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerGroupProbeExecRequest = z.lazy(() => {
-  return z.object({ command: z.array(z.string()).nullish() }).transform((data) => ({
+  return z.object({ command: z.array(z.string()) }).transform((data) => ({
     command: data['command'],
   }));
 });

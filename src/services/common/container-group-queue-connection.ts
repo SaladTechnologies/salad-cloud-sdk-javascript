@@ -5,7 +5,7 @@ import { z } from 'zod';
  */
 export const containerGroupQueueConnection = z.lazy(() => {
   return z.object({
-    path: z.string().min(1).max(1024),
+    path: z.string().min(1).max(1024).regex(/^.*$/),
     port: z.number().gte(1).lte(65535),
     queueName: z
       .string()
@@ -16,11 +16,11 @@ export const containerGroupQueueConnection = z.lazy(() => {
 });
 
 /**
- * Represents container group queue connection
- * @typedef  {ContainerGroupQueueConnection} containerGroupQueueConnection - Represents container group queue connection - Represents container group queue connection
- * @property {string}
- * @property {number}
- * @property {string}
+ * Configuration for connecting a container group to a message queue system, enabling asynchronous communication between services.
+ * @typedef  {ContainerGroupQueueConnection} containerGroupQueueConnection - Configuration for connecting a container group to a message queue system, enabling asynchronous communication between services. - Configuration for connecting a container group to a message queue system, enabling asynchronous communication between services.
+ * @property {string} - The endpoint path for accessing the queue service, relative to the base URL of the queue server.
+ * @property {number} - The network port number used to connect to the queue service. Must be a valid TCP/IP port between 1 and 65535.
+ * @property {string} - Unique identifier for the queue. Must start with a lowercase letter, can contain lowercase letters, numbers, and hyphens, and must end with a letter or number.
  */
 export type ContainerGroupQueueConnection = z.infer<typeof containerGroupQueueConnection>;
 
@@ -31,7 +31,7 @@ export type ContainerGroupQueueConnection = z.infer<typeof containerGroupQueueCo
 export const containerGroupQueueConnectionResponse = z.lazy(() => {
   return z
     .object({
-      path: z.string().min(1).max(1024),
+      path: z.string().min(1).max(1024).regex(/^.*$/),
       port: z.number().gte(1).lte(65535),
       queue_name: z
         .string()
@@ -51,11 +51,9 @@ export const containerGroupQueueConnectionResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerGroupQueueConnectionRequest = z.lazy(() => {
-  return z
-    .object({ path: z.string().nullish(), port: z.number().nullish(), queueName: z.string().nullish() })
-    .transform((data) => ({
-      path: data['path'],
-      port: data['port'],
-      queue_name: data['queueName'],
-    }));
+  return z.object({ path: z.string(), port: z.number(), queueName: z.string() }).transform((data) => ({
+    path: data['path'],
+    port: data['port'],
+    queue_name: data['queueName'],
+  }));
 });

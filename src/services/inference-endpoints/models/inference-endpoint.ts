@@ -21,15 +21,12 @@ export const inferenceEndpoint = z.lazy(() => {
       .min(2)
       .max(63)
       .regex(/^[ ,-.0-9A-Za-z]+$/),
-    description: z
-      .string()
-      .max(1000)
-      .regex(/^[\P{Cc}\P{Cn}\P{Cs}]*$/),
-    readme: z.string(),
-    priceDescription: z.string(),
-    iconUrl: z.string(),
-    inputSchema: z.string(),
-    outputSchema: z.string(),
+    description: z.string().max(1000).regex(/^.*$/),
+    readme: z.string().min(1).max(100000).regex(/^.*$/),
+    priceDescription: z.string().min(1).max(100).regex(/^.*$/),
+    iconUrl: z.string().min(1).max(2048).regex(/^.*$/),
+    inputSchema: z.string().min(1).max(100000).regex(/^.*$/),
+    outputSchema: z.string().min(1).max(100000).regex(/^.*$/),
   });
 });
 
@@ -72,15 +69,12 @@ export const inferenceEndpointResponse = z.lazy(() => {
         .min(2)
         .max(63)
         .regex(/^[ ,-.0-9A-Za-z]+$/),
-      description: z
-        .string()
-        .max(1000)
-        .regex(/^[\P{Cc}\P{Cn}\P{Cs}]*$/),
-      readme: z.string(),
-      price_description: z.string(),
-      icon_url: z.string(),
-      input_schema: z.string(),
-      output_schema: z.string(),
+      description: z.string().max(1000).regex(/^.*$/),
+      readme: z.string().min(1).max(100000).regex(/^.*$/),
+      price_description: z.string().min(1).max(100).regex(/^.*$/),
+      icon_url: z.string().min(1).max(2048).regex(/^.*$/),
+      input_schema: z.string().min(1).max(100000).regex(/^.*$/),
+      output_schema: z.string().min(1).max(100000).regex(/^.*$/),
     })
     .transform((data) => ({
       id: data['id'],
@@ -103,16 +97,16 @@ export const inferenceEndpointResponse = z.lazy(() => {
 export const inferenceEndpointRequest = z.lazy(() => {
   return z
     .object({
-      id: z.string().nullish(),
-      name: z.string().nullish(),
-      organizationName: z.string().nullish(),
-      displayName: z.string().nullish(),
-      description: z.string().nullish(),
-      readme: z.string().nullish(),
-      priceDescription: z.string().nullish(),
-      iconUrl: z.string().nullish(),
-      inputSchema: z.string().nullish(),
-      outputSchema: z.string().nullish(),
+      id: z.string(),
+      name: z.string(),
+      organizationName: z.string(),
+      displayName: z.string(),
+      description: z.string(),
+      readme: z.string(),
+      priceDescription: z.string(),
+      iconUrl: z.string(),
+      inputSchema: z.string(),
+      outputSchema: z.string(),
     })
     .transform((data) => ({
       id: data['id'],

@@ -10,22 +10,22 @@ import {
  */
 export const containerGroupState = z.lazy(() => {
   return z.object({
-    status: z.string(),
-    description: z.string().optional().nullable(),
-    startTime: z.string(),
+    description: z.string().max(1000).regex(/^.*$/).optional().nullable(),
     finishTime: z.string(),
     instanceStatusCounts: containerGroupInstanceStatusCount,
+    startTime: z.string(),
+    status: z.string(),
   });
 });
 
 /**
- * Represents a container group state
- * @typedef  {ContainerGroupState} containerGroupState - Represents a container group state - Represents a container group state
- * @property {ContainerGroupStatus}
- * @property {string}
- * @property {string}
- * @property {string}
- * @property {ContainerGroupInstanceStatusCount} - Represents a container group instance status count
+ * Represents the operational state of a container group during its lifecycle, including timing information, status, and instance distribution metrics. This state captures the current execution status, start and finish times, and provides visibility into the operational health across instances.
+ * @typedef  {ContainerGroupState} containerGroupState - Represents the operational state of a container group during its lifecycle, including timing information, status, and instance distribution metrics. This state captures the current execution status, start and finish times, and provides visibility into the operational health across instances. - Represents the operational state of a container group during its lifecycle, including timing information, status, and instance distribution metrics. This state captures the current execution status, start and finish times, and provides visibility into the operational health across instances.
+ * @property {string} - Optional textual description or notes about the current state of the container group
+ * @property {string} - Timestamp when the container group execution finished or is expected to finish
+ * @property {ContainerGroupInstanceStatusCount} - A summary of container group instances categorized by their current lifecycle status
+ * @property {string} - Timestamp when the container group execution started
+ * @property {ContainerGroupStatus} - Represents the current operational state of a container group within the Salad platform.
  */
 export type ContainerGroupState = z.infer<typeof containerGroupState>;
 
@@ -36,18 +36,18 @@ export type ContainerGroupState = z.infer<typeof containerGroupState>;
 export const containerGroupStateResponse = z.lazy(() => {
   return z
     .object({
-      status: z.string(),
-      description: z.string().optional().nullable(),
-      start_time: z.string(),
+      description: z.string().max(1000).regex(/^.*$/).optional().nullable(),
       finish_time: z.string(),
       instance_status_counts: containerGroupInstanceStatusCountResponse,
+      start_time: z.string(),
+      status: z.string(),
     })
     .transform((data) => ({
-      status: data['status'],
       description: data['description'],
-      startTime: data['start_time'],
       finishTime: data['finish_time'],
       instanceStatusCounts: data['instance_status_counts'],
+      startTime: data['start_time'],
+      status: data['status'],
     }));
 });
 
@@ -58,17 +58,17 @@ export const containerGroupStateResponse = z.lazy(() => {
 export const containerGroupStateRequest = z.lazy(() => {
   return z
     .object({
-      status: z.string().nullish(),
-      description: z.string().nullish(),
-      startTime: z.string().nullish(),
-      finishTime: z.string().nullish(),
-      instanceStatusCounts: containerGroupInstanceStatusCountRequest.nullish(),
+      description: z.string().nullable().optional(),
+      finishTime: z.string(),
+      instanceStatusCounts: containerGroupInstanceStatusCountRequest,
+      startTime: z.string(),
+      status: z.string(),
     })
     .transform((data) => ({
-      status: data['status'],
       description: data['description'],
-      start_time: data['startTime'],
       finish_time: data['finishTime'],
       instance_status_counts: data['instanceStatusCounts'],
+      start_time: data['startTime'],
+      status: data['status'],
     }));
 });

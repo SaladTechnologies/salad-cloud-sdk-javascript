@@ -1,21 +1,21 @@
 ```typescript
-import { CreateInferenceEndpointJob1, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
+import { InferenceEndpointJobPrototype, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
 
 (async () => {
   const saladCloudSdk = new SaladCloudSdk({
     apiKey: 'YOUR_API_KEY',
   });
 
-  const createInferenceEndpointJob1: CreateInferenceEndpointJob1 = {
+  const inferenceEndpointJobPrototype: InferenceEndpointJobPrototype = {
     input: [],
     metadata: {},
-    webhookUrl: 'webhook_url',
+    webhookUrl: 'https://webhook.example.com/events',
   };
 
   const { data } = await saladCloudSdk.inferenceEndpoints.createInferenceEndpointJob(
     'acme-corp',
     'transcribe',
-    createInferenceEndpointJob1,
+    inferenceEndpointJobPrototype,
   );
 
   console.log(data);

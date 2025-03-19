@@ -1,13 +1,13 @@
 ```typescript
 import {
   ContainerGroupLivenessProbe,
+  ContainerGroupPatch,
   ContainerGroupReadinessProbe,
   ContainerGroupStartupProbe,
   CountryCode,
-  QueueAutoscaler,
+  QueueBasedAutoscalerConfiguration,
   SaladCloudSdk,
   UpdateContainer,
-  UpdateContainerGroup1,
   UpdateContainerGroupNetworking,
 } from '@saladtechnologies-oss/salad-cloud-sdk';
 
@@ -16,213 +16,213 @@ import {
     apiKey: 'YOUR_API_KEY',
   });
 
-  const resources: Resources = {
-    cpu: 15,
-    memory: 18239,
-    gpuClasses: ['gpu_classes'],
-    storageAmount: 7225564458,
-  };
-
-  const containerGroupPriority = ContainerGroupPriority.HIGH;
-
-  const loggingAxiom3: LoggingAxiom3 = {
+  const axiomLoggingConfiguration: AxiomLoggingConfiguration = {
     host: 'host',
     apiToken: 'api_token',
     dataset: 'dataset',
   };
 
-  const datadogTags3: DatadogTags3 = {
+  const datadogTagForContainerLogging: DatadogTagForContainerLogging = {
     name: 'name',
     value: 'value',
   };
 
-  const loggingDatadog3: LoggingDatadog3 = {
+  const datadogLoggingConfiguration: DatadogLoggingConfiguration = {
     host: 'host',
     apiKey: 'api_key',
-    tags: [datadogTags3],
+    tags: [datadogTagForContainerLogging],
   };
 
-  const loggingNewRelic3: LoggingNewRelic3 = {
+  const format = Format.JSON;
+
+  const containerLoggingHttpHeader: ContainerLoggingHttpHeader = {
+    name: 'name',
+    value: 'value',
+  };
+
+  const compression = Compression.NONE;
+
+  const containerHttpLoggingConfiguration: ContainerHttpLoggingConfiguration = {
+    host: 'host',
+    port: 43509,
+    user: 'user',
+    password: 'password',
+    path: 'path',
+    format: format,
+    headers: [containerLoggingHttpHeader],
+    compression: compression,
+  };
+
+  const newRelicLoggingConfiguration: NewRelicLoggingConfiguration = {
     host: 'host',
     ingestionKey: 'ingestion_key',
   };
 
-  const loggingSplunk3: LoggingSplunk3 = {
+  const containerLoggingSplunkConfiguration: ContainerLoggingSplunkConfiguration = {
     host: 'host',
     token: 'token',
   };
 
-  const loggingTcp3: LoggingTcp3 = {
+  const tcpLoggingConfiguration: TcpLoggingConfiguration = {
     host: 'host',
-    port: 33781,
+    port: 35405,
   };
 
-  const httpFormat3 = HttpFormat3.JSON;
-
-  const httpHeaders4: HttpHeaders4 = {
-    name: 'name',
-    value: 'value',
+  const containerLoggingConfiguration: ContainerLoggingConfiguration = {
+    axiom: axiomLoggingConfiguration,
+    datadog: datadogLoggingConfiguration,
+    http: containerHttpLoggingConfiguration,
+    newRelic: newRelicLoggingConfiguration,
+    splunk: containerLoggingSplunkConfiguration,
+    tcp: tcpLoggingConfiguration,
   };
 
-  const httpCompression3 = HttpCompression3.NONE;
+  const containerGroupPriority = ContainerGroupPriority.HIGH;
 
-  const loggingHttp3: LoggingHttp3 = {
-    host: 'host',
-    port: 51761,
-    user: 'user',
-    password: 'password',
-    path: 'path',
-    format: httpFormat3,
-    headers: [httpHeaders4],
-    compression: httpCompression3,
-  };
-
-  const updateContainerLogging: UpdateContainerLogging = {
-    axiom: loggingAxiom3,
-    datadog: loggingDatadog3,
-    newRelic: loggingNewRelic3,
-    splunk: loggingSplunk3,
-    tcp: loggingTcp3,
-    http: loggingHttp3,
-  };
-
-  const registryAuthenticationBasic2: RegistryAuthenticationBasic2 = {
-    username: 'username',
-    password: 'password',
-  };
-
-  const registryAuthenticationGcpGcr2: RegistryAuthenticationGcpGcr2 = {
-    serviceKey: 'service_key',
-  };
-
-  const registryAuthenticationAwsEcr2: RegistryAuthenticationAwsEcr2 = {
+  const containerRegistryAuthenticationAwsEcr: ContainerRegistryAuthenticationAwsEcr = {
     accessKeyId: 'access_key_id',
     secretAccessKey: 'secret_access_key',
   };
 
-  const registryAuthenticationDockerHub2: RegistryAuthenticationDockerHub2 = {
+  const containerRegistryAuthenticationBasic: ContainerRegistryAuthenticationBasic = {
+    username: 'username',
+    password: 'password',
+  };
+
+  const containerRegistryAuthenticationDockerHub: ContainerRegistryAuthenticationDockerHub = {
     username: 'username',
     personalAccessToken: 'personal_access_token',
   };
 
-  const registryAuthenticationGcpGar2: RegistryAuthenticationGcpGar2 = {
+  const containerRegistryAuthenticationGcpGar: ContainerRegistryAuthenticationGcpGar = {
     serviceKey: 'service_key',
   };
 
-  const updateContainerRegistryAuthentication: UpdateContainerRegistryAuthentication = {
-    basic: registryAuthenticationBasic2,
-    gcpGcr: registryAuthenticationGcpGcr2,
-    awsEcr: registryAuthenticationAwsEcr2,
-    dockerHub: registryAuthenticationDockerHub2,
-    gcpGar: registryAuthenticationGcpGar2,
+  const containerRegistryAuthenticationGcpGcr: ContainerRegistryAuthenticationGcpGcr = {
+    serviceKey: 'service_key',
+  };
+
+  const containerRegistryAuthentication: ContainerRegistryAuthentication = {
+    awsEcr: containerRegistryAuthenticationAwsEcr,
+    basic: containerRegistryAuthenticationBasic,
+    dockerHub: containerRegistryAuthenticationDockerHub,
+    gcpGar: containerRegistryAuthenticationGcpGar,
+    gcpGcr: containerRegistryAuthenticationGcpGcr,
+  };
+
+  const containerResourceUpdateSchema: ContainerResourceUpdateSchema = {
+    cpu: 4,
+    memory: 50175,
+    gpuClasses: ['gpu_classes'],
+    storageAmount: 27536827537,
   };
 
   const updateContainer: UpdateContainer = {
-    image: 'image',
-    resources: resources,
     command: ['command'],
-    priority: containerGroupPriority,
     environmentVariables: [],
-    logging: updateContainerLogging,
-    registryAuthentication: updateContainerRegistryAuthentication,
+    image: 'image',
     imageCaching: true,
+    logging: containerLoggingConfiguration,
+    priority: containerGroupPriority,
+    registryAuthentication: containerRegistryAuthentication,
+    resources: containerResourceUpdateSchema,
   };
 
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 52138,
-  };
-
-  const containerGroupProbeTcp: ContainerGroupProbeTcp = {
-    port: 46052,
-  };
-
-  const containerProbeHttpScheme = ContainerProbeHttpScheme.HTTP;
-
-  const containerGroupProbeHttpHeaders2: ContainerGroupProbeHttpHeaders2 = {
-    name: 'name',
-    value: 'value',
-  };
-
-  const containerGroupProbeHttp: ContainerGroupProbeHttp = {
-    path: 'path',
-    port: 8979,
-    scheme: containerProbeHttpScheme,
-    headers: [containerGroupProbeHttpHeaders2],
-  };
-
-  const containerGroupProbeGrpc: ContainerGroupProbeGrpc = {
-    service: 'service',
-    port: 38888,
+    port: 27606,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
     command: ['command'],
   };
 
+  const containerGroupGRpcProbe: ContainerGroupGRpcProbe = {
+    port: 4792,
+    service: 'service',
+  };
+
+  const containerGroupProbeHttpHeader: ContainerGroupProbeHttpHeader = {
+    name: 'name',
+    value: 'value',
+  };
+
+  const httpScheme = HttpScheme.HTTP;
+
+  const containerGroupHttpProbeConfiguration: ContainerGroupHttpProbeConfiguration = {
+    headers: [containerGroupProbeHttpHeader],
+    path: 'path',
+    port: 18942,
+    scheme: httpScheme,
+  };
+
+  const containerGroupTcpProbe: ContainerGroupTcpProbe = {
+    port: 47377,
+  };
+
   const containerGroupLivenessProbe: ContainerGroupLivenessProbe = {
-    tcp: containerGroupProbeTcp,
-    http: containerGroupProbeHttp,
-    grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 6,
-    periodSeconds: 10,
-    timeoutSeconds: 30,
-    successThreshold: 1,
     failureThreshold: 3,
+    grpc: containerGroupGRpcProbe,
+    http: containerGroupHttpProbeConfiguration,
+    initialDelaySeconds: 987,
+    periodSeconds: 10,
+    successThreshold: 1,
+    tcp: containerGroupTcpProbe,
+    timeoutSeconds: 30,
   };
 
   const containerGroupReadinessProbe: ContainerGroupReadinessProbe = {
-    tcp: containerGroupProbeTcp,
-    http: containerGroupProbeHttp,
-    grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 8,
-    periodSeconds: 1,
-    timeoutSeconds: 1,
-    successThreshold: 1,
     failureThreshold: 3,
+    grpc: containerGroupGRpcProbe,
+    http: containerGroupHttpProbeConfiguration,
+    initialDelaySeconds: 479,
+    periodSeconds: 1,
+    successThreshold: 1,
+    tcp: containerGroupTcpProbe,
+    timeoutSeconds: 1,
   };
 
   const containerGroupStartupProbe: ContainerGroupStartupProbe = {
-    tcp: containerGroupProbeTcp,
-    http: containerGroupProbeHttp,
-    grpc: containerGroupProbeGrpc,
     exec: containerGroupProbeExec,
-    initialDelaySeconds: 1,
+    failureThreshold: 15,
+    grpc: containerGroupGRpcProbe,
+    http: containerGroupHttpProbeConfiguration,
+    initialDelaySeconds: 563,
+    tcp: containerGroupTcpProbe,
     periodSeconds: 3,
-    timeoutSeconds: 10,
     successThreshold: 2,
-    failureThreshold: 1200,
+    timeoutSeconds: 10,
   };
 
-  const queueAutoscaler: QueueAutoscaler = {
-    minReplicas: 4,
-    maxReplicas: 188,
-    desiredQueueLength: 55,
-    pollingPeriod: 1254,
-    maxUpscalePerMinute: 49,
-    maxDownscalePerMinute: 43,
+  const queueBasedAutoscalerConfiguration: QueueBasedAutoscalerConfiguration = {
+    desiredQueueLength: 2,
+    maxReplicas: 219,
+    maxDownscalePerMinute: 5,
+    maxUpscalePerMinute: 16,
+    minReplicas: 88,
+    pollingPeriod: 680,
   };
 
-  const updateContainerGroup1: UpdateContainerGroup1 = {
-    displayName: 'EN-BH,M',
+  const containerGroupPatch: ContainerGroupPatch = {
+    displayName: 'rukYe',
     container: updateContainer,
-    replicas: 395,
+    replicas: 476,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
     readinessProbe: containerGroupReadinessProbe,
     startupProbe: containerGroupStartupProbe,
-    queueAutoscaler: queueAutoscaler,
+    queueAutoscaler: queueBasedAutoscalerConfiguration,
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroup(
     'acme-corp',
     'dev-env',
-    'ajab1nydcnlz73jmjvon',
-    updateContainerGroup1,
+    'mandlebrot',
+    containerGroupPatch,
   );
 
   console.log(data);

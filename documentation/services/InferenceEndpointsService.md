@@ -9,7 +9,7 @@ A list of all methods in the `InferenceEndpointsService` service. Click on the m
 | [listInferenceEndpointJobs](#listinferenceendpointjobs)   | Lists inference endpoint jobs.        |
 | [createInferenceEndpointJob](#createinferenceendpointjob) | Creates a new inference endpoint job. |
 | [getInferenceEndpointJob](#getinferenceendpointjob)       | Gets an inference endpoint job.       |
-| [cancelInferenceEndpointJob](#cancelinferenceendpointjob) | Cancels an inference endpoint job.    |
+| [deleteInferenceEndpointJob](#deleteinferenceendpointjob) | Cancels an inference endpoint job.    |
 
 ## listInferenceEndpoints
 
@@ -28,7 +28,7 @@ Lists inference endpoints.
 
 **Return Type**
 
-`InferenceEndpointList`
+`InferenceEndpointCollection`
 
 **Example Usage Code Snippet**
 
@@ -101,7 +101,7 @@ Lists inference endpoint jobs.
 
 **Return Type**
 
-`InferenceEndpointJobList`
+`InferenceEndpointJobCollection`
 
 **Example Usage Code Snippet**
 
@@ -131,11 +131,11 @@ Creates a new inference endpoint job.
 
 **Parameters**
 
-| Name                  | Type                                                                    | Required | Description                                                                                                                                                                                                                                         |
-| :-------------------- | :---------------------------------------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| body                  | [CreateInferenceEndpointJob1](../models/CreateInferenceEndpointJob1.md) | ✅       | The request body.                                                                                                                                                                                                                                   |
-| organizationName      | string                                                                  | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
-| inferenceEndpointName | string                                                                  | ✅       | The inference endpoint name.                                                                                                                                                                                                                        |
+| Name                  | Type                                                                        | Required | Description                                                                                                                                                                                                                                         |
+| :-------------------- | :-------------------------------------------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| body                  | [InferenceEndpointJobPrototype](../models/InferenceEndpointJobPrototype.md) | ✅       | The request body.                                                                                                                                                                                                                                   |
+| organizationName      | string                                                                      | ✅       | Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization. |
+| inferenceEndpointName | string                                                                      | ✅       | The inference endpoint name.                                                                                                                                                                                                                        |
 
 **Return Type**
 
@@ -144,23 +144,23 @@ Creates a new inference endpoint job.
 **Example Usage Code Snippet**
 
 ```typescript
-import { CreateInferenceEndpointJob1, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
+import { InferenceEndpointJobPrototype, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
 
 (async () => {
   const saladCloudSdk = new SaladCloudSdk({
     apiKey: 'YOUR_API_KEY',
   });
 
-  const createInferenceEndpointJob1: CreateInferenceEndpointJob1 = {
+  const inferenceEndpointJobPrototype: InferenceEndpointJobPrototype = {
     input: [],
     metadata: {},
-    webhookUrl: 'webhook_url',
+    webhookUrl: 'https://webhook.example.com/events',
   };
 
   const { data } = await saladCloudSdk.inferenceEndpoints.createInferenceEndpointJob(
     'acme-corp',
     'transcribe',
-    createInferenceEndpointJob1,
+    inferenceEndpointJobPrototype,
   );
 
   console.log(data);
@@ -206,7 +206,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
 })();
 ```
 
-## cancelInferenceEndpointJob
+## deleteInferenceEndpointJob
 
 Cancels an inference endpoint job.
 
@@ -231,7 +231,7 @@ import { SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
     apiKey: 'YOUR_API_KEY',
   });
 
-  const { data } = await saladCloudSdk.inferenceEndpoints.cancelInferenceEndpointJob(
+  const { data } = await saladCloudSdk.inferenceEndpoints.deleteInferenceEndpointJob(
     'acme-corp',
     'transcribe',
     '2fc459a1-1c09-4a34-ade7-54d03fc51d6a',

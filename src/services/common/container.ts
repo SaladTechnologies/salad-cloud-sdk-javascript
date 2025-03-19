@@ -1,40 +1,47 @@
 import { z } from 'zod';
 import {
+  containerLoggingConfiguration,
+  containerLoggingConfigurationRequest,
+  containerLoggingConfigurationResponse,
+} from './container-logging-configuration';
+import {
   containerResourceRequirements,
   containerResourceRequirementsRequest,
   containerResourceRequirementsResponse,
 } from './container-resource-requirements';
-import { containerLogging, containerLoggingRequest, containerLoggingResponse } from './container-logging';
 
 /**
  * The shape of the model inside the application code - what the users use
  */
 export const container = z.lazy(() => {
   return z.object({
-    image: z.string().min(1).max(1024),
-    resources: containerResourceRequirements,
-    command: z.array(z.string()).max(100),
-    priority: z.string().optional().nullable(),
-    size: z.number().optional(),
-    hash: z.string().optional(),
+    command: z.array(z.string()).max(100).nullable(),
     environmentVariables: z.any().optional(),
-    logging: containerLogging.optional().nullable(),
+    hash: z
+      .string()
+      .min(64)
+      .max(64)
+      .regex(/^[a-fA-F0-9]{64}$/)
+      .optional(),
+    image: z.string().min(1).max(2048).regex(/^.*$/),
     imageCaching: z.boolean().optional(),
+    logging: containerLoggingConfiguration.optional(),
+    resources: containerResourceRequirements,
+    size: z.number().gte(0).lte(9223372036854776000).optional(),
   });
 });
 
 /**
- * Represents a container
- * @typedef  {Container} container - Represents a container - Represents a container
- * @property {string}
- * @property {ContainerResourceRequirements} - Represents a container resource requirements
- * @property {string[]}
- * @property {ContainerGroupPriority}
- * @property {number}
- * @property {string}
- * @property {any}
- * @property {ContainerLogging}
- * @property {boolean}
+ * Represents a container with its configuration and resource requirements.
+ * @typedef  {Container} container - Represents a container with its configuration and resource requirements. - Represents a container with its configuration and resource requirements.
+ * @property {string[]} - List of commands to run inside the container. Each command is a string representing a command-line instruction.
+ * @property {any} - Environment variables to set in the container.
+ * @property {string} - SHA-256 hash (64-character hexadecimal string)
+ * @property {string} - The container image.
+ * @property {boolean} - The container image caching.
+ * @property {ContainerLoggingConfiguration} - Configuration options for directing container logs to a logging provider. This schema enables you to specify a single logging destination for container output, supporting monitoring, debugging, and analytics use cases. Each provider has its own configuration parameters defined in the referenced schemas. Only one logging provider can be selected at a time.
+ * @property {ContainerResourceRequirements} - Specifies the resource requirements for a container.
+ * @property {number} - Size of the container in bytes.
  */
 export type Container = z.infer<typeof container>;
 
@@ -45,26 +52,29 @@ export type Container = z.infer<typeof container>;
 export const containerResponse = z.lazy(() => {
   return z
     .object({
-      image: z.string().min(1).max(1024),
-      resources: containerResourceRequirementsResponse,
-      command: z.array(z.string()).max(100),
-      priority: z.string().optional().nullable(),
-      size: z.number().optional(),
-      hash: z.string().optional(),
+      command: z.array(z.string()).max(100).nullable(),
       environment_variables: z.any().optional(),
-      logging: containerLoggingResponse.optional().nullable(),
+      hash: z
+        .string()
+        .min(64)
+        .max(64)
+        .regex(/^[a-fA-F0-9]{64}$/)
+        .optional(),
+      image: z.string().min(1).max(2048).regex(/^.*$/),
       image_caching: z.boolean().optional(),
+      logging: containerLoggingConfigurationResponse.optional(),
+      resources: containerResourceRequirementsResponse,
+      size: z.number().gte(0).lte(9223372036854776000).optional(),
     })
     .transform((data) => ({
-      image: data['image'],
-      resources: data['resources'],
       command: data['command'],
-      priority: data['priority'],
-      size: data['size'],
-      hash: data['hash'],
       environmentVariables: data['environment_variables'],
-      logging: data['logging'],
+      hash: data['hash'],
+      image: data['image'],
       imageCaching: data['image_caching'],
+      logging: data['logging'],
+      resources: data['resources'],
+      size: data['size'],
     }));
 });
 
@@ -75,25 +85,23 @@ export const containerResponse = z.lazy(() => {
 export const containerRequest = z.lazy(() => {
   return z
     .object({
-      image: z.string().nullish(),
-      resources: containerResourceRequirementsRequest.nullish(),
-      command: z.array(z.string()).nullish(),
-      priority: z.string().nullish(),
-      size: z.number().nullish(),
-      hash: z.string().nullish(),
-      environmentVariables: z.any().nullish(),
-      logging: containerLoggingRequest.nullish(),
-      imageCaching: z.boolean().nullish(),
+      command: z.array(z.string()).nullable(),
+      environmentVariables: z.any().optional(),
+      hash: z.string().optional(),
+      image: z.string(),
+      imageCaching: z.boolean().optional(),
+      logging: containerLoggingConfigurationRequest.optional(),
+      resources: containerResourceRequirementsRequest,
+      size: z.number().optional(),
     })
     .transform((data) => ({
-      image: data['image'],
-      resources: data['resources'],
       command: data['command'],
-      priority: data['priority'],
-      size: data['size'],
-      hash: data['hash'],
       environment_variables: data['environmentVariables'],
-      logging: data['logging'],
+      hash: data['hash'],
+      image: data['image'],
       image_caching: data['imageCaching'],
+      logging: data['logging'],
+      resources: data['resources'],
+      size: data['size'],
     }));
 });

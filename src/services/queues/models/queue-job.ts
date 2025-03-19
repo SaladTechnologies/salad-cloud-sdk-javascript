@@ -8,8 +8,13 @@ export const queueJob = z.lazy(() => {
   return z.object({
     id: z.string(),
     input: z.any(),
-    metadata: z.any().optional().nullable(),
-    webhook: z.string().optional().nullable(),
+    metadata: z.any().optional(),
+    webhook: z
+      .string()
+      .min(20)
+      .max(27)
+      .regex(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$/)
+      .optional(),
     status: z.string(),
     events: z.array(queueJobEvent).max(1000),
     output: z.any().optional(),
@@ -21,15 +26,15 @@ export const queueJob = z.lazy(() => {
 /**
  * Represents a queue job
  * @typedef  {QueueJob} queueJob - Represents a queue job - Represents a queue job
- * @property {string}
+ * @property {string} - The job identifier
  * @property {any} - The job input. May be any valid JSON.
- * @property {any}
- * @property {string}
- * @property {QueueJobStatus}
- * @property {QueueJobEvent[]}
+ * @property {any} - Additional metadata for the job
+ * @property {string} - The webhook URL to notify when the job completes
+ * @property {QueueJobStatus} - The job status
+ * @property {QueueJobEvent[]} - The job events
  * @property {any} - The job output. May be any valid JSON.
- * @property {string}
- * @property {string}
+ * @property {string} - The job creation time
+ * @property {string} - The job update time
  */
 export type QueueJob = z.infer<typeof queueJob>;
 
@@ -42,8 +47,13 @@ export const queueJobResponse = z.lazy(() => {
     .object({
       id: z.string(),
       input: z.any(),
-      metadata: z.any().optional().nullable(),
-      webhook: z.string().optional().nullable(),
+      metadata: z.any().optional(),
+      webhook: z
+        .string()
+        .min(20)
+        .max(27)
+        .regex(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$/)
+        .optional(),
       status: z.string(),
       events: z.array(queueJobEventResponse).max(1000),
       output: z.any().optional(),
@@ -70,15 +80,15 @@ export const queueJobResponse = z.lazy(() => {
 export const queueJobRequest = z.lazy(() => {
   return z
     .object({
-      id: z.string().nullish(),
-      input: z.any().nullish(),
-      metadata: z.any().nullish(),
-      webhook: z.string().nullish(),
-      status: z.string().nullish(),
-      events: z.array(queueJobEventRequest).nullish(),
-      output: z.any().nullish(),
-      createTime: z.string().nullish(),
-      updateTime: z.string().nullish(),
+      id: z.string(),
+      input: z.any(),
+      metadata: z.any().optional(),
+      webhook: z.string().optional(),
+      status: z.string(),
+      events: z.array(queueJobEventRequest),
+      output: z.any().optional(),
+      createTime: z.string(),
+      updateTime: z.string(),
     })
     .transform((data) => ({
       id: data['id'],

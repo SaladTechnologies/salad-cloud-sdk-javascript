@@ -1,9 +1,9 @@
-export type { QueueList } from './queue-list';
-export type { CreateQueue1 } from './create-queue-1';
+export type { QueueCollection } from './queue-collection';
+export type { QueuePrototype } from './queue-prototype';
 export type { Queue } from './queue';
-export type { UpdateQueue1 } from './update-queue-1';
-export type { QueueJobList } from './queue-job-list';
-export type { CreateQueueJob1 } from './create-queue-job-1';
+export type { QueuePatch } from './queue-patch';
+export type { QueueJobCollection } from './queue-job-collection';
+export type { QueueJobPrototype } from './queue-job-prototype';
 export type { QueueJob } from './queue-job';
 export { QueueJobStatus } from './queue-job-status';
 export type { QueueJobEvent } from './queue-job-event';

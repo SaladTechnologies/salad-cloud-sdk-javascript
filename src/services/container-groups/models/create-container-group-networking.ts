@@ -5,26 +5,26 @@ import { z } from 'zod';
  */
 export const createContainerGroupNetworking = z.lazy(() => {
   return z.object({
-    protocol: z.string(),
-    port: z.number().gte(1).lte(65535),
     auth: z.boolean(),
-    loadBalancer: z.string().optional(),
-    singleConnectionLimit: z.boolean().optional(),
     clientRequestTimeout: z.number().gte(1).lte(100000).optional(),
+    loadBalancer: z.string().optional(),
+    port: z.number().gte(1).lte(65535),
+    protocol: z.string(),
     serverResponseTimeout: z.number().gte(1).lte(100000).optional(),
+    singleConnectionLimit: z.boolean().optional(),
   });
 });
 
 /**
- * Represents container group networking parameters
- * @typedef  {CreateContainerGroupNetworking} createContainerGroupNetworking - Represents container group networking parameters - Represents container group networking parameters
- * @property {ContainerNetworkingProtocol}
- * @property {number}
- * @property {boolean}
- * @property {CreateContainerGroupNetworkingLoadBalancer}
- * @property {boolean}
- * @property {number}
- * @property {number}
+ * Network configuration for container groups specifying connectivity parameters, including authentication, protocol, and timeout settings
+ * @typedef  {CreateContainerGroupNetworking} createContainerGroupNetworking - Network configuration for container groups specifying connectivity parameters, including authentication, protocol, and timeout settings - Network configuration for container groups specifying connectivity parameters, including authentication, protocol, and timeout settings
+ * @property {boolean} - Determines whether authentication is required for network connections to the container group
+ * @property {number} - The container group networking client request timeout.
+ * @property {TheContainerGroupNetworkingLoadBalancer} - The container group networking load balancer.
+ * @property {number} - The container group networking port.
+ * @property {ContainerNetworkingProtocol} - Defines the communication protocol used for network traffic between containers or external systems. Currently supports HTTP protocol for web-based communication.
+ * @property {number} - The container group networking server response timeout.
+ * @property {boolean} - The container group networking single connection limit flag.
  */
 export type CreateContainerGroupNetworking = z.infer<typeof createContainerGroupNetworking>;
 
@@ -35,22 +35,22 @@ export type CreateContainerGroupNetworking = z.infer<typeof createContainerGroup
 export const createContainerGroupNetworkingResponse = z.lazy(() => {
   return z
     .object({
-      protocol: z.string(),
-      port: z.number().gte(1).lte(65535),
       auth: z.boolean(),
-      load_balancer: z.string().optional(),
-      single_connection_limit: z.boolean().optional(),
       client_request_timeout: z.number().gte(1).lte(100000).optional(),
+      load_balancer: z.string().optional(),
+      port: z.number().gte(1).lte(65535),
+      protocol: z.string(),
       server_response_timeout: z.number().gte(1).lte(100000).optional(),
+      single_connection_limit: z.boolean().optional(),
     })
     .transform((data) => ({
-      protocol: data['protocol'],
-      port: data['port'],
       auth: data['auth'],
-      loadBalancer: data['load_balancer'],
-      singleConnectionLimit: data['single_connection_limit'],
       clientRequestTimeout: data['client_request_timeout'],
+      loadBalancer: data['load_balancer'],
+      port: data['port'],
+      protocol: data['protocol'],
       serverResponseTimeout: data['server_response_timeout'],
+      singleConnectionLimit: data['single_connection_limit'],
     }));
 });
 
@@ -61,21 +61,21 @@ export const createContainerGroupNetworkingResponse = z.lazy(() => {
 export const createContainerGroupNetworkingRequest = z.lazy(() => {
   return z
     .object({
-      protocol: z.string().nullish(),
-      port: z.number().nullish(),
-      auth: z.boolean().nullish(),
-      loadBalancer: z.string().nullish(),
-      singleConnectionLimit: z.boolean().nullish(),
-      clientRequestTimeout: z.number().nullish(),
-      serverResponseTimeout: z.number().nullish(),
+      auth: z.boolean(),
+      clientRequestTimeout: z.number().optional(),
+      loadBalancer: z.string().optional(),
+      port: z.number(),
+      protocol: z.string(),
+      serverResponseTimeout: z.number().optional(),
+      singleConnectionLimit: z.boolean().optional(),
     })
     .transform((data) => ({
-      protocol: data['protocol'],
-      port: data['port'],
       auth: data['auth'],
-      load_balancer: data['loadBalancer'],
-      single_connection_limit: data['singleConnectionLimit'],
       client_request_timeout: data['clientRequestTimeout'],
+      load_balancer: data['loadBalancer'],
+      port: data['port'],
+      protocol: data['protocol'],
       server_response_timeout: data['serverResponseTimeout'],
+      single_connection_limit: data['singleConnectionLimit'],
     }));
 });

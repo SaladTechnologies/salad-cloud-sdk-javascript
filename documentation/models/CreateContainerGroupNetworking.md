@@ -1,24 +1,15 @@
 # CreateContainerGroupNetworking
 
-Represents container group networking parameters
+Network configuration for container groups specifying connectivity parameters, including authentication, protocol, and timeout settings
 
 **Properties**
 
-| Name                  | Type                                       | Required | Description |
-| :-------------------- | :----------------------------------------- | :------- | :---------- |
-| protocol              | ContainerNetworkingProtocol                | ✅       |             |
-| port                  | number                                     | ✅       |             |
-| auth                  | boolean                                    | ✅       |             |
-| loadBalancer          | CreateContainerGroupNetworkingLoadBalancer | ❌       |             |
-| singleConnectionLimit | boolean                                    | ❌       |             |
-| clientRequestTimeout  | number                                     | ❌       |             |
-| serverResponseTimeout | number                                     | ❌       |             |
-
-# CreateContainerGroupNetworkingLoadBalancer
-
-**Properties**
-
-| Name                        | Type   | Required | Description                   |
-| :-------------------------- | :----- | :------- | :---------------------------- |
-| ROUND_ROBIN                 | string | ✅       | "round_robin"                 |
-| LEAST_NUMBER_OF_CONNECTIONS | string | ✅       | "least_number_of_connections" |
+| Name                  | Type                                    | Required | Description                                                                                                                                                       |
+| :-------------------- | :-------------------------------------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| auth                  | boolean                                 | ✅       | Determines whether authentication is required for network connections to the container group                                                                      |
+| port                  | number                                  | ✅       | The container group networking port.                                                                                                                              |
+| protocol              | ContainerNetworkingProtocol             | ✅       | Defines the communication protocol used for network traffic between containers or external systems. Currently supports HTTP protocol for web-based communication. |
+| clientRequestTimeout  | number                                  | ❌       | The container group networking client request timeout.                                                                                                            |
+| loadBalancer          | TheContainerGroupNetworkingLoadBalancer | ❌       | The container group networking load balancer.                                                                                                                     |
+| serverResponseTimeout | number                                  | ❌       | The container group networking server response timeout.                                                                                                           |
+| singleConnectionLimit | boolean                                 | ❌       | The container group networking single connection limit flag.                                                                                                      |

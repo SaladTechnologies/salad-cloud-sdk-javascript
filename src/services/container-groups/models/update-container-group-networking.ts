@@ -12,7 +12,7 @@ export const updateContainerGroupNetworking = z.lazy(() => {
 /**
  * Represents update container group networking parameters
  * @typedef  {UpdateContainerGroupNetworking} updateContainerGroupNetworking - Represents update container group networking parameters - Represents update container group networking parameters
- * @property {number}
+ * @property {number} - The port number to expose on the container group
  */
 export type UpdateContainerGroupNetworking = z.infer<typeof updateContainerGroupNetworking>;
 
@@ -35,7 +35,7 @@ export const updateContainerGroupNetworkingResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const updateContainerGroupNetworkingRequest = z.lazy(() => {
-  return z.object({ port: z.number().nullish() }).transform((data) => ({
+  return z.object({ port: z.number().nullable().optional() }).transform((data) => ({
     port: data['port'],
   }));
 });

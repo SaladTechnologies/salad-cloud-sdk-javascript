@@ -1,17 +1,17 @@
 ```typescript
-import { SaladCloudSdk, UpdateQueue1 } from '@saladtechnologies-oss/salad-cloud-sdk';
+import { QueuePatch, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sdk';
 
 (async () => {
   const saladCloudSdk = new SaladCloudSdk({
     apiKey: 'YOUR_API_KEY',
   });
 
-  const updateQueue1: UpdateQueue1 = {
-    displayName: 'yZ5chs',
+  const queuePatch: QueuePatch = {
+    displayName: 'i2VcwOa',
     description: 'description',
   };
 
-  const { data } = await saladCloudSdk.queues.updateQueue('acme-corp', 'dev-env', 'fifo-queue', updateQueue1);
+  const { data } = await saladCloudSdk.queues.updateQueue('acme-corp', 'dev-env', 'fifo-queue', queuePatch);
 
   console.log(data);
 })();

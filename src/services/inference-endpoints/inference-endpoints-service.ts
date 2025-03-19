@@ -3,14 +3,20 @@ import { BaseService } from '../base-service';
 import { ContentType, HttpResponse, RequestConfig } from '../../http/types';
 import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
-import { InferenceEndpointList, inferenceEndpointListResponse } from './models/inference-endpoint-list';
+import {
+  InferenceEndpointCollection,
+  inferenceEndpointCollectionResponse,
+} from './models/inference-endpoint-collection';
 import { ListInferenceEndpointJobsParams, ListInferenceEndpointsParams } from './request-params';
 import { InferenceEndpoint, inferenceEndpointResponse } from './models/inference-endpoint';
-import { InferenceEndpointJobList, inferenceEndpointJobListResponse } from './models/inference-endpoint-job-list';
 import {
-  CreateInferenceEndpointJob1,
-  createInferenceEndpointJob1Request,
-} from './models/create-inference-endpoint-job-1';
+  InferenceEndpointJobCollection,
+  inferenceEndpointJobCollectionResponse,
+} from './models/inference-endpoint-job-collection';
+import {
+  InferenceEndpointJobPrototype,
+  inferenceEndpointJobPrototypeRequest,
+} from './models/inference-endpoint-job-prototype';
 import { InferenceEndpointJob, inferenceEndpointJobResponse } from './models/inference-endpoint-job';
 
 export class InferenceEndpointsService extends BaseService {
@@ -20,13 +26,13 @@ export class InferenceEndpointsService extends BaseService {
    * @param {number} [params.page] - The page number.
    * @param {number} [params.pageSize] - The maximum number of items per page.
    * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<InferenceEndpointList>>} OK
+   * @returns {Promise<HttpResponse<InferenceEndpointCollection>>} OK
    */
   async listInferenceEndpoints(
     organizationName: string,
     params?: ListInferenceEndpointsParams,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<InferenceEndpointList>> {
+  ): Promise<HttpResponse<InferenceEndpointCollection>> {
     const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
@@ -36,7 +42,7 @@ export class InferenceEndpointsService extends BaseService {
       .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
-        schema: inferenceEndpointListResponse,
+        schema: inferenceEndpointCollectionResponse,
         contentType: ContentType.Json,
         status: 200,
       })
@@ -56,7 +62,7 @@ export class InferenceEndpointsService extends BaseService {
         value: params?.pageSize,
       })
       .build();
-    return this.client.call<InferenceEndpointList>(request);
+    return this.client.call<InferenceEndpointCollection>(request);
   }
 
   /**
@@ -106,14 +112,14 @@ export class InferenceEndpointsService extends BaseService {
    * @param {number} [params.page] - The page number.
    * @param {number} [params.pageSize] - The maximum number of items per page.
    * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<InferenceEndpointJobList>>} OK
+   * @returns {Promise<HttpResponse<InferenceEndpointJobCollection>>} OK
    */
   async listInferenceEndpointJobs(
     organizationName: string,
     inferenceEndpointName: string,
     params?: ListInferenceEndpointJobsParams,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<InferenceEndpointJobList>> {
+  ): Promise<HttpResponse<InferenceEndpointJobCollection>> {
     const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
@@ -123,7 +129,7 @@ export class InferenceEndpointsService extends BaseService {
       .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
-        schema: inferenceEndpointJobListResponse,
+        schema: inferenceEndpointJobCollectionResponse,
         contentType: ContentType.Json,
         status: 200,
       })
@@ -147,7 +153,7 @@ export class InferenceEndpointsService extends BaseService {
         value: params?.pageSize,
       })
       .build();
-    return this.client.call<InferenceEndpointJobList>(request);
+    return this.client.call<InferenceEndpointJobCollection>(request);
   }
 
   /**
@@ -160,7 +166,7 @@ export class InferenceEndpointsService extends BaseService {
   async createInferenceEndpointJob(
     organizationName: string,
     inferenceEndpointName: string,
-    body: CreateInferenceEndpointJob1,
+    body: InferenceEndpointJobPrototype,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJob>> {
     const request = new RequestBuilder()
@@ -168,7 +174,7 @@ export class InferenceEndpointsService extends BaseService {
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs')
-      .setRequestSchema(createInferenceEndpointJob1Request)
+      .setRequestSchema(inferenceEndpointJobPrototypeRequest)
       .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
@@ -249,7 +255,7 @@ export class InferenceEndpointsService extends BaseService {
    * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
    * @returns {Promise<HttpResponse<any>>} Accepted
    */
-  async cancelInferenceEndpointJob(
+  async deleteInferenceEndpointJob(
     organizationName: string,
     inferenceEndpointName: string,
     inferenceEndpointJobId: string,
