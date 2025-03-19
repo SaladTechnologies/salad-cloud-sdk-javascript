@@ -3,13 +3,13 @@ import { BaseService } from '../base-service';
 import { ContentType, HttpResponse, RequestConfig } from '../../http/types';
 import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
-import { QueueList, queueListResponse } from './models/queue-list';
-import { CreateQueue1, createQueue1Request } from './models/create-queue-1';
+import { QueueCollection, queueCollectionResponse } from './models/queue-collection';
+import { QueuePrototype, queuePrototypeRequest } from './models/queue-prototype';
 import { Queue, queueResponse } from './models/queue';
-import { UpdateQueue1, updateQueue1Request } from './models/update-queue-1';
-import { QueueJobList, queueJobListResponse } from './models/queue-job-list';
+import { QueuePatch, queuePatchRequest } from './models/queue-patch';
+import { QueueJobCollection, queueJobCollectionResponse } from './models/queue-job-collection';
 import { ListQueueJobsParams } from './request-params';
-import { CreateQueueJob1, createQueueJob1Request } from './models/create-queue-job-1';
+import { QueueJobPrototype, queueJobPrototypeRequest } from './models/queue-job-prototype';
 import { QueueJob, queueJobResponse } from './models/queue-job';
 
 export class QueuesService extends BaseService {
@@ -18,13 +18,13 @@ export class QueuesService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<QueueList>>} OK
+   * @returns {Promise<HttpResponse<QueueCollection>>} OK
    */
   async listQueues(
     organizationName: string,
     projectName: string,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<QueueList>> {
+  ): Promise<HttpResponse<QueueCollection>> {
     const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
@@ -34,7 +34,7 @@ export class QueuesService extends BaseService {
       .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
-        schema: queueListResponse,
+        schema: queueCollectionResponse,
         contentType: ContentType.Json,
         status: 200,
       })
@@ -50,7 +50,7 @@ export class QueuesService extends BaseService {
         value: projectName,
       })
       .build();
-    return this.client.call<QueueList>(request);
+    return this.client.call<QueueCollection>(request);
   }
 
   /**
@@ -63,7 +63,7 @@ export class QueuesService extends BaseService {
   async createQueue(
     organizationName: string,
     projectName: string,
-    body: CreateQueue1,
+    body: QueuePrototype,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder()
@@ -71,7 +71,7 @@ export class QueuesService extends BaseService {
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues')
-      .setRequestSchema(createQueue1Request)
+      .setRequestSchema(queuePrototypeRequest)
       .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
@@ -154,7 +154,7 @@ export class QueuesService extends BaseService {
     organizationName: string,
     projectName: string,
     queueName: string,
-    body: UpdateQueue1,
+    body: QueuePatch,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder()
@@ -162,7 +162,7 @@ export class QueuesService extends BaseService {
       .setConfig(this.config)
       .setMethod('PATCH')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
-      .setRequestSchema(updateQueue1Request)
+      .setRequestSchema(queuePatchRequest)
       .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
@@ -245,7 +245,7 @@ export class QueuesService extends BaseService {
    * @param {number} [params.page] - The page number.
    * @param {number} [params.pageSize] - The maximum number of items per page.
    * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<QueueJobList>>} OK
+   * @returns {Promise<HttpResponse<QueueJobCollection>>} OK
    */
   async listQueueJobs(
     organizationName: string,
@@ -253,7 +253,7 @@ export class QueuesService extends BaseService {
     queueName: string,
     params?: ListQueueJobsParams,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<QueueJobList>> {
+  ): Promise<HttpResponse<QueueJobCollection>> {
     const request = new RequestBuilder()
       .setBaseUrl(this.config)
       .setConfig(this.config)
@@ -263,7 +263,7 @@ export class QueuesService extends BaseService {
       .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
-        schema: queueJobListResponse,
+        schema: queueJobCollectionResponse,
         contentType: ContentType.Json,
         status: 200,
       })
@@ -291,7 +291,7 @@ export class QueuesService extends BaseService {
         value: params?.pageSize,
       })
       .build();
-    return this.client.call<QueueJobList>(request);
+    return this.client.call<QueueJobCollection>(request);
   }
 
   /**
@@ -306,7 +306,7 @@ export class QueuesService extends BaseService {
     organizationName: string,
     projectName: string,
     queueName: string,
-    body: CreateQueueJob1,
+    body: QueueJobPrototype,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJob>> {
     const request = new RequestBuilder()
@@ -314,7 +314,7 @@ export class QueuesService extends BaseService {
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs')
-      .setRequestSchema(createQueueJob1Request)
+      .setRequestSchema(queueJobPrototypeRequest)
       .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({

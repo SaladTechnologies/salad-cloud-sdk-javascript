@@ -1,43 +1,47 @@
 import { z } from 'zod';
-import { resources, resourcesRequest, resourcesResponse } from './resources';
 import {
-  updateContainerLogging,
-  updateContainerLoggingRequest,
-  updateContainerLoggingResponse,
-} from './update-container-logging';
+  containerLoggingConfiguration,
+  containerLoggingConfigurationRequest,
+  containerLoggingConfigurationResponse,
+} from '../../common/container-logging-configuration';
 import {
-  updateContainerRegistryAuthentication,
-  updateContainerRegistryAuthenticationRequest,
-  updateContainerRegistryAuthenticationResponse,
-} from './update-container-registry-authentication';
+  containerRegistryAuthentication,
+  containerRegistryAuthenticationRequest,
+  containerRegistryAuthenticationResponse,
+} from './container-registry-authentication';
+import {
+  containerResourceUpdateSchema,
+  containerResourceUpdateSchemaRequest,
+  containerResourceUpdateSchemaResponse,
+} from './container-resource-update-schema';
 
 /**
  * The shape of the model inside the application code - what the users use
  */
 export const updateContainer = z.lazy(() => {
   return z.object({
-    image: z.string().min(1).max(1024).optional().nullable(),
-    resources: resources.optional().nullable(),
     command: z.array(z.string()).max(100).optional().nullable(),
-    priority: z.string().optional().nullable(),
     environmentVariables: z.any().optional(),
-    logging: updateContainerLogging.optional().nullable(),
-    registryAuthentication: updateContainerRegistryAuthentication.optional().nullable(),
+    image: z.string().min(1).max(1024).regex(/^.*$/).optional().nullable(),
     imageCaching: z.boolean().optional(),
+    logging: containerLoggingConfiguration.optional(),
+    priority: z.string().optional().nullable(),
+    registryAuthentication: containerRegistryAuthentication.optional(),
+    resources: containerResourceUpdateSchema.optional().nullable(),
   });
 });
 
 /**
  * Represents an update container object
  * @typedef  {UpdateContainer} updateContainer - Represents an update container object - Represents an update container object
- * @property {string}
- * @property {Resources}
  * @property {string[]} - Pass a command (and optional arguments) to override the ENTRYPOINT and CMD of a container image.
- * @property {ContainerGroupPriority}
- * @property {any}
- * @property {UpdateContainerLogging}
- * @property {UpdateContainerRegistryAuthentication}
- * @property {boolean}
+ * @property {any} - Environment variables to set in the container.
+ * @property {string} - The container image to use.
+ * @property {boolean} - The container image caching.
+ * @property {ContainerLoggingConfiguration} - Configuration options for directing container logs to a logging provider. This schema enables you to specify a single logging destination for container output, supporting monitoring, debugging, and analytics use cases. Each provider has its own configuration parameters defined in the referenced schemas. Only one logging provider can be selected at a time.
+ * @property {ContainerGroupPriority} - Specifies the priority level for container group execution, which determines resource allocation and scheduling precedence.
+ * @property {ContainerRegistryAuthentication} - Authentication configuration for various container registry types, including AWS ECR, Docker Hub, GCP GAR, GCP GCR, and basic authentication.
+ * @property {ContainerResourceUpdateSchema} - Defines the resource specifications that can be modified for a container group, including CPU, memory, GPU classes, and storage allocations.
  */
 export type UpdateContainer = z.infer<typeof updateContainer>;
 
@@ -48,24 +52,24 @@ export type UpdateContainer = z.infer<typeof updateContainer>;
 export const updateContainerResponse = z.lazy(() => {
   return z
     .object({
-      image: z.string().min(1).max(1024).optional().nullable(),
-      resources: resourcesResponse.optional().nullable(),
       command: z.array(z.string()).max(100).optional().nullable(),
-      priority: z.string().optional().nullable(),
       environment_variables: z.any().optional(),
-      logging: updateContainerLoggingResponse.optional().nullable(),
-      registry_authentication: updateContainerRegistryAuthenticationResponse.optional().nullable(),
+      image: z.string().min(1).max(1024).regex(/^.*$/).optional().nullable(),
       image_caching: z.boolean().optional(),
+      logging: containerLoggingConfigurationResponse.optional(),
+      priority: z.string().optional().nullable(),
+      registry_authentication: containerRegistryAuthenticationResponse.optional(),
+      resources: containerResourceUpdateSchemaResponse.optional().nullable(),
     })
     .transform((data) => ({
-      image: data['image'],
-      resources: data['resources'],
       command: data['command'],
-      priority: data['priority'],
       environmentVariables: data['environment_variables'],
-      logging: data['logging'],
-      registryAuthentication: data['registry_authentication'],
+      image: data['image'],
       imageCaching: data['image_caching'],
+      logging: data['logging'],
+      priority: data['priority'],
+      registryAuthentication: data['registry_authentication'],
+      resources: data['resources'],
     }));
 });
 
@@ -76,23 +80,23 @@ export const updateContainerResponse = z.lazy(() => {
 export const updateContainerRequest = z.lazy(() => {
   return z
     .object({
-      image: z.string().nullish(),
-      resources: resourcesRequest.nullish(),
-      command: z.array(z.string()).nullish(),
-      priority: z.string().nullish(),
-      environmentVariables: z.any().nullish(),
-      logging: updateContainerLoggingRequest.nullish(),
-      registryAuthentication: updateContainerRegistryAuthenticationRequest.nullish(),
-      imageCaching: z.boolean().nullish(),
+      command: z.array(z.string()).nullable().optional(),
+      environmentVariables: z.any().optional(),
+      image: z.string().nullable().optional(),
+      imageCaching: z.boolean().optional(),
+      logging: containerLoggingConfigurationRequest.optional(),
+      priority: z.string().nullable().optional(),
+      registryAuthentication: containerRegistryAuthenticationRequest.optional(),
+      resources: containerResourceUpdateSchemaRequest.nullable().optional(),
     })
     .transform((data) => ({
-      image: data['image'],
-      resources: data['resources'],
       command: data['command'],
-      priority: data['priority'],
       environment_variables: data['environmentVariables'],
-      logging: data['logging'],
-      registry_authentication: data['registryAuthentication'],
+      image: data['image'],
       image_caching: data['imageCaching'],
+      logging: data['logging'],
+      priority: data['priority'],
+      registry_authentication: data['registryAuthentication'],
+      resources: data['resources'],
     }));
 });

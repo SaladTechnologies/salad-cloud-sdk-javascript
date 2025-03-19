@@ -1,7 +1,7 @@
-export type { InferenceEndpointList } from './inference-endpoint-list';
+export type { InferenceEndpointCollection } from './inference-endpoint-collection';
 export type { InferenceEndpoint } from './inference-endpoint';
-export type { InferenceEndpointJobList } from './inference-endpoint-job-list';
-export type { CreateInferenceEndpointJob1 } from './create-inference-endpoint-job-1';
+export type { InferenceEndpointJobCollection } from './inference-endpoint-job-collection';
+export type { InferenceEndpointJobPrototype } from './inference-endpoint-job-prototype';
 export type { InferenceEndpointJob } from './inference-endpoint-job';
 export { Status } from './status';
 export type { InferenceEndpointJobEvent } from './inference-endpoint-job-event';

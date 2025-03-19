@@ -5,26 +5,26 @@ import { z } from 'zod';
  */
 export const workloadError = z.lazy(() => {
   return z.object({
-    detail: z.string(),
+    allocatedAt: z.string(),
+    detail: z.string().min(1).max(255).regex(/^.*$/),
     failedAt: z.string(),
     instanceId: z.string(),
     machineId: z.string(),
-    allocatedAt: z.string(),
-    startedAt: z.string().optional().nullable(),
-    version: z.number().gte(1),
+    startedAt: z.string().optional(),
+    version: z.number().gte(1).lte(2147483647),
   });
 });
 
 /**
  * Represents a workload error
  * @typedef  {WorkloadError} workloadError - Represents a workload error - Represents a workload error
- * @property {string}
- * @property {string}
- * @property {string}
- * @property {string}
- * @property {string}
- * @property {string}
- * @property {number}
+ * @property {string} - The timestamp when the workload was initially allocated to a machine
+ * @property {string} - A detailed error message describing the nature and cause of the workload failure
+ * @property {string} - The timestamp when the workload failure was detected or reported
+ * @property {string} - The container group instance identifier.
+ * @property {string} - The container group machine identifier.
+ * @property {string} - The timestamp when the workload started execution, or null if it failed before starting
+ * @property {number} - The schema version number for this error record, used for tracking error format changes
  */
 export type WorkloadError = z.infer<typeof workloadError>;
 
@@ -35,20 +35,20 @@ export type WorkloadError = z.infer<typeof workloadError>;
 export const workloadErrorResponse = z.lazy(() => {
   return z
     .object({
-      detail: z.string(),
+      allocated_at: z.string(),
+      detail: z.string().min(1).max(255).regex(/^.*$/),
       failed_at: z.string(),
       instance_id: z.string(),
       machine_id: z.string(),
-      allocated_at: z.string(),
-      started_at: z.string().optional().nullable(),
-      version: z.number().gte(1),
+      started_at: z.string().optional(),
+      version: z.number().gte(1).lte(2147483647),
     })
     .transform((data) => ({
+      allocatedAt: data['allocated_at'],
       detail: data['detail'],
       failedAt: data['failed_at'],
       instanceId: data['instance_id'],
       machineId: data['machine_id'],
-      allocatedAt: data['allocated_at'],
       startedAt: data['started_at'],
       version: data['version'],
     }));
@@ -61,20 +61,20 @@ export const workloadErrorResponse = z.lazy(() => {
 export const workloadErrorRequest = z.lazy(() => {
   return z
     .object({
-      detail: z.string().nullish(),
-      failedAt: z.string().nullish(),
-      instanceId: z.string().nullish(),
-      machineId: z.string().nullish(),
-      allocatedAt: z.string().nullish(),
-      startedAt: z.string().nullish(),
-      version: z.number().nullish(),
+      allocatedAt: z.string(),
+      detail: z.string(),
+      failedAt: z.string(),
+      instanceId: z.string(),
+      machineId: z.string(),
+      startedAt: z.string().optional(),
+      version: z.number(),
     })
     .transform((data) => ({
+      allocated_at: data['allocatedAt'],
       detail: data['detail'],
       failed_at: data['failedAt'],
       instance_id: data['instanceId'],
       machine_id: data['machineId'],
-      allocated_at: data['allocatedAt'],
       started_at: data['startedAt'],
       version: data['version'],
     }));

@@ -1,54 +1,54 @@
 import { z } from 'zod';
 import {
-  containerGroupProbeTcp,
-  containerGroupProbeTcpRequest,
-  containerGroupProbeTcpResponse,
-} from './container-group-probe-tcp';
-import {
-  containerGroupProbeHttp,
-  containerGroupProbeHttpRequest,
-  containerGroupProbeHttpResponse,
-} from './container-group-probe-http';
-import {
-  containerGroupProbeGrpc,
-  containerGroupProbeGrpcRequest,
-  containerGroupProbeGrpcResponse,
-} from './container-group-probe-grpc';
-import {
   containerGroupProbeExec,
   containerGroupProbeExecRequest,
   containerGroupProbeExecResponse,
 } from './container-group-probe-exec';
+import {
+  containerGroupGRpcProbe,
+  containerGroupGRpcProbeRequest,
+  containerGroupGRpcProbeResponse,
+} from './container-group-g-rpc-probe';
+import {
+  containerGroupHttpProbeConfiguration,
+  containerGroupHttpProbeConfigurationRequest,
+  containerGroupHttpProbeConfigurationResponse,
+} from './container-group-http-probe-configuration';
+import {
+  containerGroupTcpProbe,
+  containerGroupTcpProbeRequest,
+  containerGroupTcpProbeResponse,
+} from './container-group-tcp-probe';
 
 /**
  * The shape of the model inside the application code - what the users use
  */
 export const containerGroupReadinessProbe = z.lazy(() => {
   return z.object({
-    tcp: containerGroupProbeTcp.optional(),
-    http: containerGroupProbeHttp.optional(),
-    grpc: containerGroupProbeGrpc.optional(),
     exec: containerGroupProbeExec.optional(),
-    initialDelaySeconds: z.number().gte(0),
-    periodSeconds: z.number().gte(1),
-    timeoutSeconds: z.number().gte(1),
-    successThreshold: z.number().gte(1),
-    failureThreshold: z.number().gte(1),
+    failureThreshold: z.number().gte(1).lte(20),
+    grpc: containerGroupGRpcProbe.optional(),
+    http: containerGroupHttpProbeConfiguration.optional(),
+    initialDelaySeconds: z.number().gte(0).lte(1200),
+    periodSeconds: z.number().gte(1).lte(120),
+    successThreshold: z.number().gte(1).lte(10),
+    tcp: containerGroupTcpProbe.optional(),
+    timeoutSeconds: z.number().gte(1).lte(60),
   });
 });
 
 /**
- * Represents the container group readiness probe
- * @typedef  {ContainerGroupReadinessProbe} containerGroupReadinessProbe - Represents the container group readiness probe - Represents the container group readiness probe
- * @property {ContainerGroupProbeTcp}
- * @property {ContainerGroupProbeHttp}
- * @property {ContainerGroupProbeGrpc}
- * @property {ContainerGroupProbeExec}
- * @property {number}
- * @property {number}
- * @property {number}
- * @property {number}
- * @property {number}
+ * Defines how to check if a container is ready to serve traffic. The readiness probe determines whether the container's application is ready to accept traffic. If the readiness probe fails, the container is considered not ready and traffic will not be sent to it.
+ * @typedef  {ContainerGroupReadinessProbe} containerGroupReadinessProbe - Defines how to check if a container is ready to serve traffic. The readiness probe determines whether the container's application is ready to accept traffic. If the readiness probe fails, the container is considered not ready and traffic will not be sent to it. - Defines how to check if a container is ready to serve traffic. The readiness probe determines whether the container's application is ready to accept traffic. If the readiness probe fails, the container is considered not ready and traffic will not be sent to it.
+ * @property {ContainerGroupProbeExec} - Defines the exec action for a probe in a container group. This is used to execute a command inside a container for health checks.
+ * @property {number} - The number of consecutive failures required to consider the probe failed. After this many consecutive failures, the container is marked as not ready.
+ * @property {ContainerGroupGRpcProbe} - Configuration for gRPC-based health probes in container groups, used to determine container health status.
+ * @property {ContainerGroupHttpProbeConfiguration} - Defines HTTP probe configuration for container health checks within a container group.
+ * @property {number} - The time in seconds to wait after the container starts before initiating the first probe. This allows time for the application to initialize before being tested.
+ * @property {number} - How frequently (in seconds) the probe should be executed during the container's lifetime. Specifies the interval between consecutive probe executions.
+ * @property {number} - The minimum consecutive successes required to consider the probe successful after it has failed. Defines how many successful probe results are needed to transition from failure to success.
+ * @property {ContainerGroupTcpProbe} - Configuration for a TCP probe used to check container health via network connectivity.
+ * @property {number} - The maximum time in seconds that the probe has to complete. If the probe doesn't return a result before the timeout, it's considered failed.
  */
 export type ContainerGroupReadinessProbe = z.infer<typeof containerGroupReadinessProbe>;
 
@@ -59,26 +59,26 @@ export type ContainerGroupReadinessProbe = z.infer<typeof containerGroupReadines
 export const containerGroupReadinessProbeResponse = z.lazy(() => {
   return z
     .object({
-      tcp: containerGroupProbeTcpResponse.optional(),
-      http: containerGroupProbeHttpResponse.optional(),
-      grpc: containerGroupProbeGrpcResponse.optional(),
       exec: containerGroupProbeExecResponse.optional(),
-      initial_delay_seconds: z.number().gte(0),
-      period_seconds: z.number().gte(1),
-      timeout_seconds: z.number().gte(1),
-      success_threshold: z.number().gte(1),
-      failure_threshold: z.number().gte(1),
+      failure_threshold: z.number().gte(1).lte(20),
+      grpc: containerGroupGRpcProbeResponse.optional(),
+      http: containerGroupHttpProbeConfigurationResponse.optional(),
+      initial_delay_seconds: z.number().gte(0).lte(1200),
+      period_seconds: z.number().gte(1).lte(120),
+      success_threshold: z.number().gte(1).lte(10),
+      tcp: containerGroupTcpProbeResponse.optional(),
+      timeout_seconds: z.number().gte(1).lte(60),
     })
     .transform((data) => ({
-      tcp: data['tcp'],
-      http: data['http'],
-      grpc: data['grpc'],
       exec: data['exec'],
+      failureThreshold: data['failure_threshold'],
+      grpc: data['grpc'],
+      http: data['http'],
       initialDelaySeconds: data['initial_delay_seconds'],
       periodSeconds: data['period_seconds'],
-      timeoutSeconds: data['timeout_seconds'],
       successThreshold: data['success_threshold'],
-      failureThreshold: data['failure_threshold'],
+      tcp: data['tcp'],
+      timeoutSeconds: data['timeout_seconds'],
     }));
 });
 
@@ -89,25 +89,25 @@ export const containerGroupReadinessProbeResponse = z.lazy(() => {
 export const containerGroupReadinessProbeRequest = z.lazy(() => {
   return z
     .object({
-      tcp: containerGroupProbeTcpRequest.nullish(),
-      http: containerGroupProbeHttpRequest.nullish(),
-      grpc: containerGroupProbeGrpcRequest.nullish(),
-      exec: containerGroupProbeExecRequest.nullish(),
-      initialDelaySeconds: z.number().nullish(),
-      periodSeconds: z.number().nullish(),
-      timeoutSeconds: z.number().nullish(),
-      successThreshold: z.number().nullish(),
-      failureThreshold: z.number().nullish(),
+      exec: containerGroupProbeExecRequest.optional(),
+      failureThreshold: z.number(),
+      grpc: containerGroupGRpcProbeRequest.optional(),
+      http: containerGroupHttpProbeConfigurationRequest.optional(),
+      initialDelaySeconds: z.number(),
+      periodSeconds: z.number(),
+      successThreshold: z.number(),
+      tcp: containerGroupTcpProbeRequest.optional(),
+      timeoutSeconds: z.number(),
     })
     .transform((data) => ({
-      tcp: data['tcp'],
-      http: data['http'],
-      grpc: data['grpc'],
       exec: data['exec'],
+      failure_threshold: data['failureThreshold'],
+      grpc: data['grpc'],
+      http: data['http'],
       initial_delay_seconds: data['initialDelaySeconds'],
       period_seconds: data['periodSeconds'],
-      timeout_seconds: data['timeoutSeconds'],
       success_threshold: data['successThreshold'],
-      failure_threshold: data['failureThreshold'],
+      tcp: data['tcp'],
+      timeout_seconds: data['timeoutSeconds'],
     }));
 });

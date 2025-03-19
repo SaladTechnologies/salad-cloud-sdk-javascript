@@ -1,29 +1,16 @@
 # ContainerGroupInstance
 
-Represents the details of a single container group instance
+A Container Group Instance represents a running instance of a container group on a specific machine. It provides information about the execution state, readiness, and version of the deployed container group.
 
 **Properties**
 
-| Name       | Type    | Required | Description                                                                                                                                            |
-| :--------- | :------ | :------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| instanceId | string  | ✅       | The unique instance ID                                                                                                                                 |
-| machineId  | string  | ✅       | The machine ID                                                                                                                                         |
-| state      | State   | ✅       | The state of the container group instance                                                                                                              |
-| updateTime | string  | ✅       | The UTC date & time when the workload on this machine transitioned to the current state                                                                |
-| version    | number  | ✅       | The version of the running container group                                                                                                             |
-| ready      | boolean | ❌       | Specifies whether the container group instance is currently passing its readiness check. If no readiness probe is defined, is true once fully started. |
-| started    | boolean | ❌       | Specifies whether the container group instance passed its startup probe. Is always true when no startup probe is defined.                              |
-
-# State
-
-The state of the container group instance
-
-**Properties**
-
-| Name        | Type   | Required | Description   |
-| :---------- | :----- | :------- | :------------ |
-| ALLOCATING  | string | ✅       | "allocating"  |
-| DOWNLOADING | string | ✅       | "downloading" |
-| CREATING    | string | ✅       | "creating"    |
-| RUNNING     | string | ✅       | "running"     |
-| STOPPING    | string | ✅       | "stopping"    |
+| Name         | Type                           | Required | Description                                                                                                                                                                                                                                       |
+| :----------- | :----------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| id           | string                         | ✅       | The container group instance identifier.                                                                                                                                                                                                          |
+| machineId    | string                         | ✅       | The container group machine identifier.                                                                                                                                                                                                           |
+| state        | TheContainerGroupInstanceState | ✅       | The state of the container group instance                                                                                                                                                                                                         |
+| updateTime   | string                         | ✅       | The UTC timestamp when the container group instance last changed its state. This helps track the lifecycle and state transitions of the instance.                                                                                                 |
+| version      | number                         | ✅       | The version of the container group definition currently running on this instance. Used to track deployment and update progress across the container group fleet.                                                                                  |
+| ready        | boolean                        | ❌       | Indicates whether the container group instance is currently passing its readiness checks and is able to receive traffic or perform its intended function. If no readiness probe is defined, this will be true once the instance is fully started. |
+| started      | boolean                        | ❌       | Indicates whether the container group instance has successfully completed its startup sequence and passed any configured startup probes. This will always be true when no startup probe is defined for the container group.                       |
+| deletionCost | number                         | ❌       | The cost of deleting the container group instance                                                                                                                                                                                                 |

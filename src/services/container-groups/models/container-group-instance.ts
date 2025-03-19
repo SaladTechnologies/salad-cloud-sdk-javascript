@@ -5,26 +5,28 @@ import { z } from 'zod';
  */
 export const containerGroupInstance = z.lazy(() => {
   return z.object({
-    instanceId: z.string(),
+    id: z.string(),
     machineId: z.string(),
     state: z.string(),
     updateTime: z.string(),
-    version: z.number().gte(1),
+    version: z.number().gte(1).lte(2147483647),
     ready: z.boolean().optional(),
     started: z.boolean().optional(),
+    deletionCost: z.number().gte(0).lte(100000).optional(),
   });
 });
 
 /**
- * Represents the details of a single container group instance
- * @typedef  {ContainerGroupInstance} containerGroupInstance - Represents the details of a single container group instance - Represents the details of a single container group instance
- * @property {string} - The unique instance ID
- * @property {string} - The machine ID
- * @property {State} - The state of the container group instance
- * @property {string} - The UTC date & time when the workload on this machine transitioned to the current state
- * @property {number} - The version of the running container group
- * @property {boolean} - Specifies whether the container group instance is currently passing its readiness check. If no readiness probe is defined, is true once fully started.
- * @property {boolean} - Specifies whether the container group instance passed its startup probe. Is always true when no startup probe is defined.
+ * A Container Group Instance represents a running instance of a container group on a specific machine. It provides information about the execution state, readiness, and version of the deployed container group.
+ * @typedef  {ContainerGroupInstance} containerGroupInstance - A Container Group Instance represents a running instance of a container group on a specific machine. It provides information about the execution state, readiness, and version of the deployed container group. - A Container Group Instance represents a running instance of a container group on a specific machine. It provides information about the execution state, readiness, and version of the deployed container group.
+ * @property {string} - The container group instance identifier.
+ * @property {string} - The container group machine identifier.
+ * @property {TheContainerGroupInstanceState} - The state of the container group instance
+ * @property {string} - The UTC timestamp when the container group instance last changed its state. This helps track the lifecycle and state transitions of the instance.
+ * @property {number} - The version of the container group definition currently running on this instance. Used to track deployment and update progress across the container group fleet.
+ * @property {boolean} - Indicates whether the container group instance is currently passing its readiness checks and is able to receive traffic or perform its intended function. If no readiness probe is defined, this will be true once the instance is fully started.
+ * @property {boolean} - Indicates whether the container group instance has successfully completed its startup sequence and passed any configured startup probes. This will always be true when no startup probe is defined for the container group.
+ * @property {number} - The cost of deleting the container group instance
  */
 export type ContainerGroupInstance = z.infer<typeof containerGroupInstance>;
 
@@ -35,22 +37,24 @@ export type ContainerGroupInstance = z.infer<typeof containerGroupInstance>;
 export const containerGroupInstanceResponse = z.lazy(() => {
   return z
     .object({
-      instance_id: z.string(),
+      id: z.string(),
       machine_id: z.string(),
       state: z.string(),
       update_time: z.string(),
-      version: z.number().gte(1),
+      version: z.number().gte(1).lte(2147483647),
       ready: z.boolean().optional(),
       started: z.boolean().optional(),
+      deletion_cost: z.number().gte(0).lte(100000).optional(),
     })
     .transform((data) => ({
-      instanceId: data['instance_id'],
+      id: data['id'],
       machineId: data['machine_id'],
       state: data['state'],
       updateTime: data['update_time'],
       version: data['version'],
       ready: data['ready'],
       started: data['started'],
+      deletionCost: data['deletion_cost'],
     }));
 });
 
@@ -61,21 +65,23 @@ export const containerGroupInstanceResponse = z.lazy(() => {
 export const containerGroupInstanceRequest = z.lazy(() => {
   return z
     .object({
-      instanceId: z.string().nullish(),
-      machineId: z.string().nullish(),
-      state: z.string().nullish(),
-      updateTime: z.string().nullish(),
-      version: z.number().nullish(),
-      ready: z.boolean().nullish(),
-      started: z.boolean().nullish(),
+      id: z.string(),
+      machineId: z.string(),
+      state: z.string(),
+      updateTime: z.string(),
+      version: z.number(),
+      ready: z.boolean().optional(),
+      started: z.boolean().optional(),
+      deletionCost: z.number().optional(),
     })
     .transform((data) => ({
-      instance_id: data['instanceId'],
+      id: data['id'],
       machine_id: data['machineId'],
       state: data['state'],
       update_time: data['updateTime'],
       version: data['version'],
       ready: data['ready'],
       started: data['started'],
+      deletion_cost: data['deletionCost'],
     }));
 });

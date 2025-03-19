@@ -19,7 +19,7 @@ export const quotas = z.lazy(() => {
 /**
  * Represents the organization quotas
  * @typedef  {Quotas} quotas - Represents the organization quotas - Represents the organization quotas
- * @property {ContainerGroupsQuotas}
+ * @property {ContainerGroupsQuotas} - Represents the organization quotas for container groups
  * @property {string} - The time the resource was created
  * @property {string} - The time the resource was last updated
  */
@@ -50,9 +50,9 @@ export const quotasResponse = z.lazy(() => {
 export const quotasRequest = z.lazy(() => {
   return z
     .object({
-      containerGroupsQuotas: containerGroupsQuotasRequest.nullish(),
-      createTime: z.string().nullish(),
-      updateTime: z.string().nullish(),
+      containerGroupsQuotas: containerGroupsQuotasRequest,
+      createTime: z.string().optional(),
+      updateTime: z.string().optional(),
     })
     .transform((data) => ({
       container_groups_quotas: data['containerGroupsQuotas'],

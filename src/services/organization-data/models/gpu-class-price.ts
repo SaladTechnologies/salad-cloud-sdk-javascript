@@ -6,14 +6,14 @@ import { z } from 'zod';
 export const gpuClassPrice = z.lazy(() => {
   return z.object({
     priority: z.string().nullable(),
-    price: z.string().min(1).max(20),
+    price: z.string().min(1).max(20).regex(/^.*$/),
   });
 });
 
 /**
  * Represents the price of a GPU class for a given container group priority
  * @typedef  {GpuClassPrice} gpuClassPrice - Represents the price of a GPU class for a given container group priority - Represents the price of a GPU class for a given container group priority
- * @property {ContainerGroupPriority}
+ * @property {ContainerGroupPriority} - Specifies the priority level for container group execution, which determines resource allocation and scheduling precedence.
  * @property {string} - The price
  */
 export type GpuClassPrice = z.infer<typeof gpuClassPrice>;
@@ -26,7 +26,7 @@ export const gpuClassPriceResponse = z.lazy(() => {
   return z
     .object({
       priority: z.string().nullable(),
-      price: z.string().min(1).max(20),
+      price: z.string().min(1).max(20).regex(/^.*$/),
     })
     .transform((data) => ({
       priority: data['priority'],
@@ -39,7 +39,7 @@ export const gpuClassPriceResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const gpuClassPriceRequest = z.lazy(() => {
-  return z.object({ priority: z.string().nullish(), price: z.string().nullish() }).transform((data) => ({
+  return z.object({ priority: z.string().nullable(), price: z.string() }).transform((data) => ({
     priority: data['priority'],
     price: data['price'],
   }));

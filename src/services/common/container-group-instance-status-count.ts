@@ -5,20 +5,20 @@ import { z } from 'zod';
  */
 export const containerGroupInstanceStatusCount = z.lazy(() => {
   return z.object({
-    allocatingCount: z.number().gte(0),
-    creatingCount: z.number().gte(0),
-    runningCount: z.number().gte(0),
-    stoppingCount: z.number().gte(0),
+    allocatingCount: z.number().gte(0).lte(2147483647),
+    creatingCount: z.number().gte(0).lte(2147483647),
+    runningCount: z.number().gte(0).lte(2147483647),
+    stoppingCount: z.number().gte(0).lte(2147483647),
   });
 });
 
 /**
- * Represents a container group instance status count
- * @typedef  {ContainerGroupInstanceStatusCount} containerGroupInstanceStatusCount - Represents a container group instance status count - Represents a container group instance status count
- * @property {number}
- * @property {number}
- * @property {number}
- * @property {number}
+ * A summary of container group instances categorized by their current lifecycle status
+ * @typedef  {ContainerGroupInstanceStatusCount} containerGroupInstanceStatusCount - A summary of container group instances categorized by their current lifecycle status - A summary of container group instances categorized by their current lifecycle status
+ * @property {number} - The number of container instances that are currently being allocated resources
+ * @property {number} - The number of container instances that are in the process of being created
+ * @property {number} - The number of container instances that are currently running and operational
+ * @property {number} - The number of container instances that are in the process of stopping
  */
 export type ContainerGroupInstanceStatusCount = z.infer<typeof containerGroupInstanceStatusCount>;
 
@@ -29,10 +29,10 @@ export type ContainerGroupInstanceStatusCount = z.infer<typeof containerGroupIns
 export const containerGroupInstanceStatusCountResponse = z.lazy(() => {
   return z
     .object({
-      allocating_count: z.number().gte(0),
-      creating_count: z.number().gte(0),
-      running_count: z.number().gte(0),
-      stopping_count: z.number().gte(0),
+      allocating_count: z.number().gte(0).lte(2147483647),
+      creating_count: z.number().gte(0).lte(2147483647),
+      running_count: z.number().gte(0).lte(2147483647),
+      stopping_count: z.number().gte(0).lte(2147483647),
     })
     .transform((data) => ({
       allocatingCount: data['allocating_count'],
@@ -49,10 +49,10 @@ export const containerGroupInstanceStatusCountResponse = z.lazy(() => {
 export const containerGroupInstanceStatusCountRequest = z.lazy(() => {
   return z
     .object({
-      allocatingCount: z.number().nullish(),
-      creatingCount: z.number().nullish(),
-      runningCount: z.number().nullish(),
-      stoppingCount: z.number().nullish(),
+      allocatingCount: z.number(),
+      creatingCount: z.number(),
+      runningCount: z.number(),
+      stoppingCount: z.number(),
     })
     .transform((data) => ({
       allocating_count: data['allocatingCount'],

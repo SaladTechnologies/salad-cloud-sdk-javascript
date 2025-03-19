@@ -13,8 +13,8 @@ export const queueJobEvent = z.lazy(() => {
 /**
  * Represents an event for queue job
  * @typedef  {QueueJobEvent} queueJobEvent - Represents an event for queue job - Represents an event for queue job
- * @property {Action}
- * @property {string}
+ * @property {Action} - The action that was taken on the queue job
+ * @property {string} - The time the action was taken on the queue job
  */
 export type QueueJobEvent = z.infer<typeof queueJobEvent>;
 
@@ -39,7 +39,7 @@ export const queueJobEventResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const queueJobEventRequest = z.lazy(() => {
-  return z.object({ action: z.string().nullish(), time: z.string().nullish() }).transform((data) => ({
+  return z.object({ action: z.string(), time: z.string() }).transform((data) => ({
     action: data['action'],
     time: data['time'],
   }));

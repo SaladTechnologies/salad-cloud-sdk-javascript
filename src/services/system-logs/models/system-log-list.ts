@@ -13,7 +13,7 @@ export const systemLogList = z.lazy(() => {
 /**
  * Represents a list of system logs
  * @typedef  {SystemLogList} systemLogList - Represents a list of system logs - Represents a list of system logs
- * @property {SystemLog[]}
+ * @property {SystemLog[]} - A list of system logs
  */
 export type SystemLogList = z.infer<typeof systemLogList>;
 
@@ -36,7 +36,7 @@ export const systemLogListResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const systemLogListRequest = z.lazy(() => {
-  return z.object({ items: z.array(systemLogRequest).nullish() }).transform((data) => ({
+  return z.object({ items: z.array(systemLogRequest) }).transform((data) => ({
     items: data['items'],
   }));
 });

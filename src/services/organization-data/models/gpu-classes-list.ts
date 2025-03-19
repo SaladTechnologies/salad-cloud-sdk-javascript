@@ -36,7 +36,7 @@ export const gpuClassesListResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const gpuClassesListRequest = z.lazy(() => {
-  return z.object({ items: z.array(gpuClassRequest).nullish() }).transform((data) => ({
+  return z.object({ items: z.array(gpuClassRequest) }).transform((data) => ({
     items: data['items'],
   }));
 });
