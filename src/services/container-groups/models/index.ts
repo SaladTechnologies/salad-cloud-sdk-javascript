@@ -6,7 +6,11 @@ export type { ContainerGroupInstance } from './container-group-instance';
 export type { ContainerGroupInstancePatch } from './container-group-instance-patch';
 export type { ContainerConfiguration } from './container-configuration';
 export type { CreateContainerGroupNetworking } from './create-container-group-networking';
+export type { ContainerConfigurationLogging } from './container-configuration-logging';
 export type { ContainerRegistryAuthentication } from './container-registry-authentication';
+export type { ContainerLoggingConfigurationHttp2 } from './container-logging-configuration-http-2';
+export { ContainerHttpLoggingConfigurationFormat2 } from './container-http-logging-configuration-format-2';
+export { ContainerHttpLoggingConfigurationCompression2 } from './container-http-logging-configuration-compression-2';
 export type { ContainerRegistryAuthenticationAwsEcr } from './container-registry-authentication-aws-ecr';
 export type { ContainerRegistryAuthenticationBasic } from './container-registry-authentication-basic';
 export type { ContainerRegistryAuthenticationDockerHub } from './container-registry-authentication-docker-hub';
@@ -14,5 +18,6 @@ export type { ContainerRegistryAuthenticationGcpGar } from './container-registry
 export type { ContainerRegistryAuthenticationGcpGcr } from './container-registry-authentication-gcp-gcr';
 export type { UpdateContainer } from './update-container';
 export type { UpdateContainerGroupNetworking } from './update-container-group-networking';
+export type { UpdateContainerLogging } from './update-container-logging';
 export type { ContainerResourceUpdateSchema } from './container-resource-update-schema';
 export { TheContainerGroupInstanceState } from './the-container-group-instance-state';

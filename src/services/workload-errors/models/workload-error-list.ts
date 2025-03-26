@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { workloadError, workloadErrorRequest, workloadErrorResponse } from './workload-error';
+import { WorkloadError, workloadError, workloadErrorRequest, workloadErrorResponse } from './workload-error';
 
 /**
  * The shape of the model inside the application code - what the users use

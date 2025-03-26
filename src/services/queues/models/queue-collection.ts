@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { queue, queueRequest, queueResponse } from './queue';
+import { Queue, queue, queueRequest, queueResponse } from './queue';
 
 /**
  * The shape of the model inside the application code - what the users use

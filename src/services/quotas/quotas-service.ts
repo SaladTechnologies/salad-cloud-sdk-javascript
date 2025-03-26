@@ -1,9 +1,11 @@
 import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse, RequestConfig } from '../../http/types';
+import { Environment } from '../../http/environment';
 import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
 import { Quotas, quotasResponse } from './models/quotas';
+import { ProblemDetails } from '../common/problem-details';
 
 export class QuotasService extends BaseService {
   /**
@@ -14,7 +16,7 @@ export class QuotasService extends BaseService {
    */
   async getQuotas(organizationName: string, requestConfig?: RequestConfig): Promise<HttpResponse<Quotas>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/quotas')
@@ -25,6 +27,16 @@ export class QuotasService extends BaseService {
         schema: quotasResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)

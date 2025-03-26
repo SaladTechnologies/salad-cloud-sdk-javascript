@@ -1,5 +1,12 @@
 import z, { ZodType } from 'zod';
-import { Request, CreateRequestParameters, RequestParameter, RequestPagination, ResponseDefinition } from './request';
+import {
+  Request,
+  CreateRequestParameters,
+  RequestParameter,
+  RequestPagination,
+  ResponseDefinition,
+  ErrorDefinition,
+} from './request';
 import { ContentType, HttpMethod, SdkConfig, RequestConfig, RetryOptions, ValidationOptions } from '../types';
 import { Environment } from '../environment';
 import { SerializationStyle } from '../serialization/base-serializer';
@@ -14,6 +21,7 @@ export class RequestBuilder<Page extends unknown[] = unknown[]> {
       path: '',
       config: {},
       responses: [],
+      errors: [],
       requestSchema: z.any(),
       requestContentType: ContentType.Json,
       retry: {
@@ -59,9 +67,9 @@ export class RequestBuilder<Page extends unknown[] = unknown[]> {
     return this;
   }
 
-  setBaseUrl(sdkConfig: SdkConfig): RequestBuilder<Page> {
-    if (sdkConfig?.baseUrl !== undefined) {
-      this.params.baseUrl = sdkConfig.baseUrl;
+  setBaseUrl(baseUrl: string | undefined): RequestBuilder<Page> {
+    if (baseUrl) {
+      this.params.baseUrl = baseUrl;
     }
 
     return this;
@@ -150,6 +158,11 @@ export class RequestBuilder<Page extends unknown[] = unknown[]> {
 
   addResponse(response: ResponseDefinition): RequestBuilder<Page> {
     this.params.responses.push(response);
+    return this;
+  }
+
+  addError(error: ErrorDefinition): RequestBuilder<Page> {
+    this.params.errors.push(error);
     return this;
   }
 

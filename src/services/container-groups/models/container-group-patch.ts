@@ -1,26 +1,31 @@
 import { z } from 'zod';
-import { updateContainer, updateContainerRequest, updateContainerResponse } from './update-container';
+import { UpdateContainer, updateContainer, updateContainerRequest, updateContainerResponse } from './update-container';
 import {
+  UpdateContainerGroupNetworking,
   updateContainerGroupNetworking,
   updateContainerGroupNetworkingRequest,
   updateContainerGroupNetworkingResponse,
 } from './update-container-group-networking';
 import {
+  ContainerGroupLivenessProbe,
   containerGroupLivenessProbe,
   containerGroupLivenessProbeRequest,
   containerGroupLivenessProbeResponse,
 } from '../../common/container-group-liveness-probe';
 import {
+  ContainerGroupReadinessProbe,
   containerGroupReadinessProbe,
   containerGroupReadinessProbeRequest,
   containerGroupReadinessProbeResponse,
 } from '../../common/container-group-readiness-probe';
 import {
+  ContainerGroupStartupProbe,
   containerGroupStartupProbe,
   containerGroupStartupProbeRequest,
   containerGroupStartupProbeResponse,
 } from '../../common/container-group-startup-probe';
 import {
+  QueueBasedAutoscalerConfiguration,
   queueBasedAutoscalerConfiguration,
   queueBasedAutoscalerConfigurationRequest,
   queueBasedAutoscalerConfigurationResponse,

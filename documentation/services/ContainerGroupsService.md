@@ -110,24 +110,24 @@ import {
     tags: [datadogTagForContainerLogging],
   };
 
-  const format = Format.JSON;
+  const containerHttpLoggingConfigurationFormat2 = ContainerHttpLoggingConfigurationFormat2.JSON;
 
   const containerLoggingHttpHeader: ContainerLoggingHttpHeader = {
     name: 'name',
     value: 'value',
   };
 
-  const compression = Compression.NONE;
+  const containerHttpLoggingConfigurationCompression2 = ContainerHttpLoggingConfigurationCompression2.NONE;
 
-  const containerHttpLoggingConfiguration: ContainerHttpLoggingConfiguration = {
+  const containerLoggingConfigurationHttp2: ContainerLoggingConfigurationHttp2 = {
     host: 'host',
-    port: 43509,
+    port: 46840,
     user: 'user',
     password: 'password',
     path: 'path',
-    format: format,
+    format: containerHttpLoggingConfigurationFormat2,
     headers: [containerLoggingHttpHeader],
-    compression: compression,
+    compression: containerHttpLoggingConfigurationCompression2,
   };
 
   const newRelicLoggingConfiguration: NewRelicLoggingConfiguration = {
@@ -142,13 +142,13 @@ import {
 
   const tcpLoggingConfiguration: TcpLoggingConfiguration = {
     host: 'host',
-    port: 35405,
+    port: 44671,
   };
 
-  const containerLoggingConfiguration: ContainerLoggingConfiguration = {
+  const containerConfigurationLogging: ContainerConfigurationLogging = {
     axiom: axiomLoggingConfiguration,
     datadog: datadogLoggingConfiguration,
-    http: containerHttpLoggingConfiguration,
+    http: containerLoggingConfigurationHttp2,
     newRelic: newRelicLoggingConfiguration,
     splunk: containerLoggingSplunkConfiguration,
     tcp: tcpLoggingConfiguration,
@@ -188,10 +188,10 @@ import {
   };
 
   const containerResourceRequirements: ContainerResourceRequirements = {
-    cpu: 13,
-    memory: 28311,
+    cpu: 2,
+    memory: 57018,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 20719714697,
+    storageAmount: 10190895817,
   };
 
   const containerConfiguration: ContainerConfiguration = {
@@ -199,7 +199,7 @@ import {
     environmentVariables: [],
     image: 'acme/:latest',
     imageCaching: true,
-    logging: containerLoggingConfiguration,
+    logging: containerConfigurationLogging,
     priority: containerGroupPriority,
     registryAuthentication: containerRegistryAuthentication,
     resources: containerResourceRequirements,
@@ -212,7 +212,7 @@ import {
   };
 
   const containerGroupGRpcProbe: ContainerGroupGRpcProbe = {
-    port: 4792,
+    port: 37648,
     service: 'service',
   };
 
@@ -226,12 +226,12 @@ import {
   const containerGroupHttpProbeConfiguration: ContainerGroupHttpProbeConfiguration = {
     headers: [containerGroupProbeHttpHeader],
     path: 'path',
-    port: 18942,
+    port: 29069,
     scheme: httpScheme,
   };
 
   const containerGroupTcpProbe: ContainerGroupTcpProbe = {
-    port: 47377,
+    port: 13817,
   };
 
   const containerGroupLivenessProbe: ContainerGroupLivenessProbe = {
@@ -239,7 +239,7 @@ import {
     failureThreshold: 3,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 987,
+    initialDelaySeconds: 670,
     periodSeconds: 10,
     successThreshold: 1,
     tcp: containerGroupTcpProbe,
@@ -261,18 +261,18 @@ import {
   };
 
   const queueBasedAutoscalerConfiguration: QueueBasedAutoscalerConfiguration = {
-    desiredQueueLength: 2,
-    maxReplicas: 219,
-    maxDownscalePerMinute: 5,
-    maxUpscalePerMinute: 16,
-    minReplicas: 88,
-    pollingPeriod: 680,
+    desiredQueueLength: 53,
+    maxReplicas: 291,
+    maxDownscalePerMinute: 65,
+    maxUpscalePerMinute: 100,
+    minReplicas: 54,
+    pollingPeriod: 140,
   };
 
   const containerGroupQueueConnection: ContainerGroupQueueConnection = {
     path: 'path',
-    port: 39086,
-    queueName: 'dawtm7q4ohrrc63u35mpg4-370h--6se6eqezp-gj0',
+    port: 47568,
+    queueName: 'z1h-3z01x9',
   };
 
   const containerGroupReadinessProbe: ContainerGroupReadinessProbe = {
@@ -280,7 +280,7 @@ import {
     failureThreshold: 3,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 479,
+    initialDelaySeconds: 262,
     periodSeconds: 1,
     successThreshold: 1,
     tcp: containerGroupTcpProbe,
@@ -294,7 +294,7 @@ import {
     failureThreshold: 15,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 563,
+    initialDelaySeconds: 1106,
     tcp: containerGroupTcpProbe,
     periodSeconds: 3,
     successThreshold: 2,
@@ -305,14 +305,14 @@ import {
     autostartPolicy: true,
     container: containerConfiguration,
     countryCodes: [countryCode],
-    displayName: 'QTB',
+    displayName: '9 Q592CH6F',
     livenessProbe: containerGroupLivenessProbe,
     name: 'name',
     networking: createContainerGroupNetworking,
     queueAutoscaler: queueBasedAutoscalerConfiguration,
     queueConnection: containerGroupQueueConnection,
     readinessProbe: containerGroupReadinessProbe,
-    replicas: 257,
+    replicas: 284,
     restartPolicy: containerRestartPolicy,
     startupProbe: containerGroupStartupProbe,
   };
@@ -419,24 +419,24 @@ import {
     tags: [datadogTagForContainerLogging],
   };
 
-  const format = Format.JSON;
+  const containerHttpLoggingConfigurationFormat1 = ContainerHttpLoggingConfigurationFormat1.JSON;
 
   const containerLoggingHttpHeader: ContainerLoggingHttpHeader = {
     name: 'name',
     value: 'value',
   };
 
-  const compression = Compression.NONE;
+  const containerHttpLoggingConfigurationCompression1 = ContainerHttpLoggingConfigurationCompression1.NONE;
 
-  const containerHttpLoggingConfiguration: ContainerHttpLoggingConfiguration = {
+  const containerLoggingConfigurationHttp1: ContainerLoggingConfigurationHttp1 = {
     host: 'host',
-    port: 43509,
+    port: 55354,
     user: 'user',
     password: 'password',
     path: 'path',
-    format: format,
+    format: containerHttpLoggingConfigurationFormat1,
     headers: [containerLoggingHttpHeader],
-    compression: compression,
+    compression: containerHttpLoggingConfigurationCompression1,
   };
 
   const newRelicLoggingConfiguration: NewRelicLoggingConfiguration = {
@@ -451,13 +451,13 @@ import {
 
   const tcpLoggingConfiguration: TcpLoggingConfiguration = {
     host: 'host',
-    port: 35405,
+    port: 44671,
   };
 
-  const containerLoggingConfiguration: ContainerLoggingConfiguration = {
+  const updateContainerLogging: UpdateContainerLogging = {
     axiom: axiomLoggingConfiguration,
     datadog: datadogLoggingConfiguration,
-    http: containerHttpLoggingConfiguration,
+    http: containerLoggingConfigurationHttp1,
     newRelic: newRelicLoggingConfiguration,
     splunk: containerLoggingSplunkConfiguration,
     tcp: tcpLoggingConfiguration,
@@ -497,10 +497,10 @@ import {
   };
 
   const containerResourceUpdateSchema: ContainerResourceUpdateSchema = {
-    cpu: 4,
-    memory: 50175,
+    cpu: 6,
+    memory: 56406,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 27536827537,
+    storageAmount: 7030693392,
   };
 
   const updateContainer: UpdateContainer = {
@@ -508,7 +508,7 @@ import {
     environmentVariables: [],
     image: 'image',
     imageCaching: true,
-    logging: containerLoggingConfiguration,
+    logging: updateContainerLogging,
     priority: containerGroupPriority,
     registryAuthentication: containerRegistryAuthentication,
     resources: containerResourceUpdateSchema,
@@ -517,7 +517,7 @@ import {
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 27606,
+    port: 45473,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -525,7 +525,7 @@ import {
   };
 
   const containerGroupGRpcProbe: ContainerGroupGRpcProbe = {
-    port: 4792,
+    port: 37648,
     service: 'service',
   };
 
@@ -539,12 +539,12 @@ import {
   const containerGroupHttpProbeConfiguration: ContainerGroupHttpProbeConfiguration = {
     headers: [containerGroupProbeHttpHeader],
     path: 'path',
-    port: 18942,
+    port: 29069,
     scheme: httpScheme,
   };
 
   const containerGroupTcpProbe: ContainerGroupTcpProbe = {
-    port: 47377,
+    port: 13817,
   };
 
   const containerGroupLivenessProbe: ContainerGroupLivenessProbe = {
@@ -552,7 +552,7 @@ import {
     failureThreshold: 3,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 987,
+    initialDelaySeconds: 670,
     periodSeconds: 10,
     successThreshold: 1,
     tcp: containerGroupTcpProbe,
@@ -564,7 +564,7 @@ import {
     failureThreshold: 3,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 479,
+    initialDelaySeconds: 262,
     periodSeconds: 1,
     successThreshold: 1,
     tcp: containerGroupTcpProbe,
@@ -576,7 +576,7 @@ import {
     failureThreshold: 15,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 563,
+    initialDelaySeconds: 1106,
     tcp: containerGroupTcpProbe,
     periodSeconds: 3,
     successThreshold: 2,
@@ -584,18 +584,18 @@ import {
   };
 
   const queueBasedAutoscalerConfiguration: QueueBasedAutoscalerConfiguration = {
-    desiredQueueLength: 2,
-    maxReplicas: 219,
-    maxDownscalePerMinute: 5,
-    maxUpscalePerMinute: 16,
-    minReplicas: 88,
-    pollingPeriod: 680,
+    desiredQueueLength: 53,
+    maxReplicas: 291,
+    maxDownscalePerMinute: 65,
+    maxUpscalePerMinute: 100,
+    minReplicas: 54,
+    pollingPeriod: 140,
   };
 
   const containerGroupPatch: ContainerGroupPatch = {
-    displayName: 'rukYe',
+    displayName: 'Jjdnvuz',
     container: updateContainer,
-    replicas: 476,
+    replicas: 100,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -820,7 +820,7 @@ import { ContainerGroupInstancePatch, SaladCloudSdk } from '@saladtechnologies-o
   });
 
   const containerGroupInstancePatch: ContainerGroupInstancePatch = {
-    deletionCost: 76724,
+    deletionCost: 82294,
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroupInstance(

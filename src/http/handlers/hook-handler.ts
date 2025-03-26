@@ -1,7 +1,9 @@
 import { Request } from '../transport/request';
-import { HttpResponse, RequestHandler } from '../types';
+import { HttpResponse, RequestHandler, ContentType } from '../types';
+import { HttpError } from '../error';
 import { Hook } from '../hooks/hook';
 import { TransportHookAdapter } from '../transport/transport-hook-adapter';
+import { getContentTypeDefinition } from '../utils/content-type';
 
 export class HookHandler implements RequestHandler {
   next?: RequestHandler;
@@ -25,7 +27,26 @@ export class HookHandler implements RequestHandler {
       return await hook.afterResponse(nextRequest, response, hookParams);
     }
 
-    throw await hook.onError(nextRequest, response, hookParams);
+    const rawContentType = response.metadata.headers['content-type']?.toLocaleLowerCase() || '';
+    const contentType = getContentTypeDefinition(rawContentType);
+    const statusCode = response.metadata.status;
+
+    const error = request.errors.find((error) => {
+      return error.contentType === contentType && error.status === statusCode;
+    });
+
+    if (error?.error) {
+      const decodedBody = new TextDecoder().decode(response.raw);
+      const json = JSON.parse(decodedBody);
+      throw new error.error((json as any)?.message || '', json);
+    }
+
+    const decodedBody = new TextDecoder().decode(response.raw);
+    throw new HttpError(
+      response.metadata,
+      response.raw,
+      `Unexpected response body for error status.\nStatusCode: ${response.metadata.status}\nBody: ${decodedBody}`,
+    );
   }
 
   async *stream<T>(request: Request): AsyncGenerator<HttpResponse<T>> {

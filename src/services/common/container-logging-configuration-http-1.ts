@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+  ContainerLoggingHttpHeader,
   containerLoggingHttpHeader,
   containerLoggingHttpHeaderRequest,
   containerLoggingHttpHeaderResponse,
@@ -8,7 +9,7 @@ import {
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const containerHttpLoggingConfiguration = z.lazy(() => {
+export const containerLoggingConfigurationHttp1 = z.lazy(() => {
   return z.object({
     host: z.string().min(1).max(1000).regex(/^.*$/),
     port: z.number().gte(1).lte(65535),
@@ -23,23 +24,23 @@ export const containerHttpLoggingConfiguration = z.lazy(() => {
 
 /**
  * Configuration for sending container logs to an HTTP endpoint. Defines how logs are formatted, compressed, and transmitted.
- * @typedef  {ContainerHttpLoggingConfiguration} containerHttpLoggingConfiguration - Configuration for sending container logs to an HTTP endpoint. Defines how logs are formatted, compressed, and transmitted. - Configuration for sending container logs to an HTTP endpoint. Defines how logs are formatted, compressed, and transmitted.
+ * @typedef  {ContainerLoggingConfigurationHttp1} containerLoggingConfigurationHttp1 - Configuration for sending container logs to an HTTP endpoint. Defines how logs are formatted, compressed, and transmitted. - Configuration for sending container logs to an HTTP endpoint. Defines how logs are formatted, compressed, and transmitted.
  * @property {string} - The hostname or IP address of the HTTP logging endpoint
  * @property {number} - The port number of the HTTP logging endpoint (1-65535)
  * @property {string} - Optional username for HTTP authentication
  * @property {string} - Optional password for HTTP authentication
  * @property {string} - Optional URL path for the HTTP endpoint
- * @property {Format} - The format in which logs will be delivered
+ * @property {ContainerHttpLoggingConfigurationFormat1} - The format in which logs will be delivered
  * @property {ContainerLoggingHttpHeader[]} - Optional HTTP headers to include in log transmission requests
- * @property {Compression} - The compression algorithm to apply to logs before transmission
+ * @property {ContainerHttpLoggingConfigurationCompression1} - The compression algorithm to apply to logs before transmission
  */
-export type ContainerHttpLoggingConfiguration = z.infer<typeof containerHttpLoggingConfiguration>;
+export type ContainerLoggingConfigurationHttp1 = z.infer<typeof containerLoggingConfigurationHttp1>;
 
 /**
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const containerHttpLoggingConfigurationResponse = z.lazy(() => {
+export const containerLoggingConfigurationHttp1Response = z.lazy(() => {
   return z
     .object({
       host: z.string().min(1).max(1000).regex(/^.*$/),
@@ -67,7 +68,7 @@ export const containerHttpLoggingConfigurationResponse = z.lazy(() => {
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const containerHttpLoggingConfigurationRequest = z.lazy(() => {
+export const containerLoggingConfigurationHttp1Request = z.lazy(() => {
   return z
     .object({
       host: z.string(),

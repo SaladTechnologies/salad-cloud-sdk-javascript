@@ -1,15 +1,18 @@
 import { z } from 'zod';
 import {
-  containerLoggingConfiguration,
-  containerLoggingConfigurationRequest,
-  containerLoggingConfigurationResponse,
-} from '../../common/container-logging-configuration';
+  UpdateContainerLogging,
+  updateContainerLogging,
+  updateContainerLoggingRequest,
+  updateContainerLoggingResponse,
+} from './update-container-logging';
 import {
+  ContainerRegistryAuthentication,
   containerRegistryAuthentication,
   containerRegistryAuthenticationRequest,
   containerRegistryAuthenticationResponse,
 } from './container-registry-authentication';
 import {
+  ContainerResourceUpdateSchema,
   containerResourceUpdateSchema,
   containerResourceUpdateSchemaRequest,
   containerResourceUpdateSchemaResponse,
@@ -24,7 +27,7 @@ export const updateContainer = z.lazy(() => {
     environmentVariables: z.any().optional(),
     image: z.string().min(1).max(1024).regex(/^.*$/).optional().nullable(),
     imageCaching: z.boolean().optional(),
-    logging: containerLoggingConfiguration.optional(),
+    logging: updateContainerLogging.optional().nullable(),
     priority: z.string().optional().nullable(),
     registryAuthentication: containerRegistryAuthentication.optional(),
     resources: containerResourceUpdateSchema.optional().nullable(),
@@ -38,7 +41,7 @@ export const updateContainer = z.lazy(() => {
  * @property {any} - Environment variables to set in the container.
  * @property {string} - The container image to use.
  * @property {boolean} - The container image caching.
- * @property {ContainerLoggingConfiguration} - Configuration options for directing container logs to a logging provider. This schema enables you to specify a single logging destination for container output, supporting monitoring, debugging, and analytics use cases. Each provider has its own configuration parameters defined in the referenced schemas. Only one logging provider can be selected at a time.
+ * @property {UpdateContainerLogging} - Configuration options for directing container logs to a logging provider. This schema enables you to specify a single logging destination for container output, supporting monitoring, debugging, and analytics use cases. Each provider has its own configuration parameters defined in the referenced schemas. Only one logging provider can be selected at a time.
  * @property {ContainerGroupPriority} - Specifies the priority level for container group execution, which determines resource allocation and scheduling precedence.
  * @property {ContainerRegistryAuthentication} - Authentication configuration for various container registry types, including AWS ECR, Docker Hub, GCP GAR, GCP GCR, and basic authentication.
  * @property {ContainerResourceUpdateSchema} - Defines the resource specifications that can be modified for a container group, including CPU, memory, GPU classes, and storage allocations.
@@ -56,7 +59,7 @@ export const updateContainerResponse = z.lazy(() => {
       environment_variables: z.any().optional(),
       image: z.string().min(1).max(1024).regex(/^.*$/).optional().nullable(),
       image_caching: z.boolean().optional(),
-      logging: containerLoggingConfigurationResponse.optional(),
+      logging: updateContainerLoggingResponse.optional().nullable(),
       priority: z.string().optional().nullable(),
       registry_authentication: containerRegistryAuthenticationResponse.optional(),
       resources: containerResourceUpdateSchemaResponse.optional().nullable(),
@@ -84,7 +87,7 @@ export const updateContainerRequest = z.lazy(() => {
       environmentVariables: z.any().optional(),
       image: z.string().nullable().optional(),
       imageCaching: z.boolean().optional(),
-      logging: containerLoggingConfigurationRequest.optional(),
+      logging: updateContainerLoggingRequest.nullable().optional(),
       priority: z.string().nullable().optional(),
       registryAuthentication: containerRegistryAuthenticationRequest.optional(),
       resources: containerResourceUpdateSchemaRequest.nullable().optional(),

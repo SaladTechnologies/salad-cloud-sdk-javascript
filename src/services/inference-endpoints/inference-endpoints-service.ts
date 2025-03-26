@@ -1,12 +1,14 @@
 import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse, RequestConfig } from '../../http/types';
+import { Environment } from '../../http/environment';
 import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
 import {
   InferenceEndpointCollection,
   inferenceEndpointCollectionResponse,
 } from './models/inference-endpoint-collection';
+import { ProblemDetails } from '../common/problem-details';
 import { ListInferenceEndpointJobsParams, ListInferenceEndpointsParams } from './request-params';
 import { InferenceEndpoint, inferenceEndpointResponse } from './models/inference-endpoint';
 import {
@@ -34,7 +36,7 @@ export class InferenceEndpointsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointCollection>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/inference-endpoints')
@@ -45,6 +47,31 @@ export class InferenceEndpointsService extends BaseService {
         schema: inferenceEndpointCollectionResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 400,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 401,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 403,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -78,7 +105,7 @@ export class InferenceEndpointsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpoint>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}')
@@ -89,6 +116,26 @@ export class InferenceEndpointsService extends BaseService {
         schema: inferenceEndpointResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 401,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 403,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -121,7 +168,7 @@ export class InferenceEndpointsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJobCollection>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs')
@@ -132,6 +179,31 @@ export class InferenceEndpointsService extends BaseService {
         schema: inferenceEndpointJobCollectionResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 400,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 401,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 403,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -170,7 +242,7 @@ export class InferenceEndpointsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJob>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/inference-endpoints/{inference_endpoint_name}/jobs')
@@ -181,6 +253,31 @@ export class InferenceEndpointsService extends BaseService {
         schema: inferenceEndpointJobResponse,
         contentType: ContentType.Json,
         status: 201,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 400,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 401,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 403,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -214,7 +311,7 @@ export class InferenceEndpointsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<InferenceEndpointJob>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath(
@@ -227,6 +324,26 @@ export class InferenceEndpointsService extends BaseService {
         schema: inferenceEndpointJobResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 401,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 403,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -262,7 +379,7 @@ export class InferenceEndpointsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<void>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('DELETE')
       .setPath(
@@ -275,6 +392,31 @@ export class InferenceEndpointsService extends BaseService {
         schema: z.undefined(),
         contentType: ContentType.NoContent,
         status: 202,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 400,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 401,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 403,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)

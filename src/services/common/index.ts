@@ -10,18 +10,18 @@ export type { ContainerGroupQueueConnection } from './container-group-queue-conn
 export type { ContainerGroupReadinessProbe } from './container-group-readiness-probe';
 export { ContainerRestartPolicy } from './container-restart-policy';
 export type { ContainerGroupStartupProbe } from './container-group-startup-probe';
-export type { ContainerLoggingConfiguration } from './container-logging-configuration';
+export type { ContainerLogging } from './container-logging';
 export type { ContainerResourceRequirements } from './container-resource-requirements';
 export type { AxiomLoggingConfiguration } from './axiom-logging-configuration';
 export type { DatadogLoggingConfiguration } from './datadog-logging-configuration';
-export type { ContainerHttpLoggingConfiguration } from './container-http-logging-configuration';
+export type { ContainerLoggingConfigurationHttp1 } from './container-logging-configuration-http-1';
 export type { NewRelicLoggingConfiguration } from './new-relic-logging-configuration';
 export type { ContainerLoggingSplunkConfiguration } from './container-logging-splunk-configuration';
 export type { TcpLoggingConfiguration } from './tcp-logging-configuration';
 export type { DatadogTagForContainerLogging } from './datadog-tag-for-container-logging';
-export { Format } from './format';
+export { ContainerHttpLoggingConfigurationFormat1 } from './container-http-logging-configuration-format-1';
 export type { ContainerLoggingHttpHeader } from './container-logging-http-header';
-export { Compression } from './compression';
+export { ContainerHttpLoggingConfigurationCompression1 } from './container-http-logging-configuration-compression-1';
 export type { ContainerGroupInstanceStatusCount } from './container-group-instance-status-count';
 export { ContainerGroupStatus } from './container-group-status';
 export type { ContainerGroupProbeExec } from './container-group-probe-exec';
@@ -32,3 +32,4 @@ export type { ContainerGroupProbeHttpHeader } from './container-group-probe-http
 export { HttpScheme } from './http-scheme';
 export { TheContainerGroupNetworkingLoadBalancer } from './the-container-group-networking-load-balancer';
 export { ContainerNetworkingProtocol } from './container-networking-protocol';
+export type { ProblemDetails } from './problem-details';

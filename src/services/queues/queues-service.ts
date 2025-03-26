@@ -1,9 +1,11 @@
 import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse, RequestConfig } from '../../http/types';
+import { Environment } from '../../http/environment';
 import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
 import { QueueCollection, queueCollectionResponse } from './models/queue-collection';
+import { ProblemDetails } from '../common/problem-details';
 import { QueuePrototype, queuePrototypeRequest } from './models/queue-prototype';
 import { Queue, queueResponse } from './models/queue';
 import { QueuePatch, queuePatchRequest } from './models/queue-patch';
@@ -26,7 +28,7 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueCollection>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues')
@@ -37,6 +39,16 @@ export class QueuesService extends BaseService {
         schema: queueCollectionResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -67,7 +79,7 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues')
@@ -78,6 +90,21 @@ export class QueuesService extends BaseService {
         schema: queueResponse,
         contentType: ContentType.Json,
         status: 201,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 400,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -111,7 +138,7 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
@@ -122,6 +149,16 @@ export class QueuesService extends BaseService {
         schema: queueResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -158,7 +195,7 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<Queue>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('PATCH')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
@@ -169,6 +206,21 @@ export class QueuesService extends BaseService {
         schema: queueResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 400,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -206,7 +258,7 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<void>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}')
@@ -217,6 +269,16 @@ export class QueuesService extends BaseService {
         schema: z.undefined(),
         contentType: ContentType.NoContent,
         status: 202,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -255,7 +317,7 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJobCollection>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs')
@@ -266,6 +328,16 @@ export class QueuesService extends BaseService {
         schema: queueJobCollectionResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -310,7 +382,7 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJob>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('POST')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs')
@@ -321,6 +393,21 @@ export class QueuesService extends BaseService {
         schema: queueJobResponse,
         contentType: ContentType.Json,
         status: 201,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 400,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -360,7 +447,7 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<QueueJob>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs/{queue_job_id}')
@@ -371,6 +458,16 @@ export class QueuesService extends BaseService {
         schema: queueJobResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
@@ -412,7 +509,7 @@ export class QueuesService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<void>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('DELETE')
       .setPath('/organizations/{organization_name}/projects/{project_name}/queues/{queue_name}/jobs/{queue_job_id}')
@@ -423,6 +520,16 @@ export class QueuesService extends BaseService {
         schema: z.undefined(),
         contentType: ContentType.NoContent,
         status: 202,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)
