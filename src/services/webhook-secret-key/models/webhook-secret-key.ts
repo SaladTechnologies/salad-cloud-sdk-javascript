@@ -5,7 +5,11 @@ import { z } from 'zod';
  */
 export const webhookSecretKey = z.lazy(() => {
   return z.object({
-    secretKey: z.string().min(8).max(64).regex(/^.*$/),
+    secretKey: z
+      .string()
+      .min(44)
+      .max(172)
+      .regex(/^[+\/=0-9A-Za-z]{44,172}$/),
   });
 });
 
@@ -23,7 +27,11 @@ export type WebhookSecretKey = z.infer<typeof webhookSecretKey>;
 export const webhookSecretKeyResponse = z.lazy(() => {
   return z
     .object({
-      secret_key: z.string().min(8).max(64).regex(/^.*$/),
+      secret_key: z
+        .string()
+        .min(44)
+        .max(172)
+        .regex(/^[+\/=0-9A-Za-z]{44,172}$/),
     })
     .transform((data) => ({
       secretKey: data['secret_key'],

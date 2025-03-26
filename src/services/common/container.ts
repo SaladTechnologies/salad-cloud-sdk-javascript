@@ -1,10 +1,12 @@
 import { z } from 'zod';
 import {
-  containerLoggingConfiguration,
-  containerLoggingConfigurationRequest,
-  containerLoggingConfigurationResponse,
-} from './container-logging-configuration';
+  ContainerLogging,
+  containerLogging,
+  containerLoggingRequest,
+  containerLoggingResponse,
+} from './container-logging';
 import {
+  ContainerResourceRequirements,
   containerResourceRequirements,
   containerResourceRequirementsRequest,
   containerResourceRequirementsResponse,
@@ -19,13 +21,13 @@ export const container = z.lazy(() => {
     environmentVariables: z.any().optional(),
     hash: z
       .string()
-      .min(64)
-      .max(64)
-      .regex(/^[a-fA-F0-9]{64}$/)
+      .min(47)
+      .max(135)
+      .regex(/^sha\d{1,3}:[a-fA-F0-9]{40,135}$/)
       .optional(),
     image: z.string().min(1).max(2048).regex(/^.*$/),
     imageCaching: z.boolean().optional(),
-    logging: containerLoggingConfiguration.optional(),
+    logging: containerLogging.optional(),
     resources: containerResourceRequirements,
     size: z.number().gte(0).lte(9223372036854776000).optional(),
   });
@@ -39,7 +41,7 @@ export const container = z.lazy(() => {
  * @property {string} - SHA-256 hash (64-character hexadecimal string)
  * @property {string} - The container image.
  * @property {boolean} - The container image caching.
- * @property {ContainerLoggingConfiguration} - Configuration options for directing container logs to a logging provider. This schema enables you to specify a single logging destination for container output, supporting monitoring, debugging, and analytics use cases. Each provider has its own configuration parameters defined in the referenced schemas. Only one logging provider can be selected at a time.
+ * @property {ContainerLogging} - Configuration options for directing container logs to a logging provider. This schema enables you to specify a single logging destination for container output, supporting monitoring, debugging, and analytics use cases. Each provider has its own configuration parameters defined in the referenced schemas. Only one logging provider can be selected at a time.
  * @property {ContainerResourceRequirements} - Specifies the resource requirements for a container.
  * @property {number} - Size of the container in bytes.
  */
@@ -56,13 +58,13 @@ export const containerResponse = z.lazy(() => {
       environment_variables: z.any().optional(),
       hash: z
         .string()
-        .min(64)
-        .max(64)
-        .regex(/^[a-fA-F0-9]{64}$/)
+        .min(47)
+        .max(135)
+        .regex(/^sha\d{1,3}:[a-fA-F0-9]{40,135}$/)
         .optional(),
       image: z.string().min(1).max(2048).regex(/^.*$/),
       image_caching: z.boolean().optional(),
-      logging: containerLoggingConfigurationResponse.optional(),
+      logging: containerLoggingResponse.optional(),
       resources: containerResourceRequirementsResponse,
       size: z.number().gte(0).lte(9223372036854776000).optional(),
     })
@@ -90,7 +92,7 @@ export const containerRequest = z.lazy(() => {
       hash: z.string().optional(),
       image: z.string(),
       imageCaching: z.boolean().optional(),
-      logging: containerLoggingConfigurationRequest.optional(),
+      logging: containerLoggingRequest.optional(),
       resources: containerResourceRequirementsRequest,
       size: z.number().optional(),
     })

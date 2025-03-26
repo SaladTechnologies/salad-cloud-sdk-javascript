@@ -1,9 +1,11 @@
 import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse, RequestConfig } from '../../http/types';
+import { Environment } from '../../http/environment';
 import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
 import { GpuClassesList, gpuClassesListResponse } from './models/gpu-classes-list';
+import { ProblemDetails } from '../common/problem-details';
 
 export class OrganizationDataService extends BaseService {
   /**
@@ -14,7 +16,7 @@ export class OrganizationDataService extends BaseService {
    */
   async listGpuClasses(organizationName: string, requestConfig?: RequestConfig): Promise<HttpResponse<GpuClassesList>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/gpu-classes')
@@ -25,6 +27,16 @@ export class OrganizationDataService extends BaseService {
         schema: gpuClassesListResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)

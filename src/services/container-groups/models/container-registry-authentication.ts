@@ -1,25 +1,30 @@
 import { z } from 'zod';
 import {
+  ContainerRegistryAuthenticationAwsEcr,
   containerRegistryAuthenticationAwsEcr,
   containerRegistryAuthenticationAwsEcrRequest,
   containerRegistryAuthenticationAwsEcrResponse,
 } from './container-registry-authentication-aws-ecr';
 import {
+  ContainerRegistryAuthenticationBasic,
   containerRegistryAuthenticationBasic,
   containerRegistryAuthenticationBasicRequest,
   containerRegistryAuthenticationBasicResponse,
 } from './container-registry-authentication-basic';
 import {
+  ContainerRegistryAuthenticationDockerHub,
   containerRegistryAuthenticationDockerHub,
   containerRegistryAuthenticationDockerHubRequest,
   containerRegistryAuthenticationDockerHubResponse,
 } from './container-registry-authentication-docker-hub';
 import {
+  ContainerRegistryAuthenticationGcpGar,
   containerRegistryAuthenticationGcpGar,
   containerRegistryAuthenticationGcpGarRequest,
   containerRegistryAuthenticationGcpGarResponse,
 } from './container-registry-authentication-gcp-gar';
 import {
+  ContainerRegistryAuthenticationGcpGcr,
   containerRegistryAuthenticationGcpGcr,
   containerRegistryAuthenticationGcpGcrRequest,
   containerRegistryAuthenticationGcpGcrResponse,

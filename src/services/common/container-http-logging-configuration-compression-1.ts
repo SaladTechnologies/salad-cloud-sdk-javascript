@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export enum Compression {
+export enum ContainerHttpLoggingConfigurationCompression1 {
   NONE = 'none',
   GZIP = 'gzip',
 }

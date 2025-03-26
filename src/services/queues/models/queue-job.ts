@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { queueJobEvent, queueJobEventRequest, queueJobEventResponse } from './queue-job-event';
+import { QueueJobEvent, queueJobEvent, queueJobEventRequest, queueJobEventResponse } from './queue-job-event';
 
 /**
  * The shape of the model inside the application code - what the users use

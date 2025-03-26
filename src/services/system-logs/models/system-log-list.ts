@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { systemLog, systemLogRequest, systemLogResponse } from './system-log';
+import { SystemLog, systemLog, systemLogRequest, systemLogResponse } from './system-log';
 
 /**
  * The shape of the model inside the application code - what the users use

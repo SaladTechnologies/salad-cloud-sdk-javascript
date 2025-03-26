@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { gpuClass, gpuClassRequest, gpuClassResponse } from './gpu-class';
+import { GpuClass, gpuClass, gpuClassRequest, gpuClassResponse } from './gpu-class';
 
 /**
  * The shape of the model inside the application code - what the users use

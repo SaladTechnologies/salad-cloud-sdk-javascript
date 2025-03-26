@@ -1,5 +1,10 @@
 import { z } from 'zod';
-import { inferenceEndpoint, inferenceEndpointRequest, inferenceEndpointResponse } from './inference-endpoint';
+import {
+  InferenceEndpoint,
+  inferenceEndpoint,
+  inferenceEndpointRequest,
+  inferenceEndpointResponse,
+} from './inference-endpoint';
 
 /**
  * The shape of the model inside the application code - what the users use

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+  ContainerGroupProbeHttpHeader,
   containerGroupProbeHttpHeader,
   containerGroupProbeHttpHeaderRequest,
   containerGroupProbeHttpHeaderResponse,

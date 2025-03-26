@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { gpuClassPrice, gpuClassPriceRequest, gpuClassPriceResponse } from './gpu-class-price';
+import { GpuClassPrice, gpuClassPrice, gpuClassPriceRequest, gpuClassPriceResponse } from './gpu-class-price';
 
 /**
  * The shape of the model inside the application code - what the users use

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+  InferenceEndpointJob,
   inferenceEndpointJob,
   inferenceEndpointJobRequest,
   inferenceEndpointJobResponse,

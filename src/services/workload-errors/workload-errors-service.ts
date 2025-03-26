@@ -1,9 +1,11 @@
 import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse, RequestConfig } from '../../http/types';
+import { Environment } from '../../http/environment';
 import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
 import { WorkloadErrorList, workloadErrorListResponse } from './models/workload-error-list';
+import { ProblemDetails } from '../common/problem-details';
 
 export class WorkloadErrorsService extends BaseService {
   /**
@@ -21,7 +23,7 @@ export class WorkloadErrorsService extends BaseService {
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<WorkloadErrorList>> {
     const request = new RequestBuilder()
-      .setBaseUrl(this.config)
+      .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
       .setMethod('GET')
       .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/errors')
@@ -32,6 +34,16 @@ export class WorkloadErrorsService extends BaseService {
         schema: workloadErrorListResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 404,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 429,
       })
       .setRetryAttempts(this.config, requestConfig)
       .setRetryDelayMs(this.config, requestConfig)

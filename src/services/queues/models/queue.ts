@@ -1,5 +1,10 @@
 import { z } from 'zod';
-import { containerGroup, containerGroupRequest, containerGroupResponse } from '../../common/container-group';
+import {
+  ContainerGroup,
+  containerGroup,
+  containerGroupRequest,
+  containerGroupResponse,
+} from '../../common/container-group';
 
 /**
  * The shape of the model inside the application code - what the users use

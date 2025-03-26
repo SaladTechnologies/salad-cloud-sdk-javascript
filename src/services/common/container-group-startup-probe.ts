@@ -1,20 +1,24 @@
 import { z } from 'zod';
 import {
+  ContainerGroupProbeExec,
   containerGroupProbeExec,
   containerGroupProbeExecRequest,
   containerGroupProbeExecResponse,
 } from './container-group-probe-exec';
 import {
+  ContainerGroupGRpcProbe,
   containerGroupGRpcProbe,
   containerGroupGRpcProbeRequest,
   containerGroupGRpcProbeResponse,
 } from './container-group-g-rpc-probe';
 import {
+  ContainerGroupHttpProbeConfiguration,
   containerGroupHttpProbeConfiguration,
   containerGroupHttpProbeConfigurationRequest,
   containerGroupHttpProbeConfigurationResponse,
 } from './container-group-http-probe-configuration';
 import {
+  ContainerGroupTcpProbe,
   containerGroupTcpProbe,
   containerGroupTcpProbeRequest,
   containerGroupTcpProbeResponse,

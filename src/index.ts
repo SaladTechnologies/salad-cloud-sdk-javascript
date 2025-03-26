@@ -39,11 +39,6 @@ export class SaladCloudSdk {
   public readonly webhookSecretKey: WebhookSecretKeyService;
 
   constructor(public config: SdkConfig) {
-    const baseUrl = config.environment || config.baseUrl || Environment.DEFAULT;
-    this.config = {
-      ...config,
-      baseUrl,
-    };
     this.containerGroups = new ContainerGroupsService(this.config);
 
     this.workloadErrors = new WorkloadErrorsService(this.config);
