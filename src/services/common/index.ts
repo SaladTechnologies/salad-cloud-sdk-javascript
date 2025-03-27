@@ -21,6 +21,7 @@ export type { TcpLoggingConfiguration } from './tcp-logging-configuration';
 export type { DatadogTagForContainerLogging } from './datadog-tag-for-container-logging';
 export { ContainerLoggingHttpFormat } from './container-logging-http-format';
 export type { ContainerLoggingHttpHeader } from './container-logging-http-header';
+export { ContainerLoggingHttpCompression } from './container-logging-http-compression';
 export type { ContainerGroupInstanceStatusCount } from './container-group-instance-status-count';
 export { ContainerGroupStatus } from './container-group-status';
 export type { ContainerGroupProbeExec } from './container-group-probe-exec';

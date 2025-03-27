@@ -18,7 +18,7 @@ export const containerLoggingConfigurationHttp1 = z.lazy(() => {
     path: z.string().min(1).max(1000).regex(/^.*$/).optional().nullable(),
     format: z.string(),
     headers: z.array(containerLoggingHttpHeader).max(1000).nullable(),
-    compression: z.any(),
+    compression: z.string(),
   });
 });
 
@@ -32,7 +32,7 @@ export const containerLoggingConfigurationHttp1 = z.lazy(() => {
  * @property {string} - Optional URL path for the HTTP endpoint
  * @property {ContainerLoggingHttpFormat} - The format in which logs will be delivered
  * @property {ContainerLoggingHttpHeader[]} - Optional HTTP headers to include in log transmission requests
- * @property {any}
+ * @property {ContainerLoggingHttpCompression} - The compression algorithm to apply to logs before transmission
  */
 export type ContainerLoggingConfigurationHttp1 = z.infer<typeof containerLoggingConfigurationHttp1>;
 
@@ -50,7 +50,7 @@ export const containerLoggingConfigurationHttp1Response = z.lazy(() => {
       path: z.string().min(1).max(1000).regex(/^.*$/).optional().nullable(),
       format: z.string(),
       headers: z.array(containerLoggingHttpHeaderResponse).max(1000).nullable(),
-      compression: z.any(),
+      compression: z.string(),
     })
     .transform((data) => ({
       host: data['host'],
@@ -78,7 +78,7 @@ export const containerLoggingConfigurationHttp1Request = z.lazy(() => {
       path: z.string().min(1).max(1000).regex(/^.*$/).optional().nullable(),
       format: z.string(),
       headers: z.array(containerLoggingHttpHeaderRequest).max(1000).nullable(),
-      compression: z.any(),
+      compression: z.string(),
     })
     .transform((data) => ({
       host: data['host'],

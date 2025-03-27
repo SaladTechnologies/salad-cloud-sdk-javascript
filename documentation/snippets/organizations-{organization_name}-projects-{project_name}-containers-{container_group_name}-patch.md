@@ -40,6 +40,8 @@ import {
     value: 'value',
   };
 
+  const containerLoggingHttpCompression = ContainerLoggingHttpCompression.NONE;
+
   const containerLoggingConfigurationHttp1: ContainerLoggingConfigurationHttp1 = {
     host: 'host',
     port: 29098,
@@ -48,7 +50,7 @@ import {
     path: 'path',
     format: containerLoggingHttpFormat,
     headers: [containerLoggingHttpHeader],
-    compression: [],
+    compression: containerLoggingHttpCompression,
   };
 
   const newRelicLoggingConfiguration: NewRelicLoggingConfiguration = {

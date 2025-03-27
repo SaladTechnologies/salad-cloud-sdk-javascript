@@ -5,8 +5,8 @@ import { z } from 'zod';
  */
 export const containerRegistryAuthenticationAwsEcr = z.lazy(() => {
   return z.object({
-    accessKeyId: z.string().min(1).max(1000).regex(/^.*$/),
-    secretAccessKey: z.string().min(1).max(1000).regex(/^.*$/),
+    accessKeyId: z.string().min(1).max(10000).regex(/^.*$/),
+    secretAccessKey: z.string().min(1).max(10000).regex(/^.*$/),
   });
 });
 
@@ -25,8 +25,8 @@ export type ContainerRegistryAuthenticationAwsEcr = z.infer<typeof containerRegi
 export const containerRegistryAuthenticationAwsEcrResponse = z.lazy(() => {
   return z
     .object({
-      access_key_id: z.string().min(1).max(1000).regex(/^.*$/),
-      secret_access_key: z.string().min(1).max(1000).regex(/^.*$/),
+      access_key_id: z.string().min(1).max(10000).regex(/^.*$/),
+      secret_access_key: z.string().min(1).max(10000).regex(/^.*$/),
     })
     .transform((data) => ({
       accessKeyId: data['access_key_id'],
@@ -41,8 +41,8 @@ export const containerRegistryAuthenticationAwsEcrResponse = z.lazy(() => {
 export const containerRegistryAuthenticationAwsEcrRequest = z.lazy(() => {
   return z
     .object({
-      accessKeyId: z.string().min(1).max(1000).regex(/^.*$/),
-      secretAccessKey: z.string().min(1).max(1000).regex(/^.*$/),
+      accessKeyId: z.string().min(1).max(10000).regex(/^.*$/),
+      secretAccessKey: z.string().min(1).max(10000).regex(/^.*$/),
     })
     .transform((data) => ({
       access_key_id: data['accessKeyId'],

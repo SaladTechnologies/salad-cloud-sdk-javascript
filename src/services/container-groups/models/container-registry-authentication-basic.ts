@@ -5,8 +5,8 @@ import { z } from 'zod';
  */
 export const containerRegistryAuthenticationBasic = z.lazy(() => {
   return z.object({
-    username: z.string().min(1).max(1000).regex(/^.*$/),
-    password: z.string().min(1).max(1000).regex(/^.*$/),
+    username: z.string().min(1).max(10000).regex(/^.*$/),
+    password: z.string().min(1).max(10000).regex(/^.*$/),
   });
 });
 
@@ -25,8 +25,8 @@ export type ContainerRegistryAuthenticationBasic = z.infer<typeof containerRegis
 export const containerRegistryAuthenticationBasicResponse = z.lazy(() => {
   return z
     .object({
-      username: z.string().min(1).max(1000).regex(/^.*$/),
-      password: z.string().min(1).max(1000).regex(/^.*$/),
+      username: z.string().min(1).max(10000).regex(/^.*$/),
+      password: z.string().min(1).max(10000).regex(/^.*$/),
     })
     .transform((data) => ({
       username: data['username'],
@@ -41,8 +41,8 @@ export const containerRegistryAuthenticationBasicResponse = z.lazy(() => {
 export const containerRegistryAuthenticationBasicRequest = z.lazy(() => {
   return z
     .object({
-      username: z.string().min(1).max(1000).regex(/^.*$/),
-      password: z.string().min(1).max(1000).regex(/^.*$/),
+      username: z.string().min(1).max(10000).regex(/^.*$/),
+      password: z.string().min(1).max(10000).regex(/^.*$/),
     })
     .transform((data) => ({
       username: data['username'],
