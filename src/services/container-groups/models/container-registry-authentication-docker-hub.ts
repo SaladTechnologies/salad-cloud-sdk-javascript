@@ -5,8 +5,8 @@ import { z } from 'zod';
  */
 export const containerRegistryAuthenticationDockerHub = z.lazy(() => {
   return z.object({
-    username: z.string().min(1).max(1000).regex(/^.*$/),
-    personalAccessToken: z.string().min(1).max(1000).regex(/^.*$/),
+    username: z.string().min(1).max(10000).regex(/^.*$/),
+    personalAccessToken: z.string().min(1).max(10000).regex(/^.*$/),
   });
 });
 
@@ -25,8 +25,8 @@ export type ContainerRegistryAuthenticationDockerHub = z.infer<typeof containerR
 export const containerRegistryAuthenticationDockerHubResponse = z.lazy(() => {
   return z
     .object({
-      username: z.string().min(1).max(1000).regex(/^.*$/),
-      personal_access_token: z.string().min(1).max(1000).regex(/^.*$/),
+      username: z.string().min(1).max(10000).regex(/^.*$/),
+      personal_access_token: z.string().min(1).max(10000).regex(/^.*$/),
     })
     .transform((data) => ({
       username: data['username'],
@@ -41,8 +41,8 @@ export const containerRegistryAuthenticationDockerHubResponse = z.lazy(() => {
 export const containerRegistryAuthenticationDockerHubRequest = z.lazy(() => {
   return z
     .object({
-      username: z.string().min(1).max(1000).regex(/^.*$/),
-      personalAccessToken: z.string().min(1).max(1000).regex(/^.*$/),
+      username: z.string().min(1).max(10000).regex(/^.*$/),
+      personalAccessToken: z.string().min(1).max(10000).regex(/^.*$/),
     })
     .transform((data) => ({
       username: data['username'],
