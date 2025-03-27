@@ -147,17 +147,26 @@ export const containerGroupCreationRequestRequest = z.lazy(() => {
     .object({
       autostartPolicy: z.boolean(),
       container: containerConfigurationRequest,
-      countryCodes: z.array(z.string()).optional(),
-      displayName: z.string().optional(),
-      livenessProbe: containerGroupLivenessProbeRequest.nullable().optional(),
-      name: z.string(),
+      countryCodes: z.array(z.string()).min(1).max(500).optional(),
+      displayName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[ ,-.0-9A-Za-z]+$/)
+        .optional(),
+      livenessProbe: containerGroupLivenessProbeRequest.optional().nullable(),
+      name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
       networking: createContainerGroupNetworkingRequest.optional(),
       queueAutoscaler: queueBasedAutoscalerConfigurationRequest.optional(),
       queueConnection: containerGroupQueueConnectionRequest.optional(),
-      readinessProbe: containerGroupReadinessProbeRequest.nullable().optional(),
-      replicas: z.number(),
+      readinessProbe: containerGroupReadinessProbeRequest.optional().nullable(),
+      replicas: z.number().gte(0).lte(500),
       restartPolicy: z.string(),
-      startupProbe: containerGroupStartupProbeRequest.nullable().optional(),
+      startupProbe: containerGroupStartupProbeRequest.optional().nullable(),
     })
     .transform((data) => ({
       autostart_policy: data['autostartPolicy'],

@@ -51,9 +51,19 @@ export const containerGroupQueueConnectionResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerGroupQueueConnectionRequest = z.lazy(() => {
-  return z.object({ path: z.string(), port: z.number(), queueName: z.string() }).transform((data) => ({
-    path: data['path'],
-    port: data['port'],
-    queue_name: data['queueName'],
-  }));
+  return z
+    .object({
+      path: z.string().min(1).max(1024).regex(/^.*$/),
+      port: z.number().gte(1).lte(65535),
+      queueName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+    })
+    .transform((data) => ({
+      path: data['path'],
+      port: data['port'],
+      queue_name: data['queueName'],
+    }));
 });

@@ -84,10 +84,18 @@ export const queueRequest = z.lazy(() => {
   return z
     .object({
       id: z.string(),
-      name: z.string(),
-      displayName: z.string(),
-      description: z.string().optional(),
-      containerGroups: z.array(containerGroupRequest),
+      name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+      displayName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[ ,-.0-9A-Za-z]+$/),
+      description: z.string().max(500).regex(/^.*$/).optional(),
+      containerGroups: z.array(containerGroupRequest).max(100),
       createTime: z.string(),
       updateTime: z.string(),
     })

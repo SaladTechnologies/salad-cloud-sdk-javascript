@@ -49,10 +49,10 @@ export const containerGroupInstanceStatusCountResponse = z.lazy(() => {
 export const containerGroupInstanceStatusCountRequest = z.lazy(() => {
   return z
     .object({
-      allocatingCount: z.number(),
-      creatingCount: z.number(),
-      runningCount: z.number(),
-      stoppingCount: z.number(),
+      allocatingCount: z.number().gte(0).lte(2147483647),
+      creatingCount: z.number().gte(0).lte(2147483647),
+      runningCount: z.number().gte(0).lte(2147483647),
+      stoppingCount: z.number().gte(0).lte(2147483647),
     })
     .transform((data) => ({
       allocating_count: data['allocatingCount'],

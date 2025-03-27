@@ -35,7 +35,11 @@ export const updateContainerGroupNetworkingResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const updateContainerGroupNetworkingRequest = z.lazy(() => {
-  return z.object({ port: z.number().nullable().optional() }).transform((data) => ({
-    port: data['port'],
-  }));
+  return z
+    .object({
+      port: z.number().gte(1).lte(65535).optional().nullable(),
+    })
+    .transform((data) => ({
+      port: data['port'],
+    }));
 });

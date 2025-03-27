@@ -39,8 +39,13 @@ export const datadogTagForContainerLoggingResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const datadogTagForContainerLoggingRequest = z.lazy(() => {
-  return z.object({ name: z.string(), value: z.string() }).transform((data) => ({
-    name: data['name'],
-    value: data['value'],
-  }));
+  return z
+    .object({
+      name: z.string().min(1).max(1000).regex(/^.*$/),
+      value: z.string().min(1).max(1000).regex(/^.*$/),
+    })
+    .transform((data) => ({
+      name: data['name'],
+      value: data['value'],
+    }));
 });

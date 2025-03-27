@@ -83,7 +83,7 @@ export const containerRegistryAuthenticationResponse = z.lazy(() => {
 export const containerRegistryAuthenticationRequest = z.lazy(() => {
   return z
     .object({
-      awsEcr: containerRegistryAuthenticationAwsEcrRequest.nullable().optional(),
+      awsEcr: containerRegistryAuthenticationAwsEcrRequest.optional().nullable(),
       basic: containerRegistryAuthenticationBasicRequest.optional(),
       dockerHub: containerRegistryAuthenticationDockerHubRequest.optional(),
       gcpGar: containerRegistryAuthenticationGcpGarRequest.optional(),

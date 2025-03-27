@@ -87,14 +87,19 @@ export const containerResponse = z.lazy(() => {
 export const containerRequest = z.lazy(() => {
   return z
     .object({
-      command: z.array(z.string()).nullable(),
+      command: z.array(z.string()).max(100).nullable(),
       environmentVariables: z.any().optional(),
-      hash: z.string().optional(),
-      image: z.string(),
+      hash: z
+        .string()
+        .min(47)
+        .max(135)
+        .regex(/^sha\d{1,3}:[a-fA-F0-9]{40,135}$/)
+        .optional(),
+      image: z.string().min(1).max(2048).regex(/^.*$/),
       imageCaching: z.boolean().optional(),
       logging: containerLoggingRequest.optional(),
       resources: containerResourceRequirementsRequest,
-      size: z.number().optional(),
+      size: z.number().gte(0).lte(9223372036854776000).optional(),
     })
     .transform((data) => ({
       command: data['command'],

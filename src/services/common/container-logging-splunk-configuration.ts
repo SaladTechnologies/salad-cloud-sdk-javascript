@@ -39,8 +39,13 @@ export const containerLoggingSplunkConfigurationResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerLoggingSplunkConfigurationRequest = z.lazy(() => {
-  return z.object({ host: z.string(), token: z.string() }).transform((data) => ({
-    host: data['host'],
-    token: data['token'],
-  }));
+  return z
+    .object({
+      host: z.string().min(1).max(1000).regex(/^.*$/),
+      token: z.string().min(1).max(1000).regex(/^.*$/),
+    })
+    .transform((data) => ({
+      host: data['host'],
+      token: data['token'],
+    }));
 });

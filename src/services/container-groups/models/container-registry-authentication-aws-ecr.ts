@@ -39,8 +39,13 @@ export const containerRegistryAuthenticationAwsEcrResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerRegistryAuthenticationAwsEcrRequest = z.lazy(() => {
-  return z.object({ accessKeyId: z.string(), secretAccessKey: z.string() }).transform((data) => ({
-    access_key_id: data['accessKeyId'],
-    secret_access_key: data['secretAccessKey'],
-  }));
+  return z
+    .object({
+      accessKeyId: z.string().min(1).max(1000).regex(/^.*$/),
+      secretAccessKey: z.string().min(1).max(1000).regex(/^.*$/),
+    })
+    .transform((data) => ({
+      access_key_id: data['accessKeyId'],
+      secret_access_key: data['secretAccessKey'],
+    }));
 });

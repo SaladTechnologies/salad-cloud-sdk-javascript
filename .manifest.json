@@ -1,10 +1,10 @@
 {
-  "liblabVersion": "2.24.0",
-  "date": "2025-03-26T23:21:52.651Z",
+  "liblabVersion": "2.25.0",
+  "date": "2025-03-27T19:05:38.329Z",
   "config": {
-    "apiId": 1944,
+    "apiId": 1945,
     "sdkName": "salad-cloud-sdk",
-    "sdkVersion": "0.9.0-alpha.10",
+    "sdkVersion": "0.9.0-alpha.11",
     "languages": ["typescript"],
     "auth": ["apikey"],
     "docs": ["enhancedApiSpec", "snippets"],
@@ -49,7 +49,7 @@
           "githubRepoName": "salad-cloud-sdk-dotnet",
           "targetBranch": "main",
           "ignoreFiles": [".gitignore", "./LICENSE"],
-          "sdkVersion": "0.9.0-alpha.9",
+          "sdkVersion": "0.9.0-alpha.10",
           "authors": [
             {
               "name": "salad"
@@ -66,7 +66,7 @@
           "githubRepoName": "salad-cloud-sdk-go",
           "targetBranch": "main",
           "ignoreFiles": [".gitignore", "./LICENSE"],
-          "sdkVersion": "0.9.0-alpha.9",
+          "sdkVersion": "0.9.0-alpha.10",
           "goModuleName": "github.com/saladtechnologies/salad-cloud-sdk-go"
         },
         "java": {
@@ -74,7 +74,7 @@
           "githubRepoName": "salad-cloud-sdk-java",
           "targetBranch": "main",
           "ignoreFiles": [".gitignore", "./LICENSE"],
-          "sdkVersion": "0.9.0-alpha.10",
+          "sdkVersion": "0.9.0-alpha.11",
           "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-java",
           "groupId": "com.salad.cloud",
           "artifactId": "sdk",
@@ -98,7 +98,7 @@
           "githubRepoName": "salad-cloud-sdk-python",
           "targetBranch": "main",
           "ignoreFiles": [".gitignore", "./LICENSE"],
-          "sdkVersion": "0.9.0-alpha.9",
+          "sdkVersion": "0.9.0-alpha.10",
           "authors": [
             {
               "name": "SaladCloud Developers",
@@ -153,7 +153,7 @@
           "githubRepoName": "salad-cloud-sdk-javascript",
           "targetBranch": "main",
           "ignoreFiles": [".gitignore", "./LICENSE"],
-          "sdkVersion": "0.9.0-alpha.10",
+          "sdkVersion": "0.9.0-alpha.11",
           "authors": [
             {
               "name": "SaladCloud Developers",
@@ -278,7 +278,7 @@
         "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-dotnet",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.9",
+        "sdkVersion": "0.9.0-alpha.10",
         "targetBranch": "main"
       },
       "go": {
@@ -286,7 +286,7 @@
         "githubRepoName": "salad-cloud-sdk-go",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.9",
+        "sdkVersion": "0.9.0-alpha.10",
         "targetBranch": "main"
       },
       "java": {
@@ -311,7 +311,7 @@
         "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-java",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.10",
+        "sdkVersion": "0.9.0-alpha.11",
         "targetBranch": "main"
       },
       "python": {
@@ -354,7 +354,7 @@
         "githubRepoName": "salad-cloud-sdk-python",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.9",
+        "sdkVersion": "0.9.0-alpha.10",
         "targetBranch": "main"
       },
       "terraform": {
@@ -391,7 +391,7 @@
         "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-javascript",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.10",
+        "sdkVersion": "0.9.0-alpha.11",
         "targetBranch": "main",
         "generateEnumAs": "enum"
       }
@@ -486,7 +486,7 @@
       }
     ],
     "apiName": "SaladCloud API",
-    "apiVersion": "0.9.0-alpha.9",
+    "apiVersion": "0.9.0-alpha.10",
     "authentication": {
       "apiKey": {
         "header": "Salad-Api-Key"
@@ -625,9 +625,8 @@
     "src/services/common/container-logging-splunk-configuration.ts",
     "src/services/common/tcp-logging-configuration.ts",
     "src/services/common/datadog-tag-for-container-logging.ts",
-    "src/services/common/container-http-logging-configuration-format-1.ts",
+    "src/services/common/container-logging-http-format.ts",
     "src/services/common/container-logging-http-header.ts",
-    "src/services/common/container-http-logging-configuration-compression-1.ts",
     "src/services/common/container-group-instance-status-count.ts",
     "src/services/common/container-group-status.ts",
     "src/services/common/container-group-probe-exec.ts",
@@ -643,8 +642,6 @@
     "src/services/container-groups/models/container-configuration-logging.ts",
     "src/services/container-groups/models/container-registry-authentication.ts",
     "src/services/container-groups/models/container-logging-configuration-http-2.ts",
-    "src/services/container-groups/models/container-http-logging-configuration-format-2.ts",
-    "src/services/container-groups/models/container-http-logging-configuration-compression-2.ts",
     "src/services/container-groups/models/container-registry-authentication-aws-ecr.ts",
     "src/services/container-groups/models/container-registry-authentication-basic.ts",
     "src/services/container-groups/models/container-registry-authentication-docker-hub.ts",
@@ -778,10 +775,12 @@
     "documentation/models/ContainerResourceRequirements.md",
     "documentation/models/AxiomLoggingConfiguration.md",
     "documentation/models/DatadogLoggingConfiguration.md",
+    "documentation/models/ContainerLoggingConfigurationHttp1.md",
     "documentation/models/NewRelicLoggingConfiguration.md",
     "documentation/models/ContainerLoggingSplunkConfiguration.md",
     "documentation/models/TcpLoggingConfiguration.md",
     "documentation/models/DatadogTagForContainerLogging.md",
+    "documentation/models/ContainerLoggingHttpFormat.md",
     "documentation/models/ContainerLoggingHttpHeader.md",
     "documentation/models/ContainerGroupInstanceStatusCount.md",
     "documentation/models/ContainerGroupStatus.md",
@@ -797,6 +796,7 @@
     "documentation/models/CreateContainerGroupNetworking.md",
     "documentation/models/ContainerConfigurationLogging.md",
     "documentation/models/ContainerRegistryAuthentication.md",
+    "documentation/models/ContainerLoggingConfigurationHttp2.md",
     "documentation/models/ContainerRegistryAuthenticationAwsEcr.md",
     "documentation/models/ContainerRegistryAuthenticationBasic.md",
     "documentation/models/ContainerRegistryAuthenticationDockerHub.md",
@@ -828,14 +828,13 @@
     "src/http/utils/line-decoder.ts",
     "src/http/utils/response-matcher.ts",
     "src/http/utils/content-type.ts",
+    "src/http/errors/validation-error.ts",
     "documentation/services/WorkloadErrorsService.md",
     "documentation/models/QueueJob.md",
     "documentation/models/QueueJobEvent.md",
     "documentation/services/SystemLogsService.md",
     "documentation/services/QuotasService.md",
     "documentation/services/OrganizationDataService.md",
-    "documentation/models/ContainerLoggingConfigurationHttp1.md",
-    "documentation/models/ContainerLoggingConfigurationHttp2.md",
     "documentation/services/WebhookSecretKeyService.md",
     "documentation/services/InferenceEndpointsService.md",
     "documentation/services/QueuesService.md",

@@ -39,8 +39,13 @@ export const inferenceEndpointJobEventResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const inferenceEndpointJobEventRequest = z.lazy(() => {
-  return z.object({ action: z.string(), time: z.string() }).transform((data) => ({
-    action: data['action'],
-    time: data['time'],
-  }));
+  return z
+    .object({
+      action: z.string(),
+      time: z.string(),
+    })
+    .transform((data) => ({
+      action: data['action'],
+      time: data['time'],
+    }));
 });

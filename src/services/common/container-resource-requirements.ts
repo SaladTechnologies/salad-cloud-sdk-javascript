@@ -49,10 +49,10 @@ export const containerResourceRequirementsResponse = z.lazy(() => {
 export const containerResourceRequirementsRequest = z.lazy(() => {
   return z
     .object({
-      cpu: z.number(),
-      memory: z.number(),
-      gpuClasses: z.array(z.string()).nullable(),
-      storageAmount: z.number().optional(),
+      cpu: z.number().gte(1).lte(16),
+      memory: z.number().gte(1024).lte(61440),
+      gpuClasses: z.array(z.string()).max(100).nullable(),
+      storageAmount: z.number().gte(1073741824).lte(53687091200).optional(),
     })
     .transform((data) => ({
       cpu: data['cpu'],

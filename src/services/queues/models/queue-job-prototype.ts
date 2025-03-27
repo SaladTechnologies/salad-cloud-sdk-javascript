@@ -44,7 +44,11 @@ export const queueJobPrototypeResponse = z.lazy(() => {
  */
 export const queueJobPrototypeRequest = z.lazy(() => {
   return z
-    .object({ input: z.any(), metadata: z.any().optional(), webhook: z.string().optional() })
+    .object({
+      input: z.any(),
+      metadata: z.any().optional(),
+      webhook: z.string().min(1).max(2048).regex(/^.*$/).optional(),
+    })
     .transform((data) => ({
       input: data['input'],
       metadata: data['metadata'],

@@ -59,7 +59,7 @@ export const containerGroupStateResponse = z.lazy(() => {
 export const containerGroupStateRequest = z.lazy(() => {
   return z
     .object({
-      description: z.string().nullable().optional(),
+      description: z.string().max(1000).regex(/^.*$/).optional().nullable(),
       finishTime: z.string(),
       instanceStatusCounts: containerGroupInstanceStatusCountRequest,
       startTime: z.string(),

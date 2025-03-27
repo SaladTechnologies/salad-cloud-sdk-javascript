@@ -36,7 +36,11 @@ export const systemLogListResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const systemLogListRequest = z.lazy(() => {
-  return z.object({ items: z.array(systemLogRequest) }).transform((data) => ({
-    items: data['items'],
-  }));
+  return z
+    .object({
+      items: z.array(systemLogRequest).max(50),
+    })
+    .transform((data) => ({
+      items: data['items'],
+    }));
 });

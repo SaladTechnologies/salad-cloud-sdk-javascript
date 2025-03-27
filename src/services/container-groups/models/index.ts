@@ -9,8 +9,6 @@ export type { CreateContainerGroupNetworking } from './create-container-group-ne
 export type { ContainerConfigurationLogging } from './container-configuration-logging';
 export type { ContainerRegistryAuthentication } from './container-registry-authentication';
 export type { ContainerLoggingConfigurationHttp2 } from './container-logging-configuration-http-2';
-export { ContainerHttpLoggingConfigurationFormat2 } from './container-http-logging-configuration-format-2';
-export { ContainerHttpLoggingConfigurationCompression2 } from './container-http-logging-configuration-compression-2';
 export type { ContainerRegistryAuthenticationAwsEcr } from './container-registry-authentication-aws-ecr';
 export type { ContainerRegistryAuthenticationBasic } from './container-registry-authentication-basic';
 export type { ContainerRegistryAuthenticationDockerHub } from './container-registry-authentication-docker-hub';

@@ -41,7 +41,11 @@ export const containerGroupCollectionResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerGroupCollectionRequest = z.lazy(() => {
-  return z.object({ items: z.array(containerGroupRequest) }).transform((data) => ({
-    items: data['items'],
-  }));
+  return z
+    .object({
+      items: z.array(containerGroupRequest).max(100),
+    })
+    .transform((data) => ({
+      items: data['items'],
+    }));
 });

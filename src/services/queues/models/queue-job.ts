@@ -83,9 +83,14 @@ export const queueJobRequest = z.lazy(() => {
       id: z.string(),
       input: z.any(),
       metadata: z.any().optional(),
-      webhook: z.string().optional(),
+      webhook: z
+        .string()
+        .min(20)
+        .max(27)
+        .regex(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$/)
+        .optional(),
       status: z.string(),
-      events: z.array(queueJobEventRequest),
+      events: z.array(queueJobEventRequest).max(1000),
       output: z.any().optional(),
       createTime: z.string(),
       updateTime: z.string(),

@@ -55,9 +55,9 @@ export const containerGroupHttpProbeConfigurationResponse = z.lazy(() => {
 export const containerGroupHttpProbeConfigurationRequest = z.lazy(() => {
   return z
     .object({
-      headers: z.array(containerGroupProbeHttpHeaderRequest),
-      path: z.string(),
-      port: z.number(),
+      headers: z.array(containerGroupProbeHttpHeaderRequest).min(1).max(50),
+      path: z.string().min(1).max(2048).regex(/^.*$/),
+      port: z.number().gte(0).lte(65536),
       scheme: z.string().nullable(),
     })
     .transform((data) => ({

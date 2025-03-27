@@ -39,8 +39,13 @@ export const containerRegistryAuthenticationBasicResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerRegistryAuthenticationBasicRequest = z.lazy(() => {
-  return z.object({ username: z.string(), password: z.string() }).transform((data) => ({
-    username: data['username'],
-    password: data['password'],
-  }));
+  return z
+    .object({
+      username: z.string().min(1).max(1000).regex(/^.*$/),
+      password: z.string().min(1).max(1000).regex(/^.*$/),
+    })
+    .transform((data) => ({
+      username: data['username'],
+      password: data['password'],
+    }));
 });

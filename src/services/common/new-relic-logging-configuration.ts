@@ -39,8 +39,13 @@ export const newRelicLoggingConfigurationResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const newRelicLoggingConfigurationRequest = z.lazy(() => {
-  return z.object({ host: z.string(), ingestionKey: z.string() }).transform((data) => ({
-    host: data['host'],
-    ingestion_key: data['ingestionKey'],
-  }));
+  return z
+    .object({
+      host: z.string().min(1).max(1000).regex(/^.*$/),
+      ingestionKey: z.string().min(1).max(1000).regex(/^.*$/),
+    })
+    .transform((data) => ({
+      host: data['host'],
+      ingestion_key: data['ingestionKey'],
+    }));
 });

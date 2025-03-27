@@ -49,10 +49,10 @@ export const containerResourceUpdateSchemaResponse = z.lazy(() => {
 export const containerResourceUpdateSchemaRequest = z.lazy(() => {
   return z
     .object({
-      cpu: z.number().nullable().optional(),
-      memory: z.number().nullable().optional(),
-      gpuClasses: z.array(z.string()).nullable().optional(),
-      storageAmount: z.number().nullable().optional(),
+      cpu: z.number().gte(1).lte(16).optional().nullable(),
+      memory: z.number().gte(1024).lte(61440).optional().nullable(),
+      gpuClasses: z.array(z.string()).max(100).optional().nullable(),
+      storageAmount: z.number().gte(1073741824).lte(53687091200).optional().nullable(),
     })
     .transform((data) => ({
       cpu: data['cpu'],

@@ -98,15 +98,27 @@ export const inferenceEndpointRequest = z.lazy(() => {
   return z
     .object({
       id: z.string(),
-      name: z.string(),
-      organizationName: z.string(),
-      displayName: z.string(),
-      description: z.string(),
-      readme: z.string(),
-      priceDescription: z.string(),
-      iconUrl: z.string(),
-      inputSchema: z.string(),
-      outputSchema: z.string(),
+      name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+      organizationName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+      displayName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[ ,-.0-9A-Za-z]+$/),
+      description: z.string().max(1000).regex(/^.*$/),
+      readme: z.string().min(1).max(100000).regex(/^.*$/),
+      priceDescription: z.string().min(1).max(100).regex(/^.*$/),
+      iconUrl: z.string().min(1).max(2048).regex(/^.*$/),
+      inputSchema: z.string().min(1).max(100000).regex(/^.*$/),
+      outputSchema: z.string().min(1).max(100000).regex(/^.*$/),
     })
     .transform((data) => ({
       id: data['id'],

@@ -52,7 +52,16 @@ export const queuePatchResponse = z.lazy(() => {
  */
 export const queuePatchRequest = z.lazy(() => {
   return z
-    .object({ displayName: z.string().nullable().optional(), description: z.string().nullable().optional() })
+    .object({
+      displayName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[ ,-.0-9A-Za-z]+$/)
+        .optional()
+        .nullable(),
+      description: z.string().max(500).regex(/^.*$/).optional().nullable(),
+    })
     .transform((data) => ({
       display_name: data['displayName'],
       description: data['description'],

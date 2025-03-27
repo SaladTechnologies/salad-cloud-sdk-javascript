@@ -36,7 +36,11 @@ export const workloadErrorListResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const workloadErrorListRequest = z.lazy(() => {
-  return z.object({ items: z.array(workloadErrorRequest) }).transform((data) => ({
-    items: data['items'],
-  }));
+  return z
+    .object({
+      items: z.array(workloadErrorRequest).max(50),
+    })
+    .transform((data) => ({
+      items: data['items'],
+    }));
 });

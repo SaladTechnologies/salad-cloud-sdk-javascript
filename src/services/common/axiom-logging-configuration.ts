@@ -43,9 +43,15 @@ export const axiomLoggingConfigurationResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const axiomLoggingConfigurationRequest = z.lazy(() => {
-  return z.object({ host: z.string(), apiToken: z.string(), dataset: z.string() }).transform((data) => ({
-    host: data['host'],
-    api_token: data['apiToken'],
-    dataset: data['dataset'],
-  }));
+  return z
+    .object({
+      host: z.string().min(1).max(1000).regex(/^.*$/),
+      apiToken: z.string().min(1).max(1000).regex(/^.*$/),
+      dataset: z.string().min(1).max(1000).regex(/^.*$/),
+    })
+    .transform((data) => ({
+      host: data['host'],
+      api_token: data['apiToken'],
+      dataset: data['dataset'],
+    }));
 });

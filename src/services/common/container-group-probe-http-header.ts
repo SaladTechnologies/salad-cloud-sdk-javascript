@@ -39,8 +39,13 @@ export const containerGroupProbeHttpHeaderResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerGroupProbeHttpHeaderRequest = z.lazy(() => {
-  return z.object({ name: z.string(), value: z.string() }).transform((data) => ({
-    name: data['name'],
-    value: data['value'],
-  }));
+  return z
+    .object({
+      name: z.string().min(1).max(256).regex(/^.*$/),
+      value: z.string().min(1).max(1024).regex(/^.*$/),
+    })
+    .transform((data) => ({
+      name: data['name'],
+      value: data['value'],
+    }));
 });

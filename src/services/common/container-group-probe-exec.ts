@@ -35,7 +35,11 @@ export const containerGroupProbeExecResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerGroupProbeExecRequest = z.lazy(() => {
-  return z.object({ command: z.array(z.string()) }).transform((data) => ({
-    command: data['command'],
-  }));
+  return z
+    .object({
+      command: z.array(z.string()).min(1).max(100),
+    })
+    .transform((data) => ({
+      command: data['command'],
+    }));
 });

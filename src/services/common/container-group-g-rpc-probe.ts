@@ -39,8 +39,13 @@ export const containerGroupGRpcProbeResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerGroupGRpcProbeRequest = z.lazy(() => {
-  return z.object({ port: z.number(), service: z.string() }).transform((data) => ({
-    port: data['port'],
-    service: data['service'],
-  }));
+  return z
+    .object({
+      port: z.number().gte(0).lte(65536),
+      service: z.string().max(1024).regex(/^.*$/),
+    })
+    .transform((data) => ({
+      port: data['port'],
+      service: data['service'],
+    }));
 });

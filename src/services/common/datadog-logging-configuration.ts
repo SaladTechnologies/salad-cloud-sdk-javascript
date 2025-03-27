@@ -50,7 +50,11 @@ export const datadogLoggingConfigurationResponse = z.lazy(() => {
  */
 export const datadogLoggingConfigurationRequest = z.lazy(() => {
   return z
-    .object({ host: z.string(), apiKey: z.string(), tags: z.array(datadogTagForContainerLoggingRequest).nullable() })
+    .object({
+      host: z.string().min(1).max(1000).regex(/^.*$/),
+      apiKey: z.string().min(1).max(1000).regex(/^.*$/),
+      tags: z.array(datadogTagForContainerLoggingRequest).max(1000).nullable(),
+    })
     .transform((data) => ({
       host: data['host'],
       api_key: data['apiKey'],

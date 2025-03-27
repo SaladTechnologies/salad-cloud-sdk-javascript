@@ -18,7 +18,7 @@ export const containerLoggingConfigurationHttp1 = z.lazy(() => {
     path: z.string().min(1).max(1000).regex(/^.*$/).optional().nullable(),
     format: z.string(),
     headers: z.array(containerLoggingHttpHeader).max(1000).nullable(),
-    compression: z.string(),
+    compression: z.any(),
   });
 });
 
@@ -30,9 +30,9 @@ export const containerLoggingConfigurationHttp1 = z.lazy(() => {
  * @property {string} - Optional username for HTTP authentication
  * @property {string} - Optional password for HTTP authentication
  * @property {string} - Optional URL path for the HTTP endpoint
- * @property {ContainerHttpLoggingConfigurationFormat1} - The format in which logs will be delivered
+ * @property {ContainerLoggingHttpFormat} - The format in which logs will be delivered
  * @property {ContainerLoggingHttpHeader[]} - Optional HTTP headers to include in log transmission requests
- * @property {ContainerHttpLoggingConfigurationCompression1} - The compression algorithm to apply to logs before transmission
+ * @property {any}
  */
 export type ContainerLoggingConfigurationHttp1 = z.infer<typeof containerLoggingConfigurationHttp1>;
 
@@ -50,7 +50,7 @@ export const containerLoggingConfigurationHttp1Response = z.lazy(() => {
       path: z.string().min(1).max(1000).regex(/^.*$/).optional().nullable(),
       format: z.string(),
       headers: z.array(containerLoggingHttpHeaderResponse).max(1000).nullable(),
-      compression: z.string(),
+      compression: z.any(),
     })
     .transform((data) => ({
       host: data['host'],
@@ -71,14 +71,14 @@ export const containerLoggingConfigurationHttp1Response = z.lazy(() => {
 export const containerLoggingConfigurationHttp1Request = z.lazy(() => {
   return z
     .object({
-      host: z.string(),
-      port: z.number(),
-      user: z.string().nullable().optional(),
-      password: z.string().nullable().optional(),
-      path: z.string().nullable().optional(),
+      host: z.string().min(1).max(1000).regex(/^.*$/),
+      port: z.number().gte(1).lte(65535),
+      user: z.string().min(1).max(1000).regex(/^.*$/).optional().nullable(),
+      password: z.string().min(1).max(1000).regex(/^.*$/).optional().nullable(),
+      path: z.string().min(1).max(1000).regex(/^.*$/).optional().nullable(),
       format: z.string(),
-      headers: z.array(containerLoggingHttpHeaderRequest).nullable(),
-      compression: z.string(),
+      headers: z.array(containerLoggingHttpHeaderRequest).max(1000).nullable(),
+      compression: z.any(),
     })
     .transform((data) => ({
       host: data['host'],

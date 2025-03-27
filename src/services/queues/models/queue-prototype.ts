@@ -62,7 +62,20 @@ export const queuePrototypeResponse = z.lazy(() => {
  */
 export const queuePrototypeRequest = z.lazy(() => {
   return z
-    .object({ name: z.string(), displayName: z.string().optional(), description: z.string().optional() })
+    .object({
+      name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+      displayName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[ ,-.0-9A-Za-z]+$/)
+        .optional(),
+      description: z.string().max(500).regex(/^.*$/).optional(),
+    })
     .transform((data) => ({
       name: data['name'],
       display_name: data['displayName'],
