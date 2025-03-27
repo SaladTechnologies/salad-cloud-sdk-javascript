@@ -74,12 +74,16 @@ export const containerGroupNetworkingConfigurationRequest = z.lazy(() => {
   return z
     .object({
       auth: z.boolean(),
-      clientRequestTimeout: z.number().optional(),
-      dns: z.string(),
+      clientRequestTimeout: z.number().gte(1).lte(100000).optional(),
+      dns: z
+        .string()
+        .min(1)
+        .max(253)
+        .regex(/^([a-z][a-z0-9-]{0,61}[a-z0-9]\.)*[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
       loadBalancer: z.string(),
-      port: z.number(),
+      port: z.number().gte(1).lte(65535),
       protocol: z.string(),
-      serverResponseTimeout: z.number().optional(),
+      serverResponseTimeout: z.number().gte(1).lte(100000).optional(),
       singleConnectionLimit: z.boolean().optional(),
     })
     .transform((data) => ({

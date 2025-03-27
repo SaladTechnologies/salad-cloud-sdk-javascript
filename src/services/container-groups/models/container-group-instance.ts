@@ -69,10 +69,10 @@ export const containerGroupInstanceRequest = z.lazy(() => {
       machineId: z.string(),
       state: z.string(),
       updateTime: z.string(),
-      version: z.number(),
+      version: z.number().gte(1).lte(2147483647),
       ready: z.boolean().optional(),
       started: z.boolean().optional(),
-      deletionCost: z.number().optional(),
+      deletionCost: z.number().gte(0).lte(100000).optional(),
     })
     .transform((data) => ({
       id: data['id'],

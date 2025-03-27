@@ -39,8 +39,13 @@ export const tcpLoggingConfigurationResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const tcpLoggingConfigurationRequest = z.lazy(() => {
-  return z.object({ host: z.string(), port: z.number() }).transform((data) => ({
-    host: data['host'],
-    port: data['port'],
-  }));
+  return z
+    .object({
+      host: z.string().min(1).max(1000).regex(/^.*$/),
+      port: z.number().gte(1).lte(65535),
+    })
+    .transform((data) => ({
+      host: data['host'],
+      port: data['port'],
+    }));
 });

@@ -35,7 +35,11 @@ export const containerRegistryAuthenticationGcpGcrResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerRegistryAuthenticationGcpGcrRequest = z.lazy(() => {
-  return z.object({ serviceKey: z.string() }).transform((data) => ({
-    service_key: data['serviceKey'],
-  }));
+  return z
+    .object({
+      serviceKey: z.string().min(1).max(1000).regex(/^.*$/),
+    })
+    .transform((data) => ({
+      service_key: data['serviceKey'],
+    }));
 });

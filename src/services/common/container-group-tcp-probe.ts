@@ -35,7 +35,11 @@ export const containerGroupTcpProbeResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerGroupTcpProbeRequest = z.lazy(() => {
-  return z.object({ port: z.number() }).transform((data) => ({
-    port: data['port'],
-  }));
+  return z
+    .object({
+      port: z.number().gte(0).lte(65535),
+    })
+    .transform((data) => ({
+      port: data['port'],
+    }));
 });

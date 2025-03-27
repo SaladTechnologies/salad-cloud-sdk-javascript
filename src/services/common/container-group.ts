@@ -50,7 +50,7 @@ export const containerGroup = z.lazy(() => {
   return z.object({
     autostartPolicy: z.boolean(),
     container: container,
-    countryCodes: z.array(z.string()).min(1).max(500),
+    countryCodes: z.array(z.string()).max(500),
     createTime: z.string(),
     currentState: containerGroupState,
     displayName: z
@@ -126,7 +126,7 @@ export const containerGroupResponse = z.lazy(() => {
     .object({
       autostart_policy: z.boolean(),
       container: containerResponse,
-      country_codes: z.array(z.string()).min(1).max(500),
+      country_codes: z.array(z.string()).max(500),
       create_time: z.string(),
       current_state: containerGroupStateResponse,
       display_name: z
@@ -198,26 +198,42 @@ export const containerGroupRequest = z.lazy(() => {
     .object({
       autostartPolicy: z.boolean(),
       container: containerRequest,
-      countryCodes: z.array(z.string()),
+      countryCodes: z.array(z.string()).max(500),
       createTime: z.string(),
       currentState: containerGroupStateRequest,
-      displayName: z.string(),
+      displayName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[ ,-.0-9A-Za-z]+$/),
       id: z.string(),
-      livenessProbe: containerGroupLivenessProbeRequest.nullable().optional(),
-      name: z.string(),
+      livenessProbe: containerGroupLivenessProbeRequest.optional().nullable(),
+      name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
       networking: containerGroupNetworkingConfigurationRequest.optional(),
-      organizationName: z.string(),
+      organizationName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
       pendingChange: z.boolean(),
       priority: z.string().nullable(),
-      projectName: z.string(),
+      projectName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
       queueAutoscaler: queueBasedAutoscalerConfigurationRequest.optional(),
       queueConnection: containerGroupQueueConnectionRequest.optional(),
-      readinessProbe: containerGroupReadinessProbeRequest.nullable().optional(),
-      replicas: z.number(),
+      readinessProbe: containerGroupReadinessProbeRequest.optional().nullable(),
+      replicas: z.number().gte(0).lte(500),
       restartPolicy: z.string(),
-      startupProbe: containerGroupStartupProbeRequest.nullable().optional(),
+      startupProbe: containerGroupStartupProbeRequest.optional().nullable(),
       updateTime: z.string(),
-      version: z.number(),
+      version: z.number().gte(1).lte(2147483647),
     })
     .transform((data) => ({
       autostart_policy: data['autostartPolicy'],

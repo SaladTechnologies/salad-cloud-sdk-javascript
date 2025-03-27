@@ -54,7 +54,12 @@ export const inferenceEndpointCollectionResponse = z.lazy(() => {
  */
 export const inferenceEndpointCollectionRequest = z.lazy(() => {
   return z
-    .object({ items: z.array(inferenceEndpointRequest), page: z.number(), pageSize: z.number(), totalSize: z.number() })
+    .object({
+      items: z.array(inferenceEndpointRequest).max(100),
+      page: z.number().gte(1).lte(2147483647),
+      pageSize: z.number().gte(1).lte(100),
+      totalSize: z.number().gte(0).lte(2147483647),
+    })
     .transform((data) => ({
       items: data['items'],
       page: data['page'],

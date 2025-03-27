@@ -19,9 +19,8 @@ export type { NewRelicLoggingConfiguration } from './new-relic-logging-configura
 export type { ContainerLoggingSplunkConfiguration } from './container-logging-splunk-configuration';
 export type { TcpLoggingConfiguration } from './tcp-logging-configuration';
 export type { DatadogTagForContainerLogging } from './datadog-tag-for-container-logging';
-export { ContainerHttpLoggingConfigurationFormat1 } from './container-http-logging-configuration-format-1';
+export { ContainerLoggingHttpFormat } from './container-logging-http-format';
 export type { ContainerLoggingHttpHeader } from './container-logging-http-header';
-export { ContainerHttpLoggingConfigurationCompression1 } from './container-http-logging-configuration-compression-1';
 export type { ContainerGroupInstanceStatusCount } from './container-group-instance-status-count';
 export { ContainerGroupStatus } from './container-group-status';
 export type { ContainerGroupProbeExec } from './container-group-probe-exec';

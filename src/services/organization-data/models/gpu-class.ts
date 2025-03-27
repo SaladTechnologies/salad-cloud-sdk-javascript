@@ -59,8 +59,12 @@ export const gpuClassRequest = z.lazy(() => {
   return z
     .object({
       id: z.string(),
-      name: z.string(),
-      prices: z.array(gpuClassPriceRequest),
+      name: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[ -~]{2,63}$/),
+      prices: z.array(gpuClassPriceRequest).min(1).max(100),
       isHighDemand: z.boolean().optional(),
     })
     .transform((data) => ({

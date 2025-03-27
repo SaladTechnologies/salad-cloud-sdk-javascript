@@ -43,7 +43,15 @@ export const webhookSecretKeyResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const webhookSecretKeyRequest = z.lazy(() => {
-  return z.object({ secretKey: z.string() }).transform((data) => ({
-    secret_key: data['secretKey'],
-  }));
+  return z
+    .object({
+      secretKey: z
+        .string()
+        .min(44)
+        .max(172)
+        .regex(/^[+\/=0-9A-Za-z]{44,172}$/),
+    })
+    .transform((data) => ({
+      secret_key: data['secretKey'],
+    }));
 });

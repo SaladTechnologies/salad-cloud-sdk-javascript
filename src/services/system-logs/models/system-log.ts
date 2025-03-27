@@ -69,14 +69,14 @@ export const systemLogResponse = z.lazy(() => {
 export const systemLogRequest = z.lazy(() => {
   return z
     .object({
-      eventName: z.string(),
+      eventName: z.string().min(1).max(255).regex(/^.*$/),
       eventTime: z.string(),
       instanceId: z.string().optional(),
       machineId: z.string().optional(),
-      resourceCpu: z.number().nullable(),
+      resourceCpu: z.number().gte(1).lte(16).nullable(),
       resourceGpuClass: z.string(),
-      resourceMemory: z.number().nullable(),
-      resourceStorageAmount: z.number().nullable(),
+      resourceMemory: z.number().gte(1024).lte(61440).nullable(),
+      resourceStorageAmount: z.number().gte(1073741824).lte(53687091200).nullable(),
       version: z.string(),
     })
     .transform((data) => ({

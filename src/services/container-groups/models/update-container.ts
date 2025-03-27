@@ -83,14 +83,14 @@ export const updateContainerResponse = z.lazy(() => {
 export const updateContainerRequest = z.lazy(() => {
   return z
     .object({
-      command: z.array(z.string()).nullable().optional(),
+      command: z.array(z.string()).max(100).optional().nullable(),
       environmentVariables: z.any().optional(),
-      image: z.string().nullable().optional(),
+      image: z.string().min(1).max(1024).regex(/^.*$/).optional().nullable(),
       imageCaching: z.boolean().optional(),
-      logging: updateContainerLoggingRequest.nullable().optional(),
-      priority: z.string().nullable().optional(),
+      logging: updateContainerLoggingRequest.optional().nullable(),
+      priority: z.string().optional().nullable(),
       registryAuthentication: containerRegistryAuthenticationRequest.optional(),
-      resources: containerResourceUpdateSchemaRequest.nullable().optional(),
+      resources: containerResourceUpdateSchemaRequest.optional().nullable(),
     })
     .transform((data) => ({
       command: data['command'],

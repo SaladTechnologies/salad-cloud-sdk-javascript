@@ -39,8 +39,13 @@ export const containerRegistryAuthenticationDockerHubResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerRegistryAuthenticationDockerHubRequest = z.lazy(() => {
-  return z.object({ username: z.string(), personalAccessToken: z.string() }).transform((data) => ({
-    username: data['username'],
-    personal_access_token: data['personalAccessToken'],
-  }));
+  return z
+    .object({
+      username: z.string().min(1).max(1000).regex(/^.*$/),
+      personalAccessToken: z.string().min(1).max(1000).regex(/^.*$/),
+    })
+    .transform((data) => ({
+      username: data['username'],
+      personal_access_token: data['personalAccessToken'],
+    }));
 });

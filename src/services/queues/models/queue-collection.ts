@@ -36,7 +36,11 @@ export const queueCollectionResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const queueCollectionRequest = z.lazy(() => {
-  return z.object({ items: z.array(queueRequest) }).transform((data) => ({
-    items: data['items'],
-  }));
+  return z
+    .object({
+      items: z.array(queueRequest).max(100),
+    })
+    .transform((data) => ({
+      items: data['items'],
+    }));
 });

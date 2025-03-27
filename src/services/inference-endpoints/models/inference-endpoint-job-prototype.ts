@@ -51,8 +51,8 @@ export const inferenceEndpointJobPrototypeRequest = z.lazy(() => {
     .object({
       input: z.any(),
       metadata: z.any().optional(),
-      webhook: z.string().optional(),
-      webhookUrl: z.string().optional(),
+      webhook: z.string().min(1).max(2048).optional(),
+      webhookUrl: z.string().min(1).max(2048).optional(),
     })
     .transform((data) => ({
       input: data['input'],

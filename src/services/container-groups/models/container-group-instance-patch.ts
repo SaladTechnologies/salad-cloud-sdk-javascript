@@ -35,7 +35,11 @@ export const containerGroupInstancePatchResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const containerGroupInstancePatchRequest = z.lazy(() => {
-  return z.object({ deletionCost: z.number().nullable().optional() }).transform((data) => ({
-    deletion_cost: data['deletionCost'],
-  }));
+  return z
+    .object({
+      deletionCost: z.number().gte(0).lte(100000).optional().nullable(),
+    })
+    .transform((data) => ({
+      deletion_cost: data['deletionCost'],
+    }));
 });

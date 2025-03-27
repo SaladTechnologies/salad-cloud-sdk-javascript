@@ -104,14 +104,22 @@ export const inferenceEndpointJobRequest = z.lazy(() => {
   return z
     .object({
       id: z.string(),
-      inferenceEndpointName: z.string(),
-      organizationName: z.string(),
+      inferenceEndpointName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
+      organizationName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[a-z][a-z0-9-]{0,61}[a-z0-9]$/),
       input: z.any(),
       metadata: z.any().optional(),
-      webhook: z.string().optional(),
-      webhookUrl: z.string().optional(),
+      webhook: z.string().min(1).max(2048).optional(),
+      webhookUrl: z.string().min(1).max(2048).optional(),
       status: z.string(),
-      events: z.array(inferenceEndpointJobEventRequest),
+      events: z.array(inferenceEndpointJobEventRequest).max(1000),
       output: z.any().optional(),
       createTime: z.string(),
       updateTime: z.string(),

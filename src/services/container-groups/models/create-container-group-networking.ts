@@ -62,11 +62,11 @@ export const createContainerGroupNetworkingRequest = z.lazy(() => {
   return z
     .object({
       auth: z.boolean(),
-      clientRequestTimeout: z.number().optional(),
+      clientRequestTimeout: z.number().gte(1).lte(100000).optional(),
       loadBalancer: z.string().optional(),
-      port: z.number(),
+      port: z.number().gte(1).lte(65535),
       protocol: z.string(),
-      serverResponseTimeout: z.number().optional(),
+      serverResponseTimeout: z.number().gte(1).lte(100000).optional(),
       singleConnectionLimit: z.boolean().optional(),
     })
     .transform((data) => ({

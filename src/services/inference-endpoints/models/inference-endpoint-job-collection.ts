@@ -55,10 +55,10 @@ export const inferenceEndpointJobCollectionResponse = z.lazy(() => {
 export const inferenceEndpointJobCollectionRequest = z.lazy(() => {
   return z
     .object({
-      items: z.array(inferenceEndpointJobRequest),
-      page: z.number(),
-      pageSize: z.number(),
-      totalSize: z.number(),
+      items: z.array(inferenceEndpointJobRequest).max(100),
+      page: z.number().gte(1).lte(2147483647),
+      pageSize: z.number().gte(1).lte(100),
+      totalSize: z.number().gte(0).lte(2147483647),
     })
     .transform((data) => ({
       items: data['items'],

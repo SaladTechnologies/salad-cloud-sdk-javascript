@@ -94,14 +94,14 @@ export const containerGroupReadinessProbeRequest = z.lazy(() => {
   return z
     .object({
       exec: containerGroupProbeExecRequest.optional(),
-      failureThreshold: z.number(),
+      failureThreshold: z.number().gte(1).lte(20),
       grpc: containerGroupGRpcProbeRequest.optional(),
       http: containerGroupHttpProbeConfigurationRequest.optional(),
-      initialDelaySeconds: z.number(),
-      periodSeconds: z.number(),
-      successThreshold: z.number(),
+      initialDelaySeconds: z.number().gte(0).lte(1200),
+      periodSeconds: z.number().gte(1).lte(120),
+      successThreshold: z.number().gte(1).lte(10),
       tcp: containerGroupTcpProbeRequest.optional(),
-      timeoutSeconds: z.number(),
+      timeoutSeconds: z.number().gte(1).lte(60),
     })
     .transform((data) => ({
       exec: data['exec'],

@@ -7,7 +7,7 @@ import { QueuePatch, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sd
   });
 
   const queuePatch: QueuePatch = {
-    displayName: 'QqN5Ecnfeq',
+    displayName: 'i2VcwOa',
     description: 'description',
   };
 

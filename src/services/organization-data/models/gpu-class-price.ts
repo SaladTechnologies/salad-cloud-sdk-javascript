@@ -39,8 +39,13 @@ export const gpuClassPriceResponse = z.lazy(() => {
  * Is equal to application shape if all property names match the api schema
  */
 export const gpuClassPriceRequest = z.lazy(() => {
-  return z.object({ priority: z.string().nullable(), price: z.string() }).transform((data) => ({
-    priority: data['priority'],
-    price: data['price'],
-  }));
+  return z
+    .object({
+      priority: z.string().nullable(),
+      price: z.string().min(1).max(20).regex(/^.*$/),
+    })
+    .transform((data) => ({
+      priority: data['priority'],
+      price: data['price'],
+    }));
 });

@@ -83,12 +83,12 @@ export const containerConfigurationResponse = z.lazy(() => {
 export const containerConfigurationRequest = z.lazy(() => {
   return z
     .object({
-      command: z.array(z.string()).nullable().optional(),
+      command: z.array(z.string()).max(100).optional().nullable(),
       environmentVariables: z.any().optional(),
-      image: z.string(),
+      image: z.string().min(1).max(2048).regex(/^.*$/),
       imageCaching: z.boolean().optional(),
       logging: containerConfigurationLoggingRequest.optional(),
-      priority: z.string().nullable().optional(),
+      priority: z.string().optional().nullable(),
       registryAuthentication: containerRegistryAuthenticationRequest.optional(),
       resources: containerResourceRequirementsRequest,
     })

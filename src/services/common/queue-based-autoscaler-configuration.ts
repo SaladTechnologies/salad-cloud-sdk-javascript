@@ -57,12 +57,12 @@ export const queueBasedAutoscalerConfigurationResponse = z.lazy(() => {
 export const queueBasedAutoscalerConfigurationRequest = z.lazy(() => {
   return z
     .object({
-      desiredQueueLength: z.number(),
-      maxReplicas: z.number(),
-      maxDownscalePerMinute: z.number().optional(),
-      maxUpscalePerMinute: z.number().optional(),
-      minReplicas: z.number(),
-      pollingPeriod: z.number().optional(),
+      desiredQueueLength: z.number().gte(1).lte(100),
+      maxReplicas: z.number().gte(1).lte(500),
+      maxDownscalePerMinute: z.number().gte(1).lte(100).optional(),
+      maxUpscalePerMinute: z.number().gte(1).lte(100).optional(),
+      minReplicas: z.number().gte(0).lte(100),
+      pollingPeriod: z.number().gte(15).lte(1800).optional(),
     })
     .transform((data) => ({
       desired_queue_length: data['desiredQueueLength'],

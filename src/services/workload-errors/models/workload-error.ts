@@ -62,12 +62,12 @@ export const workloadErrorRequest = z.lazy(() => {
   return z
     .object({
       allocatedAt: z.string(),
-      detail: z.string(),
+      detail: z.string().min(1).max(255).regex(/^.*$/),
       failedAt: z.string(),
       instanceId: z.string(),
       machineId: z.string(),
       startedAt: z.string().optional(),
-      version: z.number(),
+      version: z.number().gte(1).lte(2147483647),
     })
     .transform((data) => ({
       allocated_at: data['allocatedAt'],

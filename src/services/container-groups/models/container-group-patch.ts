@@ -112,14 +112,20 @@ export const containerGroupPatchResponse = z.lazy(() => {
 export const containerGroupPatchRequest = z.lazy(() => {
   return z
     .object({
-      displayName: z.string().nullable().optional(),
-      container: updateContainerRequest.nullable().optional(),
-      replicas: z.number().nullable().optional(),
-      countryCodes: z.array(z.string()).nullable().optional(),
+      displayName: z
+        .string()
+        .min(2)
+        .max(63)
+        .regex(/^[ ,-.0-9A-Za-z]+$/)
+        .optional()
+        .nullable(),
+      container: updateContainerRequest.optional().nullable(),
+      replicas: z.number().gte(0).lte(500).optional().nullable(),
+      countryCodes: z.array(z.string()).min(1).max(500).optional().nullable(),
       networking: updateContainerGroupNetworkingRequest.optional(),
-      livenessProbe: containerGroupLivenessProbeRequest.nullable().optional(),
-      readinessProbe: containerGroupReadinessProbeRequest.nullable().optional(),
-      startupProbe: containerGroupStartupProbeRequest.nullable().optional(),
+      livenessProbe: containerGroupLivenessProbeRequest.optional().nullable(),
+      readinessProbe: containerGroupReadinessProbeRequest.optional().nullable(),
+      startupProbe: containerGroupStartupProbeRequest.optional().nullable(),
       queueAutoscaler: queueBasedAutoscalerConfigurationRequest.optional(),
     })
     .transform((data) => ({
