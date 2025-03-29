@@ -79,7 +79,7 @@ import { QueuePrototype, SaladCloudSdk } from '@saladtechnologies-oss/salad-clou
 
   const queuePrototype: QueuePrototype = {
     name: 'name',
-    displayName: 'Qskie',
+    displayName: 'WYAV3y',
     description: 'description',
   };
 
@@ -155,7 +155,7 @@ import { QueuePatch, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sd
   });
 
   const queuePatch: QueuePatch = {
-    displayName: 'i2VcwOa',
+    displayName: 'QqN5Ecnfeq',
     description: 'description',
   };
 
