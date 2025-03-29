@@ -5,11 +5,11 @@ import { z } from 'zod';
  */
 export const containerGroupsQuotas = z.lazy(() => {
   return z.object({
-    containerReplicasQuota: z.number().gte(0).lte(500),
-    containerReplicasUsed: z.number().gte(0).lte(500),
-    maxContainerGroupReallocationsPerMinute: z.number().gte(0).lte(100).optional(),
-    maxContainerGroupRecreatesPerMinute: z.number().gte(0).lte(100).optional(),
-    maxContainerGroupRestartsPerMinute: z.number().gte(0).lte(100).optional(),
+    containerReplicasQuota: z.number().gte(0).lte(2147483647),
+    containerReplicasUsed: z.number().gte(0).lte(2147483647),
+    maxContainerGroupReallocationsPerMinute: z.number().gte(0).lte(2147483647).optional(),
+    maxContainerGroupRecreatesPerMinute: z.number().gte(0).lte(2147483647).optional(),
+    maxContainerGroupRestartsPerMinute: z.number().gte(0).lte(2147483647).optional(),
   });
 });
 
@@ -31,11 +31,11 @@ export type ContainerGroupsQuotas = z.infer<typeof containerGroupsQuotas>;
 export const containerGroupsQuotasResponse = z.lazy(() => {
   return z
     .object({
-      container_replicas_quota: z.number().gte(0).lte(500),
-      container_replicas_used: z.number().gte(0).lte(500),
-      max_container_group_reallocations_per_minute: z.number().gte(0).lte(100).optional(),
-      max_container_group_recreates_per_minute: z.number().gte(0).lte(100).optional(),
-      max_container_group_restarts_per_minute: z.number().gte(0).lte(100).optional(),
+      container_replicas_quota: z.number().gte(0).lte(2147483647),
+      container_replicas_used: z.number().gte(0).lte(2147483647),
+      max_container_group_reallocations_per_minute: z.number().gte(0).lte(2147483647).optional(),
+      max_container_group_recreates_per_minute: z.number().gte(0).lte(2147483647).optional(),
+      max_container_group_restarts_per_minute: z.number().gte(0).lte(2147483647).optional(),
     })
     .transform((data) => ({
       containerReplicasQuota: data['container_replicas_quota'],
@@ -53,11 +53,11 @@ export const containerGroupsQuotasResponse = z.lazy(() => {
 export const containerGroupsQuotasRequest = z.lazy(() => {
   return z
     .object({
-      containerReplicasQuota: z.number().gte(0).lte(500),
-      containerReplicasUsed: z.number().gte(0).lte(500),
-      maxContainerGroupReallocationsPerMinute: z.number().gte(0).lte(100).optional(),
-      maxContainerGroupRecreatesPerMinute: z.number().gte(0).lte(100).optional(),
-      maxContainerGroupRestartsPerMinute: z.number().gte(0).lte(100).optional(),
+      containerReplicasQuota: z.number().gte(0).lte(2147483647),
+      containerReplicasUsed: z.number().gte(0).lte(2147483647),
+      maxContainerGroupReallocationsPerMinute: z.number().gte(0).lte(2147483647).optional(),
+      maxContainerGroupRecreatesPerMinute: z.number().gte(0).lte(2147483647).optional(),
+      maxContainerGroupRestartsPerMinute: z.number().gte(0).lte(2147483647).optional(),
     })
     .transform((data) => ({
       container_replicas_quota: data['containerReplicasQuota'],

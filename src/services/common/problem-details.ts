@@ -10,31 +10,11 @@ type IProblemDetailsSchema = {
 
 const problemDetailsResponse: z.ZodType<IProblemDetailsSchema> = z.lazy(() => {
   return z.object({
-    type: z
-      .string()
-      .min(1)
-      .max(2000)
-      .regex(/^(?:[a-zA-Z][a-zA-Z0-9+.-]*:)?(?:\/{0,2}[^\s\/?#]+)?(?:\/[^\s?#]*)?(?:\?[^\s#]*)?(?:#\S*)?$/)
-      .optional(),
-    title: z
-      .string()
-      .min(1)
-      .max(200)
-      .regex(/^[\P{C}]+$/)
-      .optional(),
+    type: z.string().min(1).max(2048).optional(),
+    title: z.string().min(1).max(2000).optional(),
     status: z.number().gte(100).lte(599).optional(),
-    detail: z
-      .string()
-      .min(1)
-      .max(1000)
-      .regex(/^[\P{C}]+$/)
-      .optional(),
-    instance: z
-      .string()
-      .min(1)
-      .max(2000)
-      .regex(/^(?:[a-zA-Z][a-zA-Z0-9+.-]*:)?(?:\/{0,2}[^\s\/?#]+)?(?:\/[^\s?#]*)?(?:\?[^\s#]*)?(?:#\S*)?$/)
-      .optional(),
+    detail: z.string().min(1).max(2000).optional(),
+    instance: z.string().min(1).max(2048).optional(),
   });
 }) as z.ZodType<IProblemDetailsSchema>;
 

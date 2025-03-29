@@ -5,7 +5,7 @@ import { z } from 'zod';
  */
 export const containerRegistryAuthenticationGcpGar = z.lazy(() => {
   return z.object({
-    serviceKey: z.string().min(1).max(10000).regex(/^.*$/),
+    serviceKey: z.string().min(1).max(10000),
   });
 });
 
@@ -23,7 +23,7 @@ export type ContainerRegistryAuthenticationGcpGar = z.infer<typeof containerRegi
 export const containerRegistryAuthenticationGcpGarResponse = z.lazy(() => {
   return z
     .object({
-      service_key: z.string().min(1).max(10000).regex(/^.*$/),
+      service_key: z.string().min(1).max(10000),
     })
     .transform((data) => ({
       serviceKey: data['service_key'],
@@ -37,7 +37,7 @@ export const containerRegistryAuthenticationGcpGarResponse = z.lazy(() => {
 export const containerRegistryAuthenticationGcpGarRequest = z.lazy(() => {
   return z
     .object({
-      serviceKey: z.string().min(1).max(10000).regex(/^.*$/),
+      serviceKey: z.string().min(1).max(10000),
     })
     .transform((data) => ({
       service_key: data['serviceKey'],
