@@ -8,7 +8,7 @@ import { QueuePrototype, SaladCloudSdk } from '@saladtechnologies-oss/salad-clou
 
   const queuePrototype: QueuePrototype = {
     name: 'name',
-    displayName: 'WYAV3y',
+    displayName: 'I8,6',
     description: 'description',
   };
 

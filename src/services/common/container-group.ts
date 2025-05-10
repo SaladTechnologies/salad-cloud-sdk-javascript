@@ -1,47 +1,47 @@
 import { z } from 'zod';
-import { Container, container, containerRequest, containerResponse } from './container';
+import { Container, container, containerRequest, containerResponse } from '../container-groups/models/container';
 import {
   ContainerGroupState,
   containerGroupState,
   containerGroupStateRequest,
   containerGroupStateResponse,
-} from './container-group-state';
+} from '../container-groups/models/container-group-state';
 import {
   ContainerGroupLivenessProbe,
   containerGroupLivenessProbe,
   containerGroupLivenessProbeRequest,
   containerGroupLivenessProbeResponse,
-} from './container-group-liveness-probe';
+} from '../container-groups/models/container-group-liveness-probe';
 import {
   ContainerGroupNetworkingConfiguration,
   containerGroupNetworkingConfiguration,
   containerGroupNetworkingConfigurationRequest,
   containerGroupNetworkingConfigurationResponse,
-} from './container-group-networking-configuration';
+} from '../container-groups/models/container-group-networking-configuration';
 import {
   QueueBasedAutoscalerConfiguration,
   queueBasedAutoscalerConfiguration,
   queueBasedAutoscalerConfigurationRequest,
   queueBasedAutoscalerConfigurationResponse,
-} from './queue-based-autoscaler-configuration';
+} from '../container-groups/models/queue-based-autoscaler-configuration';
 import {
   ContainerGroupQueueConnection,
   containerGroupQueueConnection,
   containerGroupQueueConnectionRequest,
   containerGroupQueueConnectionResponse,
-} from './container-group-queue-connection';
+} from '../container-groups/models/container-group-queue-connection';
 import {
   ContainerGroupReadinessProbe,
   containerGroupReadinessProbe,
   containerGroupReadinessProbeRequest,
   containerGroupReadinessProbeResponse,
-} from './container-group-readiness-probe';
+} from '../container-groups/models/container-group-readiness-probe';
 import {
   ContainerGroupStartupProbe,
   containerGroupStartupProbe,
   containerGroupStartupProbeRequest,
   containerGroupStartupProbeResponse,
-} from './container-group-startup-probe';
+} from '../container-groups/models/container-group-startup-probe';
 
 /**
  * The shape of the model inside the application code - what the users use

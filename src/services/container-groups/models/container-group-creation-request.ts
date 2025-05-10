@@ -10,7 +10,7 @@ import {
   containerGroupLivenessProbe,
   containerGroupLivenessProbeRequest,
   containerGroupLivenessProbeResponse,
-} from '../../common/container-group-liveness-probe';
+} from './container-group-liveness-probe';
 import {
   CreateContainerGroupNetworking,
   createContainerGroupNetworking,
@@ -22,25 +22,25 @@ import {
   queueBasedAutoscalerConfiguration,
   queueBasedAutoscalerConfigurationRequest,
   queueBasedAutoscalerConfigurationResponse,
-} from '../../common/queue-based-autoscaler-configuration';
+} from './queue-based-autoscaler-configuration';
 import {
   ContainerGroupQueueConnection,
   containerGroupQueueConnection,
   containerGroupQueueConnectionRequest,
   containerGroupQueueConnectionResponse,
-} from '../../common/container-group-queue-connection';
+} from './container-group-queue-connection';
 import {
   ContainerGroupReadinessProbe,
   containerGroupReadinessProbe,
   containerGroupReadinessProbeRequest,
   containerGroupReadinessProbeResponse,
-} from '../../common/container-group-readiness-probe';
+} from './container-group-readiness-probe';
 import {
   ContainerGroupStartupProbe,
   containerGroupStartupProbe,
   containerGroupStartupProbeRequest,
   containerGroupStartupProbeResponse,
-} from '../../common/container-group-startup-probe';
+} from './container-group-startup-probe';
 
 /**
  * The shape of the model inside the application code - what the users use

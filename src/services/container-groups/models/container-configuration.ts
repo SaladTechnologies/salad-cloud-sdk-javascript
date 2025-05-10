@@ -12,11 +12,11 @@ import {
   containerRegistryAuthenticationResponse,
 } from './container-registry-authentication';
 import {
-  ContainerResourceRequirements,
-  containerResourceRequirements,
-  containerResourceRequirementsRequest,
-  containerResourceRequirementsResponse,
-} from '../../common/container-resource-requirements';
+  CreateContainerResourceRequirements,
+  createContainerResourceRequirements,
+  createContainerResourceRequirementsRequest,
+  createContainerResourceRequirementsResponse,
+} from './create-container-resource-requirements';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -30,7 +30,7 @@ export const containerConfiguration = z.lazy(() => {
     logging: containerConfigurationLogging.optional(),
     priority: z.string().optional().nullable(),
     registryAuthentication: containerRegistryAuthentication.optional(),
-    resources: containerResourceRequirements,
+    resources: createContainerResourceRequirements,
   });
 });
 
@@ -44,7 +44,7 @@ export const containerConfiguration = z.lazy(() => {
  * @property {ContainerConfigurationLogging} - Configuration options for directing container logs to a logging provider. This schema enables you to specify a single logging destination for container output, supporting monitoring, debugging, and analytics use cases. Each provider has its own configuration parameters defined in the referenced schemas. Only one logging provider can be selected at a time.
  * @property {ContainerGroupPriority} - Specifies the priority level for container group execution, which determines resource allocation and scheduling precedence.
  * @property {ContainerRegistryAuthentication} - Authentication configuration for various container registry types, including AWS ECR, Docker Hub, GCP GAR, GCP GCR, and basic authentication.
- * @property {ContainerResourceRequirements} - Specifies the resource requirements for a container.
+ * @property {CreateContainerResourceRequirements} - Specifies the resource requirements for creating a container.
  */
 export type ContainerConfiguration = z.infer<typeof containerConfiguration>;
 
@@ -62,7 +62,7 @@ export const containerConfigurationResponse = z.lazy(() => {
       logging: containerConfigurationLoggingResponse.optional(),
       priority: z.string().optional().nullable(),
       registry_authentication: containerRegistryAuthenticationResponse.optional(),
-      resources: containerResourceRequirementsResponse,
+      resources: createContainerResourceRequirementsResponse,
     })
     .transform((data) => ({
       command: data['command'],
@@ -90,7 +90,7 @@ export const containerConfigurationRequest = z.lazy(() => {
       logging: containerConfigurationLoggingRequest.optional(),
       priority: z.string().optional().nullable(),
       registryAuthentication: containerRegistryAuthenticationRequest.optional(),
-      resources: containerResourceRequirementsRequest,
+      resources: createContainerResourceRequirementsRequest,
     })
     .transform((data) => ({
       command: data['command'],

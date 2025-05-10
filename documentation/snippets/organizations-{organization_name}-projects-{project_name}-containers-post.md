@@ -46,7 +46,7 @@ import {
 
   const containerLoggingConfigurationHttp2: ContainerLoggingConfigurationHttp2 = {
     host: 'host',
-    port: 46840,
+    port: 5418,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -67,7 +67,7 @@ import {
 
   const tcpLoggingConfiguration: TcpLoggingConfiguration = {
     host: 'host',
-    port: 44671,
+    port: 44539,
   };
 
   const containerConfigurationLogging: ContainerConfigurationLogging = {
@@ -112,11 +112,11 @@ import {
     gcpGcr: containerRegistryAuthenticationGcpGcr,
   };
 
-  const containerResourceRequirements: ContainerResourceRequirements = {
-    cpu: 2,
-    memory: 57018,
+  const createContainerResourceRequirements: CreateContainerResourceRequirements = {
+    cpu: 7,
+    memory: 55380,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 10190895817,
+    storageAmount: 172087948244,
   };
 
   const containerConfiguration: ContainerConfiguration = {
@@ -127,7 +127,7 @@ import {
     logging: containerConfigurationLogging,
     priority: containerGroupPriority,
     registryAuthentication: containerRegistryAuthentication,
-    resources: containerResourceRequirements,
+    resources: createContainerResourceRequirements,
   };
 
   const countryCode = CountryCode.AF;
@@ -137,7 +137,7 @@ import {
   };
 
   const containerGroupGRpcProbe: ContainerGroupGRpcProbe = {
-    port: 37648,
+    port: 20211,
     service: 'service',
   };
 
@@ -151,12 +151,12 @@ import {
   const containerGroupHttpProbeConfiguration: ContainerGroupHttpProbeConfiguration = {
     headers: [containerGroupProbeHttpHeader],
     path: 'path',
-    port: 29069,
+    port: 36714,
     scheme: httpScheme,
   };
 
   const containerGroupTcpProbe: ContainerGroupTcpProbe = {
-    port: 13817,
+    port: 7155,
   };
 
   const containerGroupLivenessProbe: ContainerGroupLivenessProbe = {
@@ -164,7 +164,7 @@ import {
     failureThreshold: 3,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 670,
+    initialDelaySeconds: 150,
     periodSeconds: 10,
     successThreshold: 1,
     tcp: containerGroupTcpProbe,
@@ -186,18 +186,18 @@ import {
   };
 
   const queueBasedAutoscalerConfiguration: QueueBasedAutoscalerConfiguration = {
-    desiredQueueLength: 53,
-    maxReplicas: 291,
-    maxDownscalePerMinute: 65,
-    maxUpscalePerMinute: 100,
-    minReplicas: 54,
-    pollingPeriod: 140,
+    desiredQueueLength: 11,
+    maxReplicas: 285,
+    maxDownscalePerMinute: 33,
+    maxUpscalePerMinute: 24,
+    minReplicas: 123,
+    pollingPeriod: 1562,
   };
 
   const containerGroupQueueConnection: ContainerGroupQueueConnection = {
     path: 'path',
-    port: 47568,
-    queueName: 'z1h-3z01x9',
+    port: 44195,
+    queueName: 'rjeo3wk1tliaumsx88h6r2rtp3ugpq8z1j9rfjywt4fl19-rpsziiz',
   };
 
   const containerGroupReadinessProbe: ContainerGroupReadinessProbe = {
@@ -205,7 +205,7 @@ import {
     failureThreshold: 3,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 262,
+    initialDelaySeconds: 1001,
     periodSeconds: 1,
     successThreshold: 1,
     tcp: containerGroupTcpProbe,
@@ -219,7 +219,7 @@ import {
     failureThreshold: 15,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 1106,
+    initialDelaySeconds: 979,
     tcp: containerGroupTcpProbe,
     periodSeconds: 3,
     successThreshold: 2,
@@ -230,14 +230,14 @@ import {
     autostartPolicy: true,
     container: containerConfiguration,
     countryCodes: [countryCode],
-    displayName: '9 Q592CH6F',
+    displayName: 'Vm1TWq',
     livenessProbe: containerGroupLivenessProbe,
     name: 'name',
     networking: createContainerGroupNetworking,
     queueAutoscaler: queueBasedAutoscalerConfiguration,
     queueConnection: containerGroupQueueConnection,
     readinessProbe: containerGroupReadinessProbe,
-    replicas: 284,
+    replicas: 121,
     restartPolicy: containerRestartPolicy,
     startupProbe: containerGroupStartupProbe,
   };

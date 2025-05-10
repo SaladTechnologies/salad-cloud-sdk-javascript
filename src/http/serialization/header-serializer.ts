@@ -1,4 +1,4 @@
-import { RequestParameter } from '../transport/request';
+import { RequestParameter } from '../transport/types';
 import { Serializer } from './base-serializer';
 
 export class HeaderSerializer extends Serializer {

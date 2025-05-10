@@ -19,7 +19,8 @@ export * from './services/organization-data';
 export * from './services/webhook-secret-key';
 export * from './services/common';
 
-export type * from './http';
+export * from './http';
+export { Environment } from './http/environment';
 
 export class SaladCloudSdk {
   public readonly containerGroups: ContainerGroupsService;

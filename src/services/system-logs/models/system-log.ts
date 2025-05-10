@@ -12,7 +12,7 @@ export const systemLog = z.lazy(() => {
     resourceCpu: z.number().gte(1).lte(16).nullable(),
     resourceGpuClass: z.string(),
     resourceMemory: z.number().gte(1024).lte(61440).nullable(),
-    resourceStorageAmount: z.number().gte(1073741824).lte(53687091200).nullable(),
+    resourceStorageAmount: z.number().gte(1073741824).lte(268435456000).nullable(),
     version: z.string(),
   });
 });
@@ -46,7 +46,7 @@ export const systemLogResponse = z.lazy(() => {
       resource_cpu: z.number().gte(1).lte(16).nullable(),
       resource_gpu_class: z.string(),
       resource_memory: z.number().gte(1024).lte(61440).nullable(),
-      resource_storage_amount: z.number().gte(1073741824).lte(53687091200).nullable(),
+      resource_storage_amount: z.number().gte(1073741824).lte(268435456000).nullable(),
       version: z.string(),
     })
     .transform((data) => ({
@@ -76,7 +76,7 @@ export const systemLogRequest = z.lazy(() => {
       resourceCpu: z.number().gte(1).lte(16).nullable(),
       resourceGpuClass: z.string(),
       resourceMemory: z.number().gte(1024).lte(61440).nullable(),
-      resourceStorageAmount: z.number().gte(1073741824).lte(53687091200).nullable(),
+      resourceStorageAmount: z.number().gte(1073741824).lte(268435456000).nullable(),
       version: z.string(),
     })
     .transform((data) => ({
