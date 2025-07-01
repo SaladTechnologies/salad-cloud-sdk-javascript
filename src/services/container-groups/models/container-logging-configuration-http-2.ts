@@ -4,7 +4,7 @@ import {
   containerLoggingHttpHeader,
   containerLoggingHttpHeaderRequest,
   containerLoggingHttpHeaderResponse,
-} from '../../common/container-logging-http-header';
+} from './container-logging-http-header';
 
 /**
  * The shape of the model inside the application code - what the users use

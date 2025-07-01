@@ -121,7 +121,7 @@ import {
 
   const containerLoggingConfigurationHttp2: ContainerLoggingConfigurationHttp2 = {
     host: 'host',
-    port: 46840,
+    port: 29750,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -142,7 +142,7 @@ import {
 
   const tcpLoggingConfiguration: TcpLoggingConfiguration = {
     host: 'host',
-    port: 44671,
+    port: 21602,
   };
 
   const containerConfigurationLogging: ContainerConfigurationLogging = {
@@ -187,11 +187,12 @@ import {
     gcpGcr: containerRegistryAuthenticationGcpGcr,
   };
 
-  const containerResourceRequirements: ContainerResourceRequirements = {
-    cpu: 2,
-    memory: 57018,
+  const createContainerResourceRequirements: CreateContainerResourceRequirements = {
+    cpu: 9,
+    memory: 61137,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 10190895817,
+    storageAmount: 50129523289,
+    shmSize: 64,
   };
 
   const containerConfiguration: ContainerConfiguration = {
@@ -202,7 +203,7 @@ import {
     logging: containerConfigurationLogging,
     priority: containerGroupPriority,
     registryAuthentication: containerRegistryAuthentication,
-    resources: containerResourceRequirements,
+    resources: createContainerResourceRequirements,
   };
 
   const countryCode = CountryCode.AF;
@@ -212,7 +213,7 @@ import {
   };
 
   const containerGroupGRpcProbe: ContainerGroupGRpcProbe = {
-    port: 37648,
+    port: 28667,
     service: 'service',
   };
 
@@ -226,12 +227,12 @@ import {
   const containerGroupHttpProbeConfiguration: ContainerGroupHttpProbeConfiguration = {
     headers: [containerGroupProbeHttpHeader],
     path: 'path',
-    port: 29069,
+    port: 53414,
     scheme: httpScheme,
   };
 
   const containerGroupTcpProbe: ContainerGroupTcpProbe = {
-    port: 13817,
+    port: 62611,
   };
 
   const containerGroupLivenessProbe: ContainerGroupLivenessProbe = {
@@ -239,7 +240,7 @@ import {
     failureThreshold: 3,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 670,
+    initialDelaySeconds: 67,
     periodSeconds: 10,
     successThreshold: 1,
     tcp: containerGroupTcpProbe,
@@ -261,18 +262,18 @@ import {
   };
 
   const queueBasedAutoscalerConfiguration: QueueBasedAutoscalerConfiguration = {
-    desiredQueueLength: 53,
-    maxReplicas: 291,
-    maxDownscalePerMinute: 65,
-    maxUpscalePerMinute: 100,
-    minReplicas: 54,
-    pollingPeriod: 140,
+    desiredQueueLength: 22,
+    maxReplicas: 462,
+    maxDownscalePerMinute: 26,
+    maxUpscalePerMinute: 52,
+    minReplicas: 82,
+    pollingPeriod: 509,
   };
 
   const containerGroupQueueConnection: ContainerGroupQueueConnection = {
     path: 'path',
-    port: 47568,
-    queueName: 'z1h-3z01x9',
+    port: 6006,
+    queueName: 'oxniyomose4errderfez5m6znpd3zgutjsc-eeb9',
   };
 
   const containerGroupReadinessProbe: ContainerGroupReadinessProbe = {
@@ -280,7 +281,7 @@ import {
     failureThreshold: 3,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 262,
+    initialDelaySeconds: 226,
     periodSeconds: 1,
     successThreshold: 1,
     tcp: containerGroupTcpProbe,
@@ -294,7 +295,7 @@ import {
     failureThreshold: 15,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 1106,
+    initialDelaySeconds: 1058,
     tcp: containerGroupTcpProbe,
     periodSeconds: 3,
     successThreshold: 2,
@@ -305,14 +306,14 @@ import {
     autostartPolicy: true,
     container: containerConfiguration,
     countryCodes: [countryCode],
-    displayName: '9 Q592CH6F',
+    displayName: 'R81hlLvCDU',
     livenessProbe: containerGroupLivenessProbe,
     name: 'name',
     networking: createContainerGroupNetworking,
     queueAutoscaler: queueBasedAutoscalerConfiguration,
     queueConnection: containerGroupQueueConnection,
     readinessProbe: containerGroupReadinessProbe,
-    replicas: 284,
+    replicas: 490,
     restartPolicy: containerRestartPolicy,
     startupProbe: containerGroupStartupProbe,
   };
@@ -430,7 +431,7 @@ import {
 
   const containerLoggingConfigurationHttp1: ContainerLoggingConfigurationHttp1 = {
     host: 'host',
-    port: 55354,
+    port: 34677,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -451,7 +452,7 @@ import {
 
   const tcpLoggingConfiguration: TcpLoggingConfiguration = {
     host: 'host',
-    port: 44671,
+    port: 21602,
   };
 
   const updateContainerLogging: UpdateContainerLogging = {
@@ -497,10 +498,11 @@ import {
   };
 
   const containerResourceUpdateSchema: ContainerResourceUpdateSchema = {
-    cpu: 6,
-    memory: 56406,
+    cpu: 2,
+    memory: 4272,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 7030693392,
+    storageAmount: 47962159632,
+    shmSize: 64,
   };
 
   const updateContainer: UpdateContainer = {
@@ -517,7 +519,7 @@ import {
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 45473,
+    port: 17663,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -525,7 +527,7 @@ import {
   };
 
   const containerGroupGRpcProbe: ContainerGroupGRpcProbe = {
-    port: 37648,
+    port: 28667,
     service: 'service',
   };
 
@@ -539,12 +541,12 @@ import {
   const containerGroupHttpProbeConfiguration: ContainerGroupHttpProbeConfiguration = {
     headers: [containerGroupProbeHttpHeader],
     path: 'path',
-    port: 29069,
+    port: 53414,
     scheme: httpScheme,
   };
 
   const containerGroupTcpProbe: ContainerGroupTcpProbe = {
-    port: 13817,
+    port: 62611,
   };
 
   const containerGroupLivenessProbe: ContainerGroupLivenessProbe = {
@@ -552,7 +554,7 @@ import {
     failureThreshold: 3,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 670,
+    initialDelaySeconds: 67,
     periodSeconds: 10,
     successThreshold: 1,
     tcp: containerGroupTcpProbe,
@@ -564,7 +566,7 @@ import {
     failureThreshold: 3,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 262,
+    initialDelaySeconds: 226,
     periodSeconds: 1,
     successThreshold: 1,
     tcp: containerGroupTcpProbe,
@@ -576,7 +578,7 @@ import {
     failureThreshold: 15,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 1106,
+    initialDelaySeconds: 1058,
     tcp: containerGroupTcpProbe,
     periodSeconds: 3,
     successThreshold: 2,
@@ -584,18 +586,18 @@ import {
   };
 
   const queueBasedAutoscalerConfiguration: QueueBasedAutoscalerConfiguration = {
-    desiredQueueLength: 53,
-    maxReplicas: 291,
-    maxDownscalePerMinute: 65,
-    maxUpscalePerMinute: 100,
-    minReplicas: 54,
-    pollingPeriod: 140,
+    desiredQueueLength: 22,
+    maxReplicas: 462,
+    maxDownscalePerMinute: 26,
+    maxUpscalePerMinute: 52,
+    minReplicas: 82,
+    pollingPeriod: 509,
   };
 
   const containerGroupPatch: ContainerGroupPatch = {
-    displayName: 'Jjdnvuz',
+    displayName: 'e2ajyqqvL',
     container: updateContainer,
-    replicas: 100,
+    replicas: 436,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,
@@ -820,7 +822,7 @@ import { ContainerGroupInstancePatch, SaladCloudSdk } from '@saladtechnologies-o
   });
 
   const containerGroupInstancePatch: ContainerGroupInstancePatch = {
-    deletionCost: 82294,
+    deletionCost: 54318,
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroupInstance(

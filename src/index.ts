@@ -8,6 +8,7 @@ import { QuotasService } from './services/quotas';
 import { InferenceEndpointsService } from './services/inference-endpoints';
 import { OrganizationDataService } from './services/organization-data';
 import { WebhookSecretKeyService } from './services/webhook-secret-key';
+import { LogsService } from './services/logs';
 
 export * from './services/container-groups';
 export * from './services/workload-errors';
@@ -17,9 +18,11 @@ export * from './services/quotas';
 export * from './services/inference-endpoints';
 export * from './services/organization-data';
 export * from './services/webhook-secret-key';
+export * from './services/logs';
 export * from './services/common';
 
-export type * from './http';
+export * from './http';
+export { Environment } from './http/environment';
 
 export class SaladCloudSdk {
   public readonly containerGroups: ContainerGroupsService;
@@ -38,6 +41,8 @@ export class SaladCloudSdk {
 
   public readonly webhookSecretKey: WebhookSecretKeyService;
 
+  public readonly logs: LogsService;
+
   constructor(public config: SdkConfig) {
     this.containerGroups = new ContainerGroupsService(this.config);
 
@@ -54,6 +59,8 @@ export class SaladCloudSdk {
     this.organizationData = new OrganizationDataService(this.config);
 
     this.webhookSecretKey = new WebhookSecretKeyService(this.config);
+
+    this.logs = new LogsService(this.config);
   }
 
   set baseUrl(baseUrl: string) {
@@ -65,6 +72,7 @@ export class SaladCloudSdk {
     this.inferenceEndpoints.baseUrl = baseUrl;
     this.organizationData.baseUrl = baseUrl;
     this.webhookSecretKey.baseUrl = baseUrl;
+    this.logs.baseUrl = baseUrl;
   }
 
   set environment(environment: Environment) {
@@ -76,6 +84,7 @@ export class SaladCloudSdk {
     this.inferenceEndpoints.baseUrl = environment;
     this.organizationData.baseUrl = environment;
     this.webhookSecretKey.baseUrl = environment;
+    this.logs.baseUrl = environment;
   }
 
   set timeoutMs(timeoutMs: number) {
@@ -87,6 +96,7 @@ export class SaladCloudSdk {
     this.inferenceEndpoints.timeoutMs = timeoutMs;
     this.organizationData.timeoutMs = timeoutMs;
     this.webhookSecretKey.timeoutMs = timeoutMs;
+    this.logs.timeoutMs = timeoutMs;
   }
 
   set apiKey(apiKey: string) {
@@ -98,6 +108,7 @@ export class SaladCloudSdk {
     this.inferenceEndpoints.apiKey = apiKey;
     this.organizationData.apiKey = apiKey;
     this.webhookSecretKey.apiKey = apiKey;
+    this.logs.apiKey = apiKey;
   }
 
   set apiKeyHeader(apiKeyHeader: string) {
@@ -109,6 +120,7 @@ export class SaladCloudSdk {
     this.inferenceEndpoints.apiKeyHeader = apiKeyHeader;
     this.organizationData.apiKeyHeader = apiKeyHeader;
     this.webhookSecretKey.apiKeyHeader = apiKeyHeader;
+    this.logs.apiKeyHeader = apiKeyHeader;
   }
 }
 

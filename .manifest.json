@@ -1,36 +1,27 @@
 {
-  "liblabVersion": "2.25.1",
-  "date": "2025-03-29T05:58:53.014Z",
+  "liblabVersion": "2.25.34",
+  "date": "2025-07-01T23:01:48.417Z",
   "config": {
-    "apiId": 1950,
+    "apiId": 2425,
     "sdkName": "salad-cloud-sdk",
-    "sdkVersion": "0.9.0-alpha.13",
+    "sdkVersion": "0.9.0-alpha.14",
     "languages": ["typescript"],
     "auth": ["apikey"],
-    "docs": ["enhancedApiSpec", "snippets"],
+    "docs": ["snippets", "enhancedApiSpec"],
     "liblabVersion": "2",
     "deliveryMethods": ["zip"],
     "rawConfig": {
       "sdkName": "salad-cloud-sdk",
+      "apiName": "SaladCloud API",
+      "apiVersion": "0.9.0-alpha.14",
       "specFilePath": "spec.yaml",
       "languages": ["csharp", "go", "java", "python", "typescript"],
       "auth": ["apikey"],
-      "docs": ["enhancedApiSpec"],
+      "docs": ["snippets", "enhancedApiSpec"],
       "customizations": {
         "authentication": {
           "apiKey": {
             "header": "Salad-Api-Key"
-          }
-        },
-        "documentation": {
-          "enhancedApiSpec": {
-            "customOutputName": "salad-cloud.yaml",
-            "provider": "mintlify",
-            "githubRepoName": "salad-cloud-docs",
-            "targetBranch": "main",
-            "mintlify": {
-              "codeSamplesLanguages": ["python", "typescript", "go", "csharp"]
-            }
           }
         },
         "license": {
@@ -41,7 +32,8 @@
           "maxAttempts": 3,
           "retryDelay": 150
         },
-        "devContainer": true
+        "devContainer": true,
+        "buildAllModels": true
       },
       "languageOptions": {
         "csharp": {
@@ -49,7 +41,7 @@
           "githubRepoName": "salad-cloud-sdk-dotnet",
           "targetBranch": "main",
           "ignoreFiles": [".gitignore", "./LICENSE"],
-          "sdkVersion": "0.9.0-alpha.12",
+          "sdkVersion": "0.9.0-alpha.13",
           "authors": [
             {
               "name": "salad"
@@ -66,7 +58,7 @@
           "githubRepoName": "salad-cloud-sdk-go",
           "targetBranch": "main",
           "ignoreFiles": [".gitignore", "./LICENSE"],
-          "sdkVersion": "0.9.0-alpha.12",
+          "sdkVersion": "0.9.0-alpha.13",
           "goModuleName": "github.com/saladtechnologies/salad-cloud-sdk-go"
         },
         "java": {
@@ -74,7 +66,7 @@
           "githubRepoName": "salad-cloud-sdk-java",
           "targetBranch": "main",
           "ignoreFiles": [".gitignore", "./LICENSE"],
-          "sdkVersion": "0.9.0-alpha.13",
+          "sdkVersion": "0.9.0-alpha.14",
           "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-java",
           "groupId": "com.salad.cloud",
           "artifactId": "sdk",
@@ -98,7 +90,7 @@
           "githubRepoName": "salad-cloud-sdk-python",
           "targetBranch": "main",
           "ignoreFiles": [".gitignore", "./LICENSE"],
-          "sdkVersion": "0.9.0-alpha.12",
+          "sdkVersion": "0.9.0-alpha.13",
           "authors": [
             {
               "name": "SaladCloud Developers",
@@ -141,7 +133,7 @@
           "githubRepoName": "salad-cloud-sdk-javascript",
           "targetBranch": "main",
           "ignoreFiles": [".gitignore", "./LICENSE"],
-          "sdkVersion": "0.9.0-alpha.13",
+          "sdkVersion": "0.9.0-alpha.14",
           "authors": [
             {
               "name": "SaladCloud Developers",
@@ -163,97 +155,25 @@
       "publishing": {
         "githubOrg": "SaladTechnologies"
       },
-      "validationsToIgnore": [
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "CreateQueueProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "UpdateQueueProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "CreateQueueJobProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "CreateContainerGroupProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "ListContainerGroupsProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "DeleteContainerGroupProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "GetContainerGroupProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "UpdateContainerGroupProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "StartContainerGroupProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "StopContainerGroupProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "ReallocateContainerGroupInstanceProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "RecreateContainerGroupInstanceProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "RestartContainerGroupInstanceProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "CreateInferenceEndpointJobProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "GetInferenceEndpointJobProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "GetInferenceEndpointJobsProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "DeleteInferenceEndpointJobProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "GetWebhookSecretKeyProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "UpdateWebhookSecretKeyProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "schemas", "ListGpuClassesProblemType"]
-        },
-        {
-          "code": "oas3-unused-component",
-          "path": ["components", "responses", "401"]
+      "integrations": {
+        "enhancedApiSpec": {
+          "customOutputName": "salad-cloud.yaml",
+          "provider": "mintlify",
+          "githubRepoName": "salad-cloud-docs",
+          "targetBranch": "main",
+          "mintlify": {
+            "codeSamplesLanguages": ["python", "typescript", "go", "csharp"]
+          }
         }
-      ]
+      }
     },
+    "liblabConfigVersion": "1.0.0",
+    "apiVersion": "0.9.0-alpha.14",
+    "apiName": "SaladCloud API",
     "specFilePath": "spec.yaml",
+    "createDocs": false,
     "languageOptions": {
       "csharp": {
-        "packageId": "Salad.Cloud.SDK",
         "authors": [
           {
             "name": "salad"
@@ -266,18 +186,28 @@
         "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-dotnet",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.12",
-        "targetBranch": "main"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "0.9.0-alpha.13",
+        "targetBranch": "main",
+        "packageId": "Salad.Cloud.SDK"
       },
       "go": {
-        "goModuleName": "github.com/saladtechnologies/salad-cloud-sdk-go",
         "githubRepoName": "salad-cloud-sdk-go",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.12",
-        "targetBranch": "main"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "0.9.0-alpha.13",
+        "targetBranch": "main",
+        "goModuleName": "github.com/saladtechnologies/salad-cloud-sdk-go"
       },
       "java": {
+        "githubRepoName": "salad-cloud-sdk-java",
+        "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-java",
+        "ignoreFiles": [".gitignore", "./LICENSE"],
+        "liblabVersion": "2",
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "0.9.0-alpha.14",
+        "targetBranch": "main",
         "groupId": "com.salad.cloud",
         "artifactId": "sdk",
         "includeKotlinSnippets": false,
@@ -294,15 +224,25 @@
             "organization": "Salad Technologies",
             "organizationUrl": "https://salad.com"
           }
-        ],
-        "githubRepoName": "salad-cloud-sdk-java",
-        "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-java",
-        "ignoreFiles": [".gitignore", "./LICENSE"],
-        "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.13",
-        "targetBranch": "main"
+        ]
       },
       "python": {
+        "authors": [
+          {
+            "email": "dev@salad.com",
+            "name": "SaladCloud Developers"
+          },
+          {
+            "email": "kyle@salad.com",
+            "name": "Kyle Dodson"
+          }
+        ],
+        "githubRepoName": "salad-cloud-sdk-python",
+        "ignoreFiles": [".gitignore", "./LICENSE"],
+        "liblabVersion": "2",
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "0.9.0-alpha.13",
+        "targetBranch": "main",
         "alwaysInitializeOptionals": false,
         "classifiers": [
           "Development Status :: 3 - Alpha",
@@ -328,29 +268,9 @@
           "Repository": "https://github.com/SaladTechnologies/salad-cloud-sdk-python.git",
           "Issues": "https://github.com/SaladTechnologies/salad-cloud-sdk-python/issues"
         },
-        "pypiPackageName": "salad-cloud-sdk",
-        "authors": [
-          {
-            "email": "dev@salad.com",
-            "name": "SaladCloud Developers"
-          },
-          {
-            "email": "kyle@salad.com",
-            "name": "Kyle Dodson"
-          }
-        ],
-        "githubRepoName": "salad-cloud-sdk-python",
-        "ignoreFiles": [".gitignore", "./LICENSE"],
-        "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.12",
-        "targetBranch": "main"
+        "pypiPackageName": "salad-cloud-sdk"
       },
       "typescript": {
-        "bundle": true,
-        "exportClassDefault": false,
-        "httpClient": "fetch",
-        "npmName": "salad-cloud-sdk",
-        "npmOrg": "saladtechnologies-oss",
         "authors": [
           {
             "email": "dev@salad.com",
@@ -365,116 +285,46 @@
         "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-javascript",
         "ignoreFiles": [".gitignore", "./LICENSE"],
         "liblabVersion": "2",
-        "sdkVersion": "0.9.0-alpha.13",
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "0.9.0-alpha.14",
         "targetBranch": "main",
-        "generateEnumAs": "enum"
+        "bundle": true,
+        "denoteCommon": false,
+        "exportClassDefault": false,
+        "generateEnumAs": "enum",
+        "httpClient": "fetch",
+        "npmName": "salad-cloud-sdk",
+        "npmOrg": "saladtechnologies-oss"
       }
     },
+    "validationsToIgnore": [],
     "publishing": {
-      "githubOrg": "SaladTechnologies"
+      "githubOrg": "SaladTechnologies",
+      "platform": "github"
     },
-    "validationsToIgnore": [
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "CreateQueueProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "UpdateQueueProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "CreateQueueJobProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "CreateContainerGroupProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "ListContainerGroupsProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "DeleteContainerGroupProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "GetContainerGroupProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "UpdateContainerGroupProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "StartContainerGroupProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "StopContainerGroupProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "ReallocateContainerGroupInstanceProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "RecreateContainerGroupInstanceProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "RestartContainerGroupInstanceProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "CreateInferenceEndpointJobProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "GetInferenceEndpointJobProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "GetInferenceEndpointJobsProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "DeleteInferenceEndpointJobProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "GetWebhookSecretKeyProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "UpdateWebhookSecretKeyProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "schemas", "ListGpuClassesProblemType"]
-      },
-      {
-        "code": "oas3-unused-component",
-        "path": ["components", "responses", "401"]
+    "integrations": {
+      "enhancedApiSpec": {
+        "githubRepoName": "salad-cloud-docs",
+        "targetBranch": "main",
+        "customOutputName": "salad-cloud.yaml",
+        "provider": "mintlify",
+        "mintlify": {
+          "codeSamplesLanguages": ["python", "typescript", "go", "csharp"]
+        }
       }
-    ],
-    "apiName": "SaladCloud API",
-    "apiVersion": "0.9.0-alpha.12",
+    },
+    "analytics": {
+      "streaming": false,
+      "pagination": false
+    },
     "authentication": {
       "apiKey": {
         "header": "Salad-Api-Key"
       }
     },
-    "documentation": {
-      "enhancedApiSpec": {
-        "customOutputName": "salad-cloud.yaml"
-      }
-    },
     "devContainer": true,
     "generateEnv": true,
     "includeOptionalSnippetParameters": true,
-    "inferServiceNames": false,
     "license": {
       "type": "MIT",
       "name": "MIT",
@@ -482,6 +332,7 @@
       "path": "MIT.ejs"
     },
     "responseHeaders": false,
+    "buildAllModels": true,
     "retry": {
       "enabled": true,
       "maxAttempts": 3,
@@ -501,10 +352,6 @@
       "sourceDir": ""
     },
     "httpClient": "fetch",
-    "bundle": true,
-    "exportClassDefault": false,
-    "npmName": "salad-cloud-sdk",
-    "npmOrg": "saladtechnologies-oss",
     "authors": [
       {
         "email": "dev@salad.com",
@@ -518,8 +365,14 @@
     "githubRepoName": "salad-cloud-sdk-javascript",
     "homepage": "https://github.com/saladtechnologies/salad-cloud-sdk-javascript",
     "ignoreFiles": [".gitignore", "./LICENSE"],
+    "renameIllegalModelProperties": true,
     "targetBranch": "main",
+    "bundle": true,
+    "denoteCommon": false,
+    "exportClassDefault": false,
     "generateEnumAs": "enum",
+    "npmName": "salad-cloud-sdk",
+    "npmOrg": "saladtechnologies-oss",
     "typescriptVersion": "5.3.3",
     "zodVersion": "3.22.0",
     "compilerOptions": {
@@ -531,6 +384,7 @@
     "usesFormData": false,
     "environmentVariables": [],
     "fileOutput": "/tmp",
+    "inferServiceNames": false,
     "httpLibrary": {
       "name": "fetch",
       "packages": {},
@@ -545,7 +399,8 @@
       "rawQueries": [],
       "queriesData": []
     },
-    "ai": false
+    "ai": false,
+    "specType": "openapi"
   },
   "files": [
     "package.json",
@@ -556,89 +411,80 @@
     "examples/src/index.ts",
     "src/http/client.ts",
     "src/services/container-groups/models/container-group-collection.ts",
-    "src/services/container-groups/models/container-group-creation-request.ts",
     "src/services/common/container-group.ts",
-    "src/services/container-groups/models/container-group-patch.ts",
-    "src/services/container-groups/models/container-group-instance-collection.ts",
-    "src/services/container-groups/models/container-group-instance.ts",
-    "src/services/container-groups/models/container-group-instance-patch.ts",
-    "src/services/workload-errors/models/workload-error-list.ts",
-    "src/services/system-logs/models/system-log-list.ts",
-    "src/services/queues/models/queue-collection.ts",
-    "src/services/queues/models/queue-prototype.ts",
-    "src/services/queues/models/queue.ts",
-    "src/services/queues/models/queue-patch.ts",
-    "src/services/queues/models/queue-job-collection.ts",
-    "src/services/queues/models/queue-job-prototype.ts",
-    "src/services/queues/models/queue-job.ts",
-    "src/services/quotas/models/quotas.ts",
-    "src/services/inference-endpoints/models/inference-endpoint-collection.ts",
-    "src/services/inference-endpoints/models/inference-endpoint.ts",
-    "src/services/inference-endpoints/models/inference-endpoint-job-collection.ts",
-    "src/services/inference-endpoints/models/inference-endpoint-job-prototype.ts",
-    "src/services/inference-endpoints/models/inference-endpoint-job.ts",
-    "src/services/organization-data/models/gpu-classes-list.ts",
-    "src/services/webhook-secret-key/models/webhook-secret-key.ts",
-    "src/services/common/container.ts",
-    "src/services/common/country-code.ts",
-    "src/services/common/container-group-state.ts",
-    "src/services/common/container-group-liveness-probe.ts",
-    "src/services/common/container-group-networking-configuration.ts",
-    "src/services/common/container-group-priority.ts",
-    "src/services/common/queue-based-autoscaler-configuration.ts",
-    "src/services/common/container-group-queue-connection.ts",
-    "src/services/common/container-group-readiness-probe.ts",
-    "src/services/common/container-restart-policy.ts",
-    "src/services/common/container-group-startup-probe.ts",
-    "src/services/common/container-logging.ts",
-    "src/services/common/container-resource-requirements.ts",
-    "src/services/common/axiom-logging-configuration.ts",
-    "src/services/common/datadog-logging-configuration.ts",
-    "src/services/common/container-logging-configuration-http-1.ts",
-    "src/services/common/new-relic-logging-configuration.ts",
-    "src/services/common/container-logging-splunk-configuration.ts",
-    "src/services/common/tcp-logging-configuration.ts",
-    "src/services/common/datadog-tag-for-container-logging.ts",
-    "src/services/common/container-logging-http-format.ts",
-    "src/services/common/container-logging-http-header.ts",
-    "src/services/common/container-logging-http-compression.ts",
-    "src/services/common/container-group-instance-status-count.ts",
-    "src/services/common/container-group-status.ts",
-    "src/services/common/container-group-probe-exec.ts",
-    "src/services/common/container-group-g-rpc-probe.ts",
-    "src/services/common/container-group-http-probe-configuration.ts",
-    "src/services/common/container-group-tcp-probe.ts",
-    "src/services/common/container-group-probe-http-header.ts",
-    "src/services/common/http-scheme.ts",
-    "src/services/common/the-container-group-networking-load-balancer.ts",
-    "src/services/common/container-networking-protocol.ts",
+    "src/services/container-groups/models/container.ts",
+    "src/services/container-groups/models/container-logging.ts",
+    "src/services/container-groups/models/axiom-logging-configuration.ts",
+    "src/services/container-groups/models/datadog-logging-configuration.ts",
+    "src/services/container-groups/models/datadog-tag-for-container-logging.ts",
+    "src/services/container-groups/models/container-logging-configuration-http-1.ts",
+    "src/services/container-groups/models/container-logging-http-header.ts",
+    "src/services/container-groups/models/new-relic-logging-configuration.ts",
+    "src/services/container-groups/models/container-logging-splunk-configuration.ts",
+    "src/services/container-groups/models/tcp-logging-configuration.ts",
+    "src/services/container-groups/models/container-resource-requirements.ts",
+    "src/services/container-groups/models/container-group-state.ts",
+    "src/services/container-groups/models/container-group-instance-status-count.ts",
+    "src/services/container-groups/models/container-group-liveness-probe.ts",
+    "src/services/container-groups/models/container-group-probe-exec.ts",
+    "src/services/container-groups/models/container-group-g-rpc-probe.ts",
+    "src/services/container-groups/models/container-group-http-probe-configuration.ts",
+    "src/services/container-groups/models/container-group-probe-http-header.ts",
+    "src/services/container-groups/models/container-group-tcp-probe.ts",
+    "src/services/container-groups/models/container-group-networking-configuration.ts",
+    "src/services/container-groups/models/queue-based-autoscaler-configuration.ts",
+    "src/services/container-groups/models/container-group-queue-connection.ts",
+    "src/services/container-groups/models/container-group-readiness-probe.ts",
+    "src/services/container-groups/models/container-group-startup-probe.ts",
+    "src/services/common/problem-details.ts",
+    "src/services/container-groups/models/container-group-creation-request.ts",
     "src/services/container-groups/models/container-configuration.ts",
-    "src/services/container-groups/models/create-container-group-networking.ts",
     "src/services/container-groups/models/container-configuration-logging.ts",
-    "src/services/container-groups/models/container-registry-authentication.ts",
     "src/services/container-groups/models/container-logging-configuration-http-2.ts",
+    "src/services/container-groups/models/container-registry-authentication.ts",
     "src/services/container-groups/models/container-registry-authentication-aws-ecr.ts",
     "src/services/container-groups/models/container-registry-authentication-basic.ts",
     "src/services/container-groups/models/container-registry-authentication-docker-hub.ts",
     "src/services/container-groups/models/container-registry-authentication-gcp-gar.ts",
     "src/services/container-groups/models/container-registry-authentication-gcp-gcr.ts",
+    "src/services/container-groups/models/create-container-resource-requirements.ts",
+    "src/services/container-groups/models/create-container-group-networking.ts",
+    "src/services/container-groups/models/container-group-patch.ts",
     "src/services/container-groups/models/update-container.ts",
-    "src/services/container-groups/models/update-container-group-networking.ts",
     "src/services/container-groups/models/update-container-logging.ts",
     "src/services/container-groups/models/container-resource-update-schema.ts",
-    "src/services/container-groups/models/the-container-group-instance-state.ts",
+    "src/services/container-groups/models/update-container-group-networking.ts",
+    "src/services/container-groups/models/container-group-instance-collection.ts",
+    "src/services/container-groups/models/container-group-instance.ts",
+    "src/services/container-groups/models/container-group-instance-patch.ts",
+    "src/services/workload-errors/models/workload-error-list.ts",
     "src/services/workload-errors/models/workload-error.ts",
+    "src/services/system-logs/models/system-log-list.ts",
     "src/services/system-logs/models/system-log.ts",
-    "src/services/queues/models/queue-job-status.ts",
+    "src/services/queues/models/queue-collection.ts",
+    "src/services/queues/models/queue.ts",
+    "src/services/queues/models/queue-prototype.ts",
+    "src/services/queues/models/queue-patch.ts",
+    "src/services/queues/models/queue-job-collection.ts",
+    "src/services/queues/models/queue-job.ts",
     "src/services/queues/models/queue-job-event.ts",
-    "src/services/queues/models/action.ts",
+    "src/services/queues/models/queue-job-prototype.ts",
+    "src/services/quotas/models/quotas.ts",
     "src/services/quotas/models/container-groups-quotas.ts",
-    "src/services/inference-endpoints/models/status.ts",
+    "src/services/inference-endpoints/models/inference-endpoint-collection.ts",
+    "src/services/inference-endpoints/models/inference-endpoint.ts",
+    "src/services/inference-endpoints/models/inference-endpoint-job-collection.ts",
+    "src/services/inference-endpoints/models/inference-endpoint-job.ts",
     "src/services/inference-endpoints/models/inference-endpoint-job-event.ts",
-    "src/services/inference-endpoints/models/inference-endpoint-job-event-action.ts",
+    "src/services/inference-endpoints/models/inference-endpoint-job-prototype.ts",
+    "src/services/organization-data/models/gpu-classes-list.ts",
     "src/services/organization-data/models/gpu-class.ts",
     "src/services/organization-data/models/gpu-class-price.ts",
-    "src/services/common/problem-details.ts",
+    "src/services/webhook-secret-key/models/webhook-secret-key.ts",
+    "src/services/logs/models/log-entry-query.ts",
+    "src/services/logs/models/log-entry-collection.ts",
+    "src/services/logs/models/log-entry.ts",
+    "src/services/logs/models/log-entry-resource.ts",
     "src/services/base-service.ts",
     "src/services/container-groups/container-groups-service.ts",
     "src/services/workload-errors/workload-errors-service.ts",
@@ -648,6 +494,7 @@
     "src/services/inference-endpoints/inference-endpoints-service.ts",
     "src/services/organization-data/organization-data-service.ts",
     "src/services/webhook-secret-key/webhook-secret-key-service.ts",
+    "src/services/logs/logs-service.ts",
     "src/index.ts",
     "src/services/container-groups/models/index.ts",
     "src/services/common/index.ts",
@@ -658,6 +505,7 @@
     "src/services/inference-endpoints/models/index.ts",
     "src/services/organization-data/models/index.ts",
     "src/services/webhook-secret-key/models/index.ts",
+    "src/services/logs/models/index.ts",
     "src/services/container-groups/index.ts",
     "src/services/workload-errors/index.ts",
     "src/services/system-logs/index.ts",
@@ -666,6 +514,7 @@
     "src/services/inference-endpoints/index.ts",
     "src/services/organization-data/index.ts",
     "src/services/webhook-secret-key/index.ts",
+    "src/services/logs/index.ts",
     "src/http/index.ts",
     "src/http/handlers/handler-chain.ts",
     "src/http/types.ts",
@@ -710,87 +559,95 @@
     "documentation/snippets/organizations-{organization_name}-gpu-classes-get.md",
     "documentation/snippets/organizations-{organization_name}-webhook-secret-key-get.md",
     "documentation/snippets/organizations-{organization_name}-webhook-secret-key-post.md",
+    "documentation/snippets/organizations-{organization_name}-log-entries-post.md",
     "src/services/queues/request-params.ts",
     "src/services/inference-endpoints/request-params.ts",
     "documentation/models/ContainerGroupCollection.md",
-    "documentation/models/ContainerGroupCreationRequest.md",
     "documentation/models/ContainerGroup.md",
-    "documentation/models/ContainerGroupPatch.md",
-    "documentation/models/ContainerGroupInstanceCollection.md",
-    "documentation/models/ContainerGroupInstance.md",
-    "documentation/models/ContainerGroupInstancePatch.md",
-    "documentation/models/WorkloadErrorList.md",
-    "documentation/models/SystemLogList.md",
-    "documentation/models/QueueCollection.md",
-    "documentation/models/QueuePrototype.md",
-    "documentation/models/Queue.md",
-    "documentation/models/QueuePatch.md",
-    "documentation/models/QueueJobCollection.md",
-    "documentation/models/QueueJobPrototype.md",
-    "documentation/models/Quotas.md",
-    "documentation/models/InferenceEndpointCollection.md",
-    "documentation/models/InferenceEndpoint.md",
-    "documentation/models/InferenceEndpointJobCollection.md",
-    "documentation/models/InferenceEndpointJobPrototype.md",
-    "documentation/models/InferenceEndpointJob.md",
-    "documentation/models/GpuClassesList.md",
-    "documentation/models/WebhookSecretKey.md",
     "documentation/models/Container.md",
+    "documentation/models/ContainerLogging.md",
+    "documentation/models/AxiomLoggingConfiguration.md",
+    "documentation/models/DatadogLoggingConfiguration.md",
+    "documentation/models/DatadogTagForContainerLogging.md",
+    "documentation/models/ContainerLoggingConfigurationHttp1.md",
+    "documentation/models/ContainerLoggingHttpFormat.md",
+    "documentation/models/ContainerLoggingHttpHeader.md",
+    "documentation/models/ContainerLoggingHttpCompression.md",
+    "documentation/models/NewRelicLoggingConfiguration.md",
+    "documentation/models/ContainerLoggingSplunkConfiguration.md",
+    "documentation/models/TcpLoggingConfiguration.md",
+    "documentation/models/ContainerResourceRequirements.md",
     "documentation/models/CountryCode.md",
     "documentation/models/ContainerGroupState.md",
+    "documentation/models/ContainerGroupInstanceStatusCount.md",
+    "documentation/models/ContainerGroupStatus.md",
     "documentation/models/ContainerGroupLivenessProbe.md",
+    "documentation/models/ContainerGroupProbeExec.md",
+    "documentation/models/ContainerGroupGRpcProbe.md",
+    "documentation/models/ContainerGroupHttpProbeConfiguration.md",
+    "documentation/models/ContainerGroupProbeHttpHeader.md",
+    "documentation/models/HttpScheme.md",
+    "documentation/models/ContainerGroupTcpProbe.md",
     "documentation/models/ContainerGroupNetworkingConfiguration.md",
+    "documentation/models/TheContainerGroupNetworkingLoadBalancer.md",
+    "documentation/models/ContainerNetworkingProtocol.md",
     "documentation/models/ContainerGroupPriority.md",
     "documentation/models/QueueBasedAutoscalerConfiguration.md",
     "documentation/models/ContainerGroupQueueConnection.md",
     "documentation/models/ContainerGroupReadinessProbe.md",
     "documentation/models/ContainerRestartPolicy.md",
     "documentation/models/ContainerGroupStartupProbe.md",
-    "documentation/models/ContainerLogging.md",
-    "documentation/models/ContainerResourceRequirements.md",
-    "documentation/models/AxiomLoggingConfiguration.md",
-    "documentation/models/DatadogLoggingConfiguration.md",
-    "documentation/models/ContainerLoggingConfigurationHttp1.md",
-    "documentation/models/NewRelicLoggingConfiguration.md",
-    "documentation/models/ContainerLoggingSplunkConfiguration.md",
-    "documentation/models/TcpLoggingConfiguration.md",
-    "documentation/models/DatadogTagForContainerLogging.md",
-    "documentation/models/ContainerLoggingHttpFormat.md",
-    "documentation/models/ContainerLoggingHttpHeader.md",
-    "documentation/models/ContainerLoggingHttpCompression.md",
-    "documentation/models/ContainerGroupInstanceStatusCount.md",
-    "documentation/models/ContainerGroupStatus.md",
-    "documentation/models/ContainerGroupProbeExec.md",
-    "documentation/models/ContainerGroupGRpcProbe.md",
-    "documentation/models/ContainerGroupHttpProbeConfiguration.md",
-    "documentation/models/ContainerGroupTcpProbe.md",
-    "documentation/models/ContainerGroupProbeHttpHeader.md",
-    "documentation/models/HttpScheme.md",
-    "documentation/models/TheContainerGroupNetworkingLoadBalancer.md",
-    "documentation/models/ContainerNetworkingProtocol.md",
+    "documentation/models/ProblemDetails.md",
+    "documentation/models/ContainerGroupCreationRequest.md",
     "documentation/models/ContainerConfiguration.md",
-    "documentation/models/CreateContainerGroupNetworking.md",
     "documentation/models/ContainerConfigurationLogging.md",
-    "documentation/models/ContainerRegistryAuthentication.md",
     "documentation/models/ContainerLoggingConfigurationHttp2.md",
+    "documentation/models/ContainerRegistryAuthentication.md",
     "documentation/models/ContainerRegistryAuthenticationAwsEcr.md",
     "documentation/models/ContainerRegistryAuthenticationBasic.md",
     "documentation/models/ContainerRegistryAuthenticationDockerHub.md",
     "documentation/models/ContainerRegistryAuthenticationGcpGar.md",
     "documentation/models/ContainerRegistryAuthenticationGcpGcr.md",
+    "documentation/models/CreateContainerResourceRequirements.md",
+    "documentation/models/CreateContainerGroupNetworking.md",
+    "documentation/models/ContainerGroupPatch.md",
     "documentation/models/UpdateContainer.md",
-    "documentation/models/UpdateContainerGroupNetworking.md",
     "documentation/models/UpdateContainerLogging.md",
     "documentation/models/ContainerResourceUpdateSchema.md",
+    "documentation/models/UpdateContainerGroupNetworking.md",
+    "documentation/models/ContainerGroupInstanceCollection.md",
+    "documentation/models/ContainerGroupInstance.md",
     "documentation/models/TheContainerGroupInstanceState.md",
+    "documentation/models/ContainerGroupInstancePatch.md",
+    "documentation/models/WorkloadErrorList.md",
     "documentation/models/WorkloadError.md",
+    "documentation/models/SystemLogList.md",
     "documentation/models/SystemLog.md",
+    "documentation/models/QueueCollection.md",
+    "documentation/models/Queue.md",
+    "documentation/models/QueuePrototype.md",
+    "documentation/models/QueuePatch.md",
+    "documentation/models/QueueJobCollection.md",
+    "documentation/models/QueueJobPrototype.md",
+    "documentation/models/Quotas.md",
     "documentation/models/ContainerGroupsQuotas.md",
+    "documentation/models/InferenceEndpointCollection.md",
+    "documentation/models/InferenceEndpoint.md",
+    "documentation/models/InferenceEndpointJobCollection.md",
+    "documentation/models/InferenceEndpointJob.md",
     "documentation/models/Status.md",
     "documentation/models/InferenceEndpointJobEvent.md",
     "documentation/models/InferenceEndpointJobEventAction.md",
-    "documentation/models/GpuClass.md",
+    "documentation/models/InferenceEndpointJobPrototype.md",
+    "documentation/models/GpuClassesList.md",
     "documentation/models/GpuClassPrice.md",
+    "documentation/models/WebhookSecretKey.md",
+    "documentation/models/LogEntryQuery.md",
+    "documentation/models/LogEntryQuerySortOrder.md",
+    "documentation/models/LogEntryCollection.md",
+    "documentation/models/LogEntry.md",
+    "documentation/models/LogEntryResource.md",
+    "documentation/models/LogEntrySeverity.md",
     "src/http/handlers/request-validation-handler.ts",
     ".devcontainer/devcontainer.json",
     "src/http/transport/request.ts",
@@ -805,12 +662,34 @@
     "src/http/utils/response-matcher.ts",
     "src/http/utils/content-type.ts",
     "src/http/errors/validation-error.ts",
+    "src/http/transport/types.ts",
+    "src/services/container-groups/models/container-logging-http-format.ts",
+    "src/services/container-groups/models/container-logging-http-compression.ts",
+    "src/services/container-groups/models/country-code.ts",
+    "src/services/container-groups/models/container-group-status.ts",
+    "src/services/container-groups/models/http-scheme.ts",
+    "src/services/container-groups/models/the-container-group-networking-load-balancer.ts",
+    "src/services/container-groups/models/container-networking-protocol.ts",
+    "src/services/common/container-group-priority.ts",
+    "src/services/container-groups/models/container-restart-policy.ts",
+    "src/services/container-groups/models/the-container-group-instance-state.ts",
+    "src/services/queues/models/queue-job-status.ts",
+    "src/services/queues/models/action.ts",
+    "src/services/inference-endpoints/models/status.ts",
+    "src/services/inference-endpoints/models/inference-endpoint-job-event-action.ts",
+    "src/services/organization-data/models/gpu-class-type.ts",
+    "src/services/logs/models/log-entry-query-sort-order.ts",
+    "src/services/logs/models/log-entry-severity.ts",
+    "src/http/errors/throwable-error.ts",
+    ".env.example",
     "documentation/services/WorkloadErrorsService.md",
     "documentation/models/QueueJob.md",
     "documentation/models/QueueJobEvent.md",
+    "documentation/models/GpuClass.md",
     "documentation/services/SystemLogsService.md",
     "documentation/services/QuotasService.md",
     "documentation/services/OrganizationDataService.md",
+    "documentation/services/LogsService.md",
     "documentation/services/WebhookSecretKeyService.md",
     "documentation/services/InferenceEndpointsService.md",
     "documentation/services/QueuesService.md",

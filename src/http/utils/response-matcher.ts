@@ -1,4 +1,4 @@
-import { ResponseDefinition } from '../transport/request';
+import { ResponseDefinition } from '../transport/types';
 import { ContentType, HttpResponse } from '../types';
 import { getContentTypeDefinition } from './content-type';
 

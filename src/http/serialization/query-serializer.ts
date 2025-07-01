@@ -1,4 +1,4 @@
-import { RequestParameter } from '../transport/request';
+import { RequestParameter } from '../transport/types';
 import { SerializationOptions, Serializer } from './base-serializer';
 
 export class QuerySerializer extends Serializer {

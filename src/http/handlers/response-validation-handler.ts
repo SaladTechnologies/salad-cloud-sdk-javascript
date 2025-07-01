@@ -1,4 +1,5 @@
-import { Request, ResponseDefinition } from '../transport/request';
+import { Request } from '../transport/request';
+import { ResponseDefinition } from '../transport/types';
 import { ZodUndefined } from 'zod';
 import { ContentType, HttpResponse, RequestHandler } from '../types';
 import { ResponseMatcher } from '../utils/response-matcher';

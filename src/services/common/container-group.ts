@@ -1,47 +1,47 @@
 import { z } from 'zod';
-import { Container, container, containerRequest, containerResponse } from './container';
+import { Container, container, containerRequest, containerResponse } from '../container-groups/models/container';
 import {
   ContainerGroupState,
   containerGroupState,
   containerGroupStateRequest,
   containerGroupStateResponse,
-} from './container-group-state';
+} from '../container-groups/models/container-group-state';
 import {
   ContainerGroupLivenessProbe,
   containerGroupLivenessProbe,
   containerGroupLivenessProbeRequest,
   containerGroupLivenessProbeResponse,
-} from './container-group-liveness-probe';
+} from '../container-groups/models/container-group-liveness-probe';
 import {
   ContainerGroupNetworkingConfiguration,
   containerGroupNetworkingConfiguration,
   containerGroupNetworkingConfigurationRequest,
   containerGroupNetworkingConfigurationResponse,
-} from './container-group-networking-configuration';
+} from '../container-groups/models/container-group-networking-configuration';
 import {
   QueueBasedAutoscalerConfiguration,
   queueBasedAutoscalerConfiguration,
   queueBasedAutoscalerConfigurationRequest,
   queueBasedAutoscalerConfigurationResponse,
-} from './queue-based-autoscaler-configuration';
+} from '../container-groups/models/queue-based-autoscaler-configuration';
 import {
   ContainerGroupQueueConnection,
   containerGroupQueueConnection,
   containerGroupQueueConnectionRequest,
   containerGroupQueueConnectionResponse,
-} from './container-group-queue-connection';
+} from '../container-groups/models/container-group-queue-connection';
 import {
   ContainerGroupReadinessProbe,
   containerGroupReadinessProbe,
   containerGroupReadinessProbeRequest,
   containerGroupReadinessProbeResponse,
-} from './container-group-readiness-probe';
+} from '../container-groups/models/container-group-readiness-probe';
 import {
   ContainerGroupStartupProbe,
   containerGroupStartupProbe,
   containerGroupStartupProbeRequest,
   containerGroupStartupProbeResponse,
-} from './container-group-startup-probe';
+} from '../container-groups/models/container-group-startup-probe';
 
 /**
  * The shape of the model inside the application code - what the users use
@@ -81,6 +81,7 @@ export const containerGroup = z.lazy(() => {
     queueAutoscaler: queueBasedAutoscalerConfiguration.optional(),
     queueConnection: containerGroupQueueConnection.optional(),
     readinessProbe: containerGroupReadinessProbe.optional().nullable(),
+    readme: z.string().min(2).max(65000).optional(),
     replicas: z.number().gte(0).lte(500),
     restartPolicy: z.string(),
     startupProbe: containerGroupStartupProbe.optional().nullable(),
@@ -109,6 +110,7 @@ export const containerGroup = z.lazy(() => {
  * @property {QueueBasedAutoscalerConfiguration} - Defines configuration for automatically scaling container instances based on queue length. The autoscaler monitors a queue and adjusts the number of running replicas to maintain the desired queue length.
  * @property {ContainerGroupQueueConnection} - Configuration for connecting a container group to a message queue system, enabling asynchronous communication between services.
  * @property {ContainerGroupReadinessProbe} - Defines how to check if a container is ready to serve traffic. The readiness probe determines whether the container's application is ready to accept traffic. If the readiness probe fails, the container is considered not ready and traffic will not be sent to it.
+ * @property {string}
  * @property {number} - The container group replicas.
  * @property {ContainerRestartPolicy} - Specifies the policy for restarting containers when they exit or fail.
  * @property {ContainerGroupStartupProbe} - Defines a probe that checks if a container application has started successfully. Startup probes help prevent applications from being prematurely marked as unhealthy during initialization. The probe can use HTTP requests, TCP connections, gRPC calls, or shell commands to determine startup status.
@@ -157,6 +159,7 @@ export const containerGroupResponse = z.lazy(() => {
       queue_autoscaler: queueBasedAutoscalerConfigurationResponse.optional(),
       queue_connection: containerGroupQueueConnectionResponse.optional(),
       readiness_probe: containerGroupReadinessProbeResponse.optional().nullable(),
+      readme: z.string().min(2).max(65000).optional(),
       replicas: z.number().gte(0).lte(500),
       restart_policy: z.string(),
       startup_probe: containerGroupStartupProbeResponse.optional().nullable(),
@@ -181,6 +184,7 @@ export const containerGroupResponse = z.lazy(() => {
       queueAutoscaler: data['queue_autoscaler'],
       queueConnection: data['queue_connection'],
       readinessProbe: data['readiness_probe'],
+      readme: data['readme'],
       replicas: data['replicas'],
       restartPolicy: data['restart_policy'],
       startupProbe: data['startup_probe'],
@@ -229,6 +233,7 @@ export const containerGroupRequest = z.lazy(() => {
       queueAutoscaler: queueBasedAutoscalerConfigurationRequest.optional(),
       queueConnection: containerGroupQueueConnectionRequest.optional(),
       readinessProbe: containerGroupReadinessProbeRequest.optional().nullable(),
+      readme: z.string().min(2).max(65000).optional(),
       replicas: z.number().gte(0).lte(500),
       restartPolicy: z.string(),
       startupProbe: containerGroupStartupProbeRequest.optional().nullable(),
@@ -253,6 +258,7 @@ export const containerGroupRequest = z.lazy(() => {
       queue_autoscaler: data['queueAutoscaler'],
       queue_connection: data['queueConnection'],
       readiness_probe: data['readinessProbe'],
+      readme: data['readme'],
       replicas: data['replicas'],
       restart_policy: data['restartPolicy'],
       startup_probe: data['startupProbe'],
