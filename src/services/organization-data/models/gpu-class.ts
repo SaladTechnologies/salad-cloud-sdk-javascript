@@ -14,6 +14,13 @@ export const gpuClass = z.lazy(() => {
       .regex(/^[ -~]{2,63}$/),
     prices: z.array(gpuClassPrice).min(1).max(100),
     isHighDemand: z.boolean().optional(),
+    gpuClassType: z.string().optional(),
+    minVcpu: z.number().gte(0).optional(),
+    maxVcpu: z.number().optional(),
+    minRam: z.number().gte(0).optional(),
+    maxRam: z.number().optional(),
+    minStorage: z.number().gte(0).optional(),
+    maxStorage: z.number().optional(),
   });
 });
 
@@ -24,6 +31,13 @@ export const gpuClass = z.lazy(() => {
  * @property {string} - The GPU class name
  * @property {GpuClassPrice[]} - The list of prices for each container group priority
  * @property {boolean} - Whether the GPU class is in high demand
+ * @property {GpuClassType} - The type of GPU class
+ * @property {number} - The minimum vCPU count
+ * @property {number} - The maximum vCPU count
+ * @property {number} - The minimum RAM amount in GB
+ * @property {number} - The maximum RAM amount in GB
+ * @property {number} - The minimum storage amount in GB
+ * @property {number} - The maximum storage amount in GB
  */
 export type GpuClass = z.infer<typeof gpuClass>;
 
@@ -42,12 +56,26 @@ export const gpuClassResponse = z.lazy(() => {
         .regex(/^[ -~]{2,63}$/),
       prices: z.array(gpuClassPriceResponse).min(1).max(100),
       is_high_demand: z.boolean().optional(),
+      gpu_class_type: z.string().optional(),
+      min_vcpu: z.number().gte(0).optional(),
+      max_vcpu: z.number().optional(),
+      min_ram: z.number().gte(0).optional(),
+      max_ram: z.number().optional(),
+      min_storage: z.number().gte(0).optional(),
+      max_storage: z.number().optional(),
     })
     .transform((data) => ({
       id: data['id'],
       name: data['name'],
       prices: data['prices'],
       isHighDemand: data['is_high_demand'],
+      gpuClassType: data['gpu_class_type'],
+      minVcpu: data['min_vcpu'],
+      maxVcpu: data['max_vcpu'],
+      minRam: data['min_ram'],
+      maxRam: data['max_ram'],
+      minStorage: data['min_storage'],
+      maxStorage: data['max_storage'],
     }));
 });
 
@@ -66,11 +94,25 @@ export const gpuClassRequest = z.lazy(() => {
         .regex(/^[ -~]{2,63}$/),
       prices: z.array(gpuClassPriceRequest).min(1).max(100),
       isHighDemand: z.boolean().optional(),
+      gpuClassType: z.string().optional(),
+      minVcpu: z.number().gte(0).optional(),
+      maxVcpu: z.number().optional(),
+      minRam: z.number().gte(0).optional(),
+      maxRam: z.number().optional(),
+      minStorage: z.number().gte(0).optional(),
+      maxStorage: z.number().optional(),
     })
     .transform((data) => ({
       id: data['id'],
       name: data['name'],
       prices: data['prices'],
       is_high_demand: data['isHighDemand'],
+      gpu_class_type: data['gpuClassType'],
+      min_vcpu: data['minVcpu'],
+      max_vcpu: data['maxVcpu'],
+      min_ram: data['minRam'],
+      max_ram: data['maxRam'],
+      min_storage: data['minStorage'],
+      max_storage: data['maxStorage'],
     }));
 });

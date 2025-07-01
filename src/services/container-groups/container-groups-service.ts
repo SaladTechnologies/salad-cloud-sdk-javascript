@@ -1,9 +1,10 @@
 import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse, RequestConfig } from '../../http/types';
-import { Environment } from '../../http/environment';
 import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
+import { ThrowableError } from '../../http/errors/throwable-error';
+import { Environment } from '../../http/environment';
 import { ContainerGroupCollection, containerGroupCollectionResponse } from './models/container-group-collection';
 import { ProblemDetails } from '../common/problem-details';
 import {

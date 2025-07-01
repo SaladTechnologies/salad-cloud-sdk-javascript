@@ -4,37 +4,37 @@ import {
   axiomLoggingConfiguration,
   axiomLoggingConfigurationRequest,
   axiomLoggingConfigurationResponse,
-} from '../../common/axiom-logging-configuration';
+} from './axiom-logging-configuration';
 import {
   DatadogLoggingConfiguration,
   datadogLoggingConfiguration,
   datadogLoggingConfigurationRequest,
   datadogLoggingConfigurationResponse,
-} from '../../common/datadog-logging-configuration';
+} from './datadog-logging-configuration';
 import {
   ContainerLoggingConfigurationHttp1,
   containerLoggingConfigurationHttp1,
   containerLoggingConfigurationHttp1Request,
   containerLoggingConfigurationHttp1Response,
-} from '../../common/container-logging-configuration-http-1';
+} from './container-logging-configuration-http-1';
 import {
   NewRelicLoggingConfiguration,
   newRelicLoggingConfiguration,
   newRelicLoggingConfigurationRequest,
   newRelicLoggingConfigurationResponse,
-} from '../../common/new-relic-logging-configuration';
+} from './new-relic-logging-configuration';
 import {
   ContainerLoggingSplunkConfiguration,
   containerLoggingSplunkConfiguration,
   containerLoggingSplunkConfigurationRequest,
   containerLoggingSplunkConfigurationResponse,
-} from '../../common/container-logging-splunk-configuration';
+} from './container-logging-splunk-configuration';
 import {
   TcpLoggingConfiguration,
   tcpLoggingConfiguration,
   tcpLoggingConfigurationRequest,
   tcpLoggingConfigurationResponse,
-} from '../../common/tcp-logging-configuration';
+} from './tcp-logging-configuration';
 
 /**
  * The shape of the model inside the application code - what the users use

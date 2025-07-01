@@ -8,7 +8,8 @@ export const containerResourceUpdateSchema = z.lazy(() => {
     cpu: z.number().gte(1).lte(16).optional().nullable(),
     memory: z.number().gte(1024).lte(61440).optional().nullable(),
     gpuClasses: z.array(z.string()).max(100).optional().nullable(),
-    storageAmount: z.number().gte(1073741824).lte(53687091200).optional().nullable(),
+    storageAmount: z.number().gte(1073741824).lte(268435456000).optional().nullable(),
+    shmSize: z.number().gte(64).lte(2147483647).optional().nullable(),
   });
 });
 
@@ -18,7 +19,8 @@ export const containerResourceUpdateSchema = z.lazy(() => {
  * @property {number} - The number of CPU cores to allocate to the container (between 1 and 16 cores).
  * @property {number} - The amount of memory to allocate to the container in megabytes (between 1024MB and 61440MB).
  * @property {string[]} - List of GPU class identifiers that the container can use, specified as UUIDs.
- * @property {number} - The amount of storage to allocate to the container in bytes (between 1GB and 50GB).
+ * @property {number} - The amount of storage to allocate to the container in bytes (between 1GB and 250GB).
+ * @property {number} - The size of the shared memory (/dev/shm) in MB. If not specified, defaults to 64MB.
  */
 export type ContainerResourceUpdateSchema = z.infer<typeof containerResourceUpdateSchema>;
 
@@ -32,13 +34,15 @@ export const containerResourceUpdateSchemaResponse = z.lazy(() => {
       cpu: z.number().gte(1).lte(16).optional().nullable(),
       memory: z.number().gte(1024).lte(61440).optional().nullable(),
       gpu_classes: z.array(z.string()).max(100).optional().nullable(),
-      storage_amount: z.number().gte(1073741824).lte(53687091200).optional().nullable(),
+      storage_amount: z.number().gte(1073741824).lte(268435456000).optional().nullable(),
+      shm_size: z.number().gte(64).lte(2147483647).optional().nullable(),
     })
     .transform((data) => ({
       cpu: data['cpu'],
       memory: data['memory'],
       gpuClasses: data['gpu_classes'],
       storageAmount: data['storage_amount'],
+      shmSize: data['shm_size'],
     }));
 });
 
@@ -52,12 +56,14 @@ export const containerResourceUpdateSchemaRequest = z.lazy(() => {
       cpu: z.number().gte(1).lte(16).optional().nullable(),
       memory: z.number().gte(1024).lte(61440).optional().nullable(),
       gpuClasses: z.array(z.string()).max(100).optional().nullable(),
-      storageAmount: z.number().gte(1073741824).lte(53687091200).optional().nullable(),
+      storageAmount: z.number().gte(1073741824).lte(268435456000).optional().nullable(),
+      shmSize: z.number().gte(64).lte(2147483647).optional().nullable(),
     })
     .transform((data) => ({
       cpu: data['cpu'],
       memory: data['memory'],
       gpu_classes: data['gpuClasses'],
       storage_amount: data['storageAmount'],
+      shm_size: data['shmSize'],
     }));
 });

@@ -4,6 +4,8 @@ import { HttpError } from '../error';
 import { Hook } from '../hooks/hook';
 import { TransportHookAdapter } from '../transport/transport-hook-adapter';
 import { getContentTypeDefinition } from '../utils/content-type';
+import { ThrowableError } from '../errors/throwable-error';
+import { ErrorDefinition } from '../transport/types';
 
 export class HookHandler implements RequestHandler {
   next?: RequestHandler;
@@ -31,14 +33,14 @@ export class HookHandler implements RequestHandler {
     const contentType = getContentTypeDefinition(rawContentType);
     const statusCode = response.metadata.status;
 
-    const error = request.errors.find((error) => {
+    const error = request.errors.find((error): error is ErrorDefinition => {
       return error.contentType === contentType && error.status === statusCode;
     });
 
-    if (error?.error) {
+    if (error) {
       const decodedBody = new TextDecoder().decode(response.raw);
       const json = JSON.parse(decodedBody);
-      throw new error.error((json as any)?.message || '', json);
+      new error.error((json as any)?.message || '', json).throw();
     }
 
     const decodedBody = new TextDecoder().decode(response.raw);
