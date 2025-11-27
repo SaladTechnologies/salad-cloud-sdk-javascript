@@ -222,3 +222,7 @@ dist
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+## Custom Rules
+
+!src/services/logs/

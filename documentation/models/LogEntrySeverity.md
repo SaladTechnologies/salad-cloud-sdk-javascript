@@ -6,6 +6,7 @@ The severity level of the log entry
 
 | Name      | Type   | Required | Description |
 | :-------- | :----- | :------- | :---------- |
+| DEFAULT\_ | string | ✅       | "default"   |
 | DEBUG     | string | ✅       | "debug"     |
 | INFO      | string | ✅       | "info"      |
 | NOTICE    | string | ✅       | "notice"    |

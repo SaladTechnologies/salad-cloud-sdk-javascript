@@ -1,4 +1,4 @@
-import { HttpResponse, SdkConfig } from './types';
+import { HttpResponse, PaginatedHttpResponse, CursorPaginatedHttpResponse, SdkConfig } from './types';
 import { RequestHandlerChain } from './handlers/handler-chain';
 import { HookHandler } from './handlers/hook-handler';
 import { ResponseValidationHandler } from './handlers/response-validation-handler';
@@ -7,6 +7,7 @@ import { CustomHook } from './hooks/custom-hook';
 import { TerminatingHandler } from './handlers/terminating-handler';
 import { RetryHandler } from './handlers/retry-handler';
 import { Request } from './transport/request';
+import { isRequestCursorPagination } from './transport/types';
 
 export class HttpClient {
   private readonly requestHandlerChain = new RequestHandlerChain();
@@ -30,16 +31,37 @@ export class HttpClient {
     yield* this.requestHandlerChain.streamChain(request);
   }
 
-  public async callPaginated<FullResponse, Page>(request: Request<Page>): Promise<HttpResponse<Page>> {
+  public async callPaginated<FullResponse, Page>(request: Request<Page>): Promise<PaginatedHttpResponse<Page>> {
     const response = await this.call<FullResponse>(request as any);
 
     if (!response.data) {
       throw new Error('no response data to paginate through');
     }
 
+    const page = this.getPage<FullResponse, Page>(request, response.data);
+
     return {
       ...response,
-      data: this.getPage<FullResponse, Page>(request, response.data),
+      data: page,
+    };
+  }
+
+  public async callCursorPaginated<FullResponse, Page>(
+    request: Request<Page>,
+  ): Promise<CursorPaginatedHttpResponse<Page>> {
+    const response = await this.call<FullResponse>(request as any);
+
+    if (!response.data) {
+      throw new Error('no response data to paginate through');
+    }
+
+    const page = this.getPage<FullResponse, Page>(request, response.data);
+    const nextCursor = this.getNextCursor<FullResponse, Page>(request, response.data);
+
+    return {
+      ...response,
+      data: page,
+      nextCursor,
     };
   }
 
@@ -57,16 +79,32 @@ export class HttpClient {
     }
 
     let curr: any = data;
-    for (const segment of request.pagination?.pagePath || []) {
+    for (const segment of request.pagination.pagePath || []) {
       curr = curr[segment];
     }
 
-    const page = request.pagination?.pageSchema?.parse(curr);
+    const page = request.pagination.pageSchema?.parse(curr);
     if (!page) {
       throw new Error(
-        `error getting page data. Curr: ${JSON.stringify(curr)}. PagePath: ${request.pagination?.pagePath}. Data: ${JSON.stringify(data)}`,
+        `error getting page data. Curr: ${JSON.stringify(curr)}. PagePath: ${request.pagination.pagePath}. Data: ${JSON.stringify(data)}`,
       );
     }
     return page;
+  }
+
+  private getNextCursor<FullResponse, Page>(request: Request<Page>, data: FullResponse): string | null | undefined {
+    if (!isRequestCursorPagination(request.pagination)) {
+      return undefined;
+    }
+
+    let curr: any = data;
+    for (const segment of request.pagination.cursorPath) {
+      if (curr === null || curr === undefined) {
+        return null;
+      }
+      curr = curr[segment];
+    }
+
+    return request.pagination.cursorSchema?.parse(curr) ?? null;
   }
 }

@@ -7,6 +7,9 @@ export const containerGroupInstance = z.lazy(() => {
   return z.object({
     id: z.string(),
     machineId: z.string(),
+    sshIp: z.string().optional(),
+    sshPort: z.number().gte(1).lte(65535).optional(),
+    sshHostKeyFingerprint: z.string().min(1).max(256).optional(),
     state: z.string(),
     updateTime: z.string(),
     version: z.number().gte(1).lte(2147483647),
@@ -21,6 +24,9 @@ export const containerGroupInstance = z.lazy(() => {
  * @typedef  {ContainerGroupInstance} containerGroupInstance - A Container Group Instance represents a running instance of a container group on a specific machine. It provides information about the execution state, readiness, and version of the deployed container group. - A Container Group Instance represents a running instance of a container group on a specific machine. It provides information about the execution state, readiness, and version of the deployed container group.
  * @property {string} - The container group instance identifier.
  * @property {string} - The container group machine identifier.
+ * @property {string} - The SSH IP address of the container group instance
+ * @property {number} - The SSH port of the container group instance
+ * @property {string} - The SSH host key fingerprint of the container group instance
  * @property {TheContainerGroupInstanceState} - The state of the container group instance
  * @property {string} - The UTC timestamp when the container group instance last changed its state. This helps track the lifecycle and state transitions of the instance.
  * @property {number} - The version of the container group definition currently running on this instance. Used to track deployment and update progress across the container group fleet.
@@ -39,6 +45,9 @@ export const containerGroupInstanceResponse = z.lazy(() => {
     .object({
       id: z.string(),
       machine_id: z.string(),
+      ssh_ip: z.string().optional(),
+      ssh_port: z.number().gte(1).lte(65535).optional(),
+      ssh_host_key_fingerprint: z.string().min(1).max(256).optional(),
       state: z.string(),
       update_time: z.string(),
       version: z.number().gte(1).lte(2147483647),
@@ -49,6 +58,9 @@ export const containerGroupInstanceResponse = z.lazy(() => {
     .transform((data) => ({
       id: data['id'],
       machineId: data['machine_id'],
+      sshIp: data['ssh_ip'],
+      sshPort: data['ssh_port'],
+      sshHostKeyFingerprint: data['ssh_host_key_fingerprint'],
       state: data['state'],
       updateTime: data['update_time'],
       version: data['version'],
@@ -67,6 +79,9 @@ export const containerGroupInstanceRequest = z.lazy(() => {
     .object({
       id: z.string(),
       machineId: z.string(),
+      sshIp: z.string().optional(),
+      sshPort: z.number().gte(1).lte(65535).optional(),
+      sshHostKeyFingerprint: z.string().min(1).max(256).optional(),
       state: z.string(),
       updateTime: z.string(),
       version: z.number().gte(1).lte(2147483647),
@@ -77,6 +92,9 @@ export const containerGroupInstanceRequest = z.lazy(() => {
     .transform((data) => ({
       id: data['id'],
       machine_id: data['machineId'],
+      ssh_ip: data['sshIp'],
+      ssh_port: data['sshPort'],
+      ssh_host_key_fingerprint: data['sshHostKeyFingerprint'],
       state: data['state'],
       update_time: data['updateTime'],
       version: data['version'],

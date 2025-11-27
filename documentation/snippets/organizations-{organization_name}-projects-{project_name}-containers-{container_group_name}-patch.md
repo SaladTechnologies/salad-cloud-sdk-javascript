@@ -1,14 +1,39 @@
 ```typescript
 import {
+  AxiomLoggingConfiguration,
+  ContainerGroupGRpcProbe,
+  ContainerGroupHttpProbeConfiguration,
   ContainerGroupLivenessProbe,
   ContainerGroupPatch,
+  ContainerGroupPriority,
+  ContainerGroupProbeExec,
+  ContainerGroupProbeHttpHeader,
   ContainerGroupReadinessProbe,
   ContainerGroupStartupProbe,
+  ContainerGroupTcpProbe,
+  ContainerLoggingConfigurationHttp1,
+  ContainerLoggingHttpCompression,
+  ContainerLoggingHttpFormat,
+  ContainerLoggingHttpHeader,
+  ContainerLoggingSplunkConfiguration,
+  ContainerRegistryAuthentication,
+  ContainerRegistryAuthenticationAwsEcr,
+  ContainerRegistryAuthenticationBasic,
+  ContainerRegistryAuthenticationDockerHub,
+  ContainerRegistryAuthenticationGcpGar,
+  ContainerRegistryAuthenticationGcpGcr,
+  ContainerResourceUpdateSchema,
   CountryCode,
+  DatadogLoggingConfiguration,
+  DatadogTagForContainerLogging,
+  HttpScheme,
+  NewRelicLoggingConfiguration,
   QueueBasedAutoscalerConfiguration,
   SaladCloudSdk,
+  TcpLoggingConfiguration,
   UpdateContainer,
   UpdateContainerGroupNetworking,
+  UpdateContainerLogging,
 } from '@saladtechnologies-oss/salad-cloud-sdk';
 
 (async () => {
@@ -44,7 +69,7 @@ import {
 
   const containerLoggingConfigurationHttp1: ContainerLoggingConfigurationHttp1 = {
     host: 'host',
-    port: 34677,
+    port: 55354,
     user: 'user',
     password: 'password',
     path: 'path',
@@ -65,7 +90,7 @@ import {
 
   const tcpLoggingConfiguration: TcpLoggingConfiguration = {
     host: 'host',
-    port: 21602,
+    port: 44671,
   };
 
   const updateContainerLogging: UpdateContainerLogging = {
@@ -111,10 +136,10 @@ import {
   };
 
   const containerResourceUpdateSchema: ContainerResourceUpdateSchema = {
-    cpu: 2,
-    memory: 4272,
+    cpu: 1013,
+    memory: 352043675,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 47962159632,
+    storageAmount: 1032076497908566.1,
     shmSize: 64,
   };
 
@@ -132,7 +157,7 @@ import {
   const countryCode = CountryCode.AF;
 
   const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 17663,
+    port: 13142,
   };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
@@ -140,7 +165,7 @@ import {
   };
 
   const containerGroupGRpcProbe: ContainerGroupGRpcProbe = {
-    port: 28667,
+    port: 37648,
     service: 'service',
   };
 
@@ -154,12 +179,12 @@ import {
   const containerGroupHttpProbeConfiguration: ContainerGroupHttpProbeConfiguration = {
     headers: [containerGroupProbeHttpHeader],
     path: 'path',
-    port: 53414,
+    port: 29069,
     scheme: httpScheme,
   };
 
   const containerGroupTcpProbe: ContainerGroupTcpProbe = {
-    port: 62611,
+    port: 13817,
   };
 
   const containerGroupLivenessProbe: ContainerGroupLivenessProbe = {
@@ -167,7 +192,7 @@ import {
     failureThreshold: 3,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 67,
+    initialDelaySeconds: 670,
     periodSeconds: 10,
     successThreshold: 1,
     tcp: containerGroupTcpProbe,
@@ -179,7 +204,7 @@ import {
     failureThreshold: 3,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 226,
+    initialDelaySeconds: 262,
     periodSeconds: 1,
     successThreshold: 1,
     tcp: containerGroupTcpProbe,
@@ -191,7 +216,7 @@ import {
     failureThreshold: 15,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 1058,
+    initialDelaySeconds: 1106,
     tcp: containerGroupTcpProbe,
     periodSeconds: 3,
     successThreshold: 2,
@@ -199,18 +224,18 @@ import {
   };
 
   const queueBasedAutoscalerConfiguration: QueueBasedAutoscalerConfiguration = {
-    desiredQueueLength: 22,
-    maxReplicas: 462,
-    maxDownscalePerMinute: 26,
-    maxUpscalePerMinute: 52,
-    minReplicas: 82,
-    pollingPeriod: 509,
+    desiredQueueLength: 53,
+    maxReplicas: 291,
+    maxDownscalePerMinute: 65,
+    maxUpscalePerMinute: 100,
+    minReplicas: 54,
+    pollingPeriod: 140,
   };
 
   const containerGroupPatch: ContainerGroupPatch = {
-    displayName: 'e2ajyqqvL',
+    displayName: 'ZJjdnvu',
     container: updateContainer,
-    replicas: 436,
+    replicas: 56,
     countryCodes: [countryCode],
     networking: updateContainerGroupNetworking,
     livenessProbe: containerGroupLivenessProbe,

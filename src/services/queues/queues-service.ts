@@ -20,8 +20,8 @@ export class QueuesService extends BaseService {
    * Gets the list of queues in the given project.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<QueueCollection>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<QueueCollection>>} - OK
    */
   async listQueues(
     organizationName: string,
@@ -70,8 +70,8 @@ export class QueuesService extends BaseService {
    * Creates a new queue in the given project.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<Queue>>} Created
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<Queue>>} - Created
    */
   async createQueue(
     organizationName: string,
@@ -129,8 +129,8 @@ export class QueuesService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<Queue>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<Queue>>} - OK
    */
   async getQueue(
     organizationName: string,
@@ -185,8 +185,8 @@ export class QueuesService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<Queue>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<Queue>>} - OK
    */
   async updateQueue(
     organizationName: string,
@@ -249,8 +249,8 @@ export class QueuesService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<any>>} Accepted
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<any>>} - Accepted
    */
   async deleteQueue(
     organizationName: string,
@@ -307,8 +307,8 @@ export class QueuesService extends BaseService {
    * @param {string} queueName - The queue name.
    * @param {number} [params.page] - The page number.
    * @param {number} [params.pageSize] - The maximum number of items per page.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<QueueJobCollection>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<QueueJobCollection>>} - OK
    */
   async listQueueJobs(
     organizationName: string,
@@ -372,8 +372,8 @@ export class QueuesService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<QueueJob>>} Created
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<QueueJob>>} - Created
    */
   async createQueueJob(
     organizationName: string,
@@ -437,8 +437,8 @@ export class QueuesService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
    * @param {string} queueJobId - The job identifier. This is automatically generated and assigned when the job is created.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<QueueJob>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<QueueJob>>} - OK
    */
   async getQueueJob(
     organizationName: string,
@@ -499,8 +499,8 @@ export class QueuesService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} queueName - The queue name.
    * @param {string} queueJobId - The job identifier. This is automatically generated and assigned when the job is created.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<any>>} Accepted
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<any>>} - Accepted
    */
   async deleteQueueJob(
     organizationName: string,

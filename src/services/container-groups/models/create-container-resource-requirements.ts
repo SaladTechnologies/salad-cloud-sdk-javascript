@@ -5,22 +5,22 @@ import { z } from 'zod';
  */
 export const createContainerResourceRequirements = z.lazy(() => {
   return z.object({
-    cpu: z.number().gte(1).lte(16),
-    memory: z.number().gte(1024).lte(61440),
+    cpu: z.number().gte(1).lte(1024),
+    memory: z.number().gte(1024).lte(1073741824),
     gpuClasses: z.array(z.string()).max(100).optional(),
-    storageAmount: z.number().gte(1073741824).lte(268435456000).optional(),
-    shmSize: z.number().gte(64).lte(2147483647).optional(),
+    storageAmount: z.number().gte(1073741824).lte(1125899906842624).optional(),
+    shmSize: z.number().gte(64).lte(1073741824).optional(),
   });
 });
 
 /**
  * Specifies the resource requirements for creating a container.
  * @typedef  {CreateContainerResourceRequirements} createContainerResourceRequirements - Specifies the resource requirements for creating a container. - Specifies the resource requirements for creating a container.
- * @property {number} - The number of CPU cores required by the container. Must be between 1 and 16.
- * @property {number} - The amount of memory (in MB) required by the container. Must be between 1024 MB and 61440 MB.
+ * @property {number} - The number of CPU cores to allocate to the container (between 1 and 1024).
+ * @property {number} - The amount of memory to allocate to the container in megabytes (between 1024 and 1073741824).
  * @property {string[]} - A list of GPU class UUIDs required by the container. Can be null if no GPU is required.
- * @property {number} - The amount of storage (in bytes) required by the container. Must be between 1 GB (1073741824 bytes) and 250 GB (268435456000 bytes).
- * @property {number} - The size of the shared memory (/dev/shm) in MB. If not specified, defaults to 64MB.
+ * @property {number} - The amount of storage to allocate to the container in bytes (between 1 GB and 1 PB).
+ * @property {number} - The amount of shared memory to allocate to the container via `/dev/shm` in megabytes (between 64 and 1073741824). If not specified, defaults to 64 MB.
  */
 export type CreateContainerResourceRequirements = z.infer<typeof createContainerResourceRequirements>;
 
@@ -31,11 +31,11 @@ export type CreateContainerResourceRequirements = z.infer<typeof createContainer
 export const createContainerResourceRequirementsResponse = z.lazy(() => {
   return z
     .object({
-      cpu: z.number().gte(1).lte(16),
-      memory: z.number().gte(1024).lte(61440),
+      cpu: z.number().gte(1).lte(1024),
+      memory: z.number().gte(1024).lte(1073741824),
       gpu_classes: z.array(z.string()).max(100).optional(),
-      storage_amount: z.number().gte(1073741824).lte(268435456000).optional(),
-      shm_size: z.number().gte(64).lte(2147483647).optional(),
+      storage_amount: z.number().gte(1073741824).lte(1125899906842624).optional(),
+      shm_size: z.number().gte(64).lte(1073741824).optional(),
     })
     .transform((data) => ({
       cpu: data['cpu'],
@@ -53,11 +53,11 @@ export const createContainerResourceRequirementsResponse = z.lazy(() => {
 export const createContainerResourceRequirementsRequest = z.lazy(() => {
   return z
     .object({
-      cpu: z.number().gte(1).lte(16),
-      memory: z.number().gte(1024).lte(61440),
+      cpu: z.number().gte(1).lte(1024),
+      memory: z.number().gte(1024).lte(1073741824),
       gpuClasses: z.array(z.string()).max(100).optional(),
-      storageAmount: z.number().gte(1073741824).lte(268435456000).optional(),
-      shmSize: z.number().gte(64).lte(2147483647).optional(),
+      storageAmount: z.number().gte(1073741824).lte(1125899906842624).optional(),
+      shmSize: z.number().gte(64).lte(1073741824).optional(),
     })
     .transform((data) => ({
       cpu: data['cpu'],

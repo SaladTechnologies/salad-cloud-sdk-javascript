@@ -26,6 +26,7 @@ export const queue = z.lazy(() => {
     containerGroups: z.array(containerGroup).max(100),
     createTime: z.string(),
     updateTime: z.string(),
+    currentQueueLength: z.number().gte(0).lte(2147483647).optional(),
   });
 });
 
@@ -39,6 +40,7 @@ export const queue = z.lazy(() => {
  * @property {ContainerGroup[]} - The container groups that are part of this queue. Each container group represents a scalable set of identical containers running as a distributed service.
  * @property {string} - The date and time the queue was created.
  * @property {string} - The date and time the queue was last updated.
+ * @property {number} - The current length of the queue
  */
 export type Queue = z.infer<typeof queue>;
 
@@ -64,6 +66,7 @@ export const queueResponse = z.lazy(() => {
       container_groups: z.array(containerGroupResponse).max(100),
       create_time: z.string(),
       update_time: z.string(),
+      current_queue_length: z.number().gte(0).lte(2147483647).optional(),
     })
     .transform((data) => ({
       id: data['id'],
@@ -73,6 +76,7 @@ export const queueResponse = z.lazy(() => {
       containerGroups: data['container_groups'],
       createTime: data['create_time'],
       updateTime: data['update_time'],
+      currentQueueLength: data['current_queue_length'],
     }));
 });
 
@@ -98,6 +102,7 @@ export const queueRequest = z.lazy(() => {
       containerGroups: z.array(containerGroupRequest).max(100),
       createTime: z.string(),
       updateTime: z.string(),
+      currentQueueLength: z.number().gte(0).lte(2147483647).optional(),
     })
     .transform((data) => ({
       id: data['id'],
@@ -107,5 +112,6 @@ export const queueRequest = z.lazy(() => {
       container_groups: data['containerGroups'],
       create_time: data['createTime'],
       update_time: data['updateTime'],
+      current_queue_length: data['currentQueueLength'],
     }));
 });

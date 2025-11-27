@@ -9,8 +9,10 @@ import {
   CreateRequestParameters,
   RequestParameter,
   RequestPagination,
+  RequestCursorPagination,
   ResponseDefinition,
   ErrorDefinition,
+  isRequestCursorPagination,
 } from './types';
 
 export class Request<PageSchema = unknown[]> {
@@ -42,7 +44,11 @@ export class Request<PageSchema = unknown[]> {
 
   public retry: RetryOptions = {} as any;
 
-  public pagination?: RequestPagination<PageSchema>;
+  public pagination?: RequestPagination<PageSchema> | RequestCursorPagination<PageSchema>;
+
+  public filename?: string;
+
+  public filenames?: string[];
 
   private readonly pathPattern: string;
 
@@ -63,6 +69,8 @@ export class Request<PageSchema = unknown[]> {
     this.retry = params.retry;
     this.validation = params.validation;
     this.pagination = params.pagination;
+    this.filename = params.filename;
+    this.filenames = params.filenames;
   }
 
   addHeaderParam(key: string, param: RequestParameter): void {
@@ -164,6 +172,8 @@ export class Request<PageSchema = unknown[]> {
       requestContentType: overrides?.requestContentType ?? this.requestContentType,
       retry: overrides?.retry ?? this.retry,
       validation: overrides?.validation ?? this.validation,
+      filename: overrides?.filename ?? this.filename,
+      filenames: overrides?.filenames ?? this.filenames,
     };
     return new Request({
       ...createRequestParams,
@@ -179,17 +189,28 @@ export class Request<PageSchema = unknown[]> {
     return new HeaderSerializer().serialize(this.headers);
   }
 
-  public nextPage(): void {
+  public nextPage(cursor?: string): void {
     if (!this.pagination) {
       return;
     }
 
-    const offsetParam = this.getOffsetParam();
-    if (!offsetParam) {
+    // Check if this is cursor pagination using type guard
+    if (isRequestCursorPagination(this.pagination)) {
+      const cursorParam = this.getCursorParam();
+      if (cursorParam && cursor !== undefined) {
+        cursorParam.value = cursor;
+      }
       return;
     }
 
-    offsetParam.value = Number(offsetParam.value) + this.pagination.pageSize;
+    // Handle limit-offset pagination
+    const offsetParam = this.getOffsetParam();
+    if (offsetParam) {
+      if (this.pagination.pageSize === undefined) {
+        throw new Error('pageSize is required for limit-offset pagination');
+      }
+      offsetParam.value = Number(offsetParam.value) + this.pagination.pageSize;
+    }
   }
 
   private constructPath(): string {
@@ -199,6 +220,11 @@ export class Request<PageSchema = unknown[]> {
   private getOffsetParam(): RequestParameter | undefined {
     const offsetParam = this.getAllParams().find((param) => param.isOffset);
     return offsetParam;
+  }
+
+  private getCursorParam(): RequestParameter | undefined {
+    const cursorParam = this.getAllParams().find((param) => param.isCursor);
+    return cursorParam;
   }
 
   private getAllParams(): RequestParameter[] {

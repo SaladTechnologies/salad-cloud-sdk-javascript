@@ -5,22 +5,22 @@ import { z } from 'zod';
  */
 export const containerResourceUpdateSchema = z.lazy(() => {
   return z.object({
-    cpu: z.number().gte(1).lte(16).optional().nullable(),
-    memory: z.number().gte(1024).lte(61440).optional().nullable(),
+    cpu: z.number().gte(1).lte(1024).optional().nullable(),
+    memory: z.number().gte(1024).lte(1073741824).optional().nullable(),
     gpuClasses: z.array(z.string()).max(100).optional().nullable(),
-    storageAmount: z.number().gte(1073741824).lte(268435456000).optional().nullable(),
-    shmSize: z.number().gte(64).lte(2147483647).optional().nullable(),
+    storageAmount: z.number().gte(1073741824).lte(1125899906842624).optional().nullable(),
+    shmSize: z.number().gte(64).lte(1073741824).optional().nullable(),
   });
 });
 
 /**
  * Defines the resource specifications that can be modified for a container group, including CPU, memory, GPU classes, and storage allocations.
  * @typedef  {ContainerResourceUpdateSchema} containerResourceUpdateSchema - Defines the resource specifications that can be modified for a container group, including CPU, memory, GPU classes, and storage allocations. - Defines the resource specifications that can be modified for a container group, including CPU, memory, GPU classes, and storage allocations.
- * @property {number} - The number of CPU cores to allocate to the container (between 1 and 16 cores).
- * @property {number} - The amount of memory to allocate to the container in megabytes (between 1024MB and 61440MB).
+ * @property {number} - The number of CPU cores to allocate to the container (between 1 and 1024).
+ * @property {number} - The amount of memory to allocate to the container in megabytes (between 1024 and 1073741824).
  * @property {string[]} - List of GPU class identifiers that the container can use, specified as UUIDs.
- * @property {number} - The amount of storage to allocate to the container in bytes (between 1GB and 250GB).
- * @property {number} - The size of the shared memory (/dev/shm) in MB. If not specified, defaults to 64MB.
+ * @property {number} - The amount of storage to allocate to the container in bytes (between 1 GB and 1 PB).
+ * @property {number} - The amount of shared memory to allocate to the container via `/dev/shm` in megabytes (between 64 and 1073741824). If not specified, defaults to 64 MB.
  */
 export type ContainerResourceUpdateSchema = z.infer<typeof containerResourceUpdateSchema>;
 
@@ -31,11 +31,11 @@ export type ContainerResourceUpdateSchema = z.infer<typeof containerResourceUpda
 export const containerResourceUpdateSchemaResponse = z.lazy(() => {
   return z
     .object({
-      cpu: z.number().gte(1).lte(16).optional().nullable(),
-      memory: z.number().gte(1024).lte(61440).optional().nullable(),
+      cpu: z.number().gte(1).lte(1024).optional().nullable(),
+      memory: z.number().gte(1024).lte(1073741824).optional().nullable(),
       gpu_classes: z.array(z.string()).max(100).optional().nullable(),
-      storage_amount: z.number().gte(1073741824).lte(268435456000).optional().nullable(),
-      shm_size: z.number().gte(64).lte(2147483647).optional().nullable(),
+      storage_amount: z.number().gte(1073741824).lte(1125899906842624).optional().nullable(),
+      shm_size: z.number().gte(64).lte(1073741824).optional().nullable(),
     })
     .transform((data) => ({
       cpu: data['cpu'],
@@ -53,11 +53,11 @@ export const containerResourceUpdateSchemaResponse = z.lazy(() => {
 export const containerResourceUpdateSchemaRequest = z.lazy(() => {
   return z
     .object({
-      cpu: z.number().gte(1).lte(16).optional().nullable(),
-      memory: z.number().gte(1024).lte(61440).optional().nullable(),
+      cpu: z.number().gte(1).lte(1024).optional().nullable(),
+      memory: z.number().gte(1024).lte(1073741824).optional().nullable(),
       gpuClasses: z.array(z.string()).max(100).optional().nullable(),
-      storageAmount: z.number().gte(1073741824).lte(268435456000).optional().nullable(),
-      shmSize: z.number().gte(64).lte(2147483647).optional().nullable(),
+      storageAmount: z.number().gte(1073741824).lte(1125899906842624).optional().nullable(),
+      shmSize: z.number().gte(64).lte(1073741824).optional().nullable(),
     })
     .transform((data) => ({
       cpu: data['cpu'],

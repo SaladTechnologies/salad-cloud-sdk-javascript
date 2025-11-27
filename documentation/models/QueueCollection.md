@@ -4,6 +4,6 @@ Represents a Queue Collection
 
 **Properties**
 
-| Name  | Type    | Required | Description         |
-| :---- | :------ | :------- | :------------------ |
-| items | Queue[] | ✅       | The list of queues. |
+| Name  | Type                | Required | Description         |
+| :---- | :------------------ | :------- | :------------------ |
+| items | [Queue](Queue.md)[] | ✅       | The list of queues. |

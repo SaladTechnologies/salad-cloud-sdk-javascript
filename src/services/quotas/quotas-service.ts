@@ -12,8 +12,8 @@ export class QuotasService extends BaseService {
   /**
    * Gets the organization quotas
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<Quotas>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<Quotas>>} - OK
    */
   async getQuotas(organizationName: string, requestConfig?: RequestConfig): Promise<HttpResponse<Quotas>> {
     const request = new RequestBuilder()

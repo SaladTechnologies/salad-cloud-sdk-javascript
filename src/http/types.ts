@@ -2,7 +2,7 @@ import { ZodType } from 'zod';
 import { Environment } from './environment';
 import { Request } from './transport/request';
 
-export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'HEAD' | 'OPTIONS';
+export type HttpMethod = 'CONNECT' | 'DELETE' | 'GET' | 'HEAD' | 'OPTIONS' | 'PATCH' | 'POST' | 'PUT' | 'TRACE';
 
 export interface SdkConfig {
   baseUrl?: string;
@@ -24,6 +24,14 @@ export interface HttpResponse<T = unknown> {
   data?: T;
   metadata: HttpMetadata;
   raw: ArrayBuffer;
+}
+
+export interface PaginatedHttpResponse<T = unknown> extends HttpResponse<T> {
+  // Marker interface for pagination responses
+}
+
+export interface CursorPaginatedHttpResponse<T = unknown> extends HttpResponse<T> {
+  nextCursor?: string | null;
 }
 
 export interface RequestHandler {

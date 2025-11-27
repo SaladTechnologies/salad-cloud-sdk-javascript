@@ -28,8 +28,8 @@ export class ContainerGroupsService extends BaseService {
    * Gets the list of container groups
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<ContainerGroupCollection>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<ContainerGroupCollection>>} - OK
    */
   async listContainerGroups(
     organizationName: string,
@@ -73,8 +73,8 @@ export class ContainerGroupsService extends BaseService {
    * Creates a new container group
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<ContainerGroup>>} Created
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<ContainerGroup>>} - Created
    */
   async createContainerGroup(
     organizationName: string,
@@ -132,8 +132,8 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<ContainerGroup>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<ContainerGroup>>} - OK
    */
   async getContainerGroup(
     organizationName: string,
@@ -188,8 +188,8 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<ContainerGroup>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<ContainerGroup>>} - OK
    */
   async updateContainerGroup(
     organizationName: string,
@@ -257,8 +257,8 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<any>>} Accepted
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<any>>} - Accepted
    */
   async deleteContainerGroup(
     organizationName: string,
@@ -318,8 +318,8 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<any>>} Accepted
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<any>>} - Accepted
    */
   async startContainerGroup(
     organizationName: string,
@@ -379,8 +379,8 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<any>>} Accepted
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<any>>} - Accepted
    */
   async stopContainerGroup(
     organizationName: string,
@@ -440,8 +440,8 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<ContainerGroupInstanceCollection>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<ContainerGroupInstanceCollection>>} - OK
    */
   async listContainerGroupInstances(
     organizationName: string,
@@ -497,8 +497,8 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique container group instance identifier
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<ContainerGroupInstance>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<ContainerGroupInstance>>} - OK
    */
   async getContainerGroupInstance(
     organizationName: string,
@@ -561,8 +561,8 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique container group instance identifier
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<ContainerGroupInstance>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<ContainerGroupInstance>>} - OK
    */
   async updateContainerGroupInstance(
     organizationName: string,
@@ -638,8 +638,8 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique container group instance identifier
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<any>>} Accepted
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<any>>} - Accepted
    */
   async reallocateContainerGroupInstance(
     organizationName: string,
@@ -702,8 +702,8 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique container group instance identifier
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<any>>} Accepted
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<any>>} - Accepted
    */
   async recreateContainerGroupInstance(
     organizationName: string,
@@ -766,8 +766,8 @@ export class ContainerGroupsService extends BaseService {
    * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
    * @param {string} containerGroupName - The unique container group name
    * @param {string} containerGroupInstanceId - The unique container group instance identifier
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<any>>} Accepted
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<any>>} - Accepted
    */
   async restartContainerGroupInstance(
     organizationName: string,

@@ -4,6 +4,7 @@ import {
   CreateRequestParameters,
   RequestParameter,
   RequestPagination,
+  RequestCursorPagination,
   ResponseDefinition,
   ErrorDefinition,
 } from './types';
@@ -100,7 +101,26 @@ export class RequestBuilder<Page extends unknown[] = unknown[]> {
     return this;
   }
 
+  setFilename(filename?: string): RequestBuilder<Page> {
+    if (filename !== undefined) {
+      this.params.filename = filename;
+    }
+    return this;
+  }
+
+  setFilenames(filenames?: string[]): RequestBuilder<Page> {
+    if (filenames !== undefined) {
+      this.params.filenames = filenames;
+    }
+    return this;
+  }
+
   setPagination(pagination: RequestPagination<Page>): RequestBuilder<Page> {
+    this.params.pagination = pagination;
+    return this;
+  }
+
+  setCursorPagination(pagination: RequestCursorPagination<Page>): RequestBuilder<Page> {
     this.params.pagination = pagination;
     return this;
   }
@@ -118,6 +138,7 @@ export class RequestBuilder<Page extends unknown[] = unknown[]> {
       encode: true,
       isLimit: false,
       isOffset: false,
+      isCursor: false,
     });
     return this;
   }
@@ -135,6 +156,7 @@ export class RequestBuilder<Page extends unknown[] = unknown[]> {
       encode: true,
       isLimit: false,
       isOffset: false,
+      isCursor: false,
     });
     return this;
   }
@@ -152,6 +174,7 @@ export class RequestBuilder<Page extends unknown[] = unknown[]> {
       encode: true,
       isLimit: false,
       isOffset: false,
+      isCursor: false,
     });
     return this;
   }
@@ -186,13 +209,14 @@ export class RequestBuilder<Page extends unknown[] = unknown[]> {
       encode: param.encode ?? true,
       isLimit: !!param.isLimit,
       isOffset: !!param.isOffset,
+      isCursor: !!param.isCursor,
     });
 
     return this;
   }
 
   addQueryParam(param: Partial<RequestParameter>): RequestBuilder<Page> {
-    if (param.value === undefined || param.key === undefined) {
+    if (param.key === undefined) {
       return this;
     }
 
@@ -204,6 +228,7 @@ export class RequestBuilder<Page extends unknown[] = unknown[]> {
       encode: param.encode ?? true,
       isLimit: !!param.isLimit,
       isOffset: !!param.isOffset,
+      isCursor: !!param.isCursor,
     });
 
     return this;
@@ -222,6 +247,7 @@ export class RequestBuilder<Page extends unknown[] = unknown[]> {
       encode: param.encode ?? false,
       isLimit: !!param.isLimit,
       isOffset: !!param.isOffset,
+      isCursor: !!param.isCursor,
     });
 
     return this;

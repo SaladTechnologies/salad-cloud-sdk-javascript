@@ -12,7 +12,6 @@ export type { NewRelicLoggingConfiguration } from './new-relic-logging-configura
 export type { ContainerLoggingSplunkConfiguration } from './container-logging-splunk-configuration';
 export type { TcpLoggingConfiguration } from './tcp-logging-configuration';
 export type { ContainerResourceRequirements } from './container-resource-requirements';
-export { CountryCode } from './country-code';
 export type { ContainerGroupState } from './container-group-state';
 export type { ContainerGroupInstanceStatusCount } from './container-group-instance-status-count';
 export { ContainerGroupStatus } from './container-group-status';

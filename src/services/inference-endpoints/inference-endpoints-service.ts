@@ -28,8 +28,8 @@ export class InferenceEndpointsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {number} [params.page] - The page number.
    * @param {number} [params.pageSize] - The maximum number of items per page.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<InferenceEndpointCollection>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<InferenceEndpointCollection>>} - OK
    */
   async listInferenceEndpoints(
     organizationName: string,
@@ -97,8 +97,8 @@ export class InferenceEndpointsService extends BaseService {
    * Gets an inference endpoint.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} inferenceEndpointName - The inference endpoint name.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<InferenceEndpoint>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<InferenceEndpoint>>} - OK
    */
   async getInferenceEndpoint(
     organizationName: string,
@@ -159,8 +159,8 @@ export class InferenceEndpointsService extends BaseService {
    * @param {string} inferenceEndpointName - The inference endpoint name.
    * @param {number} [params.page] - The page number.
    * @param {number} [params.pageSize] - The maximum number of items per page.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<InferenceEndpointJobCollection>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<InferenceEndpointJobCollection>>} - OK
    */
   async listInferenceEndpointJobs(
     organizationName: string,
@@ -233,8 +233,8 @@ export class InferenceEndpointsService extends BaseService {
    * Creates a new inference endpoint job.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} inferenceEndpointName - The inference endpoint name.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<InferenceEndpointJob>>} Created
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<InferenceEndpointJob>>} - Created
    */
   async createInferenceEndpointJob(
     organizationName: string,
@@ -302,8 +302,8 @@ export class InferenceEndpointsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} inferenceEndpointName - The inference endpoint name.
    * @param {string} inferenceEndpointJobId - The inference endpoint job identifier.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<InferenceEndpointJob>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<InferenceEndpointJob>>} - OK
    */
   async getInferenceEndpointJob(
     organizationName: string,
@@ -370,8 +370,8 @@ export class InferenceEndpointsService extends BaseService {
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
    * @param {string} inferenceEndpointName - The inference endpoint name.
    * @param {string} inferenceEndpointJobId - The inference endpoint job identifier.
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<any>>} Accepted
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<any>>} - Accepted
    */
   async deleteInferenceEndpointJob(
     organizationName: string,

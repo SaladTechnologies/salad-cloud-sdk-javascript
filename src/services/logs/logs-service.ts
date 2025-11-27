@@ -5,36 +5,49 @@ import { RequestBuilder } from '../../http/transport/request-builder';
 import { SerializationStyle } from '../../http/serialization/base-serializer';
 import { ThrowableError } from '../../http/errors/throwable-error';
 import { Environment } from '../../http/environment';
-import { WorkloadErrorList, workloadErrorListResponse } from './models/workload-error-list';
+import { LogEntryQuery, logEntryQueryRequest } from './models/log-entry-query';
+import { LogEntryCollection, logEntryCollectionResponse } from './models/log-entry-collection';
 import { ProblemDetails } from '../common/problem-details';
 
-export class WorkloadErrorsService extends BaseService {
+export class LogsService extends BaseService {
   /**
-   * Gets the workload errors. This has been deprecated and will be replaced by the new System Logs endpoint. See `/system-logs`.
+   * Retrieve a collection of _log entries_ for the _organization_ identified by `{organization_name}` matching the log query.
    * @param {string} organizationName - Your organization name. This identifies the billing context for the API operation and represents a security boundary for SaladCloud resources. The organization must be created before using the API, and you must be a member of the organization.
-   * @param {string} projectName - Your project name. This represents a collection of related SaladCloud resources. The project must be created before using the API.
-   * @param {string} containerGroupName - The unique container group name
-   * @param {RequestConfig} requestConfig - (Optional) The request configuration for retry and validation.
-   * @returns {Promise<HttpResponse<WorkloadErrorList>>} OK
+   * @param {RequestConfig} [requestConfig] - The request configuration for retry and validation.
+   * @returns {Promise<HttpResponse<LogEntryCollection>>} - OK
    */
-  async getWorkloadErrors(
+  async queryLogEntries(
     organizationName: string,
-    projectName: string,
-    containerGroupName: string,
+    body: LogEntryQuery,
     requestConfig?: RequestConfig,
-  ): Promise<HttpResponse<WorkloadErrorList>> {
+  ): Promise<HttpResponse<LogEntryCollection>> {
     const request = new RequestBuilder()
       .setBaseUrl(requestConfig?.baseUrl || this.config.baseUrl || this.config.environment || Environment.DEFAULT)
       .setConfig(this.config)
-      .setMethod('GET')
-      .setPath('/organizations/{organization_name}/projects/{project_name}/containers/{container_group_name}/errors')
-      .setRequestSchema(z.any())
+      .setMethod('POST')
+      .setPath('/organizations/{organization_name}/log-entries')
+      .setRequestSchema(logEntryQueryRequest)
       .addApiKeyAuth(this.config.apiKey, 'Salad-Api-Key')
       .setRequestContentType(ContentType.Json)
       .addResponse({
-        schema: workloadErrorListResponse,
+        schema: logEntryCollectionResponse,
         contentType: ContentType.Json,
         status: 200,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 400,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 401,
+      })
+      .addError({
+        error: ProblemDetails,
+        contentType: ContentType.Json,
+        status: 403,
       })
       .addError({
         error: ProblemDetails,
@@ -53,15 +66,9 @@ export class WorkloadErrorsService extends BaseService {
         key: 'organization_name',
         value: organizationName,
       })
-      .addPathParam({
-        key: 'project_name',
-        value: projectName,
-      })
-      .addPathParam({
-        key: 'container_group_name',
-        value: containerGroupName,
-      })
+      .addHeaderParam({ key: 'Content-Type', value: 'application/json' })
+      .addBody(body)
       .build();
-    return this.client.call<WorkloadErrorList>(request);
+    return this.client.call<LogEntryCollection>(request);
   }
 }
