@@ -1,7 +1,9 @@
 import { z } from 'zod';
 
 /**
- * The shape of the model inside the application code - what the users use
+ * Zod schema for the QueueJobEvent model.
+ * Defines the structure and validation rules for this data type.
+ * This is the shape used in application code - what developers interact with.
  */
 export const queueJobEvent = z.lazy(() => {
   return z.object({
@@ -19,8 +21,9 @@ export const queueJobEvent = z.lazy(() => {
 export type QueueJobEvent = z.infer<typeof queueJobEvent>;
 
 /**
- * The shape of the model mapping from the api schema into the application shape.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping API responses to the QueueJobEvent application shape.
+ * Handles any property name transformations from the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const queueJobEventResponse = z.lazy(() => {
   return z
@@ -35,8 +38,9 @@ export const queueJobEventResponse = z.lazy(() => {
 });
 
 /**
- * The shape of the model mapping from the application shape into the api schema.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping the QueueJobEvent application shape to API requests.
+ * Handles any property name transformations required by the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const queueJobEventRequest = z.lazy(() => {
   return z

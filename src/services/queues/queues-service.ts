@@ -15,6 +15,11 @@ import { ListQueueJobsParams } from './request-params';
 import { QueueJobPrototype, queueJobPrototypeRequest } from './models/queue-job-prototype';
 import { QueueJob, queueJobResponse } from './models/queue-job';
 
+/**
+ * Service class for QueuesService operations.
+ * Provides methods to interact with QueuesService-related API endpoints.
+ * All methods return promises and handle request/response serialization automatically.
+ */
 export class QueuesService extends BaseService {
   /**
    * Gets the list of queues in the given project.

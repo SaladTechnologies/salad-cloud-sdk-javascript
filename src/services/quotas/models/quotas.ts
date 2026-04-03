@@ -7,7 +7,9 @@ import {
 } from './container-groups-quotas';
 
 /**
- * The shape of the model inside the application code - what the users use
+ * Zod schema for the Quotas model.
+ * Defines the structure and validation rules for this data type.
+ * This is the shape used in application code - what developers interact with.
  */
 export const quotas = z.lazy(() => {
   return z.object({
@@ -27,8 +29,9 @@ export const quotas = z.lazy(() => {
 export type Quotas = z.infer<typeof quotas>;
 
 /**
- * The shape of the model mapping from the api schema into the application shape.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping API responses to the Quotas application shape.
+ * Handles any property name transformations from the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const quotasResponse = z.lazy(() => {
   return z
@@ -45,8 +48,9 @@ export const quotasResponse = z.lazy(() => {
 });
 
 /**
- * The shape of the model mapping from the application shape into the api schema.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping the Quotas application shape to API requests.
+ * Handles any property name transformations required by the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const quotasRequest = z.lazy(() => {
   return z

@@ -9,13 +9,13 @@ import { CountryCode, CpuAvailabilityPrototype, SaladCloudSdk } from '@saladtech
   const countryCode = CountryCode.AF;
 
   const cpuAvailabilityPrototype: CpuAvailabilityPrototype = {
+    countryCodes: [countryCode],
     cpu: 4,
     memory: 8192,
     storageAmount: 1000000000,
-    countryCodes: [countryCode],
   };
 
-  const { data } = await saladCloudSdk.organizationData.getCpuAvailability('acme-corp', cpuAvailabilityPrototype);
+  const { data } = await saladCloudSdk.organizations.getCpuAvailability('acme-corp', cpuAvailabilityPrototype);
 
   console.log(data);
 })();

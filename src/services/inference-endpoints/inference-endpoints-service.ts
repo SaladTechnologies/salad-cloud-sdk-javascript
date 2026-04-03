@@ -22,6 +22,11 @@ import {
 } from './models/inference-endpoint-job-prototype';
 import { InferenceEndpointJob, inferenceEndpointJobResponse } from './models/inference-endpoint-job';
 
+/**
+ * Service class for InferenceEndpointsService operations.
+ * Provides methods to interact with InferenceEndpointsService-related API endpoints.
+ * All methods return promises and handle request/response serialization automatically.
+ */
 export class InferenceEndpointsService extends BaseService {
   /**
    * Lists inference endpoints.

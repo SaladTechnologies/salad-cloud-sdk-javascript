@@ -7,8 +7,8 @@ import { QueuePatch, SaladCloudSdk } from '@saladtechnologies-oss/salad-cloud-sd
   });
 
   const queuePatch: QueuePatch = {
-    displayName: '5Ecnf',
     description: 'description',
+    displayName: 'hB13',
   };
 
   const { data } = await saladCloudSdk.queues.updateQueue('acme-corp', 'dev-env', 'fifo-queue', queuePatch);

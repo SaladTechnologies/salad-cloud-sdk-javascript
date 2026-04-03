@@ -9,14 +9,14 @@ import { CountryCode, GpuAvailabilityPrototype, SaladCloudSdk } from '@saladtech
   const countryCode = CountryCode.AF;
 
   const gpuAvailabilityPrototype: GpuAvailabilityPrototype = {
-    gpuClasses: ['gpu_classes'],
+    countryCodes: [countryCode],
     cpu: 4,
+    gpuClasses: ['gpu_classes'],
     memory: 8192,
     storageAmount: 1000000000,
-    countryCodes: [countryCode],
   };
 
-  const { data } = await saladCloudSdk.organizationData.getGpuAvailability('acme-corp', gpuAvailabilityPrototype);
+  const { data } = await saladCloudSdk.organizations.getGpuAvailability('acme-corp', gpuAvailabilityPrototype);
 
   console.log(data);
 })();

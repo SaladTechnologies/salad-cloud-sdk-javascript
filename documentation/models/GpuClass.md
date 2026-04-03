@@ -9,15 +9,15 @@ Represents a GPU Class
 | id           | string                              | ✅       | The unique identifier                                |
 | name         | string                              | ✅       | The GPU class name                                   |
 | prices       | [GpuClassPrice](GpuClassPrice.md)[] | ✅       | The list of prices for each container group priority |
-| isHighDemand | boolean                             | ❌       | Whether the GPU class is in high demand              |
 | gpuClassType | GpuClassType                        | ❌       | The type of GPU class                                |
 | gpuCount     | number                              | ❌       | The number of GPUs in the cluster                    |
-| minVcpu      | number                              | ❌       | The minimum vCPU count                               |
+| isHighDemand | boolean                             | ❌       | Whether the GPU class is in high demand              |
+| maxRam       | number                              | ❌       | The maximum RAM amount in MB                         |
+| maxStorage   | number                              | ❌       | The maximum storage amount in bytes                  |
 | maxVcpu      | number                              | ❌       | The maximum vCPU count                               |
 | minRam       | number                              | ❌       | The minimum RAM amount in MB                         |
-| maxRam       | number                              | ❌       | The maximum RAM amount in MB                         |
 | minStorage   | number                              | ❌       | The minimum storage amount in bytes                  |
-| maxStorage   | number                              | ❌       | The maximum storage amount in bytes                  |
+| minVcpu      | number                              | ❌       | The minimum vCPU count                               |
 
 # GpuClassType
 

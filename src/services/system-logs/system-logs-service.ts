@@ -8,6 +8,11 @@ import { Environment } from '../../http/environment';
 import { SystemLogList, systemLogListResponse } from './models/system-log-list';
 import { ProblemDetails } from '../common/problem-details';
 
+/**
+ * Service class for SystemLogsService operations.
+ * Provides methods to interact with SystemLogsService-related API endpoints.
+ * All methods return promises and handle request/response serialization automatically.
+ */
 export class SystemLogsService extends BaseService {
   /**
    * Gets the System Logs

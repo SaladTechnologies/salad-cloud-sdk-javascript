@@ -7,12 +7,14 @@ import {
 } from './datadog-tag-for-container-logging';
 
 /**
- * The shape of the model inside the application code - what the users use
+ * Zod schema for the DatadogLoggingConfiguration model.
+ * Defines the structure and validation rules for this data type.
+ * This is the shape used in application code - what developers interact with.
  */
 export const datadogLoggingConfiguration = z.lazy(() => {
   return z.object({
-    host: z.string().min(1).max(1000).regex(/^.*$/),
     apiKey: z.string().min(1).max(1000).regex(/^.*$/),
+    host: z.string().min(1).max(1000).regex(/^.*$/),
     tags: z.array(datadogTagForContainerLogging).max(1000).nullable(),
   });
 });
@@ -20,44 +22,46 @@ export const datadogLoggingConfiguration = z.lazy(() => {
 /**
  * Configuration for forwarding container logs to Datadog monitoring service.
  * @typedef  {DatadogLoggingConfiguration} datadogLoggingConfiguration - Configuration for forwarding container logs to Datadog monitoring service. - Configuration for forwarding container logs to Datadog monitoring service.
- * @property {string} - The Datadog intake server host URL where logs will be sent.
  * @property {string} - The Datadog API key used for authentication when sending logs.
+ * @property {string} - The Datadog intake server host URL where logs will be sent.
  * @property {DatadogTagForContainerLogging[]} - Optional metadata tags to attach to logs for filtering and categorization in Datadog.
  */
 export type DatadogLoggingConfiguration = z.infer<typeof datadogLoggingConfiguration>;
 
 /**
- * The shape of the model mapping from the api schema into the application shape.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping API responses to the DatadogLoggingConfiguration application shape.
+ * Handles any property name transformations from the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const datadogLoggingConfigurationResponse = z.lazy(() => {
   return z
     .object({
-      host: z.string().min(1).max(1000).regex(/^.*$/),
       api_key: z.string().min(1).max(1000).regex(/^.*$/),
+      host: z.string().min(1).max(1000).regex(/^.*$/),
       tags: z.array(datadogTagForContainerLoggingResponse).max(1000).nullable(),
     })
     .transform((data) => ({
-      host: data['host'],
       apiKey: data['api_key'],
+      host: data['host'],
       tags: data['tags'],
     }));
 });
 
 /**
- * The shape of the model mapping from the application shape into the api schema.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping the DatadogLoggingConfiguration application shape to API requests.
+ * Handles any property name transformations required by the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const datadogLoggingConfigurationRequest = z.lazy(() => {
   return z
     .object({
-      host: z.string().min(1).max(1000).regex(/^.*$/),
       apiKey: z.string().min(1).max(1000).regex(/^.*$/),
+      host: z.string().min(1).max(1000).regex(/^.*$/),
       tags: z.array(datadogTagForContainerLoggingRequest).max(1000).nullable(),
     })
     .transform((data) => ({
-      host: data['host'],
       api_key: data['apiKey'],
+      host: data['host'],
       tags: data['tags'],
     }));
 });
