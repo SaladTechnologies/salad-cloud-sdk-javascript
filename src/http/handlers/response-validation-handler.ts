@@ -4,15 +4,33 @@ import { ZodUndefined } from 'zod';
 import { ContentType, HttpResponse, RequestHandler } from '../types';
 import { ResponseMatcher } from '../utils/response-matcher';
 
+/**
+ * Request handler that validates and decodes HTTP response bodies.
+ * Supports multiple content types including JSON, XML, binary, form data, and event streams.
+ */
 export class ResponseValidationHandler implements RequestHandler {
+  /** Next handler in the chain */
   next?: RequestHandler;
 
+  /**
+   * Handles a standard HTTP request and validates its response.
+   * @template T - The expected response data type
+   * @param request - The HTTP request to process
+   * @returns A promise that resolves to the validated HTTP response
+   */
   async handle<T>(request: Request): Promise<HttpResponse<T>> {
     const response = await this.next!.handle<T>(request);
 
     return this.decodeBody<T>(request, response);
   }
 
+  /**
+   * Handles a streaming HTTP request and validates response chunks.
+   * @template T - The expected response data type for each chunk
+   * @param request - The HTTP request to process
+   * @returns An async generator that yields validated HTTP responses
+   * @throws Error if response headers are enabled (streaming not supported with headers)
+   */
   async *stream<T>(request: Request): AsyncGenerator<HttpResponse<T>> {
     const stream = this.next!.stream<T>(request);
 
@@ -150,6 +168,14 @@ export class ResponseValidationHandler implements RequestHandler {
     };
   }
 
+  /**
+   * Validates response data against the expected schema if validation is enabled.
+   * @template T - The expected data type
+   * @param request - The HTTP request containing validation settings
+   * @param response - The response definition with schema
+   * @param data - The data to validate
+   * @returns The validated data (parsed if validation enabled, raw otherwise)
+   */
   private validate<T>(request: Request, response: ResponseDefinition, data: any): T {
     if (request.validation?.responseValidation) {
       return response.schema.parse(data);
@@ -157,6 +183,13 @@ export class ResponseValidationHandler implements RequestHandler {
     return data;
   }
 
+  /**
+   * Checks if a response should contain data based on its schema and status.
+   * @template T - The response data type
+   * @param responseDefinition - The response definition
+   * @param response - The HTTP response
+   * @returns True if the response should have content, false otherwise
+   */
   private hasContent<T>(responseDefinition: ResponseDefinition, response: HttpResponse<T>): boolean {
     return (
       !!responseDefinition.schema &&
@@ -165,6 +198,11 @@ export class ResponseValidationHandler implements RequestHandler {
     );
   }
 
+  /**
+   * Parses URL-encoded data into an object.
+   * @param urlEncodedData - The URL-encoded string
+   * @returns An object with decoded key-value pairs
+   */
   private fromUrlEncoded(urlEncodedData: string): object {
     const pairs = urlEncodedData.split('&');
     const result: Record<string, string> = {};
@@ -179,6 +217,11 @@ export class ResponseValidationHandler implements RequestHandler {
     return result;
   }
 
+  /**
+   * Parses multipart form data into an object.
+   * @param arrayBuffer - The raw form data as ArrayBuffer
+   * @returns An object with form field names and values
+   */
   private fromFormData(arrayBuffer: ArrayBuffer): Record<string, string> {
     const decoder = new TextDecoder();
     const text = decoder.decode(arrayBuffer);

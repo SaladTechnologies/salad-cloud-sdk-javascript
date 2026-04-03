@@ -37,6 +37,12 @@ import {
   containerGroupReadinessProbeResponse,
 } from '../container-groups/models/container-group-readiness-probe';
 import {
+  ContainerGroupScalingAction,
+  containerGroupScalingAction,
+  containerGroupScalingActionRequest,
+  containerGroupScalingActionResponse,
+} from '../container-groups/models/container-group-scaling-action';
+import {
   ContainerGroupStartupProbe,
   containerGroupStartupProbe,
   containerGroupStartupProbeRequest,
@@ -44,7 +50,9 @@ import {
 } from '../container-groups/models/container-group-startup-probe';
 
 /**
- * The shape of the model inside the application code - what the users use
+ * Zod schema for the ContainerGroup model.
+ * Defines the structure and validation rules for this data type.
+ * This is the shape used in application code - what developers interact with.
  */
 export const containerGroup = z.lazy(() => {
   return z.object({
@@ -84,6 +92,8 @@ export const containerGroup = z.lazy(() => {
     readme: z.string().min(2).max(65000).optional(),
     replicas: z.number().gte(0).lte(500),
     restartPolicy: z.string(),
+    scalingActions: z.array(containerGroupScalingAction).max(100),
+    scheduledScalingEnabled: z.boolean(),
     startupProbe: containerGroupStartupProbe.optional().nullable(),
     updateTime: z.string(),
     version: z.number().gte(1).lte(2147483647),
@@ -113,6 +123,8 @@ export const containerGroup = z.lazy(() => {
  * @property {string}
  * @property {number} - The container group replicas.
  * @property {ContainerRestartPolicy} - Specifies the policy for restarting containers when they exit or fail.
+ * @property {ContainerGroupScalingAction[]} - List of scaling actions configurations
+ * @property {boolean} - Indicates if scheduled scaling is enabled
  * @property {ContainerGroupStartupProbe} - Defines a probe that checks if a container application has started successfully. Startup probes help prevent applications from being prematurely marked as unhealthy during initialization. The probe can use HTTP requests, TCP connections, gRPC calls, or shell commands to determine startup status.
  * @property {string} - ISO 8601 timestamp when this container group was last updated
  * @property {number} - Incremental version number that increases with each configuration change to the container group
@@ -120,8 +132,9 @@ export const containerGroup = z.lazy(() => {
 export type ContainerGroup = z.infer<typeof containerGroup>;
 
 /**
- * The shape of the model mapping from the api schema into the application shape.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping API responses to the ContainerGroup application shape.
+ * Handles any property name transformations from the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const containerGroupResponse = z.lazy(() => {
   return z
@@ -162,6 +175,8 @@ export const containerGroupResponse = z.lazy(() => {
       readme: z.string().min(2).max(65000).optional(),
       replicas: z.number().gte(0).lte(500),
       restart_policy: z.string(),
+      'scaling-actions': z.array(containerGroupScalingActionResponse).max(100),
+      'scheduled-scaling-enabled': z.boolean(),
       startup_probe: containerGroupStartupProbeResponse.optional().nullable(),
       update_time: z.string(),
       version: z.number().gte(1).lte(2147483647),
@@ -187,6 +202,8 @@ export const containerGroupResponse = z.lazy(() => {
       readme: data['readme'],
       replicas: data['replicas'],
       restartPolicy: data['restart_policy'],
+      scalingActions: data['scaling-actions'],
+      scheduledScalingEnabled: data['scheduled-scaling-enabled'],
       startupProbe: data['startup_probe'],
       updateTime: data['update_time'],
       version: data['version'],
@@ -194,8 +211,9 @@ export const containerGroupResponse = z.lazy(() => {
 });
 
 /**
- * The shape of the model mapping from the application shape into the api schema.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping the ContainerGroup application shape to API requests.
+ * Handles any property name transformations required by the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const containerGroupRequest = z.lazy(() => {
   return z
@@ -236,6 +254,8 @@ export const containerGroupRequest = z.lazy(() => {
       readme: z.string().min(2).max(65000).optional(),
       replicas: z.number().gte(0).lte(500),
       restartPolicy: z.string(),
+      scalingActions: z.array(containerGroupScalingActionRequest).max(100),
+      scheduledScalingEnabled: z.boolean(),
       startupProbe: containerGroupStartupProbeRequest.optional().nullable(),
       updateTime: z.string(),
       version: z.number().gte(1).lte(2147483647),
@@ -261,6 +281,8 @@ export const containerGroupRequest = z.lazy(() => {
       readme: data['readme'],
       replicas: data['replicas'],
       restart_policy: data['restartPolicy'],
+      'scaling-actions': data['scalingActions'],
+      'scheduled-scaling-enabled': data['scheduledScalingEnabled'],
       startup_probe: data['startupProbe'],
       update_time: data['updateTime'],
       version: data['version'],

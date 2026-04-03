@@ -8,6 +8,11 @@ import { Environment } from '../../http/environment';
 import { Quotas, quotasResponse } from './models/quotas';
 import { ProblemDetails } from '../common/problem-details';
 
+/**
+ * Service class for QuotasService operations.
+ * Provides methods to interact with QuotasService-related API endpoints.
+ * All methods return promises and handle request/response serialization automatically.
+ */
 export class QuotasService extends BaseService {
   /**
    * Gets the organization quotas

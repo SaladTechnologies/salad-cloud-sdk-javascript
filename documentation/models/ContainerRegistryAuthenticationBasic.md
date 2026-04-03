@@ -6,5 +6,5 @@ Basic username and password authentication for generic container registries
 
 | Name     | Type   | Required | Description                          |
 | :------- | :----- | :------- | :----------------------------------- |
-| username | string | ✅       | Username for registry authentication |
 | password | string | ✅       | Password for registry authentication |
+| username | string | ✅       | Username for registry authentication |

@@ -1,10 +1,13 @@
 import { z } from 'zod';
 
 /**
- * The shape of the model inside the application code - what the users use
+ * Zod schema for the QueuePatch model.
+ * Defines the structure and validation rules for this data type.
+ * This is the shape used in application code - what developers interact with.
  */
 export const queuePatch = z.lazy(() => {
   return z.object({
+    description: z.string().max(500).regex(/^.*$/).optional().nullable(),
     displayName: z
       .string()
       .min(2)
@@ -12,25 +15,26 @@ export const queuePatch = z.lazy(() => {
       .regex(/^[ ,-.0-9A-Za-z]+$/)
       .optional()
       .nullable(),
-    description: z.string().max(500).regex(/^.*$/).optional().nullable(),
   });
 });
 
 /**
  * Represents a request to update an existing queue.
  * @typedef  {QueuePatch} queuePatch - Represents a request to update an existing queue. - Represents a request to update an existing queue.
- * @property {string} - The display name. This may be used as a more human-readable name.
  * @property {string} - The description. This may be used as a space for notes or other information about the queue.
+ * @property {string} - The display name. This may be used as a more human-readable name.
  */
 export type QueuePatch = z.infer<typeof queuePatch>;
 
 /**
- * The shape of the model mapping from the api schema into the application shape.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping API responses to the QueuePatch application shape.
+ * Handles any property name transformations from the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const queuePatchResponse = z.lazy(() => {
   return z
     .object({
+      description: z.string().max(500).regex(/^.*$/).optional().nullable(),
       display_name: z
         .string()
         .min(2)
@@ -38,21 +42,22 @@ export const queuePatchResponse = z.lazy(() => {
         .regex(/^[ ,-.0-9A-Za-z]+$/)
         .optional()
         .nullable(),
-      description: z.string().max(500).regex(/^.*$/).optional().nullable(),
     })
     .transform((data) => ({
-      displayName: data['display_name'],
       description: data['description'],
+      displayName: data['display_name'],
     }));
 });
 
 /**
- * The shape of the model mapping from the application shape into the api schema.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping the QueuePatch application shape to API requests.
+ * Handles any property name transformations required by the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const queuePatchRequest = z.lazy(() => {
   return z
     .object({
+      description: z.string().max(500).regex(/^.*$/).optional().nullable(),
       displayName: z
         .string()
         .min(2)
@@ -60,10 +65,9 @@ export const queuePatchRequest = z.lazy(() => {
         .regex(/^[ ,-.0-9A-Za-z]+$/)
         .optional()
         .nullable(),
-      description: z.string().max(500).regex(/^.*$/).optional().nullable(),
     })
     .transform((data) => ({
-      display_name: data['displayName'],
       description: data['description'],
+      display_name: data['displayName'],
     }));
 });

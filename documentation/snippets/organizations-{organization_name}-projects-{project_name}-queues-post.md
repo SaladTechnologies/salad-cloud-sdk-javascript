@@ -7,9 +7,9 @@ import { QueuePrototype, SaladCloudSdk } from '@saladtechnologies-oss/salad-clou
   });
 
   const queuePrototype: QueuePrototype = {
-    name: 'name',
-    displayName: 'AV3ysQq',
     description: 'description',
+    displayName: 'tLWSUinMUjM',
+    name: 'name',
   };
 
   const { data } = await saladCloudSdk.queues.createQueue('acme-corp', 'dev-env', queuePrototype);

@@ -37,7 +37,9 @@ import {
 } from './tcp-logging-configuration';
 
 /**
- * The shape of the model inside the application code - what the users use
+ * Zod schema for the ContainerLogging model.
+ * Defines the structure and validation rules for this data type.
+ * This is the shape used in application code - what developers interact with.
  */
 export const containerLogging = z.lazy(() => {
   return z.object({
@@ -63,8 +65,9 @@ export const containerLogging = z.lazy(() => {
 export type ContainerLogging = z.infer<typeof containerLogging>;
 
 /**
- * The shape of the model mapping from the api schema into the application shape.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping API responses to the ContainerLogging application shape.
+ * Handles any property name transformations from the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const containerLoggingResponse = z.lazy(() => {
   return z
@@ -87,8 +90,9 @@ export const containerLoggingResponse = z.lazy(() => {
 });
 
 /**
- * The shape of the model mapping from the application shape into the api schema.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping the ContainerLogging application shape to API requests.
+ * Handles any property name transformations required by the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const containerLoggingRequest = z.lazy(() => {
   return z

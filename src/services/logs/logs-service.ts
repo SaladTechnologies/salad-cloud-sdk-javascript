@@ -9,6 +9,11 @@ import { LogEntryQuery, logEntryQueryRequest } from './models/log-entry-query';
 import { LogEntryCollection, logEntryCollectionResponse } from './models/log-entry-collection';
 import { ProblemDetails } from '../common/problem-details';
 
+/**
+ * Service class for LogsService operations.
+ * Provides methods to interact with LogsService-related API endpoints.
+ * All methods return promises and handle request/response serialization automatically.
+ */
 export class LogsService extends BaseService {
   /**
    * Retrieve a collection of _log entries_ for the _organization_ identified by `{organization_name}` matching the log query.

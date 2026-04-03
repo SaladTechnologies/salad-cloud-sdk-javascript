@@ -1,7 +1,9 @@
 import { z } from 'zod';
 
 /**
- * The shape of the model inside the application code - what the users use
+ * Zod schema for the UpdateContainerGroupNetworking model.
+ * Defines the structure and validation rules for this data type.
+ * This is the shape used in application code - what developers interact with.
  */
 export const updateContainerGroupNetworking = z.lazy(() => {
   return z.object({
@@ -17,8 +19,9 @@ export const updateContainerGroupNetworking = z.lazy(() => {
 export type UpdateContainerGroupNetworking = z.infer<typeof updateContainerGroupNetworking>;
 
 /**
- * The shape of the model mapping from the api schema into the application shape.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping API responses to the UpdateContainerGroupNetworking application shape.
+ * Handles any property name transformations from the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const updateContainerGroupNetworkingResponse = z.lazy(() => {
   return z
@@ -31,8 +34,9 @@ export const updateContainerGroupNetworkingResponse = z.lazy(() => {
 });
 
 /**
- * The shape of the model mapping from the application shape into the api schema.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping the UpdateContainerGroupNetworking application shape to API requests.
+ * Handles any property name transformations required by the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const updateContainerGroupNetworkingRequest = z.lazy(() => {
   return z

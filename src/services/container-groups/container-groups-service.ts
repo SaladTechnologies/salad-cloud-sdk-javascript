@@ -23,6 +23,11 @@ import {
   containerGroupInstancePatchRequest,
 } from './models/container-group-instance-patch';
 
+/**
+ * Service class for ContainerGroupsService operations.
+ * Provides methods to interact with ContainerGroupsService-related API endpoints.
+ * All methods return promises and handle request/response serialization automatically.
+ */
 export class ContainerGroupsService extends BaseService {
   /**
    * Gets the list of container groups

@@ -6,6 +6,6 @@ Configuration settings for integrating container logs with the Axiom logging ser
 
 | Name     | Type   | Required | Description                                                                   |
 | :------- | :----- | :------- | :---------------------------------------------------------------------------- |
-| host     | string | ✅       | The Axiom host URL where logs will be sent (e.g. logs.axiom.co)               |
 | apiToken | string | ✅       | Authentication token for the Axiom API with appropriate write permissions     |
 | dataset  | string | ✅       | Name of the Axiom dataset where the container logs will be stored and indexed |
+| host     | string | ✅       | The Axiom host URL where logs will be sent (e.g. logs.axiom.co)               |

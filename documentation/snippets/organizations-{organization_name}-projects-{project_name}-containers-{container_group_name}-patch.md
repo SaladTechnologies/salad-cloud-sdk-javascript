@@ -9,6 +9,7 @@ import {
   ContainerGroupProbeExec,
   ContainerGroupProbeHttpHeader,
   ContainerGroupReadinessProbe,
+  ContainerGroupScalingAction,
   ContainerGroupStartupProbe,
   ContainerGroupTcpProbe,
   ContainerLoggingConfigurationHttp1,
@@ -42,9 +43,9 @@ import {
   });
 
   const axiomLoggingConfiguration: AxiomLoggingConfiguration = {
-    host: 'host',
     apiToken: 'api_token',
     dataset: 'dataset',
+    host: 'host',
   };
 
   const datadogTagForContainerLogging: DatadogTagForContainerLogging = {
@@ -53,10 +54,12 @@ import {
   };
 
   const datadogLoggingConfiguration: DatadogLoggingConfiguration = {
-    host: 'host',
     apiKey: 'api_key',
+    host: 'host',
     tags: [datadogTagForContainerLogging],
   };
+
+  const containerLoggingHttpCompression = ContainerLoggingHttpCompression.NONE;
 
   const containerLoggingHttpFormat = ContainerLoggingHttpFormat.JSON;
 
@@ -65,17 +68,15 @@ import {
     value: 'value',
   };
 
-  const containerLoggingHttpCompression = ContainerLoggingHttpCompression.NONE;
-
   const containerLoggingConfigurationHttp1: ContainerLoggingConfigurationHttp1 = {
-    host: 'host',
-    port: 55354,
-    user: 'user',
-    password: 'password',
-    path: 'path',
+    compression: containerLoggingHttpCompression,
     format: containerLoggingHttpFormat,
     headers: [containerLoggingHttpHeader],
-    compression: containerLoggingHttpCompression,
+    host: 'host',
+    password: 'password',
+    path: 'path',
+    port: 55354,
+    user: 'user',
   };
 
   const newRelicLoggingConfiguration: NewRelicLoggingConfiguration = {
@@ -110,13 +111,13 @@ import {
   };
 
   const containerRegistryAuthenticationBasic: ContainerRegistryAuthenticationBasic = {
-    username: 'username',
     password: 'password',
+    username: 'username',
   };
 
   const containerRegistryAuthenticationDockerHub: ContainerRegistryAuthenticationDockerHub = {
-    username: 'username',
     personalAccessToken: 'personal_access_token',
+    username: 'username',
   };
 
   const containerRegistryAuthenticationGcpGar: ContainerRegistryAuthenticationGcpGar = {
@@ -136,11 +137,11 @@ import {
   };
 
   const containerResourceUpdateSchema: ContainerResourceUpdateSchema = {
-    cpu: 1013,
-    memory: 352043675,
+    cpu: 191,
     gpuClasses: ['gpu_classes'],
-    storageAmount: 1032076497908566.1,
+    memory: 909130690,
     shmSize: 64,
+    storageAmount: 699558298076245,
   };
 
   const updateContainer: UpdateContainer = {
@@ -155,10 +156,6 @@ import {
   };
 
   const countryCode = CountryCode.AF;
-
-  const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
-    port: 13142,
-  };
 
   const containerGroupProbeExec: ContainerGroupProbeExec = {
     command: ['command'],
@@ -199,6 +196,19 @@ import {
     timeoutSeconds: 30,
   };
 
+  const updateContainerGroupNetworking: UpdateContainerGroupNetworking = {
+    port: 17025,
+  };
+
+  const queueBasedAutoscalerConfiguration: QueueBasedAutoscalerConfiguration = {
+    desiredQueueLength: 53,
+    maxDownscalePerMinute: 59,
+    maxReplicas: 321,
+    maxUpscalePerMinute: 100,
+    minReplicas: 54,
+    pollingPeriod: 140,
+  };
+
   const containerGroupReadinessProbe: ContainerGroupReadinessProbe = {
     exec: containerGroupProbeExec,
     failureThreshold: 3,
@@ -211,37 +221,35 @@ import {
     timeoutSeconds: 1,
   };
 
+  const containerGroupScalingAction: ContainerGroupScalingAction = {
+    replicas: 461,
+    schedule: '7kwC/T8C   da       x6Ci   bM-rgGYn     bDY6,vT',
+  };
+
   const containerGroupStartupProbe: ContainerGroupStartupProbe = {
     exec: containerGroupProbeExec,
     failureThreshold: 15,
     grpc: containerGroupGRpcProbe,
     http: containerGroupHttpProbeConfiguration,
-    initialDelaySeconds: 1106,
-    tcp: containerGroupTcpProbe,
+    initialDelaySeconds: 503,
     periodSeconds: 3,
     successThreshold: 2,
+    tcp: containerGroupTcpProbe,
     timeoutSeconds: 10,
   };
 
-  const queueBasedAutoscalerConfiguration: QueueBasedAutoscalerConfiguration = {
-    desiredQueueLength: 53,
-    maxReplicas: 291,
-    maxDownscalePerMinute: 65,
-    maxUpscalePerMinute: 100,
-    minReplicas: 54,
-    pollingPeriod: 140,
-  };
-
   const containerGroupPatch: ContainerGroupPatch = {
-    displayName: 'ZJjdnvu',
     container: updateContainer,
-    replicas: 56,
     countryCodes: [countryCode],
-    networking: updateContainerGroupNetworking,
+    displayName: 'ykW8yoj HBQ',
     livenessProbe: containerGroupLivenessProbe,
-    readinessProbe: containerGroupReadinessProbe,
-    startupProbe: containerGroupStartupProbe,
+    networking: updateContainerGroupNetworking,
     queueAutoscaler: queueBasedAutoscalerConfiguration,
+    readinessProbe: containerGroupReadinessProbe,
+    replicas: 102,
+    scalingActions: [containerGroupScalingAction],
+    scheduledScalingEnabled: true,
+    startupProbe: containerGroupStartupProbe,
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroup(

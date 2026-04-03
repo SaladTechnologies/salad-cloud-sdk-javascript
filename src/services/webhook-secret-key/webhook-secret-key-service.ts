@@ -8,6 +8,11 @@ import { Environment } from '../../http/environment';
 import { WebhookSecretKey, webhookSecretKeyResponse } from './models/webhook-secret-key';
 import { ProblemDetails } from '../common/problem-details';
 
+/**
+ * Service class for WebhookSecretKeyService operations.
+ * Provides methods to interact with WebhookSecretKeyService-related API endpoints.
+ * All methods return promises and handle request/response serialization automatically.
+ */
 export class WebhookSecretKeyService extends BaseService {
   /**
    * Gets the webhook secret key

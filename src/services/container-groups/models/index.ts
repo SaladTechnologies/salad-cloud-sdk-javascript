@@ -5,9 +5,9 @@ export type { AxiomLoggingConfiguration } from './axiom-logging-configuration';
 export type { DatadogLoggingConfiguration } from './datadog-logging-configuration';
 export type { DatadogTagForContainerLogging } from './datadog-tag-for-container-logging';
 export type { ContainerLoggingConfigurationHttp1 } from './container-logging-configuration-http-1';
+export { ContainerLoggingHttpCompression } from './container-logging-http-compression';
 export { ContainerLoggingHttpFormat } from './container-logging-http-format';
 export type { ContainerLoggingHttpHeader } from './container-logging-http-header';
-export { ContainerLoggingHttpCompression } from './container-logging-http-compression';
 export type { NewRelicLoggingConfiguration } from './new-relic-logging-configuration';
 export type { ContainerLoggingSplunkConfiguration } from './container-logging-splunk-configuration';
 export type { TcpLoggingConfiguration } from './tcp-logging-configuration';
@@ -29,6 +29,7 @@ export type { QueueBasedAutoscalerConfiguration } from './queue-based-autoscaler
 export type { ContainerGroupQueueConnection } from './container-group-queue-connection';
 export type { ContainerGroupReadinessProbe } from './container-group-readiness-probe';
 export { ContainerRestartPolicy } from './container-restart-policy';
+export type { ContainerGroupScalingAction } from './container-group-scaling-action';
 export type { ContainerGroupStartupProbe } from './container-group-startup-probe';
 export type { ContainerGroupCreationRequest } from './container-group-creation-request';
 export type { ContainerConfiguration } from './container-configuration';

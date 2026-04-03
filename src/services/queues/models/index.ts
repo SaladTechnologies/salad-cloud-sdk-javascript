@@ -4,7 +4,7 @@ export type { QueuePrototype } from './queue-prototype';
 export type { QueuePatch } from './queue-patch';
 export type { QueueJobCollection } from './queue-job-collection';
 export type { QueueJob } from './queue-job';
-export { QueueJobStatus } from './queue-job-status';
 export type { QueueJobEvent } from './queue-job-event';
 export { Action } from './action';
+export { QueueJobStatus } from './queue-job-status';
 export type { QueueJobPrototype } from './queue-job-prototype';

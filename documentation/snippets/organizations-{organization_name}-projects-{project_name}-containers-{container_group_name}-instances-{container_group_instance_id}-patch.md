@@ -7,7 +7,7 @@ import { ContainerGroupInstancePatch, SaladCloudSdk } from '@saladtechnologies-o
   });
 
   const containerGroupInstancePatch: ContainerGroupInstancePatch = {
-    deletionCost: 34980,
+    deletionCost: 19725,
   };
 
   const { data } = await saladCloudSdk.containerGroups.updateContainerGroupInstance(

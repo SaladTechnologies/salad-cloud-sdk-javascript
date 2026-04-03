@@ -7,7 +7,9 @@ import {
 } from './container-group-instance-status-count';
 
 /**
- * The shape of the model inside the application code - what the users use
+ * Zod schema for the ContainerGroupState model.
+ * Defines the structure and validation rules for this data type.
+ * This is the shape used in application code - what developers interact with.
  */
 export const containerGroupState = z.lazy(() => {
   return z.object({
@@ -31,8 +33,9 @@ export const containerGroupState = z.lazy(() => {
 export type ContainerGroupState = z.infer<typeof containerGroupState>;
 
 /**
- * The shape of the model mapping from the api schema into the application shape.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping API responses to the ContainerGroupState application shape.
+ * Handles any property name transformations from the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const containerGroupStateResponse = z.lazy(() => {
   return z
@@ -53,8 +56,9 @@ export const containerGroupStateResponse = z.lazy(() => {
 });
 
 /**
- * The shape of the model mapping from the application shape into the api schema.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping the ContainerGroupState application shape to API requests.
+ * Handles any property name transformations required by the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const containerGroupStateRequest = z.lazy(() => {
   return z

@@ -7,7 +7,9 @@ import {
 } from '../../common/container-group';
 
 /**
- * The shape of the model inside the application code - what the users use
+ * Zod schema for the ContainerGroupCollection model.
+ * Defines the structure and validation rules for this data type.
+ * This is the shape used in application code - what developers interact with.
  */
 export const containerGroupCollection = z.lazy(() => {
   return z.object({
@@ -23,8 +25,9 @@ export const containerGroupCollection = z.lazy(() => {
 export type ContainerGroupCollection = z.infer<typeof containerGroupCollection>;
 
 /**
- * The shape of the model mapping from the api schema into the application shape.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping API responses to the ContainerGroupCollection application shape.
+ * Handles any property name transformations from the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const containerGroupCollectionResponse = z.lazy(() => {
   return z
@@ -37,8 +40,9 @@ export const containerGroupCollectionResponse = z.lazy(() => {
 });
 
 /**
- * The shape of the model mapping from the application shape into the api schema.
- * Is equal to application shape if all property names match the api schema
+ * Zod schema for mapping the ContainerGroupCollection application shape to API requests.
+ * Handles any property name transformations required by the API schema.
+ * If property names match the API schema exactly, this is identical to the application shape.
  */
 export const containerGroupCollectionRequest = z.lazy(() => {
   return z
